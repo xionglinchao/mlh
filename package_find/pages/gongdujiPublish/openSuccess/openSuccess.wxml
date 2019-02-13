@@ -1,0 +1,48 @@
+<view class='open_course'>
+  <image class='top_bg_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/{{info.open_course_cover}}' mode='aspectFit'></image>
+  <text class='course_intro'>{{info.open_course_info}}</text>
+  <!-- 课程特色服务 -->
+  <image class='sub_title_box' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rectangular.png'>
+    <view class='sub_title'>课程特色服务</view>
+  </image>
+  <view class='list_container'>
+    <view class='list_box'>
+      <view class='each_list_2' wx:for='{{ info.course_service }}' wx:key>
+        <text class='green_dot'></text>
+        <text class='list_words_2 beyondEllipsis'>{{ item }}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 如何开课 -->
+  <image class='sub_title_box' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rectangular.png'>
+    <view class='sub_title'>如何进行开课</view>
+  </image>
+  <view class='list_box_2'>
+    <view class='each_list_2' wx:for='{{ info.how_to_open_course }}' wx:key>
+      <text class='green_dot'></text>
+      <text class='list_words_2 beyondEllipsis'>{{ item }}</text>
+    </view>
+  </view>
+  <view class='tips'>已成功开通课程</view>
+  <view class='upload_path'>
+    <view class='vertical_line'></view>
+    <view class='vertical_line'></view>
+    <text selectable="true" class='path'>请前往http://meilihua.06baobao.com/userAdmin/进行上传</text>
+    <view class='vertical_line'></view>
+    <view class='vertical_line'></view>
+  </view>
+  <!-- <view class='upload_path'>
+    <view class='vertical_line'></view>
+    <view class='vertical_line'></view>
+    <view class='path'></view>
+    <view class='vertical_line'></view>
+    <view class='vertical_line'></view>
+  </view>
+  <view class='upload_path'>
+    <view class='vertical_line'></view>
+    <view class='vertical_line'></view>
+    <view class='path'></view>
+    <view class='vertical_line'></view>
+    <view class='vertical_line'></view>
+  </view> -->
+</view>

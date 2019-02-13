@@ -1,0 +1,13 @@
+<!--pages/commonProblem/commonProblem.wxml-->
+<view class = "pClass">
+    <view style='width:100%;height:10px;background: #f2f2f2;'></view>
+    <scroll-view class = "scroll" scroll-y = "true">
+        <block wx:for = "{{problemPro}}">
+            <view class = "dataViewClass" bindtap='btn_infor' data-item='{{item}}'>
+              <text>{{item.name}}</text>
+              <image src='../../images/send/right.png'></image>
+            </view>
+        </block>
+        <view style="clear:both;"></view>
+    </scroll-view>
+</view>

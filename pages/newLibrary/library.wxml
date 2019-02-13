@@ -1,0 +1,64 @@
+<scroll-view class='page_box' scroll-y>
+  <!-- 活动轮播图 -->
+  <swiper autoplay='true' interval='3000' class='slide_pic'>
+    <block wx:for='{{ banner }}' wx:key>
+      <swiper-item>
+        <image class='activ_pic' mode="aspectFit" src='{{ item.value }}'>
+          <view class='activ_name beyondEllipsis'>{{ item.name }}</view>
+        </image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 搜索 -->
+  <view class='search_box' catchtap="searchBtn">
+    <text class='iconfont icon-search searchIcon'></text>
+    <text class='search_words'>搜索</text>
+  </view>
+  <!-- 书本类目 -->
+  <block wx:for='{{ lists }}' wx:key>
+    <view class='catalog_box'>
+      <view class='title_box'>
+        <image class='catalog_pic' src='../../images/newLibrary/catalog_pic.png'>
+          <text class='catalog_title'>{{ item.name }}</text>
+        </image>
+        <view class='dot_box' catchtap="toMoreBook" data-item="{{ item }}">
+          <text class='green_dot' style='background: rgba(30,172,88,1);'></text>
+          <text class='green_dot' style='background: rgba(30,172,88,0.6);'></text>
+          <text class='green_dot' style='background: rgba(30,172,88,0.2);'></text>
+        </view>
+      </view>
+      <scroll-view scroll-x class='book_box'>
+        <block wx:for="{{ item.two_list }}" wx:key wx:for-item="item2">
+          <view class="swiper_box">
+            <view class='each_book_box' catchtap="toLibraryBookList" data-item="{{ item2 }}">
+              <image class='book_pic' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2.logo }}"></image>
+              <text class='book_name beyondEllipsis'>{{ item2.name }}</text>
+            </view>
+            <image class='split_point' src='../../images/newLibrary/dot.png'></image>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </block>
+  <view style='width:100%;height:15rpx;background:#EAEAEA;'></view>
+  <!-- 精选书单 -->
+  <view class='selected_box' wx:for='{{ selected }}' wx:key catchtap="toSelectedBookPage" data-item="{{ item }}">
+    <view class='book_list_box'>
+      <text class='select_book_list'>精选书单</text>
+      <button class='shareIcon_box' open-type='share'>
+        <text class='share_words'>分享</text>
+        <text class='iconfont icon-share2 shareIcon'></text>
+      </button>
+    </view>
+    <view class='content_container'>
+      <text class='selected_title beyondEllipsis'>{{ item.name }}</text>
+      <text class='selected_cont beyondEllipsis'>{{ item.desc }}</text>
+      <view class='selected_book_box'>
+        <block wx:for="{{ item.shop }}" wx:key wx:for-item='item2'>
+          <image class='selected_book' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2.litpic }}"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- <view class='loading_more'>加载更多...</view> -->
+</scroll-view>

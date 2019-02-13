@@ -1,0 +1,12 @@
+/* pages/threeClass/threeClass.wxss */
+page {width:100%;height:100%;}
+.title_view {width:calc(100% - 10px);margin-left:10px;border-bottom:1px solid #f0f0f0;height:70px;}
+.title_image {width:50px;height:50px;margin-top:10px;margin-right:10px;border-radius:50%;float:left;}
+.title_name_view {width:calc(100% - 60px);height:100%;float:left;}
+.title_name_view .name {font-size:14px;color:#666;margin-top:10px;line-height:30px;width:100%;}
+.title_name_view .desc {font-size:13px;color:#999;line-height:20px;width:100%;}
+.three_classify_scroll {width:100%;height:calc(100% - 71px);}
+.three_classify_name_view {width:100%;height:46px;float:left;}
+.three_classify_content_view {width:calc(100% - 10px);margin-left:10px;border-bottom:1px solid #f0f0f0;float:left;}
+.three_classify_scroll_name {line-height:45px;color:#666;font-size:14px;margin-left:5px;width:calc(100% - 165px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.three_classify_scroll_author {line-height:45px;color:#999;font-size:12px;margin-right:10px;width:150px;text-align:right;}

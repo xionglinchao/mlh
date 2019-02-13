@@ -1,0 +1,333 @@
+.personalViewClass {
+  width: 100%;
+  height: 100%;
+}
+
+.personalViewClass .headViewClass {
+  width: 100%;
+  /* height: 110px; */
+  background: #1eac58;
+  display: flex;
+  justify-content: space-between;
+}
+
+.personalViewClass .headViewClass .nameImageClass {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+/* .personalViewClass .headViewClass .nameViewClass {
+  width: calc(100% - 140px); 
+  height: 100%; 
+  float: left;
+  margin-left: 20px; 
+} */
+
+.to_personHP {
+  padding: 12rpx 16rpx;
+  background: rgba(0,0,0,0.5);
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+
+.settingIcon {
+  font-size: 50rpx;
+  color: #fff;
+  margin-right: 30rpx;
+  width: 50px;
+  height: 20px;
+  text-align: right;
+}
+
+.personalViewClass .headViewClass .nameViewClass .text1 {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  float: left;
+  font-size: 15px;
+  color: white;
+}
+
+.personalViewClass .headViewClass .nameViewClass .text2 {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  float: left;
+  font-size: 15px;
+  color: white;
+}
+
+.personalViewClass .headViewClass .rightImageClass {
+  width: 26px;
+  height: 26px;
+  padding-right: 2px;
+  padding-top: 42px;
+}
+
+.personalViewClass .headViewClass .wxImageClass {
+  width: 70px;
+  height: 70px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 50%;
+  float: left;
+  background-color: #fff;
+  opacity: 0.6;
+}
+
+.personalViewClass .headViewClass .wxImageClass::after {
+  content: none;
+}
+
+.personalViewClass .headViewClass .wxImageClass text {
+  display: block;
+  float: left;
+  width: 42px;
+  font-size: 10px;
+  text-align: center;
+  height: 50px;
+  margin-top: 10px;
+  color: #1eac58;
+}
+
+.personalViewClass .headViewClass .loginClass {
+  width: calc(100% - 140px);
+  height: 110px;
+  float: left;
+  margin-left: 20px;
+  line-height: 110px;
+  font-size: 18px;
+  color: white;
+}
+
+.personalViewClass .headViewClass .signInClass {
+  display: block;
+  width: 50px;
+  height: 20px;
+  background: #f60;
+  text-align: center;
+  border-radius: 4px;
+  color: white;
+  padding: 3px 0px;
+  font-size: 14px;
+  margin-left: 30rpx;
+}
+
+.badge_view {
+  width: 100%;
+  height: 90px;
+  background: #1eac58;
+}
+
+.badge_view image {
+  width: 60px;
+  height: 60px;
+  margin-left: calc(25% - 45px);
+  margin-top: 5px;
+}
+
+.personalViewClass .numberViewClass {
+  height: auto;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.personalViewClass .numberViewClass .numClass {
+  width: 250rpx;
+  height: 100%;
+  float: left;
+  text-align: center;
+  padding: 5px 0px;
+}
+
+.personalViewClass .numberViewClass .numClass .text1 {
+  display: block;
+  float: left;
+  width: 100%;
+  color: red;
+  font-size: 16px;
+  height: auto;
+}
+
+.personalViewClass .numberViewClass .numClass .text2 {
+  display: block;
+  float: left;
+  width: 100%;
+  color: #666;
+  font-size: 11px;
+  height: auto;
+}
+
+.personalViewClass .orderViewClass {
+  width: 100%;
+  height: auto;
+  background: white;
+  margin-top: 8px;
+}
+
+.personalViewClass .orderViewClass .myOrderClass {
+  height: 40px;
+  width: calc(100% - 15px);
+  margin-left: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.personalViewClass .orderViewClass .myOrderClass .text1 {
+  display: block;
+  float: left;
+  font-size: 15px;
+  color: #565656;
+  line-height: 40px;
+}
+
+.personalViewClass .orderViewClass .myOrderClass .text2 {
+  display: block;
+  float: right;
+  font-size: 12px;
+  color: #999;
+  line-height: 40px;
+  margin-right: 8px;
+}
+
+.personalViewClass .orderViewClass .myOrderClass image {
+  width: 20px;
+  height: 20px;
+  float: right;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.personalViewClass .orderViewClass .processViewClass {
+  width: 100%;
+  height: auto;
+}
+
+.personalViewClass .orderViewClass .processViewClass .viewClass {
+  width: 20%;
+  height: auto;
+  float: left;
+  padding: 18px 0px 12px 0px;
+  position: relative;
+}
+
+.personalViewClass .orderViewClass .processViewClass .viewClass image {
+  width: 25px;
+  height: 25px;
+  margin-left: calc(50% - 12px);
+}
+
+.personalViewClass .orderViewClass .processViewClass .viewClass text {
+  display: block;
+  float: left;
+  font-size: 12px;
+  color: #999;
+  width: 100%;
+  text-align: center;
+}
+
+.personalViewClass .orderViewClass .processViewClass .viewClass .order_num {
+  position: absolute;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid red;
+  border-radius: 50%;
+  top: 12px;
+  right: 13px;
+  height: 15px;
+  line-height: 15px;
+  width: auto;
+  font-size: 10px;
+  background: white;
+  color: red;
+}
+
+.personalViewClass .typeViewClass {
+  width: 100%;
+  height: auto;
+  background: white;
+  margin-top: 8px;
+}
+
+.personalViewClass .userManager {
+  width: 60%;
+  height: auto;
+  margin-left: 20%;
+  display: block;
+  float: left;
+  text-align: center;
+  background: #f60;
+  margin-top: 15px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 0px;
+}
+
+.personalViewClass .typeViewClass .view1 {
+  width: 100%;
+  height: auto;
+  float: left;
+}
+
+.personal_content_type {
+  width: 100%;
+  height: 51px;
+  float: left;
+}
+
+.personalViewClass .typeViewClass .view1 .personal_content_type .nameViewClass {
+  width: calc(100% - 15px);
+  height: 50px;
+  float: left;
+  margin-left: 15px;
+  border-bottom: 1px solid #eaeaea;
+  position: relative;
+}
+
+.personalViewClass .typeViewClass .view1 .personal_content_type .nameViewClass image {
+  width: 24px;
+  height: 24px;
+  margin-top: 13px;
+  float: left;
+}
+
+.personalViewClass .typeViewClass .view1 .personal_content_type .nameViewClass text {
+  display: block;
+  float: left;
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+  line-height: 50px;
+  margin-left: 15px;
+}
+
+.nameViewNum {
+  position: absolute;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid red;
+  border-radius: 50%;
+  top: 12px;
+  right: 40px;
+  height: 15px;
+  line-height: 15px;
+  width: auto;
+  font-size: 10px;
+  background: white;
+  color: red;
+}
+
+.type_content_image {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  margin-top: 16px;
+}

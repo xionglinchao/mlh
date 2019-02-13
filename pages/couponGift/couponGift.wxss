@@ -1,0 +1,193 @@
+page {
+  background: rgba(255, 186, 0, 1);
+}
+.page_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.coupon_box {
+  width: 700rpx;
+  height: 320rpx;
+  border-radius: 20rpx;
+  background-image: linear-gradient(0deg, #fa962a 0%, #f44646 100%);
+  margin: 86rpx 0 40rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.user_photo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: lightblue;
+  position: absolute;
+  top: -60rpx;
+  z-index: 10;
+}
+.dot_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 0;
+}
+.yellow_dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #ffba00;
+}
+.user_name {
+  font-size: 24rpx;
+  color: #fff;
+  display: flex;
+  height: 40rpx;
+}
+.name {
+  max-width: 150rpx;
+}
+.coupon_pic {
+  width: 536rpx;
+  height: 200rpx;
+  position: relative;
+}
+.course_name {
+  width: 240rpx;
+  font-size: 20rpx;
+  color: #fff;
+  position: absolute;
+  left: 122rpx;
+  top: 60rpx;
+}
+.coupon_value {
+  font-size: 40rpx;
+  color: #fff;
+  position: absolute;
+  top: 64rpx;
+  right: 14rpx;
+}
+.end_time {
+  font-size: 20rpx;
+  color: #c3c3c3;
+  position: absolute;
+  bottom: 20rpx;
+  left: 12rpx;
+}
+/* 领取记录 */
+.record_box {
+  width: 700rpx;
+  height: 270rpx;
+  border-radius: 20rpx 20rpx 0 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title_box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.diamond_pic {
+  width: 16rpx;
+  height: 32rpx;
+}
+.title_box>text {
+  font-size: 34rpx;
+  color: #6d3100;
+  padding: 0 25rpx;
+}
+.line_first {
+  width: 660rpx;
+  height: 6rpx;
+  background: #f66b26;
+  margin-bottom: 20rpx;
+}
+.line_second {
+  width: 660rpx;
+  height: 1rpx;
+  background: #f66b26;
+}
+.receiver_box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0 10rpx 0;
+}
+.receiver_photo {
+  width: 85rpx;
+  height: 85rpx;
+  border-radius: 50%;
+  background: lightblue;
+}
+.receive_info {
+  display: flex;
+  flex-direction: column;
+  width: 550rpx;
+  padding-left: 20rpx;
+}
+.value_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.receive_time {
+  display: flex;
+  align-items: center;
+}
+.receive_time>view:first-child {
+  font-size: 28rpx;
+  color: #6d3100;
+  max-width: 200rpx;
+}
+.receive_time>view:nth-child(2) {
+  font-size: 24rpx;
+  color: #999;
+  padding-left: 10rpx;
+}
+.coupon_price {
+  font-size: 28rpx;
+  color: #f66b26;
+}
+.receive_info>view:nth-child(2) {
+  font-size: 28rpx;
+  color: #f66b26;
+  padding-top: 6rpx;
+}
+/* 送券规则 */
+.gift_rule {
+  width: 700rpx;
+  background: #ffe7a8;
+  border-radius: 0 0 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20rpx;
+}
+.rule_box {
+  display: flex;
+  align-items: center;
+  width: 640rpx;
+  padding-bottom: 14rpx;
+}
+.rule_dot {
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: #f66b26;
+}
+.single_rule {
+  font-size: 24rpx;
+  color: #414141;
+  padding-left: 30rpx;
+}
+.checkBtn_box {
+  display: flex;
+  justify-content: space-around;
+}
+.confirm_btn {
+  width: 340rpx;
+  height: 126rpx;
+  margin: 36rpx 0;
+}

@@ -1,0 +1,26 @@
+<!--pages/threeClass/threeClass.wxml-->
+<wxs src="../../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class = "page_view">
+
+    <view class = "title_view">
+        <image class = "title_image" src='{{globalVariable.ossImage + threeClassPro.logo}}'></image>
+        <view class = "title_name_view">
+            <text class='name text_block'>{{threeClassPro.name}}</text>
+            <text class = "desc text_block">{{threeClassPro.remark}}</text>
+        </view>
+    </view>
+
+    <scroll-view class = "three_classify_scroll" scroll-y = "true">
+        <block wx:for="{{threeClassPro.book_title}}">
+            <navigator class='three_classify_name_view' hover-class='bottom_v' url = "../bookLibraryInformation/bookLibraryInformation?id={{item.id}}" open-type='navigate'>
+                <view class = "three_classify_content_view">
+                    <text class = "three_classify_scroll_name text_block">{{item.name}}</text>
+                    <text class = "three_classify_scroll_author text_block" style='float:right;'>{{item.writer+'(文)/' + item.painting_author + '(图)'}}</text>
+                </view>
+            </navigator>
+        
+        </block>
+    
+    </scroll-view>
+
+</view>

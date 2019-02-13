@@ -1,0 +1,155 @@
+page {background:#f2f2f2;}
+.fg_scroll_box {width:100%;height:88vh;}
+.fg_bg {width:100%;position:relative;height:1020rpx;}
+.guide_audio {position:absolute;top:84rpx;left:130rpx;display:flex;align-items:flex-end;z-index:2;}
+.yuyintou {width:88rpx;height:98rpx;}
+.yuyinline {position:relative;left:-25rpx;width:40px;height:40px;top:-82rpx;}
+.sprite1 {background:url("http://meilihua.06baobao.com/images/small/readTrees/funGame/audioani.png") 0 0 no-repeat;-webkit-transform:translateX(-50%);transform:translateX(-50%);}
+.sprite {background:url("http://meilihua.06baobao.com/images/small/readTrees/funGame/audioani.png") 0 0 no-repeat;-webkit-transform:translateX(-50%);transform:translateX(-50%);-webkit-animation:run 1s steps(3) infinite;animation:run 1s steps(3) infinite;}
+.audio_content {max-width:450rpx;background:#fff;position:relative;top:-2rpx;height:74rpx;border-top:2rpx solid #bbb;border-bottom:2rpx solid #bbb;}
+.yuyinwei {width:71rpx;height:98rpx;}
+.voice_time_length {position:absolute;top:45rpx;right:20rpx;font-size:24rpx;}
+/* 游戏窗口 */
+.game_box {width:710rpx;margin:0 20rpx;height:380rpx;position:absolute;top:270rpx;display:flex;justify-content:space-between;align-items:center;}
+.game_card {position:relative;width:225rpx;height:350rpx;background:#fff;border:2rpx solid #e29e92;box-sizing:border-box;margin:0 6rpx;}
+.game_card:nth-child(1) {color:#e5aa91;border-color:#e29e92;}
+.game_card:nth-child(2) {color:#c99544;border-color:#c0c26f;}
+.game_card:nth-child(3) {color:#565a66;border-color:#da5637;}
+.card_mask {width:100%;height:100%;position:absolute;top:0;left:0;z-index:2;}
+.card_content {width:100%;height:100%;position:absolute;top:0;left:0;}
+/* 卡牌翻转动画 */.card_ani {animation:flipInY 2s forwards;}
+/* 反向翻转卡牌 */.card_ani2 {animation:flipInY2 2s forwards;}
+@keyframes flipInY {
+from {transform:perspective(400px) rotate3d(0,1,0,90deg);animation-timing-function:ease-in;opacity:0;}
+40% {transform:perspective(400px) rotate3d(0,1,0,-20deg);animation-timing-function:ease-in;opacity:1;}
+60% {transform:perspective(400px) rotate3d(0,1,0,10deg);}
+80% {transform:perspective(400px) rotate3d(0,1,0,-5deg);}
+to {transform:perspective(400px);}
+}
+@keyframes flipInY2 {
+from {transform:perspective(400px) rotate3d(0,1,0,-90deg);animation-timing-function:ease-in;opacity:0;}
+40% {transform:perspective(400px) rotate3d(0,1,0,20deg);animation-timing-function:ease-in;opacity:1;}
+60% {transform:perspective(400px) rotate3d(0,1,0,-10deg);}
+80% {transform:perspective(400px) rotate3d(0,1,0,5deg);}
+to {transform:perspective(400px);}
+}
+.card_img {width:212rpx;height:212rpx;position:absolute;top:20rpx;left:6rpx;}
+.card_text {width:100%;position:absolute;top:230rpx;margin-top:20rpx;font-size:54rpx;text-align:center;}
+/* 相关书籍 */
+.book_box {width:700rpx;height:200rpx;position:absolute;top:760rpx;margin:0 20rpx;display:flex;justify-content:flex-start;align-items:center;}
+.book_item {width:135rpx;height:175rpx;}
+.book_ani {animation:fadeIn 2s forwards;}
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+.book_item:nth-child(1) {position:absolute;top:14rpx;left:45rpx;}
+.book_item:nth-child(2) {position:absolute;top:14rpx;left:280rpx;}
+.book_item:nth-child(3) {position:absolute;top:14rpx;right:50rpx;}
+.book_img {width:100%;height:100%;position:absolute;top:0;left:0;}
+.book_img view {width:82rpx;height:25rpx;position:absolute;top:0;left:0;font-size:16rpx;background:#f68553;color:#fff;display:flex;justify-content:center;align-items:center;}
+/* 评论 */
+.comment_box {position:relative;background:#fff;margin:10rpx 0;padding:0 30rpx;}
+.cb_title {padding-top:26rpx;width:100%;display:flex;justify-content:space-between;}
+.title_left {max-width:450rpx;display:flex;justify-content:flex-start;align-items:center;}
+.head_img {width:90rpx;height:90rpx;border-radius:50%;}
+.name_sub {margin-left:20rpx;display:flex;flex-direction:column;justify-content:center;}
+.user_name {max-width:180rpx;color:#1eac58;font-size:34rpx;}
+.text_sub {color:#999;font-size:24rpx;}
+.emblem_box {margin-left:16rpx;display:flex;justify-content:flex-start;align-items:center;}
+.emblem_icon {width:60rpx;height:60rpx;margin-right:10rpx;}
+.emblem_sub {margin-top:10rpx;font-size:20rpx;color:#1eac58;padding:0 8rpx;text-align:center;border-radius:4rpx;border:2rpx solid #1eac58;}
+.title_right {display:flex;justify-content:space-between;align-items:center;}
+.rigth_btn1,.right_btn2 {font-size:28rpx;width:105rpx;height:55rpx;color:#1eac58;border:2rpx solid #1eac58;border-radius:6rpx;display:flex;justify-content:center;align-items:center;}
+.plus_icon {margin-right:10rpx;font-size:26rpx;color:#1eac58;}
+.right_btn2 {margin-left:20rpx;color:#ff6500;border:2rpx solid #ff6500;}
+.sixin_icon {margin-right:10rpx;font-size:30rpx;color:#ff6500;}
+/* 删除按钮 */
+.del_btn {font-size:28rpx;color:#ccc;width:105rpx;height:55rpx;position:absolute;top:138rpx;right:30rpx;border:2rpx solid #ccc;border-radius:6rpx;display:flex;justify-content:center;align-items:center;}
+.delete_icon {margin-right:10rpx;font-size:30rpx;}
+.cb_voice_content {max-width:550rpx;background:#fff;position:relative;height:74rpx;border-top:4rpx solid #bbb;border-bottom:4rpx solid #bbb;}
+.cb_voice {margin-top:10rpx;position:relative;display:flex;align-items:flex-end;width:570rpx;}
+.cb_voice_length {position:relative;top:-66rpx;right:-20rpx;font-size:24rpx;}
+/* 游戏结果 */
+.game_result {margin-top:20rpx;width:660rpx;height:260rpx;border:18rpx solid #f8f8f8;display:flex;justify-content:center;align-items:center;}
+.card_item {width:170rpx;height:250rpx;margin:0 16rpx;background:#fff;border:2rpx solid #e29e92;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.cd_image {width:150rpx;height:150rpx;}
+.cd_text {margin-top:10rpx;font-size:40rpx;text-align:center;}
+.card_item:nth-child(1) {color:#e5aa91;border-color:#e29e92;}
+.card_item:nth-child(2) {color:#c99544;border-color:#c0c26f;}
+.card_item:nth-child(3) {color:#565a66;border-color:#da5637;}
+.like_share {padding:24rpx 0;display:flex;justify-content:flex-end;align-items:center;border-bottom:2rpx solid #f2f2f2;}
+.like_icon {width:50rpx;height:45rpx;margin-right:60rpx;}
+.shareBtn {padding:0;margin:0;background:transparent;line-height:normal;}
+.shareBtn::after {border:none;}
+.share_icon {width:50rpx;height:50rpx;margin:0;padding:0;background:#fff;line-height:1;}
+.share_icon::after {border:none;}
+.icon-share {font-size:46rpx;color:#666;}
+.like_people {padding:20rpx 0;display:flex;justify-content:flex-start;align-items:center;}
+.like_people_icon {width:28rpx;height:25rpx;margin-right:8rpx;}
+.like_people_sub {font-size:24rpx;color:#333;}
+/* 底栏 */
+.fg_bot_box {width:100%;height:12vh;position:fixed;bottom:0;background:#fff;display:flex;justify-content:space-between;align-items: center;}
+.fg_bot_box view {flex:250rpx;color:#bbe88f;display:flex;justify-content:center;align-items:center;}
+.bot_box_record {}
+.record_btn {width:130rpx;height:130rpx;}
+.fg_bot_sub {position:fixed;bottom:12vh;width:100%;height:40rpx;background:#fff;z-index:2;}
+.fg_bot_text {position:fixed;bottom:12vh;width:100%;height:40rpx;background:#fff;z-index:2;display:flex;justify-content:center;font-size:24rpx;align-items:center;padding-left:10rpx;}
+.voice_sub_duration {position:absolute;top:2rpx;left:368rpx;font-size:26rpx;color:#abea97;}
+.voice_sub_img {position:absolute;top:2rpx;left:308rpx;width:138rpx;height:30rpx;}
+.micophoneAni {}
+/*使屏幕变暗  */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/*对话框 */
+.commodity_attr_box {
+  height: 300rpx;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share_container {
+  width: 540rpx;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50rpx;
+}
+
+.share_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share_words {
+  font-size: 30rpx;
+}
+
+.words_1 {
+  padding-top: 30rpx;
+}
+
+.icon_pic {
+  width: 60rpx;
+  height: 60rpx;
+}

@@ -1,0 +1,135 @@
+<import src="../../../wxParse/wxParse.wxml" />
+<include src='../../template/mdk_temp.wxml' />
+
+<scroll-view class='scroll_list' scroll-y>
+  <image class='book_pic' src="{{ bookDetail.litpic1 }}"></image>
+  <view class='price_shopping'>
+    <view class='price_box'>
+      <text class='discount_price'>现价￥{{ bookDetail.moneys == 0 ? bookDetail.money:bookDetail.price }}</text>
+      <text class='old_price' wx:if="{{ bookDetail.money }}">￥{{ bookDetail.money }}</text>
+    </view>
+    <!-- <view class='shopping_car'>+ 加入购物车</view> -->
+  </view>
+  <view class='title_share'>
+    <text class='title beyondEllipsis'>{{ bookDetail.name }}</text>
+    <view class='share_btn' catchtap='showModal'>
+      <text class='iconfont icon-share2 shareIcon'></text>
+      <text class='share_words'>分享好友</text>
+    </view>
+  </view>
+  <!-- <view class='icon_box'>
+    <view class='f_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>永久回听</text>
+    </view>
+    <view class='s_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>手机电脑同步听课</text>
+    </view>
+  </view> -->
+  <!-- 拼单 -->
+  <view>
+    <view class='group_booking_words beyondEllipsis' wx:if="{{ group.length > 0 }}">小伙伴正在开团，可直接参与</view>
+    <view class='group_booking_info' wx:for='{{ group }}' wx:key>
+      <view class='group_user_info'>
+        <image class='user_photo' src='{{ item.people_litpic }}'></image>
+        <text class='group_name beyondEllipsis'>{{ item.username }}</text>
+      </view>
+      <view class='group_box'>
+        <view class='need_num_box'>
+          <view class='people'>还差<text style='color:#FF5050;'>{{ item.sum }}人</text>拼成</view>
+          <text class='left_time'>剩余{{ item.remainingTime }}</text>
+        </view>
+        <view class='pindan_btn' bindtap='btn_send' data-item='{{item}}'>去拼单</view>
+      </view>
+    </view>
+    <view style='width:100%;height:15rpx;background:#EAEAEA;'></view>
+  </view>
+
+  <!-- 选项卡 -->
+  <view class='tab_bar_box'>
+    <text class='tab_f {{ isChooseTab ? "active":"" }}' catchtap='tab1BtnClick'>商品详情</text>
+    <text class='green_dot'></text>
+    <text class='tab_s {{ isChooseTab ? "":"active" }}' catchtap='tab2BtnClick'>最新心得</text>
+  </view>
+
+  <!-- 商品详情 -->
+  <block wx:if="{{ isChooseTab }}">
+    <view class='goods_detail'>
+      <view class='dot_box'>
+        <text class='dot_1'></text>
+        <text class='dot_2'></text>
+        <text class='dot_3'></text>
+        <text class='second_title'>商品详情</text>
+        <text class='dot_3'></text>
+        <text class='dot_2'></text>
+        <text class='dot_1'></text>
+      </view>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+  </block>
+
+  <!-- 最新心得 -->
+  <block wx:else>
+    <view class='xinde_box' wx:for="{{ tips }}" wx:key>
+      <view class='user_info'>
+        <view class='pic_name'>
+          <image class='user_photo' src='{{ item.photo }}'></image>
+          <text class='user_name'>{{ item.username }}</text>
+        </view>
+        <text class='pub_time'>{{ item.time }}</text>
+      </view>
+      <text class='xinde_content'>{{ item.content }}</text>
+      <view class='xinde_pic_box'>
+        <block wx:for='{{ item.litpic }}' wx:key wx:for-item="item2">
+          <image class='xinde_pic' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2 }}" wx:if="{{ item2 }}"></image>
+        </block>
+      </view>
+      <!-- <text class='book_name'>{{ item.bookName }}</text> -->
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 底部交互栏 -->
+<view class='bottom_box'>
+  <button class='service_box' open-type="contact">
+    <text class='iconfont icon-service serviceIcon'></text>
+    <text class='service_words'>客服</text>
+  </button>
+  <view class='service_box' catchtap="collectClick">
+    <!-- <text class='iconfont icon-star-empty starIcon'></text> -->
+    <image class="starIcon" src="{{ goodsCont.collection ? '/images/star.png':'/images/star_empty.png' }}"></image>
+    <text class='service_words'>{{ goodsCont.collection ? '已收藏':'收藏' }}</text>
+  </view>
+  <view class='service_box' bindtap='btn_car' style='position:relative;'>
+    <text class='iconfont icon-shopping_car shoppingCar'></text>
+    <text class='service_words'>购物车</text>
+    <block wx:if="{{goodsNum > 0}}">
+      <text class="shopNumClass">{{goodsNum}}</text>
+    </block>
+  </view>
+  <view class='service_box' bindtap='btn_k_t'>
+    <text class='iconfont icon-group-buying group-buying'></text>
+    <text class='service_words'>团购</text>
+  </view>
+  <view class='buy_now' bindtap='btn_go_buy'>立即购买</view>
+</view>
+
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="share_words words_1">分享</view>
+  <view class="share_container">
+    <button class="shareBtn" open-type="share" data-item="{{ bookDetail }}">
+      <view class="share_box">
+        <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/weChat.png"></image>
+        <text class="share_words">分享朋友</text>
+      </view>
+    </button>
+    <view class="share_box" catchtap="shareFriendCircle">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/circle_friend.png?1"></image>
+      <text class="share_words">保存图片</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,284 @@
+/* 侧边弹窗 */
+.side_window {
+  width: 60rpx;
+  height: 80rpx;
+  background:#FFFFFF;
+  box-shadow:0px 0px 5px rgba(121,121,121,0.6);
+  position: fixed;
+  top: 50vh;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 6rpx;
+}
+
+.listIcon {
+  font-size: 50rpx;
+  color: #666666;
+}
+
+.search_container {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.scroll_list {
+  width: 100%;
+  height: 84vh;
+}
+
+.search_box {
+  width: 690rpx;
+  height: 70rpx;
+  background: #f2f2f2;
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.search {
+  font-size: 30rpx;
+  margin: 0 10rpx;
+}
+
+.search_bar {
+  font-size: 28rpx;
+  width: 600rpx;
+  text-align: center;
+}
+
+/* 视频课程列表 */
+
+.videoCourse_box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 12rpx 25rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.dot_box {
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+  border: 2rpx solid #1eac58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30rpx;
+  animation: showSlot 0.3s forwards linear 0s;
+}
+@keyframes showSlot {
+  0%{
+    width: 20rpx;
+    margin-right: 0;
+  }
+  50%{
+    width: 35rpx;
+    margin-right: 30rpx;
+  }
+}
+.green_dot {
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: #1eac58;
+}
+
+.mask_layer {
+  width: 100%;
+  height: 138rpx;
+  background-color: #000;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+
+.videoCourse_pic {
+  width: 240rpx;
+  height: 138rpx;
+  border-radius: 8rpx;
+  position: relative;
+  z-index: 1;
+  font-size: 0;
+}
+
+.videoIcon {
+  position: absolute;
+  z-index: 3;
+  width: 50rpx;
+  height: 33rpx;
+  left: 50%;
+  margin-left: -25rpx;
+  top: 40%;
+}
+
+.yuyinIcon {
+  position: absolute;
+  z-index: 3;
+  width: 36rpx;
+  height: 50rpx;
+  left: 50%;
+  margin-left: -20rpx;
+  top: 30%;
+}
+
+.course_intro {
+  display: flex;
+  flex-direction: column;
+  margin-left: 22rpx;
+}
+
+.course_title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.sale_status {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.update_num, .study_num {
+  color: #999;
+  font-size: 20rpx;
+  padding-right: 16rpx;
+}
+
+.course_price {
+  font-size: 30rpx;
+  color: #ff3f3c;
+  margin-right: 16rpx;
+}
+
+.choose_course {
+  width: 100%;
+  height: 8vh;
+  background: #1eac58;
+  font-size: 36rpx;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose_course2 {
+  width: 100%;
+  height: 8vh;
+  position: fixed;
+  bottom: 0;
+  background: #1eac58; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.choose_course2 text {
+  width: 250rpx;
+  height: 8vh;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 8vh;
+}
+
+/* 规则介绍弹窗 */
+
+.rule_popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  animation: fadeIn 1s forwards;
+  -webkit-animation: fadeIn 1s forwards;
+}
+
+.popup_bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.popup_box {
+  width: 600rpx;
+  height: 62vh;
+  position: fixed;
+  z-index: 11;
+  top: 19vh;
+  left: 75rpx;
+  background: linear-gradient(#b5e094, #57b567);
+}
+
+.rule_title {
+  position: relative;
+}
+
+.left_line, .right_line {
+  position: absolute;
+  top: 60rpx;
+  width: 166rpx;
+  height: 2rpx;
+  background: #fff;
+}
+
+.left_line {
+  left: 34rpx;
+}
+
+.right_line {
+  right: 34rpx;
+}
+
+.title_words {
+  font-size: 38rpx;
+  color: #fff;
+  position: absolute;
+  top: 36rpx;
+  left: 225rpx;
+}
+
+.scroll_wiseStarRule {
+  width: 100%;
+  height: 43vh;
+  position: absolute;
+  top: 127rpx;
+}
+
+.rule_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rule_content text {
+  font-size: 28rpx;
+  color: #fff;
+  padding-bottom: 26rpx;
+  width: 530rpx;
+}
+
+.close {
+  font-size: 76rpx;
+  color: #fff;
+  margin: 10rpx 0;
+  position: absolute;
+  bottom: 0;
+  left: 270rpx;
+}

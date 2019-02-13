@@ -1,0 +1,261 @@
+.page_box {
+  width: 100%;
+  overflow: scroll;
+  padding-bottom: 110rpx;
+}
+
+.user_question {
+  width: 100%;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+/* 提问者基本信息 */
+.u_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30rpx;
+}
+
+.info_box {
+  display: flex;
+  align-items: center;
+}
+
+.user_photo {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.name_time {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_name {
+  font-size: 32rpx;
+  color: #1EAC58;
+  padding-bottom: 10rpx;
+}
+
+.ask_time {
+  font-size: 22rpx;
+  color: #C7C7C7;
+}
+
+.foucs_box {
+  width: 120rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: #1EAC58;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 提问内容 */
+.ques_cont {
+  width: 690rpx;
+  display: flex;
+  flex-direction: column;
+  margin: 0 30rpx;
+}
+
+.ques_words {
+  font-size: 30rpx;
+  color: #666666;
+  padding-bottom: 20rpx;
+}
+
+.ques_pic_box {
+  width: 100%;
+  display: flex;
+}
+
+.ques_pic {
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 4rpx;
+}
+
+.ques_pic:nth-child(2) {
+  margin: 0 15rpx;
+}
+
+/* 回复人数 */
+.reply_num_box {
+  width: 690rpx;
+  /* margin: 20rpx 0 0 30rpx; */
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.reply_circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  border: 2rpx solid #1EAC58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reply_num {
+  font-size: 20rpx;
+  color: #FFFFFF;
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  background: #1EAC58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.words_desc {
+  font-size: 22rpx;
+  color: #868686;
+  padding-left: 8rpx;
+}
+
+.reply_cont_box {
+  width: 100%;
+  border-bottom: 15rpx solid #F7F9FA;
+}
+
+/* 二级评论 */
+.sec_comment_box {
+  width: 640rpx;
+  background: #F5F5F5;
+  margin: 20rpx 30rpx;
+}
+
+.sec_comment {
+  padding: 20rpx 16rpx 0 16rpx;
+  font-size: 24rpx;
+}
+
+.reply_name {
+  color: #1EAC58
+}
+
+.reply_words {
+  color: #666666;
+  padding: 0 6rpx;
+}
+
+.reply_cont {
+  color: #666666;
+}
+
+.total_reply {
+  font-size: 24rpx;
+  color: #536791;
+  padding: 20rpx 16rpx;
+}
+
+/* 底部回答按钮 */
+.reply_btn_box {
+  width: 100%;
+  height: 110rpx;
+  background: #FFFFFF;
+  box-shadow:0px -5px 10px 0px rgba(151,151,151,0.44);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.reply_btn {
+  width: 700rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background: #1EAC58;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 二级评论内容输入栏 */
+.input_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input_bar {
+  width: 500rpx;
+  height: 80rpx;
+  border-radius: 30rpx;
+  background: #F0F0F0;
+  margin-left: 30rpx;
+  padding: 0 20rpx;
+  font-size: 32rpx;
+}
+
+.send_btn {
+  width: 100rpx;
+  height: 60rpx;
+  border-radius: 10rpx;
+  background: #1EAC58;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+/*使屏幕变暗  */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/*对话框 */
+.commodity_attr_box {
+  height: 214rpx;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sec_reply, .cancel {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+}
+
+.grey_line {
+  width: 100%;
+  height: 14rpx;
+  background: #F0F0F0;
+}

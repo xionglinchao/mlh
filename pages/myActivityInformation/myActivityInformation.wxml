@@ -1,0 +1,91 @@
+<!--pages/myActivityInformation/myActivityInformation.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pClass">
+  <image class="headViewClass" style="width:100%;height:{{sw/15*8}}px;" src='{{globalVariable.ossImage + dataPro.photo}}'></image>
+  <view class="data1ViewClass" style='width: 100%;' hidden='{{isPerson}}'>
+    <view class="view1Class">
+      <text class="text1">参与者</text>
+      <view class="imageViewClass" bindtap='btn_go_personal'>
+        <block wx:if="{{dataPro.people.length > 0}}">
+          <scroll-view class="scroll" scroll-x="true">
+            <block wx:for="{{dataPro.people}}" wx:key>
+              <image src='{{item.litpic}}'></image>
+            </block>
+          </scroll-view>
+        </block>
+        <block wx:else>
+          <text style='display:block;float: left;line-height: 50px;padding-left: 20px;color: #666;font-size: 14px;'>暂时无人参加</text>
+        </block>
+        <image class="image1" src='../../images/send/right.png'></image>
+        <view style="clear:both;"></view>
+      </view>
+      <view style="clear:both;"></view>
+    </view>
+    <block wx:if="{{dataPro.content == null || dataPro.content == ''}}">
+      <form bindsubmit='btn_submit'>
+        <view class="view2">
+          <view class="textareaViewClass" hidden='{{isUpload}}'>
+            <textarea placeholder='请输入活动总结' name="name"></textarea>
+          </view>
+
+          <view class="ImageViewClass">
+            <block wx:for="{{pics}}" wx:key>
+              <view class="addImageView1Class" bindtap='btn_Upload'>
+                <image class="image1" src='{{item}}' style=' width: 80px;height:80px;' mode="aspectFill"></image>
+                <image class="image2" src='../../images/d.png' catchtap='btn_delete' data-index='{{index}}'></image>
+              </view>
+            </block>
+            <view class="addImageViewClass" bindtap='btn_image'>
+              <image src='../../images/homepage/j.png'></image>
+              <text>添加图片</text>
+            </view>
+
+            <view style="clear:both;"></view>
+          </view>
+
+          <button class="button1" form-type='submit' disabled='{{isDisbled}}'>确认</button>
+        </view>
+      </form>
+    </block>
+    <view style="clear:both;"></view>
+  </view>
+
+  <view class="data2ViewClass" hidden='{{!isPerson}}'>
+    <view class="title" bindtap='btn_go_back'>
+      <text class="title-name">参与者</text>
+      <text class="title-back">返回</text>
+      <image src='../../images/left.png'></image>
+    </view>
+
+    <scroll-view class="person" scroll-y="true">
+      <block wx:for="{{dataPro.people}}" wx:key>
+        <view class="person-data">
+          <image src='{{item.litpic}}'></image>
+          <view class="person-data-people">
+            <view class="person-data-people-name">
+              <text class="person-data-people-name-text1">{{item.username}}</text>
+              <text class="person-data-people-name-text2">{{item.phone}}</text>
+            </view>
+            <view class="person-data-people-number">
+              <text class="person-data-people-number-text1">家长<text style='color:#ff6600;font-size:15px;'>{{item.parents}}</text>位</text>
+              <text class="person-data-people-number-text2">孩子<text style='color:#ff6600;font-size:15px;'>{{item.child}}</text>位</text>
+            </view>
+          </view>
+          <view style="clear:both;"></view>
+        </view>
+        <view style="clear:both;"></view>
+      </block>
+    </scroll-view>
+    <view style="clear:both;"></view>
+  </view>
+</view>
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+
+
+<scroll-view class="LoadingViewClass" hidden="{{isLoading}}" scroll-y="true">
+  <image src="../../images/kt.gif"></image>
+</scroll-view>

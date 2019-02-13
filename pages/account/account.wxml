@@ -1,0 +1,61 @@
+<!--pages/account/account.wxml-->
+<view class="pViewClass">
+  <view class="view1">
+    <view class="view_type" hover-class='bottom_v'>
+      <view class="type1" bindtap='btn_image'>
+        <text class="text1">头像</text>
+        <image class="rightClass" src='../../images/send/right.png'></image>
+        <image class="headImageClass" src='{{inforPro.litpic}}'></image>
+      </view>
+    </view>
+    <view class="type2" bindtap='btn_user'>
+      <text class="text1">用户名</text>
+      <image class="rightClass" src='../../images/send/right.png'></image>
+      <text class="text2 beyondEllipsis">{{inforPro.username}}</text>
+    </view>
+    <view class="type2" bindtap='btn_signature'>
+      <text class="text1">签名</text>
+      <image class="rightClass" src='../../images/send/right.png'></image>
+      <text class="text2 beyondEllipsis">{{inforPro.signature}}</text>
+    </view>
+    <picker mode='date' value="{{date}}" bindchange='btn_date'>
+      <view class="type2">
+        <text class="text1">孩子出生日期</text>
+        <image class="rightClass" src='../../images/send/right.png'></image>
+        <text class="text2">{{inforPro.hako_time}}</text>
+      </view>
+    </picker>
+    <picker value='{{region}}' mode='region' bindchange='btn_date1'>
+      <view class="type2">
+        <text class="text1">常在地区</text>
+        <image class="rightClass" src='../../images/send/right.png'></image>
+        <text class="text2">{{inforPro.area}}</text>
+      </view>
+    </picker>
+    <view style="clear:both;"></view>
+  </view>
+  <!-- <button class="button1" bindtap='btn_exit'>退出登录</button> -->
+</view>
+
+<view class="commodityScreenClass" hidden='{{isShadow}}' bindtap='btn_shadow'></view>
+<view class="modelView" hidden='{{hidden}}'>
+  <text class="modelTitle">注销</text>
+  <view class="modelContent">
+    <text>您确定要注销当前登录的手机号?</text>
+  </view>
+  <view class="buttonView">
+    <text class="cancelClass" bindtap='cancel'>取消</text>
+    <text class="phoneClass" bindtap='confirm'>确认</text>
+  </view>
+  <view style="clear:both;"></view>
+</view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+
+<modal hidden="{{hiddenModal}}" title="{{title}}" confirm-text="确定" cancel-text="取消" bindcancel="editRemarkCancel" bindconfirm="editRemarkConfirm">
+  <textarea placeholder="{{remarks}}" bindinput="remarkInputChange" value="{{ remarks == '请输入用户名' ? '' : '' }}" class="remarkInputClass" maxlength='22' />
+</modal>

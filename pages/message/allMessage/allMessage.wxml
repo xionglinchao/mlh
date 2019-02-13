@@ -1,0 +1,53 @@
+<view class="page_box">
+  <!-- 顶部消息类型 -->
+  <view>
+    <view class="single_msg_box" catchtap="toMessageTypePage_1">
+      <view class="msg_type">
+        <image class="msg_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/pingtaixiaoxi.png"></image>
+        <text class="title">平台消息</text>
+      </view>
+      <view class="unread_num" wx:if="{{ news.system_num > 0 }}">
+        <text>{{ news.system_num }}</text>
+      </view>
+    </view>
+    <view class="single_msg_box" catchtap="toMessageTypePage_2">
+      <view class="msg_type">
+        <image class="msg_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/dongtaixiaoxi.png"></image>
+        <text class="title">动态</text>
+      </view>
+      <view class="unread_num" wx:if="{{ news.dynamic_num > 0 }}">
+        <text>{{ news.dynamic_num }}</text>
+      </view>
+    </view>
+    <view class="single_msg_box last" catchtap="toMessageTypePage_3">
+      <view class="msg_type">
+        <image class="msg_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/sixinxiaoxi.png"></image>
+        <text class="title">私信</text>
+      </view>
+      <view class="unread_num" wx:if="{{ news.person_num > 0 }}">
+        <text>{{ news.person_num }}</text>
+      </view>
+    </view>
+  </view>
+  <view style="width:100%;height:15rpx;background:#F7F9FA;"></view>
+  <!-- 最新消息 -->
+  <view class="newest_msg">最新消息</view>
+  <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{contentlist}}" wx:key>
+    <view class="unread_msg_box">
+      <view catchtap="toPersonalHomepage" data-id="{{ item.user.id }}">
+        <image class="user_photo" src="{{ item.user.litpic }}"></image>
+      </view>
+      <view class="msg_detail">
+        <view class="name_time">
+          <text class="user_name beyondEllipsis">{{ item.user.username }}</text>
+          <text class="msg_time">{{ item.time }}</text>
+        </view>
+        <view class="content_num">
+          <text class="msg_cont beyondEllipsis">{{ item.content }}</text>
+          <text class="msg_num" wx:if="{{ item.is_read == 0 }}">1</text>
+        </view>
+      </view>
+      <view class="del" catchtap="delBtnClick" data-id="{{item.id}}">删除</view>
+    </view>
+  </view>
+</view>

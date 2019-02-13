@@ -1,0 +1,57 @@
+<view class="relaying-box">
+  <scroll-view scroll-y class="scroll-box">
+    <view wx:for="{{relaying}}" wx:key>
+      <view class="relaying-container">
+        <!-- 用户信息 -->
+        <view class="user-info">
+          <image class="user-pic" src="{{item.user_info.litpic}}" data-item='{{ item }}' catchtap='btn_person_information'></image>
+          <view class="nbtm-box">
+            <view class="nbt-box">
+              <view class="user-begin">
+                <text class="user-name" data-item='{{ item }}' catchtap='btn_person_information'>{{item.user_info.username}}</text>
+                <!-- 接力状态判断 -->
+                <block wx:if="{{ index == 0 }}">
+                  <text class="begin">开始</text>
+                </block>
+                <block wx:elif="{{item.station == '已接力' || item.station == '结束'}}">
+                  <text class="ending">{{item.station}}</text>
+                </block>
+                <block wx:elif="{{item.station == '接力中'}}">
+                  <text class="processing">{{item.station}}</text>
+                </block>
+              </view>
+              <text class="recorder-time">{{item.time}}</text>
+            </view>
+            <view class="level-box">
+              <image class="green-medal" wx:key wx:for="{{ item.user_info.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <image class="red-medal" wx:key wx:for="{{ item.user_info.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <image class="yellow-medal" wx:key wx:for="{{ item.user_info.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <!-- <image class="green-medal" src="{{ '/images/emblem/green-1.png'  }}"></image>
+              <image class="red-medal" src="{{ '/images/emblem/red-1.png'  }}"></image>
+              <image class="yellow-medal" src="{{ '/images/emblem/yellow-1.png'  }}"></image>  -->
+            </view>
+          </view>
+        </view>
+        <!-- 接力信息 -->
+        <view class="sub-box">
+          <text class="subscribe" data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap='subscribeBtnClick'>{{ item.is_focus ? '已关注' : '+ 关注' }}</text>
+          <text class="bang-number">（{{ (index != relaying.length -1 && relaying.length >= 1) ? '第' + (index + 1) + '棒' : '结束' }}）</text>
+        </view>
+      </view>
+      <!-- 评论框 -->
+      <view class="dialog2">
+        <text>{{item.content}}</text>
+        <image mode='widthFix' class="book-picture" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}" wx:if="{{ item.litpic }}" data-item-arr="{{ item.litpic }}" data-item-url='{{ item.litpic }}' catchtap='btn_preview'></image>
+      </view>
+      <!-- 左竖线 -->
+      <view class="line" hidden='{{ index == relaying.length - 1 }}'>
+        <view class="left-line" style='{{ "height: " + (item.litpic != "" ? (item.dialogHeight * 100 / 40) : (item.dialogHeight * 130 / 40)) + "rpx; top: " + (item.litpic != "" ? -(item.dialogHeight * 90 / 40) : -(item.dialogHeight * 100 / 40)) + "rpx;   border-left: 2rpx " + ((index != 0 && index != relaying.length - 2) ? "solid" : "dashed" ) + " #1eac58;" }}'></view>
+      </view>
+      <!-- 小圆点 -->
+      <view class="circle" hidden='{{ index == relaying.length -1 }}' style='{{ "top: " + -(item.dialogHeight * 46 / 40)  + "rpx" }}'>
+        <image class='point' src="/images/relayRead/point.png"></image>
+      </view>
+    </view>
+  </scroll-view>
+
+</view>

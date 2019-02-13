@@ -1,0 +1,44 @@
+<view>
+  <image class="partner_bg1" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/partner_bg1.png"></image>
+  <image class="partner_bg2" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/partner_bg2.png"></image>
+  <view class="user_photo">
+    <image src="{{ userInfo.litpic }}"></image>
+  </view>
+  <view class="user_info">
+    <view class="profit">
+      <text>{{ userInfo.profit }}</text>
+      <text>元</text>
+    </view>
+    <view class="identity">推广大使</view>
+    <view class='fans_partner'>
+      <view class="fans_num">粉丝数：{{ userInfo.bind_user }}</view>
+      <view class="partner_num">推广大使数：{{ userInfo.superior_num }}</view>
+    </view>
+    <!-- 收益表格 -->
+    <view class="recent_profit">
+      <view class="grey_line"></view>
+      <view class="six_month">近6月收益 销售额</view>
+      <view class="grey_line"></view>
+    </view>
+    <view class="profit_form">
+      <view class="form_title">
+        <view class="title_month">月份</view>
+        <view class="title_profit">
+          <view>收益</view>
+          <view>(元)</view>
+        </view>
+        <view class="title_sale">
+          <view>销售额</view>
+          <view>(元)</view>
+        </view>
+      </view>
+      <!-- 数据 -->
+      <view class="form_title" wx:for="{{ recentSixMonth }}" wx:key>
+        <view class="title_month">{{ item.time }}</view>
+        <view class="title_profit">{{ item.profit }}</view>
+        <view class="title_sale">{{ item.sale }}</view>
+      </view>
+    </view>
+  </view>
+  <view class="tips">推广大使收益额</view>
+</view>

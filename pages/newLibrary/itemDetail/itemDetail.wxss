@@ -1,0 +1,49 @@
+.page_box {
+  width: 100%;
+  height: 100vh;
+}
+
+/* 顶部3张滑动图片 */
+.swiper_box {
+  width: 100%;
+  height: 370rpx;
+}
+
+.slide_pic {
+  width: 100%;
+  height: 370rpx;
+}
+
+/* 底部导航栏 */
+.icon_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.single_icon_box {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 0;
+}
+
+.active {
+  color: #1EAC58;
+  border-bottom: 4rpx solid #1EAC58;
+}
+
+.luyin, .yueduliang, .gushibaoku, .shuji {
+  font-size: 34rpx;
+  padding-right: 4rpx;
+}
+
+.icon_words {
+  font-size: 28rpx;
+}
+
+.green_dot {
+  width: 8rpx;
+  height: 8rpx;
+  background: #1EAC58;
+  border-radius: 50%;
+}

@@ -1,0 +1,89 @@
+page,.page,.page__bd {height:100%;width:100%;background:#f0f0f0;}
+.page__bd {padding-bottom:0;}
+.weui-tab__content {float:left;height:calc(100% - 47px);width:100%;}
+.weui-navbar {display:-webkit-box;display:-webkit-flex;display:flex;position:fixed;z-index:500;top:0;width:100%;float:left;}
+.weui-tab {position:relative;height:100%;}
+.weui-navbar__title {display:inline-block;font-size:14px;max-width:8em;width:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;color:#333;}
+.weui-navbar__item {position:relative;display:block;-webkit-box-flex:1;-webkit-flex:1;flex:1;padding:13px 0;text-align:center;font-size:0;background:white;float:left;}
+.weui-navbar__item.weui-bar__item_on {color:#1aad19;}
+.weui-navbar__slider {position:absolute;content:" ";left:0;bottom:0;width:33%;height:3px;background-color:#1aad19;-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s;}
+.scrollViewClass {width:100%;height:calc(100% - 45px);margin-top:50px;padding-bottom:8px;}
+.scrollViewClass .RedPacket {width:calc(100% - 16px);height:80px;background:white;margin:0px 8px;border-radius:4px;margin-top:10px;position:relative;}
+.scrollViewClass .RedPacket .priceViewClass {background:#cd6620;height:80px;width:30%;float:left;border-radius:3px;}
+.scrollViewClass .RedPacket .priceViewClass .price {display:block;float:left;text-align:center;font-weight:bold;color:white;font-size:38px;width:100%;}
+.scrollViewClass .RedPacket .packetName {width:calc(70% - 2px);height:78px;float:right;border:1px solid #cd6620;border-radius:4px;}
+.scrollViewClass .RedPacket .packetName .name {width:100%;height:40px;line-height:40px;font-size:18px;display:block;float:left;margin-top:5px;color:#cd6620;text-align:center;margin-bottom:5px;}
+.scrollViewClass .RedPacket .z1 {width:16px;height:8px;border-radius:0px 0px 10px 10px;background:white;position:absolute;left:calc(30% - 8px);display:block;float:left;border-bottom:1px solid #cd6620;z-index:10;border-right:1px solid #cd6620;}
+.scrollViewClass .RedPacket .z2 {width:16px;height:8px;border-radius:10px 10px 0px 0px;background:white;position:absolute;left:calc(30% - 8px);bottom:0px;display:block;float:left;z-index:10;border-top:1px solid #cd6620;border-right:1px solid #cd6620;}
+.dotoClass {height:100%;width:2px;background:#cd6620;float:left;position:absolute;left:30%;border-left:1px dotted white;}
+.scrollViewClass .RedPacket .priceViewClass .pricename {width:100%;height:20px;font-size:11px;display:block;float:left;color:#ffd4b5;text-align:center;}
+.scrollViewClass .RedPacket .packetName .time {width:100%;height:20px;font-size:11px;display:block;float:left;color:#cd6620;text-align:center;}
+.course_coupon {
+  width: 680rpx;
+  height: 230rpx;
+  margin: 16rpx 35rpx;
+  position: relative;
+}
+.grey {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}
+.coupon_value {
+  position: absolute;
+  top: 64rpx;
+  right: 26rpx;
+  font-size: 50rpx;
+  color: #fff;
+}
+.end_time {
+  color: #C3C3C3;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 26rpx;
+  left: 20rpx;
+}
+.use_standard_course {
+  font-size: 22rpx;
+  color: #fff;
+  position: absolute;
+  left: 270rpx;
+  top: 26rpx;
+}
+.use_standard_book {
+  font-size: 22rpx;
+  color: #fff;
+  position: absolute;
+  left: 270rpx;
+  top: 36rpx;
+}
+.course_name {
+  width: 310rpx;
+  color: #fff;
+  font-size: 24rpx;
+  position: absolute;
+  top: 74rpx;
+  left: 154rpx;
+}
+.gift_coupon {
+  width: 165rpx;
+  height: 45rpx;
+  border-radius: 23rpx;
+  background: #57c456;
+  font-size: 22rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 20rpx;
+  right: 14rpx;
+  line-height: normal;
+  padding: 0;
+}
+.second {
+  background: #ffc22f;
+}

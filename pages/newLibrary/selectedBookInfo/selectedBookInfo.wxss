@@ -1,0 +1,421 @@
+@import "../../../wxParse/wxParse.wxss";
+
+.scroll_list {
+ width: 100%;
+ height: 92vh;
+}
+
+.book_pic {
+  width: 100%; 
+  height: 400rpx;
+  vertical-align: top;
+}
+
+.price_shopping {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  padding: 20rpx 0;
+}
+
+.discount_price {
+  font-size: 34rpx;
+  color: #FF5050;
+}
+
+.integral {
+  font-size: 28rpx;
+  color: #1EAC58;
+}
+
+
+.old_price {
+  font-size: 24rpx;
+  color: #999999;
+  text-decoration: line-through;
+  padding-left: 34rpx;
+}
+
+.shopping_car {
+  width: 150rpx;
+  height: 48rpx;
+  background: linear-gradient(#F57A3D,#e96a36);
+  font-size: 20rpx;
+  color: #ffffff;
+  border-radius: 24rpx;
+  text-align: center;
+  line-height: 48rpx;
+}
+
+.title_share {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  margin-left: 30rpx;
+  padding-bottom: 24rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+  width: 510rpx;
+}
+
+.share_btn {
+  display: flex;
+  align-items: center;
+  line-height: normal;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.shareIcon {
+  font-size: 34rpx;
+  color: #666666;
+}
+
+.share_words {
+  font-size: 22rpx;
+  color: #666666;
+  padding-left: 10rpx;
+}
+
+.icon_box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80rpx;
+  background: #F5F5F5;
+}
+
+.f_icon_box, .s_icon_box {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.s_icon_box {
+  margin-left: 70rpx;
+}
+
+.circle_hook {
+  font-size: 30rpx;
+  color: #1AAC19;
+  padding-right: 15rpx;
+}
+
+.icon_words {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* 选项卡 */
+.tab_bar_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #E9EAEC;
+}
+
+.tab_f, .tab_s {
+  font-size: 32rpx;
+  padding: 28rpx 0;
+}
+
+.tab_f {
+  margin-left: 124rpx;
+}
+
+.tab_s {
+  margin-right: 124rpx;
+}
+
+.active {
+  color: #1EAC58;
+  border-bottom: 4rpx solid #1EAC58;
+}
+
+.green_dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #1EAC58;
+}
+
+/* 商品详情 */
+.goods_detail {
+  width: 690rpx;
+  background:rgba(255,255,255,1);
+  border-radius:8px;
+  box-shadow:0px 0px 10px rgba(22,22,22,0.25);
+  margin: 25rpx 30rpx;
+}
+
+.dot_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+
+.dot_1, .dot_2, .dot_3 {
+  border-radius: 50%;
+  background: #1EAC58;
+}
+
+.dot_1 {
+  width: 8rpx;  
+  height: 8rpx;
+}
+
+.dot_2 {
+  width: 12rpx;
+  height: 12rpx;
+  margin: 0 8rpx;
+}
+
+.dot_3 {
+  width: 16rpx;
+  height: 16rpx;
+}
+
+.second_title {
+  font-size: 26rpx;
+  color: #1EAC58;
+  margin: 0 10rpx;
+}
+
+.detail_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 650rpx;
+  margin-left: 20rpx;
+}
+
+.tips_box {
+  display: flex;
+  padding: 14rpx 0;
+}
+
+.grey_dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #666666;
+  border-radius: 50%;
+  margin-top: 10rpx;
+}
+
+.tips {
+  font-size: 22rpx;
+  color: #333333;
+  padding-left: 14rpx;
+  width: 624rpx;
+}
+
+.detail_pic {
+  width: 650rpx;
+  height: 310rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 底部交互栏 */
+.bottom_box {
+  display: flex;
+  width: 100%;
+  height: 8vh;
+}
+
+.service_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 135rpx;
+  border: 2rpx solid #B1B1B1;
+  border-right: none;
+  background: transparent;
+  line-height: normal;
+  border-radius: 0;
+  position: relative;
+}
+
+.serviceIcon, .shoppingCar {
+  font-size: 46rpx;
+}
+
+.starIcon {
+  width: 46rpx;
+  height: 44rpx;
+  padding-bottom: 4rpx;
+}
+
+.service_words {
+  font-size: 22rpx;
+}
+
+.buy_now {
+  width: 345rpx;
+  background: #03B349;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 8vh;
+}
+
+/* 最新心得 */
+.xinde_box {
+  display: flex;
+  flex-direction: column;
+  width: 690rpx;
+  padding: 0 30rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+
+.user_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0 20rpx 0;
+}
+
+.pic_name {
+  display: flex;
+  align-items: center;
+}
+
+.user_photo {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+
+.user_name {
+  font-size: 34rpx;
+  color: #1EAC58;
+  padding-left: 30rpx;
+}
+
+.pub_time {
+  font-size: 24rpx;
+  color: #B7B6B6;
+}
+
+.xinde_content {
+  font-size: 28rpx;
+  color: #333333;
+  padding-bottom: 26rpx;
+}
+
+.xinde_pic {
+  width: 228rpx;
+  height: 228rpx;
+  float: left;
+  padding-bottom: 3rpx;
+}
+
+.xinde_pic:nth-child(3n + 2) {
+  padding: 0 3rpx;
+}
+
+.book_name {
+  font-size: 24rpx;
+  color: #999999;
+  padding: 16rpx 0;
+}
+
+.shopNumClass {
+  width:15px;
+  height:15px;
+  line-height:15px;
+  border-radius:50%;
+  font-size:10px;
+  color:white;
+  background-color:#ff6600;
+  position:absolute;
+  top:1px;
+  right:3px;
+  text-align:center;
+}
+
+.popupBox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3)
+}
+
+/*使屏幕变暗  */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/*对话框 */
+.commodity_attr_box {
+  height: 300rpx;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share_container {
+  width: 540rpx;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50rpx;
+}
+
+.shareBtn {
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.shareBtn::after {
+  border: none;
+}
+
+.share_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share_words {
+  font-size: 30rpx;
+}
+
+.words_1 {
+  padding-top: 30rpx;
+}
+
+.icon_pic {
+  width: 60rpx;
+  height: 60rpx;
+}

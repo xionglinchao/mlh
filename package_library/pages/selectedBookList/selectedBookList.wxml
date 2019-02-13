@@ -1,0 +1,17 @@
+<scroll-view scroll-y class='page_box'>
+  <image class='top_pic' mode="aspectFill" src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_pic.jpg'>
+    <view class='content_box'>
+      <text class='content_title beyondEllipsis'>{{ selectedBook.name }}</text>
+      <text class='cont'>{{ selectedBook.desc }}</text>
+    </view>
+  </image>
+
+  <view class='book_box' wx:for='{{ bookList }}' wx:key catchtap="toBookDetail" data-item="{{ item }}">
+    <image class='book_photo' src='{{ item.litpic }}'></image>
+    <view class='book_cont'>
+      <text class='book_title beyondEllipsis'>{{ item.name }}</text>
+      <!-- <text class='book_author'>作者：啦啦啦</text> -->
+      <text class='brief_intro beyondEllipsis_two' wx:if="{{ item.abstract }}">{{ item.abstract }}</text>
+    </view>
+  </view>
+</scroll-view>

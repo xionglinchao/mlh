@@ -1,0 +1,24 @@
+<view class="t-box">
+
+  <scroll-view scroll-y class="scroll-box">
+    <view>
+      <textarea class="yuyin_cont" maxlength="140" placeholder="输入您想评论的内容吧" placeholder-style="font-size: 32rpx; color: #999;" bindinput="getInputMsg"></textarea>
+      <text class="zishu">（140字以内）</text>
+    </view>
+
+    <!-- <view class="photo-box">
+      <view class="add-photo" catchtap="chooseImage">
+        <text class="iconfont icon-camera camera"></text>
+        <text class="camera_words">添加图片</text>
+      </view>
+      <image wx:for="{{tempUrlArr}}" wx:key src="{{item}}" class="tempPhoto"></image>
+    </view>
+    <text class="camera_note">（只能上传1张）</text> -->
+
+  </scroll-view>
+
+  <view>
+    <text class="submit" catchtap='submitInfo'>提交</text>
+  </view>
+
+</view>

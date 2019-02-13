@@ -1,0 +1,122 @@
+.page_box {
+  width: 100%;
+  overflow: scroll;
+  padding-bottom: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.join_ambassador {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-top: 40rpx;
+}
+
+.gift {
+  font-size: 26rpx;
+  color: #999999;
+  margin-top: 20rpx;
+}
+
+.contact_service {
+  font-size: 26rpx;
+  color: #1eac58;
+  margin-top: 40rpx;
+}
+
+.service_btn {
+  background: transparent;
+}
+
+.service_btn::after {
+  border: none;
+}
+
+.service_pic {
+  width: 76rpx;
+  height: 124rpx;
+  padding-top: 14rpx;
+}
+
+.icon_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 614rpx;
+  margin-top: 90rpx;
+}
+
+.icon_box2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 614rpx;
+  margin-top: 60rpx;
+}
+
+.each_icon_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+
+.icon_pic1 {
+  width: 52rpx;
+  height: 58rpx;
+}
+
+.icon_pic2 {
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.icon_pic3 {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.icon_pic4 {
+  width: 74rpx;
+  height: 62rpx;
+}
+
+.icon_pic5 {
+  width: 66rpx;
+  height: 60rpx;
+}
+
+.icon_pic6 {
+  width: 62rpx;
+  height: 55rpx;
+}
+
+.icon_words {
+  font-size: 28rpx;
+  color: #666666;
+  padding-top: 18rpx;
+}
+
+.partner_pic {
+  width: 360rpx;
+  height: 60rpx;
+}
+
+.bottom_pic {
+  width: 690rpx;
+  margin-bottom: 50rpx;
+}
+
+.confirm {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background: #1eac58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  color: #FFFFFF;
+}

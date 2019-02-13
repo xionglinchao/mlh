@@ -1,0 +1,65 @@
+<!--pages/choiceInformation/choiceInformation.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class='page_view' style='background: #f0f0f0;'>
+  <view class='item1_view'>
+    <view class='item1_title'>
+      <text class='item1_title_desc'>{{item.platform_list == 1 ? '游戏' : '征集'}}</text>
+      <text class='item1_title_name'>{{item.name}}</text>
+    </view>
+    <image class='item1_image' src='{{globalVariable.ossImage + item.litpic}}' mode='widthFix'></image>
+    <view class='html_view'>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+
+    <view class='item1_time'>
+      <text>{{item.times}}</text>
+      <text style='float:right;margin-right:15px;margin-left:5px;'>{{item.comment.length}}</text>
+      <image src='../../images/message.png'></image>
+    </view>
+
+    <scroll-view scroll-y="true" class='item1_scroll'>
+      <block wx:for='{{item.comment}}' wx:for-item="itemComment">
+        <view class='item1_scroll_item' catchtap='btn_choice_comment' data-item="{{itemComment}}">
+          <view class='comment_user_view'>
+            <image src='{{itemComment.photo}}' class='user_image'></image>
+            <text class='user_name_text'>{{itemComment.username}}</text>
+            <!-- <image src='../../images/address/bottom.png' class='go_bottom_image' catchtap='btn_go_bottom'></image> -->
+          </view>
+          <block wx:if="{{item.platform_list == 1}}">
+            <text class='item_list_1' decode="true">{{itemComment.content}}</text>
+          </block>
+          <block wx:else>
+            <view class='item_list_1' style='color: #333;margin-left: 5px;padding:2px 0px;font-weight: bold;'>{{itemComment.title}}</view>
+            <text class='item_list_1' decode="true">{{itemComment.content}}</text>
+            <block wx:if="{{itemComment.litpics != ''}}">
+              <view class='item_list_1_image_view'>
+                <block wx:if="{{itemComment.litpic.length > 1}}">
+                  <block wx:for="{{itemComment.litpic}}" wx:for-item="litpicItem">
+                    <image class="imagesDetails3" src='{{globalVariable.ossImage + litpicItem}}' mode="aspectFill" style='height:{{sw/3 - 10}}px;' catchtap='btn_preview' data-item="{{itemComment.litpic}}" data-image="{{globalVariable.ossImage + itemComment}}"></image>
+                  </block>
+                </block>
+                <block wx:else>
+                  <image src='{{globalVariable.ossImage + itemComment.litpic[0]}}' mode="widthFix	" style='width:calc(100% - 15px);' catchtap='btn_preview' data-item="{{itemComment.litpic}}" data-image="{{globalVariable.ossImage + itemComment.litpic[0]}}"></image>
+                </block>
+              </view>
+            </block>
+          </block>
+          <view class='comment_bottom_view'>
+            <text class='comment_bottom_time_text'>{{itemComment.times}}</text>
+            <text class='comment_bottom_fx_text' catchtap='btn_go_likes' data-item="{{itemComment}}">{{itemComment.likes}}</text>
+            <image class="comment_bottom_fx_image" src="{{itemComment.whether_like == 1 ? '../../images/sc2.png' : '../../images/sc1.png'}}" catchtap='btn_go_likes' data-item="{{itemComment}}"></image>
+            <text class='comment_bottom_pl_text' catchtap='btn_go_comment' data-item="{{itemComment}}">{{itemComment.discuss.length}}</text>
+            <image class="comment_bottom_pl_image" src='../../images/message.png' catchtap='btn_go_comment' data-item="{{itemComment}}" data-platform_list='{{item.platform_list}}' data-id="{{item.id}}"></image>
+          </view>
+          <view style="clear:both;"></view>
+        </view>
+      </block>
+      <view style="clear:both;"></view>
+    </scroll-view>
+  </view>
+
+  <view class='bottom_view'>
+    <button class='bottom_submit' bindtap='btn_write_comment'>写评论</button>
+  </view>
+</view>

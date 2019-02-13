@@ -1,0 +1,133 @@
+<view>
+  <view class="fixed_box">
+    <!-- 选项卡 -->
+    <view class="tab_box">
+      <block wx:for="{{ courseType }}" wx:key>
+        <text class="tab_name {{ type == item.id ? 'active':'' }}" data-item="{{ item }}" catchtap="tabClick">{{ item.name }}</text>
+      </block>
+    </view>
+    <!-- 搜索栏 -->
+    <view class="label_search">
+      <view>
+        <block wx:for="{{ secTabList }}" wx:key>
+          <text class="label_s {{ secTab == index ? 's_active':'' }}" data-idx="{{ index }}" catchtap="secTabClick">{{ item }}</text>
+        </block>
+      </view>
+      <view class="search_bar">
+        <text class="iconfont icon-search searchIcon"></text>
+        <input class="search_input" bindconfirm="getInputValue" placeholder="查找课程" placeholder-style="font-size:24rpx;color:#A4A4A4;"></input>
+      </view>
+    </view>
+  </view>
+  <!-- 课程展示 -->
+  <block wx:if="{{ type == courseType[0].id }}">
+    <!-- 写作课 -->
+    <view class="select_course_list">
+      <block wx:for="{{ contentlist }}" wx:key>
+        <view class="course_show_box" catchtap="courseDetaliClick" data-item="{{ item }}">
+          <image class="course_pic" src="{{ item.cover_img }}">
+            <view class="play_look_box">
+              <view class="play_box">
+                <image class="shipinIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shipin.png"></image>
+                <text class="play_num">{{ item.people }}</text>
+              </view>
+              <view class="play_box">
+                <text class="iconfont icon-list liuyan1Icon"></text>
+                <text class="play_num">{{ item.update_num }}</text>
+              </view>
+            </view>
+          </image>
+          <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:elif="{{ type == courseType[1].id }}">
+    <!-- 英语课 -->
+    <view class="select_course_list">
+      <block wx:for="{{ contentlist }}" wx:key>
+        <view class="course_show_box" catchtap="courseDetaliClick" data-item="{{ item }}">
+          <image class="course_pic" src="{{ item.cover_img }}">
+            <view class="play_look_box">
+              <view class="play_box">
+                <image class="shipinIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shipin.png"></image>
+                <text class="play_num">{{ item.people }}</text>
+              </view>
+              <view class="play_box">
+                <text class="iconfont icon-list liuyan1Icon"></text>
+                <text class="play_num">{{ item.update_num }}</text>
+              </view>
+            </view>
+          </image>
+          <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:elif="{{ type == courseType[2].id }}">
+    <!-- 绘画课 -->
+    <view class="select_course_list">
+      <block wx:for="{{ contentlist }}" wx:key>
+        <view class="course_show_box" catchtap="courseDetaliClick" data-item="{{ item }}">
+          <image class="course_pic" src="{{ item.cover_img }}">
+            <view class="play_look_box">
+              <view class="play_box">
+                <image class="shipinIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shipin.png"></image>
+                <text class="play_num">{{ item.people }}</text>
+              </view>
+              <view class="play_box">
+                <text class="iconfont icon-list liuyan1Icon"></text>
+                <text class="play_num">{{ item.update_num }}</text>
+              </view>
+            </view>
+          </image>
+          <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:elif="{{ type == courseType[3].id }}">
+    <!-- 性教育课 -->
+    <view class="select_course_list">
+      <block wx:for="{{ contentlist }}" wx:key>
+        <view class="course_show_box" catchtap="courseDetaliClick" data-item="{{ item }}">
+          <image class="course_pic" src="{{ item.cover_img }}">
+            <view class="play_look_box">
+              <view class="play_box">
+                <image class="shipinIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shipin.png"></image>
+                <text class="play_num">{{ item.people }}</text>
+              </view>
+              <view class="play_box">
+                <text class="iconfont icon-list liuyan1Icon"></text>
+                <text class="play_num">{{ item.update_num }}</text>
+              </view>
+            </view>
+          </image>
+          <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:elif="{{ type == courseType[4].id }}">
+    <!-- 情感课 -->
+    <view class="select_course_list">
+      <block wx:for="{{ contentlist }}" wx:key>
+        <view class="course_show_box" catchtap="courseDetaliClick" data-item="{{ item }}">
+          <image class="course_pic" src="{{ item.cover_img }}">
+            <view class="play_look_box">
+              <view class="play_box">
+                <image class="shipinIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shipin.png"></image>
+                <text class="play_num">{{ item.people }}</text>
+              </view>
+              <view class="play_box">
+                <text class="iconfont icon-list liuyan1Icon"></text>
+                <text class="play_num">{{ item.update_num }}</text>
+              </view>
+            </view>
+          </image>
+          <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+</view>

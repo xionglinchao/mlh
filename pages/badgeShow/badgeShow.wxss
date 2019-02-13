@@ -1,0 +1,10 @@
+page {width:100%;height:100%;background:#000;}
+.background_white_image {width:100%;}
+.content_name {width:100%;color:#2b2b2b;text-align:center;font-size:13px;}
+.content_grades {width:100%;height:40px;text-align:center;font-size:14px;color:#ff6600;line-height:40px;}
+.button_confirm {width:70%;padding:0px;height:40px;line-height:40px;font-size:16px;background:#ff6600;border-radius:20px;color:white;}
+.content_image {width:74%;margin-left:13%;position:absolute;left:0px;z-index:5;}
+.title_content {width:74%;height:40px;position:absolute;z-index:6;left:13%;}
+.title_name {display:block;float:left;line-height:40px;color:white;font-size:22px;margin-left:20%;}
+.title_lv_image {width:31px;height:16px;margin-top:12px;margin-left:5px;}
+.title_number_image {margin-top:12px;margin-left:5px;}

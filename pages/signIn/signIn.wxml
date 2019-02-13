@@ -1,0 +1,31 @@
+<!--pages/signIn/signIn.wxml-->
+<view class = "signInViewClass">
+    <form bindsubmit='btn_submit'>
+     <view class ="type2">
+        <textarea placeholder="记录亲子共读趣事、妙语、日记画..." placeholder-style='color: #999;font-size: 14px;' name = "name" maxlength='1000'></textarea>
+        <view class="ImageViewClass" style='padding-top:20px;'>
+        <block wx:for="{{pics}}">
+          <view class="addImageView1Class" bindtap='btn_Upload'>
+            <image class="image1" src='{{item}}' style=' width: 80px;height:80px;' mode="aspectFill"></image>
+            <image class="image2" src='../../images/d.png' catchtap='btn_delete' data-index='{{index}}'></image>
+          </view>
+        </block>
+        <view class="addImageViewClass" bindtap='btn_image'>
+          <image src='../../images/homepage/j.png'></image>
+          <text>添加图片</text>
+        </view>
+
+        <view style="clear:both;"></view>
+      </view>
+        <view style="clear:both;"></view>
+    </view>
+    <button class = "sendViewClass" form-type='submit' disabled='{{isDisabled}}'>签到</button>
+  </form>
+</view>
+
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>

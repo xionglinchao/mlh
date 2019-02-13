@@ -1,0 +1,65 @@
+<view class="page_box">
+  <!-- 平台消息 -->
+  <block wx:if="{{ msg_type == 1 }}">
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{contentlist}}" wx:key>
+      <view class="unread_msg_box">
+        <view>
+          <image class="user_photo" src="{{ item.user.litpic }}"></image>
+        </view>
+        <view class="msg_detail">
+          <view class="name_time">
+            <text class="user_name beyondEllipsis">{{ item.user.username }}</text>
+            <text class="msg_time">{{ item.time }}</text>
+          </view>
+          <view class="content_num">
+            <text class="msg_cont beyondEllipsis">{{ item.content }}</text>
+            <text class="msg_num" wx:if="{{ item.is_read == 0 }}">1</text>
+          </view>
+        </view>
+        <view class="del" catchtap="delBtnClick" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </block>
+  <!-- 动态消息 -->
+  <block wx:elif="{{ msg_type == 2 }}">
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{contentlist}}" wx:key>
+      <view class="unread_msg_box">
+        <view catchtap="toPersonalHomepage" data-id="{{ item.user.id }}">
+          <image class="user_photo" src="{{ item.user.litpic }}"></image>
+        </view>
+        <view class="active_msg_detail">
+          <view class="name_cont_time">
+            <text class="user_name beyondEllipsis">{{ item.user.username }}</text>
+            <text class="msg_cont beyondEllipsis">{{ item.content }}</text>
+            <text class="msg_time">{{ item.time }}</text>
+          </view>
+          <image class="msg_pic" wx:if="{{ item.type == 10 }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}"></image>
+          <view class="focus_btn" wx:if="{{ item.type != 10 }}" catchtap="btn_attention" data-suc-idx="{{ index }}" data-item="{{ item }}">{{ item.is_focus?'已关注':'关注' }}</view>
+        </view>
+        <view class="del" catchtap="delBtnClick" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </block>
+  <!-- 私信 -->
+  <block wx:else>
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{contentlist}}" wx:key>
+      <view class="unread_msg_box">
+        <view>
+          <image class="user_photo" src="{{ item.user.litpic }}"></image>
+        </view>
+        <view class="msg_detail" catchtap="replyPersonalNews" data-id="{{ item.u_id }}">
+          <view class="name_time">
+            <text class="user_name beyondEllipsis">{{ item.user.username }}</text>
+            <text class="msg_time">{{ item.time }}</text>
+          </view>
+          <view class="content_num">
+            <text class="msg_cont beyondEllipsis">{{ item.content }}</text>
+            <text class="msg_num" wx:if="{{ item.is_read == 0 }}">1</text>
+          </view>
+        </view>
+        <view class="del" catchtap="delBtnClick" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </block>
+  
+</view>

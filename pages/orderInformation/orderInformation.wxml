@@ -1,0 +1,216 @@
+<!--pages/orderInformation/orderInformation.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<scroll-view class="informationViewClass" scroll-y="true">
+  <view class="openGoodsViewClass" hidden='{{orderPro.orders.delegation == 1 && orderPro.orders.completed == 0 &&orderPro.orders.orderstatus == 1 ? false : true}}'>
+    <text class="text1">已支付待成团</text>
+    <text class="text2" bindtap='btn_open'>团购详情 ></text>
+    <image src='../../images/g.png'></image>
+  </view>
+  <view class="addressViewClass">
+    <image class="addressImageClass" src="../../images/send/address.png"></image>
+    <view class="NameViewClass">
+      <text class="text1">收货人 : {{orderPro.address.name}}</text>
+      <text class="text2">{{orderPro.address.phone}}</text>
+      <text class="text3">收货地址 : {{orderPro.address.province + orderPro.address.city + orderPro.address.area + orderPro.address.address}}</text>
+    </view>
+    <view style="clear:both;"></view>
+  </view>
+  <view class="dataViewClass" bindtap='btn_send'>
+    <view class="titleViewClass">
+      <text class="text1">美丽花亲子时光</text>
+      <block wx:if="{{orderPro.orders.delegation == 1}}">
+        <block wx:if="{{orderPro.orders.orderstatus == 0}}">
+          <text class="text2">团购待支付</text>
+        </block>
+        <block wx:elif="{{orderPro.orders.orderstatus == 1}}">
+          <block wx:if="{{orderPro.orders.completed == 1}}">
+            <text class="text2">团购已完成</text>
+          </block>
+          <block wx:else>
+            <text class="text2">已支付待成团</text>
+          </block>
+        </block>
+      </block>
+      <block wx:else>
+        <block wx:if="{{orderPro.orders.orderstatus == 0}}">
+          <text class="text2">待付款</text>
+        </block>
+        <block wx:elif="{{orderPro.orders.orderstatus == 1}}">
+          <block wx:if="{{orderPro.orders.status == 1 || orderPro.orders.status == 2}}">
+            <text class="text2">待发货</text>
+          </block>
+          <block wx:elif="{{orderPro.orders.status == 3}}">
+            <text class="text2">待收货</text>
+          </block>
+          <block wx:elif="{{orderPro.orders.status == 4}}">
+            <block wx:if="{{orderPro.orders.assess == 0}}">
+              <block wx:if="{{distinguish == 1}}">
+                <text class="text2">待评价</text>
+              </block>
+              <block wx:else>
+                <text class="text2">已完成</text>
+              </block>
+            </block>
+            <block wx:else>
+              <text class="text2">已完成</text>
+            </block>
+          </block>
+          <block wx:elif="{{orderPro.orders.status == 5}}">
+            <text class="text2">申请退款中</text>
+          </block>
+          <block wx:elif="{{orderPro.orders.status == 6}}">
+            <text class="text2">退款成功</text>
+          </block>
+        </block>
+      </block>
+    </view>
+    <block wx:for="{{orderPro.shops}}" wx:key>
+      <view class="goodsViewClass">
+        <image src="{{globalVariable.ossImage + item.litpic}}" mode="aspectFill"></image>
+        <view class="nameViewClass">
+          <text class="name">{{item.name}}</text>
+          <view class="priceViewClass">
+            <block wx:if="{{distinguish == 0}}">
+              <text class="text1">¥{{item.contact}}</text>
+              <text class="text2">¥{{item.money}}</text>
+            </block>
+            <block wx:else>
+              <text class="text1">¥{{item.money}}</text>
+              <text class="text2">¥{{item.moneys}}</text>
+            </block>
+            <block wx:if="{{distinguish == 1}}">
+              <text class="text3"> x {{item.number}}</text>
+            </block>
+            <block wx:else>
+              <text class="text3"> x 1</text>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="typeViewClass">
+      <view class="typeClass">
+        <text class="text1">商品总价</text>
+        <text class="text2">¥{{money/100}}</text>
+      </view>
+      <view class="typeClass">
+        <text class="text1">运费(快递)</text>
+        <block wx:if="{{distinguish == 1}}">
+          <text class="text2">¥{{orderPro.orders.costs}}</text>
+        </block>
+        <block wx:else>
+          <text class="text2">¥{{orderPro.orders.costs}}</text>
+        </block>
+      </view>
+      <view class="typeClass" hidden='{{orderPro.orders.integral == 0 || distinguish == 0 ? true : false}}'>
+        <text class="text1">共{{orderPro.orders.integral}}积分</text>
+        <text class="text2">¥{{yhmoney/100}}</text>
+      </view>
+      <view class="typeClass" hidden='{{orderPro.orders.coupon == 0 || distinguish == 0 ? true : false}}'>
+        <text class="text1">{{orderPro.orders.coupon.type}}</text>
+        <text class="text2">¥{{orderPro.orders.coupon.value}}</text>
+      </view>
+      <view class="typeClass" style='height: 35px;'>
+        <text class="text1" style='font-size: 16px;color: #333;line-height: 35px;'>订单总价</text>
+        <text class="text2" style='font-size: 16px;color: red;line-height: 35px;'>¥{{orderPro.orders.money}}</text>
+      </view>
+      <block wx:if="{{orderPro.integration != 0}}">
+        <view class="typeClass" style='height: 35px;'>
+          <text class="text1" style='font-size: 16px;color: #333;line-height: 35px;'>奖励智慧豆{{orderPro.integration}}</text>
+          <text class="text2" style='font-size: 16px;color: red;line-height: 35px;'></text>
+        </view>
+      </block>
+      <!-- <block wx:if="{{orderPro.welfare != 0}}">
+        <view class="typeClass" style='height: 35px;' hidden='{{distinguish == 0 ? true : false }}'>
+          <text class="text1" style='font-size: 16px;color: #333;line-height: 35px;'>奖励公益币{{orderPro.welfare}}个</text>
+          <text class="text2" style='font-size: 16px;color: red;line-height: 35px;'></text>
+        </view>
+      </block> -->
+      <view class="typeClass">
+        <text class="text1">订单号：{{orderPro.orders.orderId}}</text>
+        <text class="text2"></text>
+      </view>
+      <view class="typeClass">
+        <text class="text1">创建时间：{{orderPro.orders.time}}</text>
+        <text class="text2"></text>
+      </view>
+      <view style="clear:both;"></view>
+    </view>
+  </view>
+  <view class="bottomViewClass">
+    <block wx:if="{{orderPro.orders.orderstatus == 0}}">
+      <button class="btn3" bindtap='btn_two_pay'>付款</button>
+      <button class="btn2" bindtap='btn_cancel'>取消订单</button>
+    </block>
+    <block wx:elif="{{orderPro.orders.orderstatus == 1}}">
+      <block wx:if="{{orderPro.orders.status == 0}}">
+        <button class="btn1" bindtap='btn_delete'>删除</button>
+      </block>
+      <block wx:elif="{{orderPro.orders.status == 1 | orderPro.orders.status == 2}}">
+        <button class="btn2" bindtap='btn_cancel'>取消订单</button>
+      </block>
+      <block wx:elif="{{orderPro.orders.status == 3}}">
+        <button class="btn3" bindtap='btn_confirm_receipt'>确认收货</button>
+        <button class="btn2" bindtap='btn_w_l'>查看物流</button>
+      </block>
+      <block wx:elif="{{orderPro.orders.status == 4}}">
+        <button class="btn1" bindtap='btn_delete'>删除</button>
+        <block wx:if="{{distinguish == 1}}">
+          <block wx:if="{{orderPro.orders.assess == 0}}">
+            <button class="btn3" bindtap='btn_p_j'>评价</button>
+          </block>
+        </block>
+        <button class="btn2" bindtap='btn_w_l'>查看物流</button>
+      </block>
+      <block wx:elif="{{orderPro.orders.status == 5}}">
+        <block wx:if="{{distinguish == 1}}">
+          <block wx:if="{{orderPro.orders.assess == 0}}">
+            <button class="btn3" bindtap='btn_p_j'>评价</button>
+          </block>
+        </block>
+      </block>
+      <block wx:elif="{{orderPro.orders.status == 6}}">
+        <button class="btn1" bindtap='btn_delete'>删除</button>
+      </block>
+    </block>
+  </view>
+</scroll-view>
+<view class="ShowToastClass " hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both; "></view>
+</view>
+<view class="commodityScreenClass " hidden='{{isShadow}}' bindtap='btn_shadow'></view>
+<view class="modelView" hidden='{{hidden}}' style='top: 20%;'>
+  <text class="modelTitle ">请选择取消订单的理由</text>
+  <view class="ContentViewClass">
+    <scroll-view class="scroll" scroll-y="true">
+      <block wx:for="{{reasonPro}}" wx:key>
+        <view class="xzClass" bindtap='btn_cancle_x_z' data-id="{{item.id}}">
+          <text>{{item.name}}</text>
+          <image src="{{item.isFalse ? '../../images/xz.png' : '../../images/wxz.png'}}"></image>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class="buttonView">
+    <text class="cancelClass" bindtap='cancel'>取消</text>
+    <text class="phoneClass" bindtap='confirm'>确认</text>
+  </view>
+  <view style="clear:both; "></view>
+</view>
+<view class="modelView" hidden='{{hidden1}}'>
+  <text class="modelTitle">提示</text>
+  <view class="modelContent">
+    <text>是否删除该订单，删除之后您将无法找到此订单?</text>
+  </view>
+  <view class="buttonView">
+    <text class="cancelClass" bindtap='cancel1'>取消</text>
+    <text class="phoneClass" bindtap='confirm1'>确认</text>
+  </view>
+  <view style="clear:both;"></view>
+</view>
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+  <image src="../../images/kt.gif"></image>
+</view>
+<view class="commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0'></view>

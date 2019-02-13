@@ -1,0 +1,55 @@
+<!--pages/openInformation/openInformation.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class = "pClass">
+    <view class = "view1">
+        <image class = "image1" src='{{globalVariable.ossImage + openDataPro.shop.litpic}}' mode="aspectFill"></image>
+        <view class = "type1">
+            <text class = "text1">{{openDataPro.shop.name}}</text>
+            <view class = "typeView1">
+                <text class='text2'>¥ {{openDataPro.shop.price}}<text style='color: #666;font-size: 12px;text-decoration:line-through'>  ¥{{openDataPro.shop.money}}</text></text>
+                <text class = "text3">{{openDataPro.shop.price_people}}人团</text>
+            </view>
+        </view>
+        <view class="peopleViewClass">
+        <block wx:for="{{openDataPro.people}}" wx:if="{{index < 7}}">
+          <image class="peopleImageClass" src='{{item.litpic}}'></image>
+          <text class = "text2" hidden='{{index == 0 ? false : true}}'>团长</text>
+        </block>
+        <text class="text1">{{openDataPro.active.people.length > 6 ? '等' : ''}}</text>
+      
+      </view>
+         <view style="clear:both;"></view>
+    </view>
+    <view class = "view2">
+        <text class = "numClass">还差{{openDataPro.remaining_number}}人，拼团成功</text>
+        <view class = "timeViewClass">
+            <text class = "text1"></text>
+            <text class = "text2">剩余<text style='width:20px;height:20px;background: #1eac58;color: white;display:inline-block;floar:left;margin-left:5px;margin-right: 5px;text-align: center;line-height:20px;margin-top: 5px;'>{{hours}}</text>时<text style='width:20px;height:20px;background: #1eac58;color: white;display:inline-block;floar:left;margin-left:5px;margin-right: 5px;text-align: center;line-height:20px;margin-top: 5px;'>{{minutes}}</text>分<text style='width:20px;height:20px;background: #1eac58;color: white;display:inline-block;floar:left;margin-left:5px;margin-right: 5px;text-align: center;line-height:20px;margin-top: 5px;'>{{seconds}}</text>秒结束</text>
+            <text class = "text1"></text>
+        </view>
+        <view style="clear:both;"></view>
+    </view>
+    <view class = "nameViewClass">
+        <image src='../../images/order/goods.png'></image>
+        <text>团长</text>
+        <text style='margin-right: 15px;float:right;'>{{openDataPro.time}}开团</text>
+    </view>
+
+    <view class = "htmlViewClasss">
+      <text class = "text1">图文信息</text>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+
+      
+      <block wx:if = "{{typeNum == 1}}">
+          <button class = "bottomViewClass" open-type='share' >还差{{openDataPro.remaining_number}}人即可开团成功,点击分享</button>
+      </block>
+      <block wx:else>
+          <button class = "bottomViewClass" bindtap='btn_go_open'>去参团</button>
+      </block>
+      
+</view>
+
+
+<view class = "commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0' ></view>

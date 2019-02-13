@@ -1,0 +1,49 @@
+<!--pages/address/address.wxml-->
+<view class="pViewClass">
+  <block wx:if="{{addressPro.length>0}}">
+    <scroll-view class="scrollClass" scroll-y="true">
+      <block wx:for="{{addressPro}}" wx:key>
+        <view class="dataViewClass" bindtap='btn_default' data-item='{{item}}'>
+          <text class="text1">{{item.name}}<text style='margin-left: 30px;'>{{item.phone}}</text></text>
+          <view class="view1">
+            <text class="text2">{{item.rest == 1 ? '[默认]' : ''}}</text>
+            <text class="text3" style="width: calc(100% - {{item.rest == 1 ? '80' : '30'}}px);">{{item.province + item.city + item.area + item.address}}</text>
+            <view style="clear:both;"></view>
+          </view>
+          <image src='../../images/address/r.png' catchtap='btn_add' data-info="{{1}}" data-item="{{item}}"></image>
+          <view style="clear:both;"></view>
+        </view>
+      </block>
+    </scroll-view>
+  </block>
+  <block wx:else>
+    <view class="gapViewClass">
+      <image src='../../images/gap/gap1.png'></image>
+      <text>暂无数据</text>
+    </view>
+  </block>
+  <text class="addViewClass" bindtap='btn_add' data-info="{{2}}" data-item="">添加地址</text>
+</view>
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+  <image src="../../images/kt.gif"></image>
+</view>
+<view class="commodityScreenClass" hidden='{{isShadow}}' bindtap='btn_shadow'></view>
+<view class="modelView" hidden='{{hidden}}'>
+  <text class="modelTitle">提示</text>
+  <view class="modelContent">
+    <text>您确定把改地址改为默认地址吗?</text>
+  </view>
+  <view class="buttonView">
+    <text class="cancelClass" bindtap='cancel'>取消</text>
+    <text class="phoneClass" bindtap='confirm'>确认</text>
+  </view>
+  <view style="clear:both;"></view>
+</view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+
+<view class = "commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0' ></view>

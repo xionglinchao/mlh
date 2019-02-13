@@ -1,0 +1,28 @@
+<scroll-view scroll-y class="scroll_list">
+  <view class="selected_article" wx:for="{{ articleList }}" wx:key catchtap="toSelectedArticleDetail" data-item="{{ item }}">
+    <view class="selected_box">
+      <view class="words_intro_box">
+        <view class="article_title">{{ item.title }}</view>
+        <text class="brief_content beyondEllipsis_two">{{ item.text }}</text>
+        <view class="author_info">
+          <view class="name_photo">
+            <image class="author_photo"  src="{{ item.photo }}"></image>
+            <view class="author_name beyondEllipsis">{{ item.username }}</view>
+          </view>
+          <view class="check_message">
+            <text class="iconfont icon-check checkIcon"></text>
+            <text class="check_num">{{ item.view_num }}</text>
+            <text class="iconfont icon-liuyan1 liuyan1"></text>
+            <text class="liuyan_num">{{ item.comment_num }}</text>
+          </view>
+        </view>
+      </view>
+      <image class="article_pic" wx:if="{{ item.cover }}" src="{{ item.cover }}"></image>
+    </view>
+  </view>
+</scroll-view>
+<view class="bottom_box">
+  <view class="toHomePage" catchtap="toHomepageClick">首页</view>
+  <view class="middle_line"></view>
+  <view class="toHomePage" catchtap="toPersonalPageClick" data-item="{{ articleList }}">我的主页</view>
+</view>

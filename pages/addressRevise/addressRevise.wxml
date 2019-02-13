@@ -1,0 +1,49 @@
+<!--pages/addressRevise/addressRevise.wxml-->
+<view class="reviseViewClass">
+  <form bindsubmit='formSubmit'>
+    <view class="view1">
+      <view class="type1">
+        <text>收货人</text>
+        <input placeholder='请输入收货人姓名' value="{{name == '' ? '' : name}}" name="name" maxlength='10'></input>
+      </view>
+      <view class="type1">
+        <text>联系电话</text>
+        <input placeholder='请输入收货人电话' type='number' value="{{phone == '' ? '' : phone}}" name="phone" maxlength='11'></input>
+      </view>
+      <picker class="type2" value='{{region}}' mode='region' bindchange='btn_city'>
+        <text class="text1">省/市／区</text>
+        <text class="text2">{{region[0] + region[1] + region[2] == '' ? '请选择省/市/区' : region[0] + region[1] + region[2]}} </text>
+        <image src='../../images/address/bottom.png'></image>
+      </picker>
+      <view class="type3">
+        <text>详细地址</text>
+        <input style="height:80rpx;font-size:26rpx;" name="address" placeholder="请输入详细地址" show-confirm-bar="false" value="{{address == '' ? '' : address}}" placeholder-style='font-size:26rpx;' maxlength="50"></input>
+        <view style="clear:both;"></view>
+      </view>
+      <view style="clear:both;"></view>
+    </view>
+    <button class="button1" hidden='{{typeAdress == 1}}' bindtap='btn_add' data-info="{{1}}" form-type='submit'>添加</button>
+    <button class="button1" hidden='{{typeAdress == 2}}' bindtap='btn_add' data-info="{{2}}" form-type='submit'>保存</button>
+    <button class="button1" hidden='{{typeAdress == 2}}' style='background: white;border:1px solid #eaeaea;color: #666;margin-top: 10px;' bindtap='btn_add' data-info="{{3}}" form-type='submit'>删除收货地址</button>
+  </form>
+</view>
+<view class="commodityScreenClass" hidden='{{isShadow}}' bindtap='btn_shadow' style='opacity: 0'></view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+
+<view class="commodityScreenClass" hidden='{{isShadow1}}' bindtap='btn_shadow'></view>
+<view class="modelView" hidden='{{hidden}}'>
+  <text class="modelTitle">提示</text>
+  <view class="modelContent">
+    <text>您确定要删除该地址?</text>
+  </view>
+  <view class="buttonView">
+    <text class="cancelClass" bindtap='cancel'>取消</text>
+    <text class="phoneClass" bindtap='confirm'>确认</text>
+  </view>
+  <view style="clear:both;"></view>
+</view>

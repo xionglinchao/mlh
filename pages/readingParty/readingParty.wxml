@@ -1,0 +1,132 @@
+<!--pages/myRelayRead/myRelayRead.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <block wx:if="{{!isGap2}}">
+            <scroll-view class="scrollClass" scroll-y="true">
+              <block wx:for="{{volunteerPro}}">
+                <view class="dataViewClass">
+                  <view class="selectViewClass">
+                    <image class="selectImage" src="{{item.isTrue ? '../../images/select.png' : '../../images/no_select.png'}}" bindtap='btn_image' data-item="{{item}}"></image>
+                    <text class="text1">{{item.name}}</text>
+                    <text class="text2">{{item.time}}</text>
+                  </view>
+                  <image class="imageClass" src='{{globalVariable.ossImage + item.logo}}' mode="aspectFill"></image>
+                  <view class="view1">
+                    <!-- <text class="text1">微信号：{{item.signals}}</text> -->
+                    <text class="text1">申请人：{{item.username}}    {{item.phone}}</text>
+                    <text class="text3">地址：{{item.province+item.city+item.area+item.address}}</text>
+                  </view>
+
+                  <view style="clear:both;"></view>
+                </view>
+              </block>
+            </scroll-view>
+          </block>
+          <block wx:else>
+            <view class="gapViewClass">
+              <image src='../../images/gap/gap1.png'></image>
+              <text>暂无数据</text>
+            </view>
+          </block>
+
+          <view class="bottomViewClass">
+            <view class="checkClass" bindtap='btn_all_image'>
+              <image src="{{allNum == 0 ? '../../images/no_select.png' : '../../images/select.png'}}"></image>
+              <text>全选</text>
+            </view>
+            <text class="text1" class="{{pNum == 2 ? 'text3' : 'text1'}}" bindtap='btn_tongguo'>通过</text>
+            <text class="text1" class="{{tNum == 2 ? 'text4' : 'text1'}}" bindtap='btn_no_tongguo'>未通过</text>
+          </view>
+
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <block wx:if="{{!isGap1}}">
+            <scroll-view class="scroll1Class" scroll-y="true">
+              <view wx:for="{{volunteerProClear}}" catchtap='btn_infor' data-info="{{item}}" class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" data-id='{{item.id}}'>
+                <view class = "content" >
+                <view class="dataView1Class" >
+                  <image class="image1Class" src='{{globalVariable.ossImage + item.logs}}' mode="aspectFill"></image>
+                  <view class="view3">
+                    <text class="text1">{{item.name}}</text>
+                    <text class="text2">申请时间 {{item.date}}</text>
+                    <text class="text3">申请人：{{item.people.username}}    {{item.people.phone}}</text>
+                  </view>
+
+                  <!-- <text class = "text1"></text> -->
+
+
+                  <view style="clear:both;"></view>
+                </view>
+                </view>
+                <view class="del" catchtap='btn_clear' data-id='{{item.id}}' data-index="{{index}}" data-info="{{item}}">删除</view>
+              </view>
+            </scroll-view>
+          </block>
+          <block wx:else>
+            <view class="gapViewClass">
+              <image src='../../images/gap/gap1.png'></image>
+              <text>暂无数据</text>
+            </view>
+          </block>
+        <block wx:if = "{{square_color != 0}}">
+          <view class="bottomView1Class" bindtap='btn_create_ready_club' hidden='{{volunteerProClear.length > 0 ? true : false}}'>
+            <text>申请创建阅读会</text>
+          </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+
+<view class="commodityScreenClass" hidden='{{isShadow}}' bindtap='btn_shadow'></view>
+<view class="modelView" hidden='{{hidden}}'>
+  <text class="modelTitle">提示</text>
+  <view class="modelContent">
+    <text>您确定要这样操作吗?</text>
+  </view>
+  <view class="buttonView">
+    <text class="cancelClass" bindtap='cancel'>取消</text>
+    <text class="phoneClass" bindtap='confirm'>确认</text>
+  </view>
+  <view style="clear:both;"></view>
+</view>
+<view class="modelView" hidden='{{hidden1}}'>
+  <text class="modelTitle">提示</text>
+  <view class="modelContent">
+    <text>您确定要删除该读书会吗?</text>
+  </view>
+  <view class="buttonView">
+    <text class="cancelClass" bindtap='cancel1'>取消</text>
+    <text class="phoneClass" bindtap='confirm1'>确认</text>
+  </view>
+  <view style="clear:both;"></view>
+</view>
+
+
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+  <image src="../../images/kt.gif"></image>
+</view>
+
+<view class = "commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0' ></view>
+
+
+

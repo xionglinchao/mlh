@@ -1,0 +1,29 @@
+<!--pages/logTogether/logTogether.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pViewClass">
+  <image class="headClass" style='height: {{sw*8/15}}px' src='{{globalVariable.ossImage + imageTitle}}' mode="aspectFill"></image>
+
+
+  <scroll-view style='width: 100%;background:white;' scroll-y="true">
+    <block wx:for="{{contentPro}}">
+      <view class="dataViewClass">
+        <text class="text1">{{item.day}}<text style='font-size: 13px'>{{item.month}}月</text>
+        </text>
+        <image src='{{globalVariable.ossImage + item.litpic}}' mode="aspectFill"></image>
+        <text class="text2">{{item.content}}</text>
+        <view style="clear:both;"></view>
+      </view>
+      <view style="clear:both;"></view>
+    </block>
+
+  </scroll-view>
+  <text class = "qDClass" style='top: calc({{sw*8/15}}px - 45px);' bindtap='btn_q_d'>{{signInNum == 0 ? '已签到' : '签到'}}</text>
+</view>
+
+<view class = "ShowToastClass" hidden='{{isShowToast}}'>
+    <image src='../../images/gou.png'></image>
+    <text>{{toastData}}</text>
+    <view style="clear:both;"></view>
+</view>
+
+<view class = "commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0' ></view>

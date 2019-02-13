@@ -1,0 +1,102 @@
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pClass">
+  <block wx:if="{{volunteerProClear}}">
+    <scroll-view class="scrollClass" scroll-y="true">
+      <block wx:for="{{volunteerProClear}}">
+        <view class="dataViewClass" bindtap='go_page' data-item="{{item}}">
+
+          <image class="imageClass" src='{{globalVariable.ossImage + item.logs}}' mode="aspectFill"></image>
+          <view class="view1">
+            <text class="text1">{{item.name}}</text>
+            <text class="text2">申请时间 {{item.date}}</text>
+            <text class="text3">申请人：{{item.people.username}}    {{item.people.phone}}</text>
+          </view>
+          <view style="clear:both;"></view>
+        </view>
+      </block>
+    </scroll-view>
+  </block>
+  <block wx:else>
+    <view class="gapViewClass">
+      <image src='../../images/gap/gap1.png'></image>
+      <text>暂无数据</text>
+    </view>
+  </block>
+  <block wx:if = "{{volunteerProClear}}">
+    <view class="bottomView" hover-class='bottomView_' bindtap='btn_delete_club' style='background: red;'>
+      <text style='color: white;'>退出读书会</text>
+  </view>
+  </block>
+  <block wx:else>
+  <view class="bottomView" hover-class='bottomView_' bindtap='btn_create_club'>
+    <text>创建读书会</text>
+  </view>
+  </block>
+</view>
+
+
+<view class="readyClub" hidden='{{isClubAddress}}' >
+
+  <view class="transparent_view">
+
+  </view>
+  <view class="club_content">
+    <view class="addressClub">
+      <text class="addressTitle">请选择读书会地址</text>
+      <picker class="address"  value='{{region}}' mode='region' bindchange='bindMultiPickerChange'>
+        <text class="addressName">{{region[0]=='' ? '请选择地址' : region[0] + region[1] + region[2]}}</text>
+        <image src='../../images/bottom.png'></image>
+      </picker>
+    </view>
+    <view class="addressClub">
+      <text class='addressTitle'>当前阅读小站</text>
+      <text class="address clubName" style='width: calc(100% - 20px);'>{{clubName ? clubName : ''}}</text>
+    </view>
+
+    <view class="create_z" hover-class='create_read_' bindtap='btn_create'>创建读书会</view>
+    <view style="clear:both;"></view>
+  </view>
+  <view style="clear:both;"></view>
+  <image class="club_image" src='../../images/homepage/home.png'></image>
+</view>
+
+<view class="readyClub" hidden='{{isClubPerson}}'>
+  <view class="transparent_view">
+
+  </view>
+  <view class="club_content">
+    <view class="addressClub">
+      <text class="notPerson">抱歉！您目前还不是美丽花义工，请先加入义工再来创建读书会吧</text>
+
+      <view class="create_z" hover-class='create_read_' bindtap='club_go'>申请加入义工</view>
+      <view style="clear:both;"></view>
+    </view>
+    <view style="clear:both;"></view>
+
+  </view>
+  <image class="club_image" src='../../images/homepage/home.png'></image>
+</view>
+<view class="readyClub" hidden='{{isNotClubPerson}}'>
+  <view class="transparent_view">
+  </view>
+
+  <view class="club_content">
+    <view class="addressClub">
+      <text class="notPerson">您目前已存在读书会，不能继续创建</text>
+
+      <view class="create_z" hover-class='create_read_' bindtap='club_Not'>知道了</view>
+      <view style="clear:both;"></view>
+    </view>
+    <view style="clear:both;"></view>
+  </view>
+  <view style="clear:both;"></view>
+  <image class="club_image" src='../../images/homepage/home.png'></image>
+</view>
+
+<view class="commodityScreenClass" hidden='{{isCreateClub}}' bindtap='btn_cancel_model'></view>
+<view class="commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0'></view>
+
+
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+    <image src="../../images/kt.gif"></image>
+</view> 

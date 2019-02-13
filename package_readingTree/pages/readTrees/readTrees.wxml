@@ -1,0 +1,4 @@
+<view>
+  <image class='rt_bg' src='https://meilihua.06baobao.com/images/small/readTrees/bg.jpg'></image>
+  <image class='cybd' src='https://meilihua.06baobao.com/images/small/readTrees/cybd.png' catchtap='toPage'></image>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/volunteerReviewNews/volunteerReviewNews.wxml-->
+<import src="../../templates/loadView/loadView.wxml" />
+<view class='page_view'>
+  <block wx:if="{{volunteerPro}}">
+    <scroll-view class='volunteer_message_scroll' scroll-y="true">
+      <block wx:for="{{volunteerPro}}" wx:key>
+        <view class='volunteer_item_view' catchtap='btn_go_volunteer' data-item="{{item}}">
+          <image src='{{item.litpic}}' class='item_image'></image>
+          <text class='item_name beyondEllipsis'>{{item.username}}</text>
+          <text class='item_desc'>申请加入义工</text>
+          <text class='item_time'>{{item.time}}</text>
+          <block wx:if="{{item.status == 1}}">
+            <view class='item_dotted'></view>
+          </block>
+        </view>
+      </block>
+    </scroll-view>
+  </block>
+  <block wx:else>
+    <template is="notContent1"></template>
+  </block>
+</view>

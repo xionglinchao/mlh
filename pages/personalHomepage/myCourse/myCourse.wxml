@@ -1,0 +1,81 @@
+<view class='top_title'>
+  <text class="{{ isChooseMyCourse ? 'my_course':'noChoose' }}" catchtap='myCourseClick'>免费</text>
+  <!-- <text wx:if="{{ is_mine }}" class="{{ isChooseMyCourse ? 'noChoose':'buy_course' }}" catchtap='buyCourseClick'>我的</text> -->
+</view>
+<block wx:if='{{ isChooseMyCourse }}'>
+  <view class="scroll_list2">
+    <view class="videoCourse_box" wx:for="{{ buyCourse }}" wx:key catchtap="courseDetaliClick" data-item="{{ item }}">
+      <view class='dot_box' hidden='{{ isHideChooseDot }}' data-idx='{{ index }}' catchtap='singleClick2'>
+        <text class="{{ item.is_selected ? 'green_dot' :'' }}"></text>
+      </view>
+      <image class="videoCourse_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.cover_img }}">
+        <view class="mask_layer"></view>
+        <image class="{{ item.course_type == 0 ? 'yuyinIcon':'videoIcon' }}" src="{{ item.course_type == 0 ? '/images/discover/yuyinIcon.png':'/images/discover/videoIcon.png' }}"></image>
+      </image>
+      <view class="course_intro" style="flex:1">
+        <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+        <view class="sale_status">
+          <view>
+            <text class="update_num">已更新{{ item.update_num }}期</text>
+            <text class="study_num">{{ item.people }}人在学</text>
+          </view>
+          <!-- <view class="course_price">￥{{ item.money }}</view> -->
+          <view class="course_price"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+
+<!-- 已购课程 -->
+<block wx:else>
+  <view class="scroll_list">
+    <!-- 顶部用户信息 -->
+    <view class='top_box'>
+      <view class='user_info_box'>
+        <image class='user_photo' src="{{ writer.litpic }}"></image>
+        <view class='name_sign_box'>
+          <text class='user_name beyondEllipsis'>{{ writer.username }}</text>
+          <text class='user_sign beyondEllipsis' wx:if="{{ writer.signature }}">个签：{{ writer.signature }}</text>
+        </view>
+      </view>
+      <view class='course_btn'>课程</view>
+    </view>
+    <!-- 我的课程列表 -->
+    <view class="videoCourse_box" wx:for="{{ courseList }}" wx:key>
+      <view class='dot_box' hidden='{{ isHideChooseDot }}' data-idx='{{ index }}' data-item="{{ item }}" catchtap='singleClick'>
+        <text class="{{ item.is_selected ? 'green_dot' :'' }}"></text>
+      </view>
+      <image class="videoCourse_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.cover_img }}">
+        <view class="mask_layer"></view>
+        <image class="{{ item.course_type == 0 ? 'yuyinIcon':'videoIcon' }}" src="{{ item.course_type == 0 ? '/images/discover/yuyinIcon.png':'/images/discover/videoIcon.png' }}"></image>
+      </image>
+      <view class="course_intro" style="flex:1" catchtap="courseDetaliClick" data-item="{{ item }}">
+        <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+        <view class="sale_status">
+          <view>
+            <text class="update_num">已更新{{ item.update_num }}期</text>
+            <text class="study_num">{{ item.people }}人在学</text>
+          </view>
+          <!-- <view class="course_price">￥{{ item.money }}</view> -->
+          <view class="course_price">已拥有</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 加号按钮 -->
+  <image class='plus_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/plus_btn.png' catchtap="toDistributeCourse" wx:if="{{ writer.course_id == 2 && is_mine == 1 }}"></image>
+  <!-- 底部编辑栏 -->
+  <view wx:if="{{ is_mine }}">
+    <block wx:if='{{ isHideChooseDot }}'>
+      <view class='choose_course' catchtap='editBtnClick'>编辑</view>
+    </block>
+    <block wx:else>
+      <view class='choose_course2'>
+        <text catchtap='cancelBtnClick'>取消</text>
+        <text catchtap='allChooseClick' data-item="{{ item }}" data-status="1">全选</text>
+        <text catchtap="delBtnClick">删除({{ del_num }})</text>
+      </view>
+    </block>
+  </view>
+</block>

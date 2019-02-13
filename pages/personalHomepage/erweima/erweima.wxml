@@ -1,0 +1,15 @@
+<view class='page_box'>
+  <image class='bg_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/erweima_bg.png'>
+    <view class='user_pic_box'>
+      <image class='user_pic' src="{{ QrCode.litpic }}"></image>
+    </view>
+    <image class='bg_pic2' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/erweima_bg2.png'>
+      <view class='erweima_info_box'>
+        <text class='user_name beyondEllipsis'>{{ QrCode.username }}</text>
+        <text class='personal_sign beyondEllipsis'>签名：{{ QrCode.signature }}</text>
+        <image class='erweima' src="{{ QrCode.qr_code }}" data-src="{{ QrCode.qr_code }}" bindtap="previewImage"></image>
+        <text class='press_save'>长按保存或者扫一扫查看</text>
+      </view>
+    </image>
+  </image>
+</view>

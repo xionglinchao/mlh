@@ -1,0 +1,38 @@
+<!--pages/giveBookT/giveBookT.wxml-->
+<view class = "pClass">
+  <form bindsubmit='btn_submit'>
+    <view class = "contactViewClass">
+      <text class = "titleClass">联系方式</text>
+      <view class = "view1">
+          <text>姓  名</text>
+          <view class = "inputViewClass">
+              <input placeholder='请输入您的姓名' placeholder-style='color: #ccc;' name ="name"></input>
+          </view>
+          
+      </view>
+      <view class = "view1">
+          <text>微信号</text>
+          <view class = "inputViewClass">
+              <input placeholder='请输入您的微信号' placeholder-style='color: #ccc;'  name ="wx"></input>
+          </view>
+          
+      </view>
+      <view class = "view1">
+          <text>手机号</text>
+          <view class = "inputViewClass">
+              <input placeholder='请输入您的手机号' placeholder-style='color: #ccc;'  name ="phone" type='number' maxlength='11'></input>
+          </view>
+          
+      </view>
+
+      <button class = "btn1" form-type='submit'>确定</button>
+</view>
+</form>
+</view>
+
+
+<view class = "ShowToastClass" hidden='{{isShowToast}}'>
+    <image src='../../images/gou.png'></image>
+    <text>{{toastData}}</text>
+    <view style="clear:both;"></view>
+</view>

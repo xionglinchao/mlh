@@ -1,0 +1,6 @@
+/* pages/readyClubInfo/readyClubInfo.wxss */
+page {width:100%;height:100%;}
+.pClass {width:100%;height:100%;background:#f0f0f0;}
+.view1 {width:100%;background:white;height:40px;}
+.view1 text {display:block;float:left;margin-left:15px;line-height:40px;font-size:14px;color:#666;}
+.view1 image {width:20px;height:20px;margin-top:10px;margin-right:10px;float:right;}

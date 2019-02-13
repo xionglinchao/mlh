@@ -1,0 +1,52 @@
+<!--pages/library/library.wxml-->
+<wxs src="../../../appWxs/globalVariable.wxs" module="globalVariable" />
+<block wx:if="{{isNewWork}}">
+  <view class="page_view" style='background: #f0f0f0;'>
+
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" placeholder-style='font-size: 13px;' value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    </view>
+
+
+    <view class="library_view">
+      <scroll-view class="library_scroll_view" scroll-y="true">
+        <block wx:for="{{libraryPro}}">
+          <view class="classification_1_view">
+            <text class="book_class_1_text text_block">{{item.name}}</text>
+            <view class="classification_2_view">
+              <block wx:for="{{item.two_list}}" wx:for-item="item_two">
+                <view class="classification_2_data" style='height: {{windowWidth*0.25*0.7 + 40}}px;' hover-class='bottom_v_1' bindtap='btn_two_classification_3' data-item="{{item_two}}">
+                  <image src='{{globalVariable.ossImage + item_two.logo}}' style='height: {{windowWidth*0.25*0.7}}px'></image>
+                  <text class='text_block'>{{item_two.name}}</text>
+                </view>
+              </block>
+              <view style="clear:both;"></view>
+            </view>
+            <view style="clear:both;"></view>
+          </view>
+        </block>
+      </scroll-view>
+
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="gapViewClass">
+    <image src='../../../images/no_network.png'></image>
+    <text>当前无网络</text>
+    <button bindtap='btn_refurbish'>刷新</button>
+  </view>
+</block>

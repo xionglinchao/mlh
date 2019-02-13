@@ -1,0 +1,323 @@
+@import "../../../wxParse/wxParse.wxss";
+
+.scroll_list {
+  width: 100%;
+  height: 100vh;
+}
+
+.top_pic {
+  width: 100%;
+  height: 480rpx;
+  vertical-align: top;
+  background: gold;
+}
+
+/* 选项卡 */
+
+.tab_box {
+  width: 690rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 30rpx;
+}
+
+.tab_control, .select_tab_control {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding: 28rpx 0;
+  
+}
+
+.select_tab_control {
+  color: #1eac58;
+  border-bottom: 4rpx solid #1eac58;
+}
+
+.luyinIcon, .yueduIcon, .gushiIcon, .shujiIcon {
+  font-size: 36rpx;
+}
+
+.icon_words {
+  font-size: 28rpx;
+}
+
+.green_dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #1eac58;
+}
+
+/* 录音 */
+
+/* .recording_container {
+  width: 100%;
+} */
+
+.user_box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  margin: 0 20rpx;
+}
+
+.user_photo {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: yellowgreen;
+}
+
+.user_name {
+  font-size: 28rpx;
+  padding-left: 30rpx;
+}
+
+.sound_audio {
+  width: 280rpx;
+  height: 80rpx;
+  border: 2rpx solid #1eac58;
+  border-radius: 46rpx;
+  position: relative;
+  margin: 0 20rpx;
+}
+
+.play_duration {
+  position: absolute;
+  font-size: 26rpx;
+  color: #999;
+  line-height: 80rpx;
+}
+
+.audio_cont {
+  width: 100%;
+  font-size: 26rpx;
+  color: #333;
+  margin: 20rpx 20rpx 8rpx 20rpx;
+}
+
+.book_cont {
+  width: 710rpx;
+  border-top: 2rpx solid #f0f0f0;
+  border-right: 2rpx solid #f0f0f0;
+  border-bottom: 2rpx solid #f0f0f0;
+  border-left: 4rpx solid #1aad19;
+  margin: 0 20rpx;
+}
+
+.book_name {
+  width: 100%;
+  font-size: 26rpx;
+  color: #333;
+  margin: 10rpx 0 10rpx 10rpx;
+  font-weight: bold;
+}
+
+.brief_intro {
+  color: #666;
+  font-size: 26rpx;
+  margin: 10rpx 0 10rpx 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio_bottom_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.comment_time {
+  color: #999;
+  font-size: 26rpx;
+  margin-left: 20rpx;
+}
+
+.message_like {
+  display: flex;
+  align-items: center;
+}
+
+.icon_box {
+  display: flex;
+  align-items: center;
+}
+
+.liuyanIcon {
+  font-size: 46rpx;
+  color: #1aad19
+}
+
+.message_num, .like_num {
+  font-size: 26rpx;
+  color: #666;
+  margin: 0 20rpx 0 8rpx;
+}
+
+.like_pic {
+  width: 40rpx;
+  height: 38rpx;
+}
+
+/* 加号按钮 */
+.plus_pic {
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  left: 325rpx;
+  z-index: 10;
+}
+
+/* 暂无数据 */
+.none-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200rpx;
+}
+
+.none-img {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+/* 引导阅读 */
+.content_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.reading_content {
+  font-size: 26rpx;
+  color: #333;
+  margin: 0 20rpx 10rpx 20rpx;
+}
+
+.pic_box {
+  width: 710rpx;
+  margin: 0 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.reading_pic {
+  width: 230rpx;
+  height: 230rpx;
+  background: yellowgreen;
+  margin-bottom: 10rpx;
+  vertical-align: top;
+}
+
+.reading_pic:nth-child(3n + 2) {
+  margin: 0 10rpx;
+}
+
+.video_pic {
+  width: 690rpx;
+  height: 500rpx;
+  margin-left: 30rpx;
+  position: relative;
+}
+
+.play_box {
+  position: absolute;
+  top: 0;
+  width: 690rpx;
+  height: 500rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playIcon {
+  font-size: 80rpx;
+  color: #FFF;
+}
+
+.book_box {
+  width: 230rpx;
+}
+
+/* 相关书籍 */
+
+.bookUl {
+  width: 750rpx;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+
+.book-box {
+  width: 334rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.book-img {
+  width: 334rpx;
+  height: 303rpx;
+  position: relative;
+}
+
+.delete_btn {
+  width: 38rpx;
+  height: 38rpx;
+  position: absolute;
+  z-index: 10;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.book-box:nth-child(odd) {
+  padding: 0rpx 11rpx 0rpx 30rpx;
+}
+
+.book-box:nth-child(even) {
+  padding: 0rpx 30rpx 0rpx 11rpx;
+}
+
+.bookName {
+  width: 324rpx;
+  background: rgba(255, 255, 255, 0.75);
+  position: relative;
+  bottom: 70rpx;
+  font-size: 32rpx;
+  color: #333;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 10rpx;
+}
+
+.book-btn-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  font-size: 28rpx;
+}
+
+.bWord-1 {
+  background-color: #fcd132;
+  padding: 12rpx 20rpx;
+  margin: 12rpx 28rpx 0rpx 0rpx;
+}
+
+.bWord-2 {
+  background-color: #f60;
+  padding: 12rpx 20rpx;
+  margin-top: 12rpx;
+}

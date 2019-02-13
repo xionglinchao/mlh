@@ -1,0 +1,39 @@
+<view>
+  <image class='bg_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/white_bg.jpg'>
+    <view class='top_time_box'>
+      <view class='date_box'>
+        <text class='day_time'>{{ date }}</text>
+        <view class='date_box2'>
+          <text class='week_time'>星期{{ day }}</text>
+          <text class='year_month'>{{ month }}/{{ year }}</text>
+        </view>
+      </view>
+      <image class='user_photo' src="{{ userInfo.litpic }}"></image>
+    </view>
+    <!-- 个签 -->
+    <view class='personal_sign'>个签：{{ userInfo.signature }}</view>
+    <!-- 底部icon -->
+    <view class='icon_box'>
+      <view class='each_icon' catchtap="toPageAlbumPub">
+        <image class='icon_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/photo_album.png'></image>
+        <text class='icon_words'>相册</text>
+      </view>
+      <view class='each_icon' catchtap="toPageVideoPub">
+        <image class='icon_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/live.png'></image>
+        <text class='icon_words'>视频</text>
+      </view>
+      <!-- <view class='each_icon' catchtap="toPageCoursePub" wx:if="{{ system != 'iOS' }}">
+        <image class='icon_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/course.png'></image>
+        <text class='icon_words'>课程</text>
+      </view> -->
+      <view class='each_icon' catchtap="toPageArticlePub">
+        <image class='icon_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/article.png'></image>
+        <text class='icon_words'>文章</text>
+      </view>
+    </view>
+    <view class='activity_icon' catchtap="toPageActivityPub" wx:if="{{ userInfo.square_color == 1 }}">
+      <image class='icon_pic' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/huodong.png'></image>
+      <text class='icon_words'>活动</text>
+    </view>
+  </image>
+</view>

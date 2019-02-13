@@ -1,0 +1,83 @@
+<!--pages/posting/videoImageComment/videoImageComment.wxml-->
+<wxs src="../../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="p_view">
+
+  <!-- 顶部选择文学作品-->
+  <view class='coose_book_background_view'>
+    <view class="choose_book_view" hover-class="bottom_v_1" bindtap='btn_choose_book'>
+      <block wx:if = "{{createBookId == 0 && typeNum == 0}}">
+          <text class='text_block book_name_text'>＋请选择文学作品</text>
+          
+      </block>
+      <block wx:else>
+          <text class='text_block book_name_text_' >{{createBookName}}</text>
+      </block>
+      <block wx:if = "{{typeNum == 0}}">
+          <image src='../../../images/send/right.png'></image>
+      </block>
+    </view>
+  </view>
+
+  <form bindsubmit='btn_submit'>
+    <view class="type2">
+      <textarea placeholder="请输入评论文字" placeholder-style='color: #999;font-size: 14px;' name="information" maxlength='500'></textarea>
+
+      <view class="ImageViewClass" hidden='{{classId != 2 ? false : true}}'>
+        <block wx:for="{{pics}}">
+
+          <view class="addImageView1Class" >
+              <block wx:if = "{{item.type == 2}}">
+                  <video style='width: 80px;height: 80px;' src='{{item.path}}' controls = "false" autoplay = "true"></video>
+              </block>
+              <block wx:else>
+                <image class="image1" src='{{item.path}}' style=' width: 80px;height: 80px;' mode="aspectFill"></image>
+              <image class="image2" src='../../../images/d.png' catchtap='btn_delete' data-index='{{index}}'></image>
+              </block>
+          </view>
+
+        </block>
+        <view class="addImageViewClass" bindtap='btn_image'>
+          <image src='../../../images/homepage/j.png'></image>
+          <text>照片/视频</text>
+        </view>
+
+        <view style="clear:both;"></view>
+      </view>
+
+      <block wx:if = "{{createBookId != 0 && classId == 2}}">
+          <view class='scroll_text_comment_title'>选择评论你要评论的书籍图片</view>
+          <scroll-view class="other_book_scroll" scroll-x="true">
+            <block wx:for="{{libraryInformationPro.photo}}">
+              <view class="other_book_view" bindtap='btn_other_image' data-index = "{{index}}">
+                <image src='{{globalVariable.ossImage + item}}' mode="aspectFill" style='height: {{otherImageHeight}}px;' ></image>
+                <image src="{{imageIndex != index ? '../../../images/no_select.png' : '../../../images/select.png'}}" class='image_select' style='width: 18px;height: 18px;'></image>
+              </view>
+            </block>
+          </scroll-view>
+      </block>
+      <view style="clear:both;"></view>
+    </view>
+    <view class="plViewClass">
+      <button form-type='submit' disabled='{{isDisabled}}'>发表</button>
+    </view>
+  </form>
+</view>
+
+
+<view class="commodityScreenClass" hidden='{{isShadow}}' bindtap='btn_shadow' style="{{!isVideo ? 'opacity: 0.8': ''}};"></view>
+<view class="bottom_model_view" hidden='{{isBottomModel}}'>
+  <view class="load_image_text" hover-class='backView' bindtap='btn_up_load_image'>上传图片</view>
+  <view class="load_video_text" hover-class='backView' bindtap='btn_up_load_video'>上传视频</view>
+  <!-- <view class="shot_text" hover-class='backView' bindtap='btn_up_load_shot'>拍摄</view> -->
+  <view style='width:100%;height: 7px;float:left;'></view>
+  <view class="cancel_load_text" hover-class='backView' bindtap='btn_up_load_cancel'>取消</view>
+</view>
+
+
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+<view class="commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0;z-index: 30;'></view>

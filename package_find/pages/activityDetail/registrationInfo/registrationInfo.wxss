@@ -1,0 +1,186 @@
+.top_icon {
+  width: 100%;
+  height: 76rpx;
+  background: #CCCCCC;
+  text-align: center;
+  line-height: 76rpx;
+}
+
+.homePage2 {
+  font-size: 54rpx;
+  color: #FFFFFF;
+}
+
+.name_info {
+  width: 720rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.name {
+  font-size: 28rpx;
+  color: #333333;
+  padding: 30rpx 0;
+}
+
+.name text {
+  font-size: 28rpx;
+  color: #B6B6B6;
+}
+
+.input_name {
+  text-align: right;
+  font-size: 28rpx;
+  color: #333333;
+  margin-right: 30rpx;
+  width: 450rpx;
+}
+
+.right_place {
+  font-size: 28rpx;
+  color: #B6B6B6;
+}
+
+.activ_place_box {
+  width: 720rpx;
+  padding-top: 20rpx;
+  margin-left: 30rpx;
+  display: flex;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.place_name {
+  font-size: 28rpx;
+  color: #333333;
+  padding-top: 15rpx;
+}
+
+.activ_place_list {
+  width: 550rpx;
+  padding-left: 28rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.activ_place {
+  width: 130rpx;
+  height: 60rpx;
+  background: #F5F5F5;
+  border-radius: 6rpx;
+  margin-bottom: 25rpx;
+}
+
+.beyondEllipsis {
+  color: #999999;
+}
+
+.place {
+  height: 100%;
+  font-size: 28rpx;
+  color: #999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.selected_style {
+  color: #1EAC58;
+  font-size: 28rpx;
+}
+
+.activ_place:nth-child(3n + 2) {
+  margin: 0 80rpx;
+}
+
+.apply_activ {
+  display: flex;
+  margin-left: 30rpx;
+  position: relative;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.multi_text {
+  background: #F5F5F5;
+  width: 555rpx;
+  height: 250rpx;
+  margin: 30rpx 0 30rpx 24rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.max_words {
+  font-size: 24rpx;
+  color: #333333;
+  position: absolute;
+  bottom: 40rpx;
+  right: 44rpx;
+}
+
+.arrow_box {
+  display: flex;
+  align-items: center;
+  color: #999999;
+  padding-right: 30rpx;
+}
+
+.add_address {
+  font-size: 26rpx;
+}
+
+.right_arrow {
+  font-size: 22rpx;
+  padding-left: 14rpx;
+}
+
+.defaultAddress {
+  font-size: 28rpx;
+  color: #333333;
+  width: 555rpx;
+}
+
+.apply_tip {
+  font-size: 24rpx;
+  color: #999999;
+  padding: 14rpx 0 14rpx 30rpx;
+  background: #F5F5F5;
+}
+
+.optional_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFFFFF;
+}
+
+.optional_box text {
+  font-size: 28rpx;
+  color: #333333;
+  margin-left: 30rpx;
+  padding: 30rpx 0;
+}
+
+.wx_number {
+  text-align: right;
+  padding-right: 30rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.submit {
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1EAC58;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  position: fixed;
+  bottom: 0;
+  border-radius: 0;
+}

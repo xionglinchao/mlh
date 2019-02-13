@@ -1,0 +1,111 @@
+.open_course {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  text-align: center
+}
+
+.top_bg_pic {
+  width: 690rpx;
+  height: 342rpx;
+  margin: 30rpx 0;
+}
+
+.course_intro {
+  font-size: 24rpx;
+  color: #1eac58;
+  text-align: center;
+  width: 670rpx;
+  margin-bottom: 20rpx;
+}
+
+.sub_title_box {
+  width: 178rpx;
+  height: 50rpx;
+  position: relative;
+  z-index: 1;
+  margin: 10rpx 0 20rpx 0;
+}
+
+.sub_title {
+  font-size: 24rpx;
+  color: #fff;
+  position: absolute;
+  top: 8rpx;
+  left: 18rpx;
+}
+
+.list_container {
+  display: flex;
+  justify-content: space-between;
+  width: 636rpx;
+}
+
+.list_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.green_dot {
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: #1eac58;
+}
+
+.list_box_2 {
+  display: flex;
+  flex-direction: column;
+  width: 636rpx;
+}
+
+.each_list_2 {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+}
+
+.list_words_2 {
+  font-size: 24rpx;
+  color: #1eac58;
+  padding-left: 15rpx;
+  max-width: 610rpx;
+}
+
+.tips {
+  width: 550rpx;
+  height: 52rpx;
+  background: #afe2c5;
+  color: #1eac58;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 4rpx;
+  margin: 5rpx 0 30rpx 0;
+}
+
+.upload_path {
+  display: flex;
+  margin-bottom: 10rpx;
+}
+
+.vertical_line {
+  width: 2rpx;
+  height: 70rpx;
+  background: #1EAC58;
+  margin-right: 5rpx;
+}
+
+.path {
+  width: 690rpx;
+  height: 70rpx;
+  background: #1EAC58;
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 70rpx;
+  margin-right: 5rpx;
+}

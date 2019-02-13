@@ -1,0 +1,267 @@
+page, .page, .page__bd {
+  height: 100%;
+  width: 100%;
+  background: #f0f0f0;
+}
+
+.page__bd {
+  padding-bottom: 0;
+}
+
+.weui-tab__content {
+  float: left;
+  height: calc(100% - 47px);
+  width: 100%;
+}
+
+.weui-navbar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  width: 100%;
+  float: left;
+}
+
+.weui-tab {
+  position: relative;
+  height: 100%;
+}
+
+.weui-navbar__title {
+  display: inline-block;
+  font-size: 14px;
+  max-width: 8em;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  color: #333;
+}
+
+.weui-navbar__item {
+  position: relative;
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  padding: 13px 0;
+  text-align: center;
+  font-size: 0;
+  background: white;
+  float: left;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+  color: #1aad19;
+}
+
+.weui-navbar__slider {
+  position: absolute;
+  content: " ";
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  height: 3px;
+  background-color: #1aad19;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.scrollClass {
+  width: 100%;
+  margin-top: 52px;
+  margin-bottom: 55px;
+}
+
+.dataViewClass {
+  width: 100%;
+  height: 100px;
+  background: white;
+  border-top: 1px solid #f0f0f0;
+}
+
+.dataViewClass .bookImageClass {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.dataViewClass .nameViewClass {
+  width: calc(100% - 110px);
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.dataViewClass .nameViewClass .text1 {
+  display: block;
+  float: left;
+  line-height: 20px;
+  margin-top: 15px;
+  color: #565656;
+  font-size: 14px;
+  height: 40px;
+  width: 100%;
+}
+
+.dataViewClass .nameViewClass .text2 {
+  display: block;
+  float: left;
+  color: #3d9c70;
+  font-size: 13px;
+}
+
+.dataViewClass .nameViewClass .priceViewClass {
+  width: 100%;
+  height: 30px;
+  float: left;
+}
+
+.dataViewClass .nameViewClass .priceViewClass text {
+  display: block;
+  float: left;
+  color: red;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.dataViewClass .nameViewClass .priceViewClass .timeClass {
+  display: block;
+  float: left;
+  font-size: 14px;
+  color: #999;
+  margin-right: 10px;
+}
+
+.bottomViewClass {
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  background: white;
+  height: 50px;
+}
+
+.bottomViewClass .pushViewClass {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+}
+
+.bottomViewClass .pushViewClass .text1 {
+  width: 100px;
+  height: 30px;
+  display: block;
+  float: left;
+  line-height: 30px;
+  margin-top: 8px;
+  border: 1px solid #999;
+  margin-left: calc(25% - 40px);
+  color: #f60;
+  border-radius: 20px;
+}
+
+.bottomViewClass .pushViewClass .text2 {
+  width: 100px;
+  height: 30px;
+  display: block;
+  float: right;
+  line-height: 30px;
+  margin-top: 8px;
+  border: 1px solid #999;
+  margin-right: calc(45% - 40px);
+  color: #f60;
+  border-radius: 20px;
+}
+
+.touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  border-top: 1px solid #f0f0f0;
+}
+
+.content {
+  width: 100%;
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  margin-left: -90px;
+}
+
+.content1 {
+  width: 100%;
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(80px);
+  transform: translateX(80px);
+  margin-left: -80px;
+}
+
+.del {
+  background-color: orangered;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.del1 {
+  background-color: orangered;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(80px);
+  transform: translateX(80px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.xg_v {
+  width: 45px;
+  height: 100%;
+  background: #f60;
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  text-align: center;
+}
+
+.xg_v text {
+  display: block;
+  float: left;
+  width: 100%;
+  text-align: center;
+  line-height: 100px;
+}
+
+.touch-move-active .content, .touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.touch-move-active .content1, .touch-move-active .del1 {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}

@@ -1,0 +1,260 @@
+.fixed_box {
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  background: #FFFFFF;
+}
+
+/* 顶部用户基本信息 */
+
+.top_user_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35rpx 0;
+}
+
+.user_photo {
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 50%;
+  background: lightblue;
+  margin-left: 30rpx;
+  vertical-align: top;
+}
+
+.base_info_box {
+  width: 536rpx;
+  padding: 0 30rpx;
+}
+
+.name_profit_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.user_name {
+  font-size: 30rpx;
+}
+
+.total_margin {
+  font-size: 24rpx;
+  color: #1eac58;
+}
+
+.margin_money {
+  font-size: 30rpx;
+  color: #1eac58;
+}
+
+.ambassador_box {
+  display: flex;
+  align-items: center;
+  padding-top: 14rpx;
+}
+
+.crownIcon {
+  width: 35rpx;
+  height: 30rpx;
+}
+
+.ambassador {
+  font-size: 24rpx;
+  color: #666;
+  padding-left: 15rpx;
+}
+
+.grey_line {
+  width: 100%;
+  height: 15rpx;
+  background: #eaeaea;
+}
+
+/* 本月业绩统计 */
+
+.performance_box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.green_line {
+  width: 5rpx;
+  height: 25rpx;
+  background: #93b861;
+  margin: 0 20rpx 0 30rpx;
+}
+
+.title {
+  font-size: 30rpx;
+}
+
+.total_performance {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32rpx;
+}
+
+.total_sale_num {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32rpx 0 30rpx 0;
+}
+
+.total_money {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 30rpx;
+}
+
+.money_num {
+  font-size: 20rpx;
+  color: #666;
+}
+
+.percent_box {
+  display: flex;
+  align-items: center;
+  padding-right: 30rpx;
+}
+
+.progress_bar {
+  width: 460rpx;
+  height: 34rpx;
+  background: #F4F4F4;
+  border-radius: 16rpx;
+  display: flex;
+}
+
+.percentage {
+  font-size: 24rpx;
+  color: #666666;
+  margin: 0 20rpx 0 24rpx;
+}
+
+.upArrow {
+  font-size: 22rpx;
+  color: #E45B63;
+}
+
+.downArrow {
+  font-size: 22rpx;
+  color: #89D361;
+}
+
+/* 业绩利润记录 */
+.profit_record {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #D2D2D2;
+}
+
+.record_words {
+  font-size: 30rpx;
+  padding: 30rpx 0;
+  border-bottom: 4rpx solid #20BB5F;
+  margin-left: 30rpx;
+}
+
+.dateIcon {
+  font-size: 38rpx;
+  margin-right: 30rpx;
+}
+
+/* 收益记录列表 */
+.record_list {
+  width: 100%;
+  position: relative;
+  float: left;
+  top: 0;
+  overflow: scroll;
+  padding-top: 614rpx;
+}
+
+.single_record_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #D2D2D2;
+}
+
+.partner {
+  display: flex;
+  align-items: center;
+}
+
+.record_photo {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  background: lightblue;
+  margin-right: 12rpx;
+}
+
+.record_detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.partner_name {
+  font-size: 30rpx;
+  max-width: 200rpx;
+}
+
+.partner_act {
+  font-size: 24rpx;
+  color: #666666;
+  padding: 6rpx 0;
+}
+
+.partner_act_sec {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.act_time {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.money_record {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-right: 30rpx;
+  height: 120rpx;
+}
+
+.money {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.single_detail_box {
+  display: flex;
+}
+
+.check_detail {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.doubleArrow {
+  font-size: 30rpx;
+  color: #666666;
+  padding: 4rpx 0 0 10rpx;
+}

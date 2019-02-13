@@ -1,0 +1,56 @@
+<!-- <include src='../../template/mdk_temp.wxml' /> -->
+
+<view class="page_box">
+  <image class="draw_bg" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/draw_bg.jpg" mode='widthFix'></image>
+  <view class='luckBox' wx-if='{{showPan}}'>
+    <image class='panBottom' src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/panBottom.png"></image>
+    <image class='panImg' src="{{ lottery_bg }}" animation="{{animation}}"></image>
+    <image class='luckCenter' bindtap='getCode' src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/luckCenter.png"></image>
+  </view>
+  <view class='page-contant'>
+    <view class='douNumBox'>
+      <text class='text'>您还有</text>
+      <text class='textNum'>{{integral}}</text>
+      <text class='text'>智慧豆</text>
+    </view>
+    <view class='btnBox'>
+      <view class='btnWrap' bindtap='getCode'>
+        <image class='luckBtn' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/luckBtn.png'></image>
+        <text>抽奖时使用{{lottery_num}}智慧豆</text>
+      </view>
+      <view class='btnWrap' bindtap='chongzhi' wx:if="{{ system != 'iOS' }}">
+        <image class='luckBtn' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/luckBtn2.png'></image>
+        <text>充值智慧豆</text>
+      </view>
+    </view>
+    <view class='ruleBox'>
+      <view class='ruleTitle'>抽奖规则</view>
+      <view class='ruleText' wx:for='{{rule}}' wx:key='{{index}}' wx:if='{{item}}'>
+        <text class='dotCircle'></text>{{item}}
+      </view>
+    </view>
+    <view class='messageBox'>
+      <view class='messageText' wx:for='{{record}}' wx:key='{{index}}'>
+        <image class='luckMessage' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/luckMessage.png'></image>恭喜{{item.username}}获得{{item.prize}}
+      </view>
+    </view>
+  </view>
+  <!-- 客服按钮 -->
+  <button class="serviceBtn" open-type="contact">
+    <text class="iconfont icon-service serviceIcon"></text>
+  </button>
+</view>
+
+<!-- 中奖弹窗 -->
+<view class="mysteriousGift_popup" hidden="{{ isMysteriousGiftHide }}">
+  <view class="mystGift_bg" catchtap="hideMystGift"></view>
+  <view class="mystGift_box">
+    <image class="mystGift" mode="widthFix" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rewarder_popup.png">
+      <view class="rewarder_info">
+        <image class="rewarder_pic" src="{{ prize.litpic }}"></image>
+        <view class="rewarder_name">{{ prize.name }}</view>
+        <view class="confirm_btn" catchtap="confirmBtnClick">确定</view>
+      </view>
+    </image>
+  </view>
+</view>

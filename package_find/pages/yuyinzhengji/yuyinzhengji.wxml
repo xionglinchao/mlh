@@ -1,0 +1,53 @@
+<view class="t-box">
+
+  <scroll-view scroll-y class="scroll-box">
+    <view>
+      <input class="yuyin_title" type="text" placeholder="加入标题输入哦" placeholder-style="font-size: 34rpx; color: #999;" id="1" bindinput="getInputMsg"></input>
+      <textarea class="yuyin_cont" maxlength="140" placeholder="输入您想发布的内容吧" placeholder-style="font-size: 32rpx; color: #999;" id="2" bindinput="getInputMsg"></textarea>
+    </view>
+
+    <view class="yuyin-box">
+      <!-- <view class="add-yuyin" catchtap='recordAuth' catchlongtap='startRecord' catchtouchend='stopRecord'>
+        <text class="iconfont icon-yuyin yuyin"></text>
+        <text class="yuyin_words">长按此处</text>
+      </view> -->
+      <!-- <view class="recording-box" catchtap='playRecord'>
+        <text class="iconfont icon-yuyin yuyin2"></text>
+        <text class=''>点击播放</text>
+        <text class="recording_time">{{ audioDuration < 10 ? '0:0' + audioDuration:'0:' + audioDuration }}</text>
+      </view> -->
+      <view class='cnm_audio'>
+        <view class='yuyin_bar' wx:if="{{ audioTempath && audioDuration > 0 }}" catchtap="playRecord">
+          <image class='yuyintou' src='/images/readTrees/funGame/yuyintou.png'>
+            <view class="yuyinline {{ isPlaying ? 'sprite' : 'sprite1' }}"></view>
+          </image>
+          <view class='audio_content' style='{{ "width: " + (audioDuration * 13) + "rpx;" }}'></view>
+          <image class='yuyinwei' src='/images/readTrees/funGame/yuyinwei.png'>
+            <text class='voice_time_length'>{{ audioDuration }}''</text>
+          </image>
+        </view>
+        <view class='audio_control_btn' wx:if="{{ showCbtn }}">
+          <view class='c_btn1' hover-class='bottom_v_1' catchtap="playRecord">重听</view>
+          <view class='c_btn2' hover-class='bottom_v_1' catchtap="delRecord">删除</view>
+        </view>
+      </view>
+
+
+    </view>
+    <!-- <text class="yuyin_note">（只能上传1条）</text>  -->
+  </scroll-view>
+
+  <!-- <view class="submit-box" catchtap="submitAudio">
+    <text class="submit">提交</text>
+  </view> -->
+
+  <view class='sound_bottom'>
+    <view class='cancel_sound' hover-class='bottom_v_1' catchtap='btn_cancel_recording'>重置</view>
+    <view class='click_sound' hover-class='bottom_v_1' catchtap='btn_record_click'>
+      <image src='/images/sound.png'></image>
+      <text class='text_block'>{{ (soundMinute >= 10 ? soundMinute : '0' + soundMinute) + ':' + (soundSecond >= 10 ? soundSecond : '0' + soundSecond) }}</text>
+    </view>
+    <view class='comfirm_sound' hover-class='bottom_v_1' catchtap='btn_confirm_recording'>发布</view>
+  </view>
+
+</view>

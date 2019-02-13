@@ -1,0 +1,206 @@
+.top_title {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  background: #1eac58;
+}
+
+.buy_course, .my_course {
+  font-size: 32rpx;
+  color: #fff;
+  padding-bottom: 20rpx;
+  border-bottom: 4rpx solid #fff;
+}
+
+.noChoose {
+  font-size: 32rpx;
+  color: #71c38d;
+  padding-bottom: 20rpx;
+  border: none;
+}
+
+.scroll_list {
+  width: 100%;
+  height: 84vh;
+  overflow: scroll;
+}
+
+/* 顶部用户信息 */
+
+.top_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 750rpx;
+  padding: 16rpx 0;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.user_info_box {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.user_photo {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.name_sign_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_name {
+  font-size: 28rpx;
+  color: #1eac58;
+  max-width: 300rpx;
+}
+
+.user_sign {
+  font-size: 20rpx;
+  color: #ababab;
+  max-width: 300rpx;
+}
+
+.course_btn {
+  width: 128rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: #1eac58;
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 60rpx;
+  margin-right: 30rpx;
+}
+
+/* 视频课程列表 */
+
+.videoCourse_box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 12rpx 25rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.dot_box {
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+  border: 2rpx solid #1eac58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+.green_dot {
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: #1eac58;
+}
+
+.mask_layer {
+  width: 100%;
+  height: 138rpx;
+  background-color: #000;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+
+.videoCourse_pic {
+  width: 240rpx;
+  height: 138rpx;
+  border-radius: 8rpx;
+  position: relative;
+  z-index: 1;
+  font-size: 0;
+}
+
+.videoIcon {
+  position: absolute;
+  z-index: 3;
+  width: 50rpx;
+  height: 33rpx;
+  left: 50%;
+  margin-left: -25rpx;
+  top: 40%;
+}
+
+.yuyinIcon {
+  position: absolute;
+  z-index: 3;
+  width: 36rpx;
+  height: 50rpx;
+  left: 50%;
+  margin-left: -20rpx;
+  top: 30%;
+}
+
+.course_intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 138rpx;
+  margin-left: 22rpx;
+}
+
+.course_title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.sale_status {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.update_num, .study_num {
+  color: #999;
+  font-size: 20rpx;
+  padding-right: 16rpx;
+}
+
+.course_price {
+  font-size: 30rpx;
+  color: #ff3f3c;
+  margin-right: 16rpx;
+}
+
+/* 加号按钮 */
+.plus_pic {
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 125rpx;
+  left: 325rpx;
+  z-index: 10;
+}
+
+/* 底部编辑按钮 */
+
+.choose_course {
+  width: 100%;
+  height: 8vh;
+  background: #1eac58;
+  font-size: 36rpx;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

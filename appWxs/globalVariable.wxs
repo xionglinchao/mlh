@@ -1,0 +1,34 @@
+var bookLibrary = ['文字故事', '赏析', '作者说', '相关推荐'];
+
+var activityPro = ['活动详情', '用户评论', '相关书籍'];
+
+var articlePro = ['文章详情', '用户评论'];
+
+var bookComment = ['录音', '引导阅读', '亲子游戏', '日记画', '编创故事'];
+
+var createBookComment = ['全部', '录音', '引导阅读', '亲子游戏', '日记画', '编创故事', '童书馆']; // 创作界面
+
+var decover = ['精选', '附近读书会', '动态'];
+
+var myFollowPro = ['我关注的', '关注我的'];
+
+var relayPro = ['书籍介绍', '接力规则', '最新心得'];
+
+var titleCollection = ['活动', '商品', '帖子'];
+
+
+var ossImage = 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/'; // oss图片路径
+var ossImage1 = 'https://wechat800.oss-cn-shanghai.aliyuncs.com/'
+
+module.exports = {
+  bookLibrary: bookLibrary,
+  ossImage: ossImage,
+  bookComment: bookComment,
+  createBookComment: createBookComment,
+  decover: decover,
+  myFollowPro: myFollowPro,
+  articlePro: articlePro,
+  activityPro: activityPro,
+  relayPro: relayPro,
+  titleCollection: titleCollection
+}

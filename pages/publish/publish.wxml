@@ -1,0 +1,92 @@
+<!--pages/publish/publish.wxml-->
+<form bindsubmit='btn_submit'>
+  <view class="publishViewClass">
+    <!-- 顶部选择文学作品-->
+    <block wx:if="{{typeName == 1}}">
+      <view class='coose_book_background_view'>
+        <view class="choose_book_view" hover-class="bottom_v_1" bindtap='btn_choose_book'>
+          <block wx:if="{{createBookId == 0}}">
+            <text class='text_block book_name_text'>＋请选择文学作品</text>
+          </block>
+          <block wx:else>
+            <text class='text_block book_name_text_'>{{createBookName}}</text>
+          </block>
+          <image src='/images/send/right.png'></image>
+        </view>
+      </view>
+    </block>
+    <!-- 文章标题 -->
+    <view class="type1">
+      <view class="typeClass">
+        <image src='/images/homepage/type5.png'></image>
+        <block wx:if="{{isLoading}}">
+          <input placeholder="{{ typeName == 1 ? '请输入活动名称' : '请输入文章标题' }}" placeholder-style='color: #999;font-size: 28rpx;' name="name" maxlength='50' value='{{name}}'></input>
+        </block>
+      </view>
+      <!-- 活动地址 -->
+      <view class="typeClass" hidden='{{typeName == 1 ? false : true}}'>
+        <image src='/images/homepage/type4.png'></image>
+        <block wx:if="{{isLoading}}">
+          <!-- <input placeholder='请输入活动地址' placeholder-style='color: #999;font-size: 28rpx;' name="address" maxlength='50' value='{{address}}'></input> -->
+          <view class='addressClass' style="{{ address ? 'color:#333;' : 'color:#999;' }}" catchtap="selectAddress">{{ address ? address : '请选择活动地址' }}</view>
+        </block>
+      </view>
+      <!-- 活动人数 -->
+      <view class="typeClass" hidden='{{typeName == 1 ? false : true}}'>
+        <image src='/images/homepage/type9.png'></image>
+        <block wx:if="{{isLoading}}">
+          <input placeholder='请输入活动人数' placeholder-style='color: #999;font-size: 28rpx;' name="person" maxlength='10' type='number' value='{{person}}'></input>
+        </block>
+      </view>
+      <!-- 活动日期 -->
+      <block wx:if="{{typeName == 1}}">
+        <picker class="typeClass" mode='date' value="{{date}}" bindchange='btn_date' start="2018-01-01">
+          <image src='/images/homepage/type13.png'></image>
+          <text style='display:block;float:left;width: calc(100% - 40px);margin-left: 15px;height: 40px;margin-top: 5px;line-height: 40px;float: left;font-size: 28rpx;display: block;color:#999;'>{{dataTime == '' ? '请选择活动开始时间' : dataTime}}</text>
+        </picker>
+        <picker class="typeClass" mode='date' value="{{date}}" bindchange='btn_date1' start="{{ dataTime }}">
+          <image src='/images/homepage/type13.png'></image>
+          <text style='display:block;float:left;width: calc(100% - 40px);margin-left: 15px;height: 40px;margin-top: 5px;line-height: 40px;float: left;font-size: 28rpx;display: block;color:#999;'>{{endTime == '' ? '请选择活动结束时间' : endTime}}</text>
+        </picker>
+        <picker class="typeClass" mode='date' value="{{date}}" bindchange='btn_date2' start="{{ dataTime }}">
+          <image src='/images/homepage/type13.png'></image>
+          <text style='display:block;float:left;width: calc(100% - 40px);margin-left: 15px;height: 40px;margin-top: 5px;line-height: 40px;float: left;font-size: 28rpx;display: block;color:#999;'>{{jTime == '' ? '请选择活动报名截止时间' : jTime}}</text>
+        </picker>
+      </block>
+
+      <view style="clear:both;"></view>
+    </view>
+    <view class="type2">
+      <block wx:if="{{isLoading}}">
+        <textarea placeholder="{{typeName == 1 ? '请输入活动详情' : '请输入文章详情'}}" placeholder-style='color: #999;font-size: 28rpx;' name="information" maxlength='1000' value='{{information}}'></textarea>
+      </block>
+
+      <view class="ImageViewClass" style='padding-top:20px;'>
+        <block wx:for="{{pics}}" wx:key>
+          <view class="addImageView1Class" bindtap='btn_Upload'>
+            <image class="image1" src='{{item}}' style=' width: 80px;height:80px;' mode="aspectFill"></image>
+            <image class="image2" src='/images/d.png' catchtap='btn_delete' data-index='{{index}}'></image>
+          </view>
+        </block>
+        <view class="addImageViewClass" bindtap='btn_image'>
+          <image src='/images/homepage/j.png'></image>
+          <text>添加图片</text>
+        </view>
+
+        <view style="clear:both;"></view>
+      </view>
+      <view style="clear:both;"></view>
+    </view>
+    <button class="sendViewClass" form-type='submit' disabled='{{isDisabled}}'>确认发起</button>
+  </view>
+</form>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='/images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+  <image src="/images/kt.gif"></image>
+</view>

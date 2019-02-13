@@ -1,0 +1,39 @@
+<!--pages/leaveComments/leaveComments.wxml-->
+<view class='page_view'>
+  <view class='head_view'>
+    <view class='input_view' catchtap='btn_go_comment'>请输入回复内容</view>
+    <text class="input_name">留言</text>
+  </view>
+
+  <scroll-view class='comment_scroll' scroll-y="true">
+    <block wx:for="{{leaveComments}}" wx:key>
+      <view class='comment_content_view'>
+        <view class="comment_content_head_view">
+          <image src='{{item.litpic}}' class='item_head_image' catchtap="toPersonalHomepage" data-item="{{ item }}"></image>
+          <view class='item_head_content'>
+            <text class='item_head_content_name'>{{item.username}}</text>
+            <text class='item_head_content_time'>{{item.time}}</text>
+          </view>
+          <text class='item_head_h' catchtap='btn_replay' data-item="{{item}}">回复</text>
+          <image class="item_head_h_image" src='../../images/message.png' catchtap='btn_replay' data-item="{{item}}"></image>
+        </view>
+
+        <view class='item_content'>{{item.content}}</view>
+
+        <scroll-view class='item_comment_scroll' scroll-y="true">
+          <block wx:for="{{item.two_news}}" wx:key wx:for-item="twoItem">
+            <view class='item2_view'>
+              <text>{{twoItem.userId_name + '回复' + twoItem.newsId_name}} : {{twoItem.content}}</text>
+              <view style="clear:both;"></view>
+            </view>
+          </block>
+          <view style="clear:both;"></view>
+        </scroll-view>
+
+        <view style="clear:both;"></view>
+      </view>
+    </block>
+
+    <view style="clear:both;"></view>
+  </scroll-view>
+</view>

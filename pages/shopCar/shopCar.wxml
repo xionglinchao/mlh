@@ -1,0 +1,32 @@
+<!--pages/shopCar/shopCar.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="shopCarViewClass" >
+    <view class="MenuCarClass">
+      <scroll-view scroll-y="true" style="width:100%;height:100%;">
+        <block wx:for="{{carPro}}">
+          <view class="ShopViewClass">
+            <image class="radioClass" src="{{item.isSelect ? '../../images/select.png' : '../../images/no_select.png'}}" bindtap="btn_select" data-item="{{item}}"></image>
+            <image class="ImageClass" src="{{globalVariable.ossImage + item.litpic}}" mode="aspectFill"></image>
+            <view class="menuViewClass">
+              <text class="name">{{item.name}}</text>
+              <text class="spec">¥ {{item.money}}</text>
+              <text class="price">¥ {{item.moneys}}<text style='color: #3c9d70;font-size: 12px;'>+ {{item.integral}}积分</text></text>
+            </view>
+            <image class="clearImageClass" src="../../images/clear.png" bindtap="btn_clear" data-item="{{item}}" data-index = "{{index}}"></image>
+             <view class="GoodsNumClass">
+            <image class="add" src="{{globalVariable.ossImage}}meilihua/upload/add.png" bindtap="btn_add" data-item = "{{item}}" data-item="{{item}}" data-index = "{{index}}"></image>  
+            <text class="num">{{item.num}}</text>
+             <image class="sub" src="{{globalVariable.ossImage}}meilihua/upload/sub.png" bindtap="btn_sub" data-item = "{{item}}" data-item="{{item}}" data-index = "{{index}}"></image> 
+             </view> 
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="bottomViewClass">
+      <image src="{{isCheck ? '../../images/select.png' : '../../images/no_select.png'}}" bindtap="btn_all_select"></image>
+      <text class="allText" bindtap="btn_all_select">全部</text>
+      <text class="{{shopNum > 0 ? 'goSendClass' : 'goSendClass1'}}" bindtap="btn_send">去结算(<text>{{shopNum}}件</text>)</text>
+      <text class="priceClass">¥{{shopMoney/100}}</text>
+
+    </view>
+  </view>

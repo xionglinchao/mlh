@@ -1,0 +1,33 @@
+<!--pages/joinMeeting/joinMeeting.wxml-->
+<form bindsubmit='btn_submit'>
+<scroll-view class = "pClass" scroll-y = "true">
+    <text class = "text1">个人信息</text>
+    <view class = "type1">
+        <text>称呼</text>
+        <input placeholder='请输入您的称呼' placeholder-style='color: #ccc;' name = "name"></input>
+    </view>
+  
+    <view class = "type1" style='margin-top: 10px;'>
+        <text>联系电话</text>
+        <input placeholder='请输入您的联系电话' type='number' placeholder-style='color: #ccc;'  name = "phone"  maxlength='11' ></input>
+    </view>
+    <text class = "text1">加入理由</text>
+    <textarea class ="areaClass" placeholder='请输入加入理由' placeholder-style='color: #ccc;' name = "remarks"></textarea>
+    <view class = "view1">
+      <text class = "text2">要求</text>
+      <text class = "text3">1.认同美丽花让天下孩子爱上阅读的理念，能接受专业指导并实践，不得以美丽花名义开展经营性活动</text>
+      <text class = "text4">2.保证每次亲子读书会在3名孩子及以上</text>
+      <text class = "text5">3.对于绘本阅读有一定的认知，热心于公益阅读并能在社区组织亲子读书会</text>
+      <view style="clear:both;"></view>
+    </view>
+    
+</scroll-view>
+<button class = "button1" formType='submit'>提交</button>
+</form>
+
+
+<view class = "ShowToastClass" hidden='{{isShowToast}}'>
+    <image src='../../../images/gou.png'></image>
+    <text>{{toastData}}</text>
+    <view style="clear:both;"></view>
+</view>

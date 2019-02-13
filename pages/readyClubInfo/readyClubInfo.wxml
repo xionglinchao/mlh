@@ -1,0 +1,15 @@
+<!--pages/readyClubInfo/readyClubInfo.wxml-->
+<view class = "pClass">
+    <view class = "view1" bindtap='btn_basic'>
+        <text>基本信息</text>
+        <image src='../../images/send/right.png'></image>
+    </view>
+    <view class = "view1" style='margin-top:8px;' bindtap='btn_consignee'>
+        <text>收件信息</text>
+        <image src='../../images/send/right.png'></image>
+    </view>
+    <view class = "view1" style='margin-top:8px;' bindtap='btn_attorn'>
+        <text>转让读书会</text>
+        <image src='../../images/send/right.png'></image>
+    </view>
+</view>

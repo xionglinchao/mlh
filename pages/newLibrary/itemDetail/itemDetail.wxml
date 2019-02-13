@@ -1,0 +1,37 @@
+<view class='page_box'>
+  <!-- 顶部侧滑栏 -->
+  <swiper class='swiper_box' autoplay current='1' indicator-dots indicator-color='rgba(0,0,0,0.6)' indicator-active-color='#FFFFFF'>
+    <block wx:for='{{ slidePic }}' wx:key>
+      <swiper-item>
+        <image class='slide_pic' src='{{ item }}'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 底部导航栏 -->
+  <view class='icon_box'>
+    <view class='single_icon_box active' style='margin-left:30rpx;'>
+      <text class='iconfont icon-luyin luyin'></text>
+      <text class='icon_words'>录音</text>
+    </view>
+    <text class='green_dot'></text>
+    <view class='single_icon_box'>
+      <text class='iconfont icon-yueduliang yueduliang'></text>
+      <text class='icon_words'>引导阅读</text>
+    </view>
+    <text class='green_dot'></text>
+    <view class='single_icon_box'>
+      <text class='iconfont icon-gushibaoku gushibaoku'></text>
+      <text class='icon_words'>故事赏析</text>
+    </view>
+    <text class='green_dot'></text>
+    <view class='single_icon_box' style='margin-right:30rpx;'>
+      <text class='iconfont icon-shuji shuji'></text>
+      <text class='icon_words'>相关书籍</text>
+    </view>
+  </view>
+
+  <!-- 录音 -->
+  <scroll-view scroll-y class='scroll_list'>
+    
+  </scroll-view>
+</view>

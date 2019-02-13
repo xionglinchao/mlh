@@ -1,0 +1,198 @@
+<view class='page_box'>
+  <view class='top_fix_part'>
+    <!-- 顶部用户信息 -->
+    <view class='top_user_info'>
+      <image class='user_photo' mode="aspectFill" src="{{ audioCourse.cover_img }}"></image>
+      <view class='name_collect_share'>
+        <view class='name_sign'>
+          <text class='user_name beyondEllipsis'>{{ audioCourse.title }}</text>
+          <text class='user_sign beyondEllipsis'>{{ audioCourse.subtitle }}</text>
+        </view>
+        <view class='collect_box' catchtap='collectionBtnClick'>
+          <block wx:if='{{ audioCourse.is_collect == 1 }}'>
+            <text class='iconfont icon-star-selected starIcon' style='color:#FF6600;'></text>
+          </block>
+          <block wx:else>
+            <text class='iconfont icon-star-empty starIcon'></text>
+          </block>
+          <text class='collect_words'>收藏</text>
+        </view>
+        <button class='share_box' catchtap='showModal2'>
+          <text class='iconfont icon-share2 share2Icon'></text>
+          <text class='share_words2'>分享</text>
+        </button>
+      </view>
+    </view>
+
+    <view class='play_list_title'>
+      <text class='iconfont icon-play_list playListIcon'></text>
+      <text class='playList_words'>播放列表</text>
+    </view>
+  </view>
+  <scroll-view scroll-y class="scroll_list">
+    <!-- 所有课程列表 -->
+    <view class='audio_list' wx:for="{{ lists }}" wx:key catchtap="playAudioCourse" data-item="{{ item }}" data-audio-idx="{{ index }}">
+      <view class='dot_title'>
+        <view class='green_dot_box' wx:if="{{ audioIdx == index }}">
+          <view class='green_dot'></view>
+        </view>
+        <view class='audio_title_box'>
+          <view class="{{ audioIdx == index ? 'course_name1':'course_name' }} beyondEllipsis">{{ item.course_title }}</view>
+          <!-- <view class='period'>({{ item.period }}期)</view> -->
+        </view>
+      </view>
+      <block wx:if="{{ item.is_pay == 1 }}">
+        <!-- <view class='iconfont {{ item.isPlaying ? "icon-playing":"icon-play" }} playIcon'></view> -->
+        <text class="audio_duration {{ audioIdx == index ? 'selected':'' }}">{{ item.min }}:{{ item.sec > 9 ? item.sec:'0'+item.sec }}</text>
+      </block>
+      <block wx:else>
+        <text class='iconfont icon-lock lockIcon'></text>
+      </block>
+    </view>
+  </scroll-view>
+  <view class='bottom_fixed_box'>
+    <!-- 滑动条 -->
+    <view class='slider_bar_box'>
+      <text class='star_time'>{{ curMin > 9 ? curMin:'0' + curMin }}:{{ curSec > 9 ? curSec:'0' + curSec }}</text>
+      <slider class='audio_slider_bar' max="{{ totalDuration }}" value="{{ currentTime }}" bindchange="slidingBar" block-size="12" backgroundColor='#E2E2E2' block-size='20'></slider>
+      <block wx:if="{{ sec && min }}">
+        <block wx:if="{{ sec < 9 && sec > 0 }}">
+          <text class='end_time'>{{ min }}:{{ '0' + sec }}</text>
+        </block>
+        <block wx:else>
+          <text class='end_time'>{{ min }}:{{ sec }}</text>
+        </block>
+      </block>
+      <block wx:else>
+        <text class='end_time'>00:00</text>
+      </block>
+    </view>
+    <!-- 播放 -->
+    <view class='play_icon_box'>
+      <text class='iconfont icon-previous previousIcon' catchtap="previousAudio"></text>
+      <text class="iconfont {{ isPlaying ? 'icon-playing':'icon-play2' }} play2Icon" catchtap="audioPlayClick"></text>
+      <text class='iconfont icon-next nextIcon' catchtap="nextAudio"></text>
+    </view>
+    <!-- 底部交互栏 -->
+    <view class='interaction_box'>
+      <text class='iconfont icon-homePage homePageIcon' catchtap="toHomepage"></text>
+      <view class='input_box' catchtap='showModal'></view>
+      <!-- <view class='sendIcon_box'>
+        <text class='iconfont icon-yuyin sendMessageIcon'></text>
+        <text class='send_words'>语音</text>
+      </view> -->
+      <view class='sendIcon_box'>
+        <text class='iconfont icon-send_message sendMessageIcon'></text>
+        <text class='send_words'>发送</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--屏幕背景变暗的背景 -->
+<view class="commodity_screen" catchtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框 -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class='cancel_box'>
+    <text class='iconfont icon-cancel cancelIcon' catchtap="hideModal"></text>
+  </view>
+  <scroll-view scroll-y class='commentList' scroll-top="{{ toTop }}">
+    <view class='user_info_box' wx:for='{{ commentList }}' wx:key>
+      <image class='commentUser_photo' src='{{ item.litpic }}'></image>
+      <view class='comment_info_box'>
+        <view class='name_dianzan'>
+          <text class='commentUser_name'>{{ item.name }}</text>
+          <view class='dianzan_box' catchtap="likeBtnClick" data-item="{{ item }}">
+            <!-- <text class='iconfont icon-dianzan dianzanIcon'></text> -->
+            <image class='heart' src="{{ item.is_like ? '/images/like.png':'/images/like_empty.png' }}"></image>
+            <text class='dianzan_num'>{{ item.likes }}</text>
+          </view>
+        </view>
+        <view class='comment_cont' catchtap="showReplyModal" data-id="{{ item.id }}">{{ item.content }}</view>
+        <view class='time_cancel'>
+          <view class="time_replyNum">
+            <text class='comment_time'>{{ item.time }}</text>
+            <text class="reply_num" wx:if="{{ item.second.length > 0 }}" catchtap="showMoreComment" data-idx="{{ index }}">{{ item.second.length }}回复</text>
+          </view>
+          <text class='cancel_btn' catchtap="delBtnClick" data-item="{{ item }}" wx:if="{{ item.is_mine }}">删除</text>
+        </view>
+        <view class="sec_comment" wx:if="{{ item.second }}">
+          <block wx:if="{{ item.isShow }}">
+            <view class="reply_box" wx:for="{{ item.second }}" wx:key wx:for-item="item2" catchtap="secCommendClick" data-id="{{ item2.id }}">
+              <text class="left_name">{{ item2.name_zuo }}</text>
+              <text class="reply_word">回复</text>
+              <text class="right_name">{{ item2.name_you }}：</text>
+              <text class="reply_cont">{{ item2.content }}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 弹窗底部交互栏 -->
+  <view class='interaction_box second'>
+    <text class='iconfont icon-homePage homePageIcon'></text>
+    <input class='input_box' focus="{{ isFocus }}" bindinput="bindValueInput" value="{{ commentContent }}"></input>
+    <view class='sendIcon_box' catchtap="sendMessage" catchtap="leaveMessage">
+      <text class='iconfont icon-send_message sendMessageIcon'></text>
+      <text class='send_words'>发送</text>
+    </view>
+  </view>
+</view>
+
+<!-- 解锁弹窗 -->
+<view class="rule_popup" hidden="{{ isLockBoxHide }}" catchtouchmove="preventDeafult">
+  <view class="popup_bg" catchtap="unlockHidePopup" catchtouchmove="preventDeafult"></view>
+  <view class="popup_box">
+    <view class='lockCancel_box'>
+      <text class='iconfont icon-cancel lockCancel' catchtap="unlockHidePopup"></text>
+    </view>
+    <view class='lock_box'>
+      <image class='lock_pic' src='../../../images/discover/unlock.png'></image>
+    </view>
+    <image class='qipao_bg' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/qipao_bg.png'>
+      <view class='unlock_btn_box'>
+        <text class='unlock_course_name beyondEllipsis'>当前需要解锁课程名称</text>
+        <view class='unlock_btn' catchtap="toBuyCourse">
+          <text class='vertical_line1'></text>
+          <text class='vertical_line2'></text>
+          <text class='vertical_line3'></text>
+          <view class='unlock_words'>解锁当前课程</view>
+          <text class='vertical_line3'></text>
+          <text class='vertical_line2' style='margin:0 2rpx 0 4rpx;'></text>
+          <text class='vertical_line1'></text>
+        </view>
+      </view>
+    </image>
+  </view>
+</view>
+
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen2" bindtap="hideModal2" wx:if="{{showModalStatus2}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box2" wx:if="{{showModalStatus2}}">
+  <view class="share_words words_1">分享</view>
+  <view class="share_container">
+    <button class="shareBtn" open-type="share" data-item="{{ articleDetail }}">
+      <view class="share_box2">
+        <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/weChat.png"></image>
+        <text class="share_words">分享朋友</text>
+      </view>
+    </button>
+    <view class="share_box2" catchtap="shareFriendCircle">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/circle_friend.png?1"></image>
+      <text class="share_words">保存图片</text>
+    </view>
+  </view>
+</view>
+
+<!-- 回复 -->
+<view class="commodity_screen2" bindtap="hideReplyModal" wx:if="{{showModalStatus3}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box3" wx:if="{{showModalStatus3}}">
+  <view class="reply_cancel_box">
+    <text class="reply_btn" catchtap="replyBtnClick">回复</text>
+    <text class="grey_line"></text>
+    <text class="cancel_btn_s" catchtap="cancelBtnClick">取消</text>
+  </view>
+</view>

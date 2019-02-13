@@ -1,0 +1,248 @@
+page {
+  width: 100%;
+  height: 100vh;
+  background: #f7f9fa;
+}
+
+.top_box {
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.user_info_box {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0 16rpx 30rpx;
+}
+
+.user_photo {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: lightblue;
+}
+
+.user_name {
+  font-size: 28rpx;
+  padding-left: 12rpx;
+}
+
+/* 购买课程信息 */
+
+.course_info_box {
+  width: 100%;
+  height: 175rpx;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+}
+
+.course_img_box {
+  width: 230rpx;
+  height: 152rpx;
+  margin-left: 30rpx;
+}
+
+.course_img {
+  width: 230rpx;
+  height: 152rpx;
+  vertical-align: top;
+  border-radius: 15rpx;
+  background: lightblue;
+  position: relative;
+}
+
+.mask {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  height: 44rpx;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.13);
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 44rpx;
+}
+
+.title_price_box {
+  width: 100%;
+  height: 152rpx;
+  margin: 0 30rpx 0 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course_title {
+  font-size: 28rpx;
+}
+
+.course_price_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.course_price {
+  font-size: 24rpx;
+  color: #fc5d48;
+}
+
+.course_type {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 选择优惠券 */
+
+.choose_coupons_box {
+  width: 690rpx;
+  height: 100rpx;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.choose_words {
+  font-size: 28rpx;
+}
+
+.arrow_box {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.right_arrow {
+  font-size: 24rpx;
+  padding-left: 6rpx;
+}
+
+/* 底部支付栏 */
+
+.buy_box {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+}
+
+.pay_money_box {
+  display: flex;
+  flex-direction: column;
+  width: 420rpx;
+}
+
+.waiting_pay {
+  display: flex;
+  padding: 16rpx 0 0 30rpx;
+}
+
+.pay_words {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.pay_money {
+  font-size: 24rpx;
+  color: #fc5d48;
+}
+
+.discounts {
+  font-size: 26rpx;
+  color: #b1b1b1;
+  padding-left: 30rpx;
+}
+
+.buy_btn {
+  width: 330rpx;
+  background: #03b349;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+/* 底部弹出框 */
+
+/*使屏幕变暗  */
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/*对话框 */
+
+.commodity_attr_box {
+  height: 830rpx;
+  width: 100%;
+  overflow: scroll;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+
+.coupons_num {
+  font-size: 26rpx;
+  color: #666666;
+  padding: 30rpx;
+}
+
+.coupon_pic {
+  width: 675rpx;
+  height: 230rpx;
+  padding-left: 40rpx;
+  position: relative;
+}
+
+.coupon_value {
+  position: absolute;
+  top: 64rpx;
+  right: 26rpx;
+  font-size: 50rpx;
+  color: #fff;
+}
+
+.use_time {
+  font-size: 24rpx;
+  color: #C3C3C3;
+  position: absolute;
+  bottom: 24rpx;
+  left: 60rpx;
+}
+
+.cancel_btn {
+  width: 280rpx;
+  height: 80rpx;
+  border-radius: 38rpx;
+  border: 2rpx solid #B1B1B1;
+  font-size: 30rpx;
+  color: #666666;
+  text-align: center;
+  line-height: 80rpx;
+  margin: 30rpx 235rpx;
+}
+
+.course_name {
+  width: 310rpx;
+  color: #fff;
+  font-size: 24rpx;
+  position: absolute;
+  top: 74rpx;
+  left: 196rpx;
+}

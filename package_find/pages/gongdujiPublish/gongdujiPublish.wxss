@@ -1,0 +1,97 @@
+.bg_pic {
+  width: 100%;
+  height: 100vh;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.top_time_box {
+  position: absolute;
+  z-index: 2;
+  top: 70rpx;
+  left: 40rpx;
+  width: 670rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.date_box {
+  display: flex;
+}
+
+.day_time {
+  font-size: 90rpx;
+  color: #333333;
+  padding-right: 20rpx;
+}
+
+.date_box2 {
+  display: flex;
+  flex-direction: column;
+  padding-top: 22rpx;
+}
+
+.week_time {
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.year_month {
+  font-size: 32rpx;
+  color: #333333;
+  padding-top: 10rpx;
+}
+
+.user_photo {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+.personal_sign {
+  position: absolute;
+  z-index: 2;
+  top: 324rpx;
+  left: 40rpx;
+  width: 670rpx;
+  font-size: 30rpx;
+  color: #666666;
+}
+
+.icon_box {
+  position: absolute;
+  z-index: 2;
+  top: 728rpx;
+  left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 690rpx;
+}
+
+.each_icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon_pic {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.icon_words {
+  font-size: 28rpx;
+  color: #333333;
+  padding-top: 18rpx;
+}
+
+.activity_icon {
+  position: absolute;
+  z-index: 2;
+  top: 940rpx;
+  left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

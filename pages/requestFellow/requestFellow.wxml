@@ -1,0 +1,23 @@
+<!--pages/requestFellow/requestFellow.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pView">
+  <view class="request">
+
+    <view class="textView">
+      <view class="name">
+        <text class="text1">亲子共读，美丽花在行动</text>
+        <text class="text2">1、没有书，参加免费接力读，书就来了；</text>
+        <text class="text3">2、想指导，线上与线下，义工们随时给宝宝惊喜；</text>
+        <text class="text4">3、有爱，有温度的原创绘本故事伴随孩子一生；</text>
+        <text class="text5">(分享好友可得20积分！)</text>
+        <button class="btn1" open-type='share'>分享好友</button>
+        <view style="clear:both;"></view>
+      </view>
+      <view style="clear:both;"></view>
+    </view>
+    <view style="clear:both;"></view>
+  </view>
+
+
+  <image class="headImage" src="{{globalVariable.ossImage}}meilihua/upload/f.jpg" mode="aspectFill"></image>
+</view>

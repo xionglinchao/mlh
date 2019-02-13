@@ -1,0 +1,42 @@
+<view class="t-box">
+
+  <scroll-view scroll-y class="scroll-list">
+    <view class="content-box">
+      <textarea class="content" maxlength='500' placeholder="{{content}}" placeholder-clas="color:#999; font-size:28rpx;" id='0' bindinput="getInputMsg"></textarea>
+    </view>
+
+    <view>
+      <view class="receive-box">
+        <text class="receive-object">接受对象：</text>
+        <input type="text" placeholder="必填" class="object-content" placeholder-style="color:#999;" id='1' bindinput="getInputMsg"></input>
+      </view>
+      <view class="receive-box">
+        <text class="receive-object">联系电话：</text>
+        <input type="number" placeholder="必填" maxlength="11" class="object-content" placeholder-style="color:#999;" id='2' bindinput="getInputMsg"></input>
+      </view>
+      <view class="receive-box">
+        <text class="receive-object">详细地址：</text>
+        <input type="text" placeholder="必填" class="object-content" placeholder-style="color:#999;" id='3' bindinput="getInputMsg"></input>
+      </view>
+    </view>
+
+    <view class="blank"></view>
+
+    <view class="add-photo-box">
+      <view class="add-photo" catchtap='chooseImage' wx:if="{{ tempUrlArr.length < 9 }}">
+        <text class="iconfont icon-camera camera"></text>
+        <text class="add-pic">添加图片</text>
+        <text class="add-onePic">只能添加一张</text>
+      </view>
+      <image mode='aspectFill' wx:for="{{ tempUrlArr }}" wx:key src='{{ item }}' class="tempPhoto" data-item-arr="{{ tempUrlArr }}" data-item-url='{{ item }}' catchtap='btn_preview'>
+        <image class="del-pic" src="/images/d.png" catchtap='btn_delete' data-index='{{index}}'></image>
+      </image>
+    </view>
+
+  </scroll-view>
+
+  <view class="submit-box">
+    <text class="submit" catchtap='submitInfo'>提交</text>
+  </view>
+
+</view>

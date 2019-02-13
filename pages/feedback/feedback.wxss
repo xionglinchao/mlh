@@ -1,0 +1,7 @@
+/* pages/feedback/feedback.wxss */
+page {width:100%;height:100%;}
+.pClass {width:100%;height:100%;background:#f0f0f0;}
+.type2 {width:100%;height:auto;background:white;float:left;}
+.type2 textarea {width:calc(100% - 30px);margin-left:15px;margin-top:15px;height:100px;float:left;}
+.bottomViewClass {width:100%;height:44px;line-height:44px;text-align:center;font-size:14px;color:white;background:#1eac58;position:fixed;bottom:0px;border-radius:0px;}
+.bottomViewClass::after {content:none;}

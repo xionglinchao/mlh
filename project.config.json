@@ -1,0 +1,109 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.97",
+	"appid": "wx8f439e0e74a6ead9",
+	"projectname": "mlh7",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 11,
+			"list": [
+				{
+					"id": -1,
+					"name": "发现",
+					"pathName": "pages/discover/discover",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "音频课程",
+					"pathName": "pages/audioVideoCourse/audioCourse/audioCourse",
+					"query": "courseId=15"
+				},
+				{
+					"id": -1,
+					"name": "视频课程",
+					"pathName": "pages/audioVideoCourse/videoPlay/videoPlay",
+					"query": "singleCourseId=112&courseId=48"
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/personalHomepage/personalHomepage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "兑换商城",
+					"pathName": "package_find/pages/exchangeMall/exchangeMall",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "共读打卡",
+					"pathName": "pages/signIn/signIn",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "征集详情",
+					"pathName": "package_find/pages/collectedDetail/collectedDetail",
+					"query": "activityId=33"
+				},
+				{
+					"id": 7,
+					"name": "义工活动",
+					"pathName": "package_readingStation/pages/readingStation/readingActivityDetail/readingActivityDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "参与人",
+					"pathName": "package_find/pages/joinPeople/joinPeople",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "绑定手机",
+					"pathName": "pages/bindPhone/bindPhone",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收益",
+					"pathName": "pages/personal/balanceProfit/balanceProfit",
+					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "伙伴详情",
+					"pathName": "pages/fansListDetail/fansListDetail",
+					"query": "userId=105"
+				}
+			]
+		}
+	}
+}

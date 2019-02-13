@@ -1,0 +1,56 @@
+<form bindsubmit='btn_submit'>
+  <scroll-view scroll-y style="width:100%;height:93vh;">
+    <view class="top_icon" catchtap="toHomePage">
+      <text class="iconfont icon-homePage2 homePage2"></text>
+    </view>
+    <view class="name_info">
+      <text class="name">姓名</text>
+      <input class="input_name" placeholder="请输入姓名" name="name" placeholder-class="right_place"></input>
+    </view>
+    <view class="name_info">
+      <view class="name">举办过
+        <text>（义工团）</text>
+      </view>
+      <input class="input_name" placeholder="暂无可不填写" name="volunteer" placeholder-class="right_place"></input>
+    </view>
+    <view class="name_info">
+      <view class="name">预计组织
+        <text>（家庭）</text>
+      </view>
+      <input type="number" class="input_name" placeholder="必填" placeholder-class="right_place" name="family"></input>
+    </view>
+    <view class="activ_place_box">
+      <text class="place_name">活动场所</text>
+      <view class="activ_place_list">
+        <view class="activ_place beyondEllipsis" wx:for="{{ activPlaceList }}" wx:key catchtap="activPlaceClick" data-item="{{ item }}" data-idx="{{ index }}">
+          <text class="place {{ index === selectPlaceIndex ? 'selected_style':'' }}" wx:if="{{ index != activPlaceList.length - 1 }}">{{ item }}</text>
+          <input class="place" placeholder="自定义" maxlength="4" wx:if="{{ index == activPlaceList.length - 1 && canPlaceInput }}" bindblur="placeInputBlur"></input>
+          <text class="place {{ index === selectPlaceIndex ? 'selected_style':'' }}" wx:if="{{ index == activPlaceList.length - 1 && !canPlaceInput }}">{{ customPlace }}</text>
+        </view>
+      </view>
+    </view>
+    <view class="apply_activ">
+      <text class="name">申请活动</text>
+      <textarea class="multi_text" maxlength="100" name="applyActivi"></textarea>
+      <text class="max_words">100</text>
+    </view>
+    <view class="name_info" catchtap="addAddress">
+      <text class="name">收货地址</text>
+      <view class="arrow_box">
+      <block wx:if="{{ !defaultAddressPro }}">
+        <text class="add_address">添加</text>
+        <text class="iconfont icon-arrow-right right_arrow"></text>
+       </block>
+       <block wx:else>
+        <text class="defaultAddress beyondEllipsis">{{defaultAddressPro.province + defaultAddressPro.city + defaultAddressPro.area + defaultAddressPro.address}}</text>
+       </block> 
+      </view>
+    </view>
+    <view class="apply_tip">填写收货地址，申请通过发放图书</view>
+    <view class="optional_box">
+      <text>微信号</text>
+      <input class="wx_number" placeholder="(选填)方便联系卖家" placeholder-class="right_place" name="weChat"></input>
+    </view>
+  </scroll-view>
+  <button class="submit" form-type="submit">提交</button>
+</form>

@@ -1,0 +1,26 @@
+<view class='page_box'>
+  <!-- 顶部图片 -->
+  <image class='slide_pic' mode="aspectFill" src="{{ topInfo.litpic }}">
+    <view class='content_box'>
+      <text class='content_title beyondEllipsis'>{{ topInfo.title }}</text>
+      <text class='cont'>{{ topInfo.subtitle }}</text>
+    </view>
+  </image>
+
+  <view class='book_box' wx:for='{{ bookList }}' wx:key>
+    <view class='left_info_box' catchtap="toBookDetail" data-id="{{ item.id }}">
+      <image class='book_photo' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}"></image>
+      <view class='book_cont'>
+        <text class='book_title beyondEllipsis'>{{ item.name }}</text>
+        <text class='brief_intro beyondEllipsis'>摘要：{{ item.abstract }}</text>
+        <view class='price_num'>
+          <text class='group_num'>已购{{ item.quantity }}件</text>
+        </view>
+        <view class='group_price'>价格：
+          <text style='color:#FF5050;'>￥{{ item.moneys }}</text>
+        </view>
+      </view>
+    </view>
+    <view class='buy_btn' catchtap="add_car" data-item="{{ item }}">加入购物车</view>
+  </view>
+</view>

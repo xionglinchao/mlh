@@ -1,0 +1,79 @@
+.page_box {
+  width: 100%;
+}
+
+.exchange_goods_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 25rpx 30rpx 20rpx 30rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+}
+
+.goods_pic {
+  width: 254rpx;
+  height: 158rpx;
+  border-radius: 8rpx;
+  background: lightblue;
+  vertical-align: top;
+}
+
+.goods_info_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.goods_name {
+  font-size: 32rpx;
+  width: 270rpx;
+}
+
+.goods_sec_title {
+  font-size: 22rpx;
+  color: #C3C3C3;
+}
+
+.exchange_record {
+  font-size: 22rpx;
+  color: #1EAC58;
+  padding-top: 20rpx;
+}
+
+.goods_value {
+  display: flex;
+  align-items: flex-end;
+}
+
+.exchange_bean {
+  font-size: 28rpx;
+  color: #1EAC58;
+}
+
+.goods_money {
+  font-size: 22rpx;
+  color: #BDBDBD;
+  text-decoration: line-through;
+  padding-left: 20rpx;
+}
+
+.exchange_btn {
+  width: 100rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  background: #1EAC58;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 50rpx;
+}
+
+.exchange_btn_end {
+  width: 100rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  background: #999999;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 50rpx;
+}

@@ -1,0 +1,225 @@
+<!--我的-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<scroll-view class="personalViewClass" scroll-y="true" style='background: #f0f0f0;'>
+  <view class="headViewClass">
+    <text class="signInClass" bindtap='btn_q_d'>{{signInNum == 0 ? '已签到' : '签到'}}</text>
+    <view style='display:flex;flex-direction:column;align-items:center;padding:60rpx 0;' catchtap="toPersonalPage">
+      <image class="nameImageClass" src="{{inforPro.litpic ? inforPro.litpic : '../../images/homepage/home.png'}}"></image>
+      <!-- <image class="nameImageClass" src="{{ userInfo.avatarUrl ? userInfo.avatarUrl : '../../images/homepage/home.png' }}"></image> -->
+      <block wx:if="{{isLogin == 1}}">
+        <view class="nameViewClass" bindtap='' data-info="{{1}}">
+          <!-- <text class='text1'>{{inforPro.username}}</text> -->
+          <text class='text1'>{{inforPro.username}}</text>
+          <!-- <text class='text2'>{{inforPro.phone ? inforPro.phone : ''}}</text> -->
+        </view>
+        <!-- <image class="rightImageClass" src='../../images/homepage/right.png' bindtap='btn_login' data-info="{{1}}"></image> -->
+      </block>
+      <block wx:else>
+        <view>
+          <text class="loginClass" bindtap='' data-info="{{2}}">登录/注册</text>
+          <image class="rightImageClass" src='../../images/homepage/right.png' bindtap='' data-info="{{2}}"></image>
+        </view>
+      </block>
+      <view class='to_personHP'>前往个人主页</view>
+    </view>
+    <text class="iconfont icon-setting settingIcon" catchtap="toSettingPage"></text>
+  </view>
+  <view class="numberViewClass">
+    <block wx:if="{{ inforPro.course_id == 1 || inforPro.course_id == 2 || inforPro.course_id == 3 }}">
+      <view class="numClass" style='width:50%;border-right: 1px solid #eaeaea;'>
+        <text class="text1">{{inforPro.Integral ? inforPro.Integral : 0}}</text>
+        <text class="text2">智慧豆数</text>
+      </view>
+      <view class="numClass" style='width:50%;border-right: 1px solid #eaeaea;' catchtap="toProfitPage" data-item="{{ inforPro }}">
+        <text class="text1">￥{{inforPro.profit}}</text>
+        <text class="text2">收益余额</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="numClass" style='width:100%;'>
+        <text class="text1">{{inforPro.Integral ? inforPro.Integral : 0}}</text>
+        <text class="text2">智慧豆数</text>
+      </view>
+    </block>
+    <view style="clear:both;"></view>
+  </view>
+
+  <view class="orderViewClass">
+    <view class="myOrderClass" bindtap='btn_order' data-info="{{0}}" hover-class='bottom_v_1'>
+      <text class="text1">我的订单</text>
+      <image src="../../images/send/right.png"></image>
+      <text class="text2">查看更多订单</text>
+    </view>
+    <view class="processViewClass">
+      <view class="viewClass" bindtap='btn_order' data-info="{{1}}" hover-class='bottom_v_1'>
+        <image src="../../images/homepage/order1.png"></image>
+        <text>待付款</text>
+        <block wx:if="{{orderNum1 > 0}}">
+          <text class="order_num">{{orderNum1}}</text>
+        </block>
+      </view>
+      <view class="viewClass" bindtap='btn_order' data-info="{{2}}" hover-class='bottom_v1'>
+        <image src="../../images/homepage/order2.png"></image>
+        <text>待发货</text>
+        <block wx:if="{{orderNum2 > 0}}">
+          <text class="order_num">{{orderNum2}}</text>
+        </block>
+      </view>
+      <view class="viewClass" bindtap='btn_order' data-info="{{3}}" hover-class='bottom_v_1'>
+        <image src="../../images/homepage/order3.png"></image>
+        <text>待收货</text>
+        <block wx:if="{{orderNum3 > 0}}">
+          <text class="order_num">{{orderNum3}}</text>
+        </block>
+      </view>
+      <view class="viewClass" bindtap='btn_order' data-info="{{4}}" hover-class='bottom_v_1'>
+        <image src="../../images/homepage/order4.png"></image>
+        <text>待评价</text>
+      </view>
+      <view class="viewClass" bindtap='btn_order' data-info="{{5}}" hover-class='bottom_v_1'>
+        <image src="../../images/homepage/order5.png"></image>
+        <text>退款</text>
+      </view>
+      <view style="clear:both;"></view>
+    </view>
+    <view style="clear:both;"></view>
+  </view>
+  <view class="typeViewClass">
+    <view class="view1">
+
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_myShopCar'>
+          <image src='../../images/gg.png'></image>
+          <text>我的购物车</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+
+          <block wx:if="{{goodsNum != 0}}">
+            <text class="nameViewNum" style='position: absolute;padding-left: 4px;padding-right: 4px;border: 1px solid red;border-radius: 50%;top: 18px;right: 40px;height: 15px;line-height: 15px;width: auto;font-size: 10px;background: white;color: red;'>{{goodsNum}}</text>
+          </block>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_myMessage'>
+          <image src='../../images/homepage/t.png'></image>
+          <text>我的消息</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+          <block wx:if="{{personalMessage != 0}}">
+            <text class="nameViewNum" style='position: absolute;padding-left: 4px;padding-right: 4px;border: 1px solid red;border-radius: 50%;top: 18px;right: 40px;height: 15px;line-height: 15px;width: auto;font-size: 10px;background: white;color: red;'>{{personalMessage}}</text>
+          </block>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_myActivity'>
+          <image src='../../images/homepage/type5.png'></image>
+          <text>我的活动</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_myRelayRead'>
+          <image src='../../images/homepage/type1.png'></image>
+          <text>我的接力读</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1' wx:if="{{ inforPro.square_color }}">
+        <view class="nameViewClass" bindtap='btn_reading_party'>
+          <image src='../../images/homepage/type6.png'></image>
+          <text>我的读书会</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_my_follow'>
+          <image src='../../images/homepage/g.png'></image>
+          <text>我的关注</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view>
+      <view style="clear:both;"></view>
+    </view>
+    <view style='width: 100%;height:6px;background: #f0f0f0;float:left;'></view>
+    <view class="view1">
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_coupon'>
+          <image src='../../images/homepage/type3.png'></image>
+          <text>我的优惠券</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_collection'>
+          <image src='../../images/homepage/type11.png'></image>
+          <text>我的收藏</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_log_together'>
+          <image src='../../images/homepage/type2.png'></image>
+          <text>共读日志</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1' wx:if="{{ inforPro.square_color }}">
+        <view class="nameViewClass" bindtap='btn_manager'>
+          <image src='../../images/homepage/type8.png'></image>
+          <text>义工管理</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:11px;'></image>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_address'>
+          <image src='../../images/homepage/type4.png'></image>
+          <text>地址管理</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view>
+      <!-- <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_give'>
+          <image src='../../images/homepage/type7.png'></image>
+          <text>用户捐赠</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view> -->
+      <view style="clear:both;"></view>
+    </view>
+    <view style='width: 100%;height:6px;background: #f0f0f0;float:left'></view>
+    <view class="view1">
+      <!-- <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_r_f'>
+          <image src='../../images/homepage/type12.png'></image>
+          <text>邀请好友</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view> -->
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_kf'>
+          <image src='../../images/homepage/type10.png'></image>
+          <text>客服中心</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:11px;'></image>
+        </view>
+      </view>
+      <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_about_us'>
+          <image src='../../images/homepage/type9.png'></image>
+          <text>关于我们</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view>
+      <!-- <view class="personal_content_type" hover-class='bottom_v_1'>
+        <view class="nameViewClass" bindtap='btn_common_problem'>
+          <image src='../../images/homepage/type14.png'></image>
+          <text>常见问题</text>
+          <image src='../../images/send/right.png' style='float:right;margin-right:10px;width:18px;height:18px;margin-top:16px;'></image>
+        </view>
+      </view> -->
+      <view style="clear:both;"></view>
+    </view>
+
+    <view style="clear:both;"></view>
+  </view>
+  <!-- <text class="userManager" bindtap='btn_f_k'>用户反馈</text> -->
+
+</scroll-view>

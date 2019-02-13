@@ -1,0 +1,492 @@
+.scroll_box {
+  width: 100%;
+  height: 100vh;
+  /* overflow: scroll; */
+}
+
+/* 侧边弹窗 */
+
+.side_window {
+  width: 60rpx;
+  height: 80rpx;
+  background: #fff;
+  box-shadow: 0px 0px 5px rgba(121, 121, 121, 0.6);
+  position: fixed;
+  top: 50vh;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 6rpx;
+}
+
+.listIcon {
+  font-size: 50rpx;
+  color: #666;
+}
+
+/* 顶部图片 */
+
+.top_pic {
+  width: 100%;
+  height: 370rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.content_box {
+  width: 100%;
+  height: 370rpx;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+}
+
+.content_title {
+  max-width: 616rpx;
+  font-size: 42rpx;
+  color: #fff;
+  padding-bottom: 30rpx;
+}
+
+.cont {
+  max-width: 616rpx;
+  height: 116rpx;
+  font-size: 28rpx;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* 搜索栏 */
+
+.search_box {
+  width: 690rpx;
+  height: 70rpx;
+  background: #f2f2f2;
+  border-radius: 35rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20rpx 30rpx 0 30rpx;
+}
+
+.searchIcon {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.search_words {
+  width: 590rpx;
+  font-size: 28rpx;
+  color: #666;
+  padding-left: 15rpx;
+}
+
+/* 团购 */
+
+.group_buying_box {
+  width: 720rpx;
+  margin-left: 30rpx;
+  border-bottom: 2rpx solid #e9eaec;
+  padding-top: 25rpx;
+}
+
+.group_buying {
+  width: 690rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 25rpx;
+}
+
+.yellow_box {
+  width: 140rpx;
+  height: 50rpx;
+  position: relative;
+}
+
+.title_words {
+  font-size: 28rpx;
+  color: #fff;
+  position: absolute;
+  top: 6rpx;
+  left: 42rpx;
+}
+
+.yellow_dot_box {
+  display: flex;
+  padding: 30rpx 0 30rpx 30rpx;
+}
+
+.yellow_dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  margin-left: 6rpx;
+}
+
+.yellow_dot:nth-child(1) {
+  background: #f1bf38;
+}
+
+.yellow_dot:nth-child(2) {
+  background: #f45834;
+}
+
+.yellow_dot:nth-child(3) {
+  background: #fa9431;
+}
+
+.book_container {
+  height: 360rpx;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.swiper_box {
+  display: inline-block;
+}
+
+.book_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  float: left;
+  margin-right: 90rpx;
+}
+
+/* .book_box:nth-child(3n + 2) {
+  margin: 0 90rpx;
+} */
+
+.book_photo {
+  width: 170rpx;
+  height: 210rpx;
+  position: relative;
+}
+
+.book_name {
+  width: 170rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  color: #333;
+  line-height: 40rpx;
+  text-align: center;
+  /* background: rgba(0,0,0,0.5);
+  bottom: 0;
+  left: 0;
+  padding: 0 10rpx;
+  position: absolute; */
+}
+
+.new_group {
+  font-size: 24rpx;
+  color: #fff;
+  background: #f1bf38;
+  padding: 8rpx 12rpx;
+  border-radius: 6rpx;
+  margin-top: 15rpx;
+}
+
+.price_box {
+  display: flex;
+  align-items: center;
+}
+
+.book_price {
+  font-size: 22rpx;
+  margin-top: 6rpx;
+  padding-bottom: 22rpx;
+}
+
+.sec {
+  text-decoration: line-through;
+  padding-left: 10rpx;
+}
+
+.searchViewClass {
+  position: absolute;
+  top: 60rpx;
+  background: white;
+  z-index: 10;
+  width: 100%;
+  max-height: 150px;
+}
+
+.searchViewClass .viewScroll {
+  width: 100%;
+  overflow-y: scroll;
+  height: 150px;
+}
+
+.searchViewClass .viewScroll text {
+  display: block;
+  float: left;
+  line-height: 30px;
+  font-size: 13px;
+  color: #666;
+  padding-left: 15px;
+  width: calc(100% - 15px);
+  border-bottom: 1px solid #f6f6f6;
+}
+
+/* 搜索栏 */
+
+.weui-search-bar {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+  margin: 8px 10px;
+  border-radius: 2px;
+}
+
+.weui-icon-search {
+  margin-right: 4px;
+  font-size: inherit;
+}
+
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+.weui-search-bar__text {
+  display: inline-block;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 5px;
+  background: #f0f0f0;
+}
+
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+
+.weui-icon-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px 8px;
+  font-size: 0;
+}
+
+.weui-search-bar__label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  border-radius: 3px;
+  text-align: center;
+  color: #9b9b9b;
+  background: #f0f0f0;
+  line-height: 28px;
+}
+
+.weui-search-bar__cancel-btn {
+  line-height: 28px;
+  color: #09bb07;
+  white-space: nowrap;
+  background: white;
+  font-size: 13px;
+  padding-left: 10px;
+}
+
+/* 精选书单 */
+.selected_box {
+  width: 720rpx;
+  margin-left: 30rpx;
+  border-bottom: 2rpx solid #D2D2D2;
+}
+.book_list_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  padding: 30rpx 0;
+}
+
+.select_book_list {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.shareIcon_box {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  background: transparent;
+}
+
+.shareIcon_box::after {
+  border: none;
+}
+
+.share_words {
+  font-size: 30rpx;
+  color: #333333;
+  padding-right: 20rpx;
+}
+
+.shareIcon {
+  font-size: 36rpx;
+  color: #666666;
+}
+
+.content_container {
+  display: flex;
+  flex-direction: column;
+  width: 690rpx;
+}
+
+.selected_title {
+  font-size: 30rpx;
+  color: #333333;
+  padding: 10rpx 0 20rpx 0;
+}
+
+.selected_cont {
+  font-size: 24rpx;
+  color: #999999;
+  padding-bottom: 40rpx;
+}
+
+.selected_book_box {
+  overflow: hidden;
+  height: 290rpx;
+}
+
+.selected_book {
+  width: 200rpx;
+  height: 270rpx;
+  padding-bottom: 20rpx;
+  float: left;
+}
+
+.selected_book:nth-child(2) {
+  margin: 0 45rpx;
+}
+
+/* 宝宝书券 */
+.mysteriousGift_popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s forwards;
+  -webkit-animation: fadeIn 1s forwards;
+}
+
+.mystGift_bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.mystGift_box {
+  width: 100%;
+  position: fixed;
+  border-radius: 36rpx;
+  
+}
+
+.mystGift {
+  width: 100%;
+  position: relative;
+  z-index: 20;
+}
+
+.rewarder_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom:0;
+  right:0;
+  margin: auto;
+}
+
+.tip_words {
+  font-size: 32rpx;
+  margin-top: 110rpx;
+  font-weight: bold;
+}
+
+.rewarder_pic {
+  width: 206rpx;
+  height: 126rpx;
+  margin-top: 34rpx;
+  position: relative;
+}
+
+.voucher_money {
+  position: absolute;
+  top: 4rpx;
+  left: 78rpx;
+  z-index: 20;
+  font-size: 68rpx;
+  color: #EE112A;
+  font-weight: bold;
+}
+
+.rewarder_name {
+  margin: 30rpx 0;
+  max-width: 200rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.confirm_btn {
+  font-size: 34rpx;
+  color: #fff;
+  background: #1EAC58;
+  border-radius: 30rpx;
+  width: 160rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+}

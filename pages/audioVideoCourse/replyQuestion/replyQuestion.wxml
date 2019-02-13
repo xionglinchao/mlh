@@ -1,0 +1,33 @@
+<form bindsubmit='btn_submit'>
+  <view class="t-box">
+    <view class='top_info_box'>
+      <view>
+        <image class="ques_pic" src="{{ quesCont.litpic[0] }}"></image>
+      </view>
+      <view class="ques_cont_box">
+        <view class="ques_cont">{{ quesCont.content }}</view>
+        <view class="user_info">
+          <image class="user_photo" src="{{ quesCont.user.litpic }}"></image>
+          <text class="user_name">{{ quesCont.user.username }}</text>
+        </view>
+      </view>
+    </view>
+    <view class="reply_box">
+      <textarea class="yuyin_cont" name="information" maxlength="9999" placeholder="快点来帮学生解答吧!" placeholder-style="font-size: 30rpx; color: #999;"></textarea>
+
+      <view class="photo-box">
+        <view class="add-photo" bindtap='btn_image' wx:if="{{ pics.length < 9 }}">
+          <text class="iconfont icon-camera camera"></text>
+          <text class="camera_words">添加图片</text>
+          <text class="camera_note">（最多添加3张）</text>
+        </view>
+        <image wx:for="{{pics}}" wx:key src="{{item}}" bindtap='btn_image' class="tempPhoto">
+          <image class="del_img" src='/images/d.png' catchtap='btn_delete' data-index='{{ index }}'></image>
+        </image>
+      </view>
+    </view>
+  </view>
+  <view class="reply_btn">
+    <button class="reply_words" form-type='submit' disabled='{{isDisabled}}'>回复</button>
+  </view>
+</form>

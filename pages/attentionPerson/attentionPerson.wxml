@@ -1,0 +1,17 @@
+<!--pages/attentionPerson/attentionPerson.wxml-->
+<view class='page_view' style='background: #f0f0f0;'>
+    <scroll-view class='page_scroll' scroll-y = "true">
+        <block wx:for = "{{attentionPro}}">
+          <view class='attention_view' catchtap='btn_person_information' data-item = "{{item}}">
+              <image src='{{item.user.litpic}}'></image>
+              <view class='attention_content_view'>
+                  <text class='attention_content_name'>{{item.user.username}}</text>
+                  <text class='attention_content_create'>{{item.works_count}}创作</text>
+                  <text class='attention_content_gz'>{{item.attention_count}}关注</text>
+              </view>
+              <text class='recommend_item_follow' catchtap='btn_attention' data-item = "{{item}}" style="{{item.whether_attention == 0 ? '' : 'border: 1px solid #999;color: #999;'}}">{{item.whether_attention == 0 ? '＋关注' : '已关注'}}</text>
+          </view>
+        </block>
+        <view style="clear:both;"></view>
+    </scroll-view>
+</view>

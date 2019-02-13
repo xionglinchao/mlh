@@ -1,0 +1,21 @@
+<view class='page_box'>
+  <view style='width:100%;height:15rpx;'></view>
+  <view class='weixin_box'>
+    <view class="weixin">
+      <text class='iconfont icon-weixin weixinIcon'></text>
+    </view>
+    <text class='weixin_words'>微信</text>
+  </view>
+  <view class='tixian_box'>
+    <text class='tixian'>提现金额</text>
+    <view class='input_box'>
+      <text class='iconfont icon-renminbi renminbi'></text>
+      <input type='number' class='money_input' value='{{ money }}' placeholder='请输入提现金额' placeholder-style='font-size:60rpx;' bindinput="bindInputValue"></input>
+    </view>
+    <view class='left_money_box'>
+      <text class='money_num'>可用余额{{ totalMoney }}元</text>
+      <text class='all_in' catchtap="allInClick">全部提现</text>
+    </view>
+    <view class='tixian_btn' catchtap="moneyWithdrawal">申请提现</view>
+  </view>
+</view>

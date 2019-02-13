@@ -1,0 +1,121 @@
+<scroll-view scroll-y class='scroll_list'>
+  <!-- 顶部收益信息 -->
+  <view class='top_box'>
+    <view class="base_info_box">
+      <view class="user_info_box">
+        <view class="photo_box">
+          <image class="user_photo_sec" src="{{ profit.litpic }}"></image>
+        </view>
+        <view class="name_box">
+          <view class="user_name_sec beyondEllipsis">{{ profit.username }}</view>
+          <view class="partner_box first">
+            <image class="crownIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/crown.png"></image>
+            <text class="icon_words">推广大使</text>
+          </view>
+          <view class="partner_box">
+            <image class="peopleIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/people.png"></image>
+            <text class="icon_words">{{ profit.distribute_count }}人</text>
+          </view>
+        </view>
+      </view>
+      <view class="total_money_box">
+        <view>
+          <text class="withdraw_words">总余额：￥</text>
+          <text class="withdraw_money">{{ totalMoney }}</text>
+        </view>
+        <view class="withdraw_btn" catchtap="withdrawalBtnClick">立即提现</view>
+      </view>
+    </view>
+    <view class="checkPartner">
+      <view catchtap="toPartnerList">查看伙伴详情</view>
+      <view catchtap="ruleBtnClick">规则说明</view>
+    </view>
+    <view class='mask_box'>
+      <view class="withdrawal_box">
+        <text class="withdrawal_money">{{ profit.withdraw }}</text>
+        <text class="withdrawal_words">待提现（元）</text>
+      </view>
+      <view style="width:2rpx;height:45rpx;background:#FFFFFF;"></view>
+      <view class="withdrawal_box">
+        <text class="withdrawal_money">{{ profit.yester }}</text>
+        <text class="withdrawal_words">昨日收益（元）</text>
+      </view>
+      <view style="width:2rpx;height:45rpx;background:#FFFFFF;"></view>
+      <view class="withdrawal_box">
+        <text class="withdrawal_money">{{ profit.withdrawals }}</text>
+        <text class="withdrawal_words">已提现（元）</text>
+      </view>
+    </view>
+  </view>
+  <!-- 收益记录 -->
+  <view class='recorder_box'>
+    <view class='mask' style='padding-left:30rpx;'>
+      <text class='total_sell_num'>{{ profit.total_count }}</text>
+      <text class='num_words'>累计卖出（份）</text>
+    </view>
+    <view class='mask'>
+      <text class='total_sell_price'>￥{{ profit.total_profit }}</text>
+      <text class='num_words'>累计收益（元）</text>
+    </view>
+    <view class='mask' style='padding-right:30rpx;' catchtap="toFansList">
+      <text class='total_sell_num'>{{ profit.user_count }}</text>
+      <text class='num_words'>绑定粉丝（人）</text>
+    </view>
+  </view>
+  <view style='width:100%;height:15rpx;background:#EAEAEA;'></view>
+  <!-- 收益记录 -->
+  <view class='profit_record_box'>
+    <view class='month_record'>
+      <text class='record_words'>本月利润记录</text>
+      <text class='money_situation'>收入￥{{ mon_profit }} 提现￥{{ mon_withdraw }}</text>
+    </view>
+    <view class="before_data" catchtap="beforeDataCheck">29号前数据</view>
+    <!-- 日期选择器 -->
+    <picker mode='date' fields='month' bindchange="chooseCheckDate">
+      <text class='iconfont icon-date dateIcon'></text>
+    </picker>
+  </view>
+  <!-- 列表 -->
+  <block wx:if="{{ monthRecorder.length > 0 }}">
+    <view class='balance_payment' wx:for='{{ monthRecorder }}' wx:key>
+      <view class='user_info_box'>
+        <!-- 分销者收益列表渲染 -->
+        <block wx:if="{{ item.type != 0 }}">
+          <image class='user_photo' src='{{ item.litpic }}'></image>
+          <view class='words_info_box'>
+            <text class='user_name beyondEllipsis'>{{ item.username }}</text>
+            <text class='situation beyondEllipsis_two'>{{ item.mes }}<text style="color:#666;">{{ item.shop }}</text></text>
+            <text class='occurrence_time'>{{ item.create_at }}</text>
+          </view>
+        </block>
+        <block wx:else>
+          <image class='user_photo' src='../../../images/homepage/home.png'></image>
+          <view class='words_info_box'>
+            <text class='user_name beyondEllipsis'>美丽花官方</text>
+            <text class='situation beyondEllipsis_two'>{{ item.mes }}</text>
+            <text class='occurrence_time'>{{ item.create_at }}</text>
+          </view>
+        </block>
+      </view>
+      <view class='money_num'>{{ item.money }}</view>
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 规则介绍弹窗 -->
+<view class="rule_popup" hidden="{{ isRuleIntroHide }}" catchtouchmove="preventDeafult">
+  <view class="popup_bg" catchtap="showRulePopup" catchtouchmove="preventDeafult"></view>
+  <view class="popup_box">
+    <view class="rule_title">
+      <text class="left_line"></text>
+      <text class="title_words">规则介绍</text>
+      <text class="right_line"></text>
+    </view>
+    <scroll-view scroll-y class="scroll_wiseStarRule">
+      <view class="rule_content" wx:for="{{ rule }}" wx:key>
+        <text wx:if="{{ item }}">{{ index + 1 }}. {{ item }}</text>
+      </view>
+    </scroll-view>
+    <text class="iconfont icon-close closeIcon" catchtap="showRulePopup"></text>
+  </view>
+</view>

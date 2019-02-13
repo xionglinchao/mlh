@@ -1,0 +1,12 @@
+<view>
+  <view class="user_box" wx:for="{{ joinList }}" wx:key>
+    <view catchtap="toPersonalHomePage" data-id="{{ item.u_id }}">
+      <image class="user_pic" src="{{ item.headurl }}"></image>
+      <text class="user_name beyondEllipsis">{{ item.username }}</text>
+    </view>
+    <view>
+      <text class="focus" catchtap="subscribeBtnClick" data-item="{{ item }}" data-suc-idx="{{ index }}">{{ item.is_focus?'已关注':'关注' }}</text>
+      <text class="message" catchtap="leaveMessage" data-id="{{ item.id }}">私信</text>
+    </view>
+  </view>
+</view>

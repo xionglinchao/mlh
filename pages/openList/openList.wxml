@@ -1,0 +1,128 @@
+<!--pages/openList/openList.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pClass">
+  <view class="view1">
+    <image class="image1" src='{{globalVariable.ossImage + groupBuyPro.shop.litpic}}' mode="aspectFill"></image>
+    <view class="type1">
+      <text class="text1">{{groupBuyPro.shop.name}}</text>
+      <view class="typeView1">
+        <text class='text2'>¥ {{groupBuyPro.shop.price}}<text style='color: #666;font-size: 12px;text-decoration:line-through'>  ¥{{groupBuyPro.shop.money}}</text></text>
+        <text class="text3">{{groupBuyPro.shop.price_people}}人团</text>
+      </view>
+    </view>
+    <view style="clear:both;"></view>
+  </view>
+
+  <view class="view2">
+    <view class="type2" catchtap='btn_open_more'>
+      <text class="text1">{{groupBuyPro.sum}}人在开团</text>
+      <image src='../../images/send/right.png'></image>
+      <text class="text2">查看更多</text>
+    </view>
+    <view class="scrollViewClass">
+      <block wx:for="{{openPro}}" wx:key>
+        <view class="dataViewClass">
+          <image src='{{item.people_litpic}}'></image>
+          <view class="type3">
+            <text class="text1">{{item.username}}</text>
+            <text class="text2">还剩{{item.sum}}人,剩余{{item.remainingTime}}</text>
+          </view>
+          <text class="text3" bindtap='btn_send' data-item='{{item}}'>去参团</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="informationViewClass">
+    <text class="{{informationType == 1 ? 'text1' : 'text2'}}" bindtap='btn_type' data-info="{{1}}">图文详情</text>
+    <text class="{{informationType == 2 ? 'text1' : 'text2'}}" bindtap='btn_type' data-info="{{2}}">用户评论</text>
+  </view>
+
+  <view class="htmlViewClasss" hidden="{{informationType == 1 ? false : true}}">
+    <text class="text1">图文详情</text>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+  <view class="commentViewClass" hidden="{{informationType == 2 ? false : true}}">
+    <text class="text1">用户评论</text>
+    <scroll-view class="scroolViewClass" scroll-y="true" style='margin-bottom: 44px;'>
+      <block wx:for="{{commentPro}}" wx:key>
+        <view class="dataComViewClass" style="border-bottom: {{item.discuss.length <= 0 ? '1px solid #eaeaea' : ''}}; padding-bottom: {{item.discuss.length <= 0 ? '' : '4px'}}">
+          <view class="userViewClass">
+            <image class="image1" src='{{item.photo}}'></image>
+            <text class="text2">{{item.username}}</text>
+            <image class="image2" src="{{item.fraction > 4 ? '../../images/x2.png' : '../../images/x1.png'}}"></image>
+            <image class="image2" src="{{item.fraction > 3 ? '../../images/x2.png' : '../../images/x1.png'}}"></image>
+            <image class="image2" src="{{item.fraction > 2 ? '../../images/x2.png' : '../../images/x1.png'}}"></image>
+            <image class="image2" src="{{item.fraction > 1 ? '../../images/x2.png' : '../../images/x1.png'}}"></image>
+            <image class="image2" src="{{item.fraction > 0 ? '../../images/x2.png' : '../../images/x1.png'}}"></image>
+          </view>
+          <view class="contentViewClass">
+            <text class="text3">{{item.content}}</text>
+            <block wx:if="{{item.litpics != ''}}">
+              <block wx:if="{{item.litpic.length == 1}}">
+                <image class="imagesDetails1" src='{{globalVariable.ossImage + item.litpic[0]}}' data-index='{{index}}' style='width:{{item.image1w}}px;' bindload='imageload' mode='widthFix' bindtap='btn_preview' data-item="{{item}}" data-image="{{globalVariable.ossImage + item.litpic[0]}}"></image>
+              </block>
+              <block wx:if="{{item.litpic.length == 2}}">
+                <image class="imagesDetails2" src='{{globalVariable.ossImage + item.litpic[0]}}' mode="aspectFill" style='height: {{sw/2 - 9}}px;' bindtap='btn_preview' data-item="{{item}}" data-image="{{globalVariable.ossImage + item.litpic[0]}}" data-index='{{index}}'>
+                </image>
+                <image class="imagesDetails2" src='{{globalVariable.ossImage + item.litpic[1]}}' style='margin-right: 6px;' mode="aspectFill" style='height: {{sw/2 - 9}}px;' bindtap='btn_preview' data-item="{{item}}" data-image="{{globalVariable.ossImage + item.litpic[1]}}">
+                </image>
+              </block>
+              <block wx:if="{{item.litpic.length > 2}}">
+                <block wx:for="{{item.litpic}}" wx:key wx:for-item="i">
+                  <image class="imagesDetails3" src='{{globalVariable.ossImage + i}}' mode="aspectFill" style='height: {{sw/3 - 8}}px;' bindtap='btn_preview' data-item="{{item}}" data-image="{{globalVariable.ossImage + i}}"></image>
+                </block>
+              </block>
+            </block>
+          </view>
+          <view class="othersViewClass">
+            <text class="text2">{{item.time}}</text>
+            <text class="text3" catchtap='btn_h_f' data-item="{{item}}">{{item.discuss.length}}</text>
+            <image class="image2" src='../../images/homepage/order4.png' catchtap='btn_h_f' data-item="{{item}}"></image>
+            <text class="text3" catchtap='btn_d_z' data-item="{{item}}">{{item.likes}}</text>
+            <image class="image1" src='../../images/z.png' catchtap='btn_d_z' data-item="{{item}}"></image>
+          </view>
+        </view>
+        <view class="commentView1Class">
+          <block wx:for="{{item.discuss}}" wx:key wx:for-item="j">
+            <view class="comViewClass">
+              <text class="text3">{{j.username}}:</text>
+              <text class="text4">{{j.content}}</text>
+              <view style="clear:both;"></view>
+            </view>
+          </block>
+          <view style="clear:both;"></view>
+        </view>
+      </block>
+      <view style="clear:both;"></view>
+    </scroll-view>
+    <view style="clear:both;"></view>
+  </view>
+  <view class="bottomViewClass">
+    <view class="bottom1">
+      <image src='../../images/homepage/u.png'></image>
+      <text>客服</text>
+    </view>
+    <view class="bottom2" bindtap='btn_go_buy'>
+      <text style='line-height: 18px;'>¥ {{groupBuyPro.shop.money}}</text>
+      <text style='margin-top: 0px;'>单独购买</text>
+    </view>
+    <view class="bottom2" style='background: #eb820f' bindtap='btn_k_t'>
+      <text style='line-height: 20px;'>¥ {{groupBuyPro.shop.price}}</text>
+      <text style='margin-top: 0px;'>一键开团</text>
+    </view>
+  </view>
+</view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+  <image src="../../images/kt.gif"></image>
+</view>
+
+<view class="commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0'></view>

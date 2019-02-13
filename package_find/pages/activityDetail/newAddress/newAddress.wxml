@@ -1,0 +1,25 @@
+<view style="width:100%;height:100vh;background:#F5F5F5;">
+  <view style="background:#FFFFFF;">
+    <view class="name_info">
+      <text class="name">收货人</text>
+      <input class="input_name" placeholder="请输入姓名" placeholder-class="right_place"></input>
+    </view>
+    <view class="name_info">
+      <text class="name">联系电话</text>
+      <input class="input_name" type="number" maxlength="11" placeholder="请输入电话" placeholder-class="right_place"></input>
+    </view>
+    <view class="name_info">
+      <text class="name">所在地址</text>
+      <view style="padding-right:30rpx;">
+        <text class="province">省、市、区</text>
+        <text class="iconfont icon-arrow-right rightArrow"></text>
+      </view>
+    </view>
+    <textarea class="multi_text" placeholder="请填写详细地址，不少于5个字" placeholder-class="detailed_address"></textarea>
+  </view>
+  <view class="optional_box">
+    <text>微信号</text>
+    <input class="wx_number" placeholder="(选填)方便联系卖家" placeholder-class="right_place"></input>
+  </view>
+  <view class="submit">确认</view>
+</view>

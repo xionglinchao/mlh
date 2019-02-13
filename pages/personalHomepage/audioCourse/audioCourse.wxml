@@ -1,0 +1,169 @@
+
+<scroll-view scroll-y class='page_box' bindscrolltolower="loadMore" scroll-top="{{ toTop }}" catchtap='longPressBoxHide'>
+  <image class='course_image' mode="aspectFill" src='{{ audioCourse.cover_img }}'>
+    <view class='top_mask'>
+      <view class='user_info'>
+        <image class='user_pic' src="{{ writer.litpic }}" catchtap="toPersonalHomepage" data-id="{{ writer.id }}"></image>
+        <view class='user_name'>{{ writer.username }}</view>
+      </view>
+      <view class='focus' catchtap="subscribeBtnClick" data-item="{{ writer }}">{{ writer.is_focus ? '已关注':'+ 关注' }}</view>
+    </view>
+  </image>
+  <view class='title_box'>{{ audioCourse.title }}</view>
+  <view style='padding-bottom: 25rpx;background:#FFFFFF;'>
+    <view class='video_info_sec'>
+      <view class='price_box'>
+        <text class='discount_price'>{{ audioCourse.money == 0 ? '免费':'￥' + audioCourse.money }}</text>
+        <text class='old_price' wx:if="{{ audioCourse.original_money != 0 }}">￥{{ audioCourse.original_money }}</text>
+      </view>
+      <view class='collect_share'>
+        <view class='share_box' catchtap='collectionBtnClick' data-item="{{ audioCourse }}">
+          <text class="iconfont {{ (isStared == 1 || audioCourse.is_collection == 1) ? 'icon-star-selected' : 'icon-star-empty' }} starIcon"></text>
+          <text class='share_friends'>收藏</text>
+        </view>
+        <button class='share_box' open-type='share'>
+          <text class='iconfont icon-share2 shareIcon2'></text>
+          <text class='share_friends'>分享好友</text>
+        </button>
+      </view>
+    </view>
+    <view class='update_study'>
+      <text class='update_num'>已更新{{ audioCourse.update_num }}期</text>
+      <text class='study_num'>{{ audioCourse.people }}人在学</text>
+    </view>
+
+  </view>
+  <view class='icon_box'>
+    <view class='f_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>{{ audioCourse.func[0] }}</text>
+    </view>
+    <view class='s_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>{{ audioCourse.func[1] }}</text>
+    </view>
+  </view>
+  <view class='tab_control_box'>
+    <text class="tab3 {{ tabIndex == 0 ? 'choosed':'' }}" catchtap="tabClick1">目录</text>
+    <text class="tab3 {{ tabIndex == 1 ? 'choosed':'' }}" catchtap="tabClick2">评论</text>
+  </view>
+
+  <!-- 音频课程 -->
+  <block wx:if="{{ tabIndex == 0 }}">
+    <view class="videoCourse_box" wx:for="{{ course }}" wx:key catchtap="singleAudioCourseClick" data-item="{{ course }}">
+      <image class="videoCourse_pic" mode="aspectFill" src="{{ item.cover }}">
+        <view class="mask_layer"></view>
+        <image class="yuyinIcon" src="/images/discover/yuyinIcon.png"></image>
+      </image>
+      <view class="course_intro">
+        <view class="course_title beyondEllipsis_two">{{ item.course_title }}</view>
+        <view class="sale_status">
+          <view>
+            <text class="update_num2">已更新{{ item.sort }}期</text>
+            <text class="study_num2">{{ item.people_num }}人在学</text>
+          </view>
+          <view class="course_price">{{ item.free == 0 ? '免费':'￥'+item.free }}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 评论 -->
+  <block wx:else>
+    <block wx:if="{{ commentList }}">
+      <view wx:for="{{ commentList }}" wx:key>
+        <block wx:if="{{ item.is_me != 1 }}">
+          <view class='comment_cont_box'>
+            <image class='comment_user_photo' src='{{ item.photo }}'></image>
+            <view class='name_dialog'>
+              <text class='comment_name'>{{ item.username }}</text>
+              <block wx:if="{{ item.content }}">
+                <view class='dialog_box' bindlongpress='deleteBtnLongPress' data-id='{{ item.id }}'>
+                  <text>{{ item.content }}</text>
+                  <view class='del_dialog_box' hidden='{{ !(discussIndex == item.id) }}'>
+                    <text class='del_dialog_words' catchtap="delCommentBtn">删除</text>
+                    <text style='width:2rpx;height:50rpx;background:#9D9D9D;'></text>
+                    <text class='del_dialog_words'>举报</text>
+                  </view>
+                </view>
+              </block>
+              <!-- <block wx:else>
+                <view class='dialog_box4' bindlongpress='deleteBtnLongPress' data-id='{{ item.id }}'>
+                  <view catchtap='playCommentAudio' data-audio-idx="{{ index }}" data-audio="{{ item.video }}" class="comment_audio" style='{{ "width: " + (item.audio_duration * 9) + "rpx;" }}'>
+                    <view class="{{ item.isPlaying ? 'sprite' : 'sprite1' }}"></view>
+                    <view class="duration">{{ item.audio_duration }}"</view>
+                  </view>
+                  <view class='del_dialog_box' hidden='{{ !(discussIndex == item.id) }}'>
+                    <text class='del_dialog_words' catchtap="delCommentBtn">删除</text>
+                    <text style='width:2rpx;height:50rpx;background:#9D9D9D;'></text>
+                    <text class='del_dialog_words'>举报</text>
+                  </view>
+                </view>
+              </block> -->
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='comment_cont_box secondDialog'>
+            <view class='name_dialog secondNameDialog'>
+              <text class='comment_name'>{{ item.username }}</text>
+              <block wx:if="{{ item.content }}">
+                <view class='dialog_box2' bindlongpress='deleteBtnLongPress' data-id='{{ item.id }}'>
+                  <text>{{ item.content }}</text>
+                  <view class='del_dialog_box' hidden='{{ !(discussIndex == item.id) }}'>
+                    <text class='del_dialog_words' catchtap="delCommentBtn">删除</text>
+                    <text style='width:2rpx;height:50rpx;background:#9D9D9D;'></text>
+                    <text class='del_dialog_words'>举报</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <!-- <view class='dialog_box3' bindlongpress='deleteBtnLongPress' data-id='{{ item.id }}'>
+                  <view catchtap='playCommentAudio' data-audio-idx="{{ index }}" data-audio="{{ item.video }}" class="comment_audio" style='{{ "width: " + (item.audio_duration * 30) + "rpx;" }}'>
+                    <view class="{{ item.isPlaying ? 'sprite' : 'sprite1' }}"></view>
+                    <view class="duration">{{ item.audio_duration + '"' }}</view>
+                  </view>
+                  <view class='del_dialog_box' hidden='{{ !(discussIndex == item.id) }}'>
+                    <text class='del_dialog_words' catchtap="delCommentBtn">删除</text>
+                    <text style='width:2rpx;height:50rpx;background:#9D9D9D;'></text>
+                    <text class='del_dialog_words'>举报</text>
+                  </view>
+                </view> -->
+              </block>
+            </view>
+            <image class='comment_user_photo secondPhoto' src='{{ item.photo }}'></image>
+          </view>
+        </block>
+      </view>
+    </block>
+  </block>
+</scroll-view>
+
+<!-- 编辑按钮 -->
+<block wx:if="{{ tabIndex == 0 }}">
+  <!-- <block wx:if="{{ isMine == 1 }}">
+    <view class='edit_btn' catchtap="editCourse">编辑</view>
+  </block>
+  <block wx:else>
+    <view class='edit_btn' catchtap="buyCourse">立即购买</view>
+  </block> -->
+</block>
+<!-- 评论 -->
+<block wx:else>
+  <form report-submit='{{true}}' bindsubmit='submit'>
+    <view class="interactive_box">
+      <view class='comment_inter_box'>
+        <view class='open_course_box'>
+          <view class='open_words'>开课</view>
+        </view>
+        <input bindinput="bindValueInput" class='chat_bar' placeholder='发表评论' placeholder-style='font-size:24rpx;color:#999;'></input>
+        <button class="tabBtn" form-type='submit'>
+          <view class="sendIcon_box" catchtap="leaveMessage">
+            <text class="iconfont icon-send_message sendIcon"></text>
+            <text class="send_words">发送</text>
+          </view>
+        </button>
+      </view>
+    </view>
+  </form>
+</block>

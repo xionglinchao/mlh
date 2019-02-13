@@ -1,0 +1,77 @@
+<import src="../../../templates/loadView/loadView.wxml" />
+<scroll-view scroll-y class="page_box">
+  <!-- 轮播图 -->
+  <swiper class="swiper_pic_box" indicator-dots="true" indicator-active-color="#1EAC58" autoplay="true" interval="3000">
+    <block wx:for="{{ broadcast }}" wx:key>
+      <swiper-item>
+        <image class="swiper_pic" mode="aspectFill" catchtap="toActivityDetail" data-id="{{ item.a_id }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.img }}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 附近活动 -->
+  <view class="community_container">
+    <view class="community_box">
+      <view class="sec_icon_box">
+        <image class="community_icon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/tuijianhuodong.png"></image>
+        <text class="community_words">附近活动</text>
+      </view>
+      <view class="check_all_box" catchtap="toReadingStation">
+        <text class="check_all">查看更多</text>
+        <text class="iconfont icon-arrow-right rightArrow"></text>
+      </view>
+    </view>
+    <view class="activ_list">
+      <view class="each_activ" wx:for="{{ recitation }}" wx:key catchtap="toActivDetail" data-item="{{ item }}">
+        <image class="activ_cover" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}">
+          <view class="activ_cont_box">
+            <image class='activ_on' src=""></image>
+            <view class="name_box">
+              <text class="activ_user_name beyondEllipsis">{{ item.username }}</text>
+              <view class="join_box">
+                <image class="people_icon" mode="aspectFill" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/group.png"></image>
+                <text class="join_num">{{ item.join_people }}</text>
+              </view>
+            </view>
+          </view>
+        </image>
+        <text class="activ_name beyondEllipsis">{{ item.name }}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 精选活动 -->
+  <view>
+    <view class="community_box">
+      <view class="sec_icon_box">
+        <image class="community_icon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/balloon.png"></image>
+        <text class="community_words">精选活动</text>
+      </view>
+      <view class="check_all_box">
+        <text class="check_all">查看更多</text>
+        <text class="iconfont icon-arrow-right rightArrow"></text>
+      </view>
+    </view>
+    <view class="activity_list" wx:for="{{ activityList }}" wx:key>
+      <view class="activity_box" catchtap='activiDetailClick' data-id="{{ item.id }}" data-type="{{ item.type }}">
+        <view class="activity_content">
+          <view>
+            <image class="activity_pic" mode="aspectFill" src="{{ item.litpic }}"></image>
+          </view>
+          <view class="intro_box">
+            <view class="name_pic_box">
+              <text class="activity_name beyondEllipsis">{{ item.name }}</text>
+              <image class="activity_on" src="{{ item.countDownText ? '/images/discover/g_active_on.png':'/images/discover/activity_end.png' }}"></image>
+            </view>
+            <view class="brief_intro beyondEllipsis">简介：{{ item.descript ? item.descript:'暂无' }}</view>
+            <view class="join_number">{{ item.num }}人正在参与</view>
+            <view wx:if="{{ item.countDownText }}">
+              <view class="ending">距离结束</view>
+              <view class="countdown">
+                <text wx:for="{{ item.countDownText }}" wx:key="unique" wx:for-item="item2" class="{{ (item2.text >= 0 && item2.text <= 9) ? 'countdown_number' : 'countdown_string' }}">{{ item2.text }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

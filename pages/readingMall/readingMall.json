@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "filter": "/components/filter/filter"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#1eac58",
+  "navigationBarTitleText": "童书馆",
+  "navigationBarTextStyle": "white"
+}

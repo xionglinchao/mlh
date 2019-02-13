@@ -1,0 +1,92 @@
+<!--pages/myRelayRead/myRelayRead.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+      <!-- 正在参与 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <block wx:if="{{relayPro.active.length>0}}">
+            <scroll-view class="scrollClass" scroll-y="true">
+              <view wx:for="{{relayPro.active}}" wx:key catchtap='btn_activity_infomartion' data-item="{{item}}" class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" data-info="{{1}}">
+                <view class="content1">
+                  <view class="dataViewClass" data-item="{{item}}">
+                    <image class='bookImageClass' src='{{globalVariable.ossImage + item.litpic}}' mode="aspectFill"></image>
+                    <view class="nameViewClass">
+                      <text class="text1">{{item.name}}</text>
+                      <!-- <text class="text2">恭喜，你是第63685参与者</text> -->
+                      <view class="priceViewClass">
+                        <text class="timeClass">时间 : {{item.time}}</text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="del1" catchtap="btn_delete" data-index="{{index}}" data-item="{{item}}" data-info="{{0}}">删除</view>
+              </view>
+            </scroll-view>
+          </block>
+          <block wx:else>
+            <view class="gapViewClass">
+              <image src='../../images/gap/gap1.png'></image>
+              <text>暂无数据</text>
+            </view>
+          </block>
+        </view>
+        <!-- 我发起的 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <block wx:if="{{relayPro.my_activities.length>0}}">
+            <scroll-view class="scrollClass" scroll-y="true">
+              <view wx:for="{{relayPro.my_activities}}" catchtap='btn_activity_infomartion1' data-item="{{item}}" class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" data-info='{{2}}'>
+                <view class='content'>
+                  <view class="dataViewClass" data-item="{{item}}">
+                    <image class='bookImageClass' src='{{globalVariable.ossImage + item.litpic}}' mode="aspectFill"></image>
+                    <view class="nameViewClass">
+                      <text class="text1">{{item.name}}</text>
+                      <!-- <text class="text2">恭喜，你是第63685参与者</text> -->
+                      <view class="priceViewClass">
+                        <text class="timeClass">时间 : {{item.time}}</text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="del">
+                  <view class='xg_v' data-index="{{index}}" data-info="{{item}}" catchtap='btn_revise'>
+                    <text>修改</text>
+                    <view style="clear:both;"></view>
+                  </view>
+                  <view class='xg_v' style='background: red' catchtap="btn_delete" data-index="{{index}}" data-item="{{item}}" data-info="{{1}}">
+                    <text>删除</text>
+                    <view style="clear:both;"></view>
+                  </view>
+                </view>
+              </view>
+            </scroll-view>
+          </block>
+          <block wx:else>
+            <view class="gapViewClass">
+              <image src='../../images/gap/gap1.png'></image>
+              <text>暂无数据</text>
+            </view>
+          </block>
+          <block wx:if="{{square_color!=0}}">
+            <view class="bottomViewClass">
+              <view class="pushViewClass">
+                <!-- <text class="text1" bindtap='btn_publish' data-info="{{0}}">发布文章</text> -->
+                <text class="text2" bindtap='btn_publish' data-info="{{1}}">发布活动</text>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0'></view>

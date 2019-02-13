@@ -1,0 +1,23 @@
+<view class='open_course'>
+  <image class='top_bg_pic' src="{{ info.friend_image }}" mode='aspectFit'></image>
+  <text class='course_intro'>{{info.friend_text1}}</text>
+  <!-- 课程特色服务 -->
+  <image class='sub_title_box' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/joinPartner_t.png'></image>
+  <view class='list_container'>
+    <view class='list_box'>
+      <view class='each_list_2' wx:for='{{ info.friend_text2 }}' wx:key>
+        <text class='green_dot'></text>
+        <text class='list_words_2 beyondEllipsis'>{{ item }}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 如何开课 -->
+  <image class='sub_title_box2' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/joinPartnre_s.png'></image>
+  <view class='list_box_2'>
+    <view class='each_list_2' wx:for='{{ info.friend_text3 }}' wx:key>
+      <text class='green_dot'></text>
+      <text class='list_words_2 beyondEllipsis'>{{ item }}</text>
+    </view>
+  </view>
+</view>
+<view class='open_btn' catchtap='openCourseClick'>即刻加入</view>

@@ -1,0 +1,73 @@
+<view class="page_box">
+  <view class="coupon_box">
+    <image class="user_photo" src="{{ userInfo.litpic }}"></image>
+    <view class="dot_box">
+      <view class="yellow_dot" wx:for="{{ 21 }}" wx:key></view>
+    </view>
+    <view class="user_name">
+      <text>我是</text>
+      <text class="name beyondEllipsis">{{ userInfo.username }}</text>
+      <text>分享给你福利咯，赶快领取吧！</text>
+    </view>
+    <view wx:if="{{ coupon.type == 1 || coupon.type == 3 }}">
+      <image class="coupon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/course_coupon.png">
+        <text class="course_name">{{ coupon.name }}</text>
+        <text class="coupon_value">￥{{ coupon.value }}</text>
+        <text class="end_time">有效期：{{ coupon.end_time }}前有效</text>
+      </image>
+    </view>
+    <view wx:else>
+      <image class="coupon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_coupon.png">
+        <text class="coupon_value">￥{{ coupon.value }}</text>
+        <text class="end_time">有效期：{{ coupon.end_time }}前有效</text>
+      </image>
+    </view>
+  </view>
+  <!-- 领取记录 -->
+  <view class="record_box" wx:for="{{ receiveInfo }}" wx:key>
+    <view class="title_box">
+      <image class="diamond_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/diamond.png"></image>
+      <text>领取记录</text>
+      <image class="diamond_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/diamond.png"></image>
+    </view>
+    <view class="line_first"></view>
+    <view class="line_second"></view>
+    <view class="receiver_box">
+      <image class="receiver_photo" src="{{ item.litpic }}"></image>
+      <view class="receive_info">
+        <view class="value_box">
+          <view class="receive_time">
+            <view class="beyondEllipsis">{{ item.username }}</view>
+            <view>{{ item.receive_time }}</view>
+          </view>
+          <view class="coupon_price">{{ coupon.value }}元</view>
+        </view>
+        <view>恭喜获得课程券</view>
+      </view>
+    </view>
+  </view>
+  <!-- 送券规则 -->
+  <view class="gift_rule">
+    <view class="title_box">
+      <image class="diamond_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/diamond.png"></image>
+      <text>送券规则</text>
+      <image class="diamond_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/diamond.png"></image>
+    </view>
+    <view class="rule_box" wx:for="{{ ruleList }}" wx:key>
+      <view>
+        <view class="rule_dot"></view>
+      </view>
+      <view class="single_rule">{{ item }}</view>
+    </view>
+  </view>
+  <!-- 查看按钮 -->
+  <view class="checkBtn_box">
+    <block wx:if="{{ receiveInfo.length > 1 }}">
+      <image class="confirm_btn" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/checkBtn3.png"></image>
+    </block>
+    <block wx:else>
+      <image class="confirm_btn" catchtap="getCouponGift" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/checkBtn2.png?1"></image>
+    </block>
+    <image class="confirm_btn" catchtap="toCheckPage" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/checkBtn1.png?1"></image>
+  </view>
+</view>

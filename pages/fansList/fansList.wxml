@@ -1,0 +1,12 @@
+<view>
+  <view class="fans_list" wx:for="{{ contentlist }}" wx:key>
+    <view class="user_info">
+      <image class="user_photo" src="{{ item.litpic }}"></image>
+      <text class="user_name beyondEllipsis">{{ item.username }}</text>
+    </view>
+    <view style="display:flex;">
+      <view class="messageBtn" catchtap="leaveMessage" data-id="{{ item.id }}">私信</view>
+      <view class="messageBtn" catchtap="checkBtnClick" wx:if="{{ fansType == 1 }}" data-id="{{ item.id }}" style="color:#666;">查看</view>
+    </view>
+  </view>
+</view>

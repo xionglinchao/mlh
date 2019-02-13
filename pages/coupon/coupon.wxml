@@ -1,0 +1,140 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <!-- 未使用 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <block wx:if="{{couponData.length>0}}">
+            <scroll-view scroll-y="true" class="scrollViewClass">
+              <block wx:for="{{couponData}}" wx:key>
+                <!-- typeNum 为1时，是从我的优惠券中进入 -->
+                <block wx:if="{{typeNum == 1}}">
+                  <!-- type==1 课程券 -->
+                  <view wx:if="{{ item.type == 1 || item.type == 3 }}">
+                    <image class="course_coupon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/course_coupon.png">
+                      <text class="use_standard_course" wx:if="{{ item.terms > 0 }}">【满{{ item.terms }}使用】</text>
+                      <text class="course_name beyondEllipsis_two">{{ item.name }}</text>
+                      <text class="coupon_value">￥{{ item.value }}</text>
+                      <text class="end_time">有效期：{{item.end_time}}前有效</text>
+                      <button class="gift_coupon" open-type="share" data-item="{{ item }}">还可赠送好友</button>
+                    </image>
+                  </view>
+                  <!-- type==2 宝宝书券 -->
+                  <view wx:elif="{{ item.type == 2 }}">
+                    <image class="course_coupon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_coupon.png">
+                      <text class="use_standard_book" wx:if="{{ item.terms > 0 }}">【满{{ item.terms }}使用】</text>
+                      <text class="course_name beyondEllipsis_two">{{ item.name }}</text>
+                      <text class="coupon_value">￥{{ item.value }}</text>
+                      <text class="end_time">有效期：{{item.end_time}}前有效</text>
+                      <button class="gift_coupon second" open-type="share" data-item="{{ item }}">还可赠送好友</button>
+                    </image>
+                  </view>
+                </block>
+                <!-- typeNum 为2时，是从提交订单中进入 -->
+                <block wx:else>
+                  <block wx:if="{{item.type == 2}}">
+                    <view bindtap='btn_coupon' data-item='{{item}}'>
+                      <image class="course_coupon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_coupon.png">
+                        <text class="use_standard_book" wx:if="{{ item.terms > 0 }}">【满{{ item.terms }}使用】</text>
+                        <text class="course_name beyondEllipsis_two">{{ item.name }}</text>
+                        <text class="coupon_value">￥{{ item.value }}</text>
+                        <text class="end_time">有效期：{{item.end_time}}前有效</text>
+                      </image>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <image class="course_coupon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/course_coupon.png">
+                      <text class="use_standard_book" wx:if="{{ item.terms > 0 }}">【满{{ item.terms }}使用】</text>
+                      <text class="course_name beyondEllipsis_two">{{ item.name }}</text>
+                      <text class="coupon_value">￥{{ item.value }}</text>
+                      <text class="end_time">有效期：{{item.end_time}}前有效</text>
+                    </image>
+                  </block>
+                </block>
+              </block>
+            </scroll-view>
+          </block>
+          <block wx:else>
+            <view class="gapViewClass">
+              <image src='../../images/gap/gap1.png'></image>
+              <text>暂无数据</text>
+            </view>
+          </block>
+        </view>
+        <!-- 已使用 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <block wx:if="{{couponData.length>0}}">
+            <scroll-view scroll-y="true" class="scrollViewClass">
+              <block wx:for="{{couponData}}" wx:key>
+                <!-- type==1 课程券 -->
+                <view wx:if="{{ item.type == 1 || item.type == 3 }}">
+                  <image class="course_coupon grey" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/course_coupon.png">
+                    <text class="course_name beyondEllipsis_two">{{ item.name }}</text>
+                    <text class="coupon_value">￥{{ item.value }}</text>
+                    <text class="end_time">有效期：{{item.end_time}}前有效</text>
+                  </image>
+                </view>
+                <!-- type==2 宝宝书券 -->
+                <view wx:elif="{{ item.type == 2 }}">
+                  <image class="course_coupon grey" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_coupon.png?1">
+                    <text class="coupon_value">￥{{ item.value }}</text>
+                    <text class="end_time">有效期：{{item.end_time}}前有效</text>
+                  </image>
+                </view>
+              </block>
+            </scroll-view>
+          </block>
+          <block wx:else>
+            <view class="gapViewClass">
+              <image src='../../images/gap/gap1.png'></image>
+              <text>暂无数据</text>
+            </view>
+          </block>
+        </view>
+        <!-- 已过期 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <block wx:if="{{couponData.length>0}}">
+            <scroll-view scroll-y="true" class="scrollViewClass">
+              <block wx:for="{{couponData}}" wx:key>
+                <!-- type==1 课程券 -->
+                <view wx:if="{{ item.type == 1 || item.type == 3 }}">
+                  <image class="course_coupon grey" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/course_coupon.png">
+                    <text class="course_name beyondEllipsis_two">{{ item.name }}</text>
+                    <text class="coupon_value">￥{{ item.value }}</text>
+                    <text class="end_time">有效期：{{item.end_time}}前有效</text>
+                  </image>
+                </view>
+                <!-- type==2 宝宝书券 -->
+                <view wx:elif="{{ item.type == 2 }}">
+                  <image class="course_coupon grey" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_coupon.png?1">
+                    <text class="coupon_value">￥{{ item.value }}</text>
+                    <text class="end_time">有效期：{{item.end_time}}前有效</text>
+                  </image>
+                </view>
+              </block>
+            </scroll-view>
+          </block>
+          <block wx:else>
+            <view class="gapViewClass">
+              <image src='../../images/gap/gap1.png'></image>
+              <text>暂无数据</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+  <image src="../../images/kt.gif"></image>
+</view>

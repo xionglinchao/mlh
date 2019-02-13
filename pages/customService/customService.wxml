@@ -1,0 +1,19 @@
+<!--pages/customService/customService.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pViewClass">
+  <image class="headClass" style='height: {{sw*8/15}}px' src='{{globalVariable.ossImage + headImage}}'></image>
+
+  <view class="type1">
+    <button class="typeClass" style='padding: 0px;background: white;' open-type='contact'>
+      <image src='../../images/homepage/w1.png'></image>
+      <text>(在线时间: 24小时)<text style='font-size: 15px;color:#333;'>微信客服</text></text>
+    </button>
+    <view class="typeClass">
+      <image src='../../images/homepage/type10.png'></image>
+      <text>(在线时间: 8:30 - 17:00)<text style='font-size: 15px;color:#333;'>客服热线</text></text>
+    </view>
+
+    <view style="clear:both;"></view>
+  </view>
+
+</view>

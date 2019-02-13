@@ -1,0 +1,25 @@
+/* pages/readyClubBasic/readyClubBasic.wxss */
+page {width:100%;height:100%;}
+.pClass {width:100%;height:100%;}
+.view1 {width:100%;background:white;height:auto;margin-top:10px;}
+.view1 .inforClass {display:block;float:left;line-height:30px;font-size:15px;color:#333;padding-left:15px;}
+.view1 .type1 {width:calc(100% - 15px);margin-left:15px;height:40px;border-bottom:1px solid #f0f0f0;float:left;}
+.view1 .type1 text {display:block;float:left;font-size:13px;line-height:40px;width:80px;color:#666}
+.view1 .type1 input {width:calc(100% - 80px);line-height:40px;height:40px;font-size:13px;float:left;color:#999;}
+.view1 .text1 {display:block;float:left;line-height:40px;color:#666;font-size:15px;padding-top:10px;margin-left:15px;}
+.view1 .areaClass {width:calc(90% - 30px);margin-left:5%;padding:15px;background:#f2f2f2;float:left;height:90px;font-size:13px;color:#666;}
+.view2 {width:100%;height:auto;background:white;margin-top:10px;float:left;}
+.view2 .type2 {width:calc(100% - 15px);height:60px;margin-left:15px;border-bottom:1px solid #f0f0f0;border-top:1px solid #f0f0f0;}
+.view2 .type2 .text1 {display:block;float:left;line-height:60px;font-size:15px;color:#666;}
+.view2 .type2 .headImageClass {width:40px;height:40px;margin-top:10px;margin-right:10px;float:right;border-radius:50%;}
+.view2 .type2 .rightClass {width:20px;height:20px;float:right;margin-top:20px;margin-right:10px;}
+.view3 {width:100%;padding-bottom:50px;float:left;}
+.view3 .text1 {display:block;float:left;line-height:40px;color:#333;font-size:15px;padding-top:10px;margin-left:15px;}
+.ImageViewClass {width:100%;height:auto;float:left;margin-bottom:30px;}
+.ImageViewClass .addImageViewClass {width:70px;height:70px;border:2px dashed #999;margin-left:15px;border-radius:4px;float:left;}
+.ImageViewClass .addImageViewClass image {width:30px;height:30px;margin-left:20px;margin-top:8px;}
+.ImageViewClass .addImageViewClass text {display:block;float:left;width:100%;height:20px;line-height:20px;text-align:center;font-size:13px;color:#999;}
+.ImageViewClass .addImageView1Class {width:70px;margin-left:15px;float:left;position:relative;}
+.ImageViewClass .addImageView1Class .image2 {width:20px;height:20px;position:absolute;top:0px;right:0px;background:white;border-radius:50%;}
+.bottomViewClass {width:100%;height:44px;line-height:44px;text-align:center;font-size:14px;color:white;background:#1eac58;position:fixed;bottom:0px;border-radius:0px;}
+.bottomViewClass::after {content:none;}

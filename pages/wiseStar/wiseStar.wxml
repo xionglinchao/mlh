@@ -1,0 +1,141 @@
+<view class="zhihuiStar">
+  <!-- 顶部用户信息栏 -->
+  <view class="top_box">
+    <image class="bg_img" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/wiseStarbg.jpg">
+      <!-- 用户信息 -->
+      <view class="user_info_box">
+        <image class="user_pic" src="{{ baseInfo.user_info.litpic }}"></image>
+        <image class="rank_sub" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rank-1-sub.png"></image>
+        <view class="user_rank">
+          <text class='ur_num beyondEllipsis'>{{ baseInfo.rank }}</text>名</view>
+        <view class="user_name">{{ baseInfo.user_info.username }}</view>
+      </view>
+      <!-- 勋章 -->
+      <view class="medal_list">
+        <image class="green-medal" wx:key wx:for="{{ baseInfo.user_info.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+        <image class="red-medal" wx:key wx:for="{{ baseInfo.user_info.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+        <image class="yellow-medal" wx:key wx:for="{{ baseInfo.user_info.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+      </view>
+      <!-- 用户智慧豆获取数量 -->
+      <view class="zhihuidou_box">
+        <view class="zhihuidou">
+          <view class="week_dou">
+            <text class="dou_quantity">{{ baseInfo.week }}</text>
+            <text class="zhihui">周智慧豆</text>
+          </view>
+          <view class="side_line"></view>
+          <view class="month_dou">
+            <text class="dou_quantity">{{ baseInfo.month }}</text>
+            <text class="zhihui">月智慧豆</text>
+          </view>
+          <view class="side_line"></view>
+          <view class="total_dou">
+            <text class="dou_quantity">{{ baseInfo.all }}</text>
+            <text class="zhihui">总智慧豆</text>
+          </view>
+        </view>
+      </view>
+    </image>
+  </view>
+
+  <!-- 排名情况 -->
+  <image class="title_line" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/WTtitle-line.png"></image>
+  <scroll-view scroll-y class="scroll_list" bindscroll="scrollHide" lower-threshold="100" bindscrolltolower="loadMore">
+    <view class="rank_box">
+      <view class="f_title">
+        <text class="title_1">排名</text>
+        <text class="title_2">用户头像</text>
+        <text class="title_3">用户名称</text>
+        <text class="title_4">智慧豆</text>
+      </view>
+      <view class="rank_info" wx:for="{{ rankList }}" wx:key wx:if="{{ item.user_info.litpic && item.user_info.username }}">
+        <block wx:if="{{ index == 0 }}">
+          <view class="num_1_pic">
+            <image class="num_1" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/num-1.png"></image>
+          </view>
+        </block>
+        <block wx:elif="{{ index == 1 }}">
+          <view class="num_1_pic">
+            <image class="num_1" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/num-2.png"></image>
+          </view>
+        </block>
+        <block wx:elif="{{ index == 2 }}">
+          <view class="num_1_pic">
+            <image class="num_1" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/num-3.png"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="num_1_pic">
+            <text class="num_4">{{ index + 1 }}</text>
+          </view>
+        </block>
+        <view class="user_rank_photo">
+          <block wx:if="{{ index == 0 }}">
+            <view class="num_1_circle" style="box-shadow: 0rpx 0rpx 10rpx 5rpx #FFDE7A;">
+              <image class="user_photo" src="{{ item.user_info.litpic }}"></image>
+            </view>
+          </block>
+          <block wx:elif="{{ index == 1 }}">
+            <view class="num_1_circle" style="box-shadow: 0rpx 0rpx 10rpx 5rpx #33ccff;">
+              <image class="user_photo" src="{{ item.user_info.litpic }}"></image>
+            </view>
+          </block>
+          <block wx:elif="{{ index == 2 }}">
+            <view class="num_1_circle" style="box-shadow: 0rpx 0rpx 10rpx 5rpx #FB9F74;">
+              <image class="user_photo" src="{{ item.user_info.litpic }}"></image>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="num_1_circle" style="box-shadow: 0rpx 0rpx 10rpx 5rpx #999999;">
+              <image class="user_photo" src="{{ item.user_info.litpic }}"></image>
+            </view>
+          </block>
+          <!-- <image class="user_photo" src="{{ item.user_info.litpic }}"></image> -->
+        </view>
+        <view class="rank_name">{{ item.user_info.username }}</view>
+        <block wx:if="{{ index == 0 }}">
+          <view class="rank_dou" style="color: #FFDE7A;">{{ item.all_integral }}</view>
+        </block>
+        <block wx:elif="{{ index == 1 }}">
+          <view class="rank_dou" style="color: #33ccff;">{{ item.all_integral }}</view>
+        </block>
+        <block wx:elif="{{ index == 2 }}">
+          <view class="rank_dou" style="color: #FB9F74;">{{ item.all_integral }}</view>
+        </block>
+        <block wx:else>
+          <view class="rank_dou" style="color: #999999;">{{ item.all_integral }}</view>
+        </block>
+      </view>
+      <view class="slide_down" hidden="{{ rankList.length < 5 ? true : isSlideDownHide }}">向下滑动查看更多···</view>
+    </view>
+  </scroll-view>
+  <view class="rule_introduce" catchtap="ruleBtnClick">规则介绍</view>
+</view>
+<!-- 顶部通知栏 -->
+<view class='wt_notice' wx:if="{{ noticeList }}" catchtap="prefepopShowClick">
+  <swiper class="wt_swiper" vertical="true" autoplay="true" circular="true" interval="2500" duration="500" current="0">
+    <swiper-item class="wt_swiper_item" wx:key="" wx:for="{{ noticeList }}">
+      <view class="wt_col">
+        <text class='wt_msg_sub'>系统通知</text>
+        <text class="wt_msg">{{ item.username + '，' + item.content }}</text>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+<!-- 规则介绍弹窗 -->
+<view class="rule_popup" hidden="{{ isRuleIntroHide }}" catchtouchmove="preventDeafult">
+  <view class="popup_bg" catchtap="showRulePopup" catchtouchmove="preventDeafult"></view>
+  <view class="popup_box">
+    <view class="rule_title">
+      <text class="left_line"></text>
+      <text class="title_words">规则介绍</text>
+      <text class="right_line"></text>
+    </view>
+    <scroll-view scroll-y class="scroll_wiseStarRule">
+      <view class="rule_content" wx:for="{{ ruleContent }}" wx:key>
+        <text wx:if="{{ item }}">{{ index + 1 }}. {{ item }}</text>
+      </view>
+    </scroll-view>
+    <text class="iconfont icon-close close" catchtap="showRulePopup"></text>
+  </view>
+</view>

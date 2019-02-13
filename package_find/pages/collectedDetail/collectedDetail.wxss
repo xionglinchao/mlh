@@ -1,0 +1,793 @@
+@import "../../../wxParse/wxParse.wxss";
+
+.scroll_box {
+  width: 100%;
+  height: 92vh;
+  background: #fff;
+}
+
+.top_pic_bg {
+  width: 750rpx;
+  height: 340rpx;
+  display: block;
+}
+
+.join_detail {
+  background: #fff;
+}
+
+.blank {
+  width: 100%;
+  height: 15rpx;
+  background: #eaeaea;
+}
+
+.name_attend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30rpx;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #e9eaec;
+}
+
+.book_theme {
+  font-size: 34rpx;
+  font-weight: bold;
+  width: 560rpx;
+}
+
+.joinBtn {
+  width: 120rpx;
+  height: 50rpx;
+  background: #ff4e5c;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 50rpx;
+  margin-right: 30rpx;
+}
+
+.icon_box {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #e9eaec;
+}
+
+.timeIcon, .placeIcon, .limitedIcon, .countdownIcon {
+  font-size: 50rpx;
+  color: #333;
+  padding-right: 24rpx;
+}
+
+.icon_content {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.placeLen {
+  max-width: 620rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.countdown_number {
+  font-size: 24rpx;
+  color: #fff;
+  width: 24rpx;
+  height: 36rpx;
+  background: #333;
+  text-align: center;
+  line-height: 36rpx;
+  border-radius: 4rpx;
+  margin-right: 4rpx;
+}
+
+.countdown_string {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.line_box {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.left_line, .right_line {
+  width: 255rpx;
+  height: 47rpx;
+}
+
+.line_words {
+  color: #1eac58;
+  font-size: 30rpx;
+  padding: 0 16rpx;
+}
+
+.participants_box {
+  width: 500rpx;
+  height: 90rpx;
+  background: linear-gradient (to right, white, green);
+}
+
+.participants {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 50%;
+}
+
+.join_num_box {
+  width: 720rpx;
+  margin: 20rpx 0 0 30rpx;
+  border: 2rpx solid #65c76b;
+  border-left: none;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #fff, #e5f2e3);
+}
+
+.join_img_box {
+  padding: 10rpx 0;
+  max-width: 550rpx;
+  height: 100%;
+  overflow: hidden;
+}
+
+.join_member_avatar {
+  margin: 8rpx 18rpx;
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 50%;
+}
+
+.join_text_box {
+  display: flex;
+  height: 100%;
+}
+
+.text_elli {
+  margin-right: 10rpx;
+  display: flex;
+  align-items: center;
+  font-size: 40rpx;
+  color: #65c76b;
+}
+
+.join_num_text {
+  width: 168rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #fff;
+  background: #65c76b;
+}
+
+.tab_control {
+  display: flex;
+  justify-content: space-between;
+  width: 720rpx;
+  height: 80rpx;
+  padding-left: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.tab_control text {
+  font-size: 28rpx;
+  padding-top: 25rpx;
+}
+
+.click_style {
+  color: #1eac58;
+  border-bottom: 2rpx solid #1eac58;
+}
+
+.green_dot {
+  width: 8rpx;
+  height: 8rpx;
+  background: #1eac58;
+  border-radius: 50%;
+  margin-top: 38rpx;
+}
+
+.activ_rule_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.introIcon_box {
+  display: flex;
+  align-items: center;
+  margin: 25rpx 0;
+}
+
+.introduceIcon {
+  font-size: 46rpx;
+  color: #1eac58;
+}
+
+.iconWords {
+  font-size: 34rpx;
+  color: #1eac58;
+}
+
+.activ_rule {
+  width: 690rpx;
+}
+
+.green_dot2 {
+  width: 15rpx;
+  height: 15rpx;
+  background: #1eac58;
+  border-radius: 50%;
+  margin: 14rpx 25rpx 0 0;
+}
+
+.rule_words {
+  font-size: 28rpx;
+  color: #666;
+  max-width: 640rpx;
+  height: auto;
+}
+
+.dot_words_box img {
+  width: 100vw !important;
+}
+
+/* .rule_pic {
+  width: 690rpx;
+  height: 284rpx;
+  margin-bottom: 20rpx;
+} */
+
+/* 底部交互栏 */
+
+.interactive_box {
+  width: 100%;
+  height: 8vh;
+  background: #fff;
+  border-top: 1rpx solid #b1b1b1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 10rpx;
+}
+
+.input_content {
+  width: 340rpx;
+  height: 70rpx;
+  background: #f1f2f6;
+  border-radius: 10rpx;
+}
+
+.bottomIocn_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 234rpx;
+  padding-right: 30rpx;
+}
+
+.icon_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shareBtn {
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.shareBtn::after {
+  border: none;
+}
+
+.homePage {
+  padding-left: 30rpx;
+}
+
+.liuyanIcon, .shareIcon, .homePage {
+  font-size: 50rpx;
+  color: #999;
+}
+
+.likeIcon {
+  width: 46rpx;
+  height: 42rpx;
+  padding: 6rpx 0;
+}
+
+.icon_words {
+  font-size: 22rpx;
+  color: #333;
+}
+
+/* 用户评论 */
+
+.user_comments {
+  width: 100%;
+  margin-top: 15rpx;
+}
+
+.activity_container {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.writer_info_box {
+  width: 690rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.writer_photo {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  display: block;
+}
+
+.writer_basic_info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16rpx;
+}
+
+.focus_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 544rpx;
+}
+
+.writer_name {
+  color: #333;
+  font-size: 34rpx;
+}
+
+.focus {
+  width: 106rpx;
+  height: 54rpx;
+  color: #1eac58;
+  font-size: 28rpx;
+  border: 2rpx solid #1eac58;
+  border-radius: 4rpx;
+  text-align: center;
+  line-height: 54rpx;
+}
+
+.person_sign {
+  color: #999;
+  font-size: 24rpx;
+  max-width: 400rpx;
+}
+
+.fans_acti {
+  display: flex;
+  align-items: center;
+}
+
+.fansIcon {
+  font-size: 40rpx;
+  color: #999;
+  padding-right: 8rpx;
+}
+
+.fans, .balloon {
+  font-size: 22rpx;
+  color: #999;
+  padding-right: 12rpx;
+}
+
+.fans_num, .ballon_num {
+  color: #333;
+  font-size: 24rpx;
+}
+
+.balloonIcon {
+  font-size: 50rpx;
+  color: #999;
+  padding-left: 20rpx;
+}
+
+.from_place {
+  width: 400rpx;
+  height: 64rpx;
+  border: 2rpx solid #1eac58;
+  border-radius: 33rpx;
+  color: #1eac58;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 64rpx;
+  margin-bottom: 30rpx;
+}
+
+.uc_content {
+  margin-bottom: 20rpx;
+  background: #fff;
+}
+
+.uc_top_box {
+  padding: 10rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.uct_left {
+  display: flex;
+  align-items: flex-end;
+}
+
+.head_img {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+
+.name_time {
+  margin: 0 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.user_name {
+  max-width: 180rpx;
+  font-size: 34rpx;
+  color: #1eac58;
+}
+
+.publish_time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.medal-list {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.greenLV, .redLV, .yellowLV {
+  width: 56rpx;
+  height: 56rpx;
+  margin-right: 8rpx;
+}
+
+.uct_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rigth_btn1 {
+  font-size: 30rpx;
+  width: 105rpx;
+  height: 55rpx;
+  color: #1eac58;
+  border: 2rpx solid #1eac58;
+  border-radius: 6rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus_icon {
+  margin-right: 10rpx;
+  font-size: 26rpx;
+  color: #1eac58;
+}
+
+.uc_mid_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 语音栏 */
+.guide_audio {
+  display: flex;
+  align-items: flex-end;
+  margin-left: -10rpx;
+  margin-bottom: 36rpx;
+}
+
+.yuyintou {
+  width: 88rpx;
+  height: 90rpx;
+  vertical-align: top;
+}
+
+.yuyinline {
+  position: relative;
+  left: -25rpx;
+  width: 40px;
+  height: 40px;
+  top: -80rpx;
+}
+
+.sprite1 {
+  background: url("http://meilihua.06baobao.com/images/small/readTrees/funGame/audioani.png") 0 0 no-repeat;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.sprite {
+  background: url("http://meilihua.06baobao.com/images/small/readTrees/funGame/audioani.png") 0 0 no-repeat;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-animation: run 1s steps(3) infinite;
+  animation: run 1s steps(3) infinite;
+}
+
+.audio_content {
+  margin-bottom: 2rpx;
+  max-width: 450rpx;
+  background: #fff;
+  position: relative;
+  height: 68rpx;
+  border-top: 3rpx solid #999;
+  border-bottom: 3rpx solid #999;
+}
+
+/* .yuyinwei-box {position:relative;top:12rpx;} */
+
+.yuyinwei-box {
+  position: relative;
+}
+
+.yuyinwei {
+  width: 71rpx;
+  height: 90rpx;
+  vertical-align: top;
+}
+
+.voice_time_length {
+  position: absolute;
+  font-size: 24rpx;
+  top: 36rpx;
+  left: 14rpx;
+}
+
+/* 九宫格图片 */
+
+.comment_pic_box {
+  width: 690rpx;
+  /* margin: 16rpx 5rpx 0 0; */
+  margin-right: 5rpx;
+  font-size: 0rpx;
+}
+
+.dialog_video {
+  width: 100%;
+  height: 450rpx;
+  position: relative;
+}
+
+.play_box {
+  width: 100%;
+  height: 450rpx;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.comment_pic {
+  max-width: 210rpx;
+  height: 210rpx;
+  margin: 0 5rpx 5rpx 0;
+}
+
+.like_reply {
+  width: 690rpx;
+  padding: 0rpx 30rpx 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+
+.del_btn {
+  font-size: 28rpx;
+  color: #ccc;
+  width: 105rpx;
+  height: 55rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 6rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete_icon {
+  margin-right: 10rpx;
+  font-size: 30rpx;
+}
+
+.like_icon {
+  width: 50rpx;
+  height: 45rpx;
+}
+
+.liuyan2 {
+  font-size: 55rpx;
+  color: #666;
+  margin: 0 30rpx 0 55rpx;
+}
+
+.leave_word {
+  width: 690rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.lw_top {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.lwt_icon {
+  width: 32rpx;
+  height: 28rpx;
+}
+
+.lwt_text {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+
+.lw_item {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.lw_item image {
+  margin-top: 10rpx;
+  width: 190rpx;
+  height: 190rpx;
+}
+
+.user_reply {
+  margin-top: 10rpx;
+}
+
+/* 相关书籍 */
+
+.bookUl {
+  width: 750rpx;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 30rpx;
+}
+
+.book-box {
+  width: 334rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.book-img {
+  width: 334rpx;
+  height: 303rpx;
+}
+
+.book-box:nth-child(odd) {
+  padding: 20rpx 11rpx 12rpx 30rpx;
+}
+
+.book-box:nth-child(even) {
+  padding: 20rpx 30rpx 12rpx 11rpx;
+}
+
+.bookName {
+  width: 324rpx;
+  background: rgba(255, 255, 255, 0.75);
+  position: relative;
+  bottom: 70rpx;
+  font-size: 32rpx;
+  color: #333;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 10rpx;
+}
+
+.book-btn-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  font-size: 28rpx;
+}
+
+.bWord-1 {
+  background-color: #fcd132;
+  padding: 12rpx 20rpx;
+  margin: 12rpx 25rpx 0rpx 0rpx;
+}
+
+.bWord-2 {
+  background-color: #f60;
+  padding: 12rpx 20rpx;
+  margin-top: 12rpx;
+}
+
+/*使屏幕变暗  */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/*对话框 */
+.commodity_attr_box {
+  height: 300rpx;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share_container {
+  width: 540rpx;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50rpx;
+}
+
+.share_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share_words {
+  font-size: 30rpx;
+}
+
+.words_1 {
+  padding-top: 30rpx;
+}
+
+.icon_pic {
+  width: 60rpx;
+  height: 60rpx;
+}

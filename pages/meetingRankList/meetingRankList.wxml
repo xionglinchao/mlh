@@ -1,0 +1,58 @@
+<!--pages/meetingRankList/meetingRankList.wxml-->
+<view class="pClass">
+  <block wx:if="{{rankDataPro.length > 0 }}">
+    <view class="view1">
+      <block wx:if="{{rankDataPro.length > 0}}">
+        <view class="type1">
+          <image src='{{rankDataPro[0].litpic}}'></image>
+          <text class="text1">已捐公益币: {{rankDataPro[0].welfare}}</text>
+          <text class="text2">已捐次数: {{rankDataPro[0].quantity}}</text>
+          <text class="text3">NO.1</text>
+        </view>
+      </block>
+      <block wx:if="{{rankDataPro.length > 1}}">
+        <view class="type2">
+          <image src='{{rankDataPro[1].litpic}}'></image>
+          <text class="text1">已捐公益币: {{rankDataPro[1].welfare}}</text>
+          <text class="text2">已捐次数: {{rankDataPro[1].quantity}}</text>
+          <text class="text3">NO.2</text>
+        </view>
+      </block>
+      <block wx:if="{{rankDataPro.length > 2}}">
+        <view class="type3">
+          <image src='{{rankDataPro[2].litpic}}'></image>
+          <text class="text1">已捐公益币: {{rankDataPro[2].welfare}}</text>
+          <text class="text2">已捐次数: {{rankDataPro[2].quantity}}</text>
+          <text class="text3">NO.3</text>
+        </view>
+
+      </block>
+      <view style="clear:both;"></view>
+
+
+
+    </view>
+    <scroll-view class="view2">
+      <block wx:for="{{rankDataPro}}" wx:if="{{rankDataPro.length > 3}}">
+        <view class="dataViewClass" wx:if="{{index > 3}}">
+          <text class="text1">{{index}}</text>
+          <image class="image1" src='{{item.litpic}}'></image>
+          <view class="type4">
+            <text class="text2">{{item.username}}</text>
+            <text class="text3">已捐{{item.welfare}}公益币</text>
+          </view>
+          <text class="text4">{{item.quantity}}</text>
+          <image class="image2" src='../../images/readingstation/x.png'></image>
+        </view>
+        <view style="clear:both;"></view>
+      </block>
+
+    </scroll-view>
+  </block>
+  <block wx:else>
+    <view class="gapViewClass">
+      <image src='../../images/gap/gap1.png'></image>
+      <text>暂无数据</text>
+    </view>
+  </block>
+</view>

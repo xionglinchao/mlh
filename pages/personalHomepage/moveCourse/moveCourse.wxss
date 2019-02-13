@@ -1,0 +1,132 @@
+.scroll_list {
+  width: 100%;
+  height: 92vh;
+  overflow: scroll;
+}
+
+.catalog {
+  width: 100%;
+  height: 80rpx;
+  font-size: 32rpx;
+  color: #333;
+  border-bottom: 2rpx solid #E9EAEC;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+/* 视频课程列表 */
+
+.videoCourse_box {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 12rpx 25rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.dot_box {
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+  border: 2rpx solid #1eac58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+.green_dot {
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: #1eac58;
+}
+
+.mask_layer {
+  width: 100%;
+  height: 138rpx;
+  background-color: #000;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+
+.videoCourse_pic {
+  width: 240rpx;
+  height: 138rpx;
+  border-radius: 8rpx;
+  position: relative;
+  z-index: 1;
+  font-size: 0;
+}
+
+.videoIcon {
+  position: absolute;
+  z-index: 3;
+  width: 50rpx;
+  height: 33rpx;
+  left: 50%;
+  margin-left: -25rpx;
+  top: 40%;
+}
+
+.yuyinIcon {
+  position: absolute;
+  z-index: 3;
+  width: 36rpx;
+  height: 50rpx;
+  left: 50%;
+  margin-left: -20rpx;
+  top: 30%;
+}
+
+.course_intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 138rpx;
+  margin-left: 22rpx;
+}
+
+.course_title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.sale_status {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.update_num, .study_num {
+  color: #999;
+  font-size: 20rpx;
+  padding-right: 16rpx;
+}
+
+.course_price {
+  font-size: 30rpx;
+  color: #ff3f3c;
+  margin-right: 16rpx;
+}
+
+/* 底部编辑按钮 */
+.move_btn {
+  width: 100%;
+  height: 8vh;
+  background: #1EAC58;
+  display: flex;
+}
+
+.cancel, .move_to {
+  width: 375rpx;
+  height: 8vh;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 8vh;
+}

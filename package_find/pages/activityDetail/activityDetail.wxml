@@ -1,0 +1,195 @@
+<import src="../../../wxParse/wxParse.wxml" />
+
+<scroll-view scroll-y class="scroll_box">
+  <!-- 顶部书籍介绍 -->
+  <image class="top_pic_bg" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/activ_bg.png">
+    <view class="book_detail_box">
+      <image class="book_pic" src="{{ activityDetail.litpic }}"></image>
+      <view class="book_basic_info">
+        <text class="book_name">《{{ activityDetail.shop_name }}》</text>
+        <text class="brief_intro beyondEllipsis">简介：{{ activityDetail.abstract ? activityDetail.abstract:'' }}</text>
+        <view class="price_box">
+          <text class="price_word">价格：</text>
+          <text class="price">￥{{ activityDetail.shop_money }}</text>
+        </view>
+        <view class="buy_now">立即购买</view>
+      </view>
+    </view>
+  </image>
+  <!-- 活动信息 -->
+  <view class="join_detail">
+    <view class="book_theme beyondEllipsis">本期主题：{{ activityDetail.name }}</view>
+    <view class="icon_box">
+      <text class="iconfont icon-time timeIcon"></text>
+      <text class="icon_content">活动报名时间：2018.5.14 — 2018.5.18</text>
+    </view>
+    <view class="icon_box">
+      <text class="iconfont icon-place placeIcon"></text>
+      <text class="icon_content placeLen">活动地点：{{ activityDetail.place }}</text>
+    </view>
+    <view class="icon_box">
+      <text class="iconfont icon-limited limitedIcon"></text>
+      <text class="icon_content">限定名额：{{ activityDetail.limit_num }}人</text>
+    </view>
+    <view class="icon_box">
+      <text class="iconfont icon-countdown countdownIcon"></text>
+      <text class="icon_content">活动倒计时：</text>
+      <text wx:for="{{ countDownText }}" wx:key="unique" wx:for-item="item2" class="{{ (item2.text >= 0 && item2.text <= 9) ? 'countdown_number' : 'countdown_string' }}">{{ item2.text }}</text>
+    </view>
+  </view>
+  <!-- 活动发起者 -->
+  <!-- <view class="activity_container">
+    <view class="writer_info_box">
+      <image class="writer_photo" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_pic.jpg"></image>
+      <view class="writer_basic_info">
+        <view class="focus_box">
+          <text class="writer_name">吉吉国王</text>
+          <text class="focus" catchtap='focusClick'>{{ isFocused ? '已关注':'+ 关注' }}</text>
+        </view>
+        <text class="person_sign beyondEllipsis">个签：国内最专业的谁</text>
+        <view class="fans_acti">
+          <text class="iconfont icon-fans fansIcon"></text>
+          <text class="fans">粉丝</text>
+          <text class="fans_num">{{ comment_num }}</text>
+          <text class="iconfont icon-balloon balloonIcon"></text>
+          <text class="balloon">活动</text>
+          <text class="ballon_num">{{ likes }}</text>
+        </view>
+      </view>
+    </view>
+    <view class="from_place beyondEllipsis">来自浙江读书会</view>
+  </view> -->
+  <!-- 故事妈妈征集 -->
+  <view style="background:#FFFFFF;">
+    <view class="line_box">
+      <image class="left_line" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/left_line.png"></image>
+      <text class="line_words">故事妈妈征集中</text>
+      <image class="right_line" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/right_line.png"></image>
+    </view>
+    <!-- 参与家庭 -->
+    <view class='join_num_box' wx:if="{{ activityDetail.comment_head.length > 0 }}">
+      <view class='join_img_box'>
+        <image class='join_member_avatar' wx:key wx:for="{{ activityDetail.comment_head }}" src='{{ item.headurl }}'></image>
+      </view>
+      <view class='join_text_box'>
+        <view class='text_elli' wx:if="{{ activityDetail.comment_head.length > 4 }}">····</view>
+        <view class='join_num_text'>已参与{{ activityDetail.comment_head.length }}家庭</view>
+      </view>
+    </view>
+    <!-- 选项卡 -->
+    <view class="tab_control">
+      <text style="margin-left:30rpx;" class="{{ isTabControlHide == 1 ? 'click_style' : '' }}" catchtap="tabClickBtn1">本类目活动</text>
+      <view class="green_dot"></view>
+      <text class="{{ isTabControlHide == 2 ? 'click_style' : '' }}" catchtap="tabClickBtn2">故事妈妈介绍</text>
+      <view class="green_dot"></view>
+      <text style="margin-right:30rpx;" class="{{ isTabControlHide == 3 ? 'click_style' : '' }}" catchtap="tabClickBtn3">历史评价</text>
+    </view>
+    <!-- 本类目活动 -->
+    <view hidden="{{ isTabControlHide == 1 ? false : true }}">
+      <view class="activ_rule_box">
+        <view class="introIcon_box">
+          <text class="iconfont icon-introduceIcon introduceIcon"></text>
+          <text class="iconWords">活动介绍</text>
+        </view>
+        <!-- 活动规则 -->
+        <view class="activ_rule">
+          <template is="wxParse" data="{{ wxParseData:article.nodes }}" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 故事妈妈介绍 -->
+    <view hidden="{{ isTabControlHide == 2 ? false : true }}" class="mom_intro">
+      <template is="wxParse" data="{{ wxParseData:article2.nodes }}" />
+    </view>
+
+    <!-- 历史评价 -->
+    <view hidden="{{ isTabControlHide == 3 ? false : true }}">
+      <view class='user_comments' wx:if="{{ comment.length > 0 }}">
+        <!-- 用户评论内容 -->
+        <view class='uc_content' wx:key wx:for="{{ comment }}">
+          <view class='uc_top_box'>
+            <view class='uct_left' catchtap='btn_person_information2'>
+              <!-- 评论用户头像 -->
+              <image class='head_img' src='{{ item.photo }}'></image>
+              <view class='name_time'>
+                <!-- 用户评论名称 -->
+                <text class='user_name beyondEllipsis'>{{ item.username }}</text>
+                <!-- 评论时间 -->
+                <text class='publish_time'>{{ item.time }}</text>
+              </view>
+              <!-- 评论用户徽章 -->
+              <view class="medal-list">
+                <image class="greenLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                <image class="redLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                <image class="yellowLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+              </view>
+            </view>
+            <view class='uct_right'>
+              <view class='rigth_btn1' data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap='subscribeBtnClick'>
+                <!-- <text class='iconfont icon-plus plus_icon' wx:if="{{ item.focusType != 1 }}"></text> -->
+                <text class="guanzhu">{{ item.is_focus == 1 ? '已关注' : '+ 关注' }}</text>
+              </view>
+            </view>
+          </view>
+          <view class='uc_mid_box'>
+            <view class='comment_box'>
+              <view class="dialog">
+                <text>{{ item.content }}</text>
+                <!-- 九宫格评论图片展示 -->
+                <view class='comment_pic_box' wx:if="{{ item.litpic.length > 0 }}">
+                  <image mode='aspectFill' class='comment_pic' wx:key wx:for="{{ item.litpic }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2 }}" wx:for-item="item2" catchtap='btn_preview'></image>
+                </view>
+                <!-- <image mode='aspectFill' wx:if="{{ item.videoPic }}" src="{{ item.videoPic }}" class='dialog_video' data-video="{{ item.video }}" catchtap='videoPlay'>
+                  <image class='dialog_video_play' src='/images/bofang.png'></image>
+                </image> -->
+                <!-- <view wx:if="{{ item.video }}" class='dialog_video' data-video="{{ item.video }}" catchtap='videoPlay'>
+                <image class='dialog_video_play' src='/images/bofang.png'></image>
+              </view> -->
+              </view>
+            </view>
+            <view class='like_reply'>
+              <!-- <image class='like_icon' data-liked-idx="{{ index }}" src='{{ item.isLiked ? "/images/like.png" : "/images/like_empty.png" }}' catchtap='likeBtnClick'></image> -->
+              <image class='like_icon' data-liked-idx="{{ index }}" data-item="{{ item }}" src='{{ item.whether_like ? "/images/like.png" : "/images/like_empty.png" }}' catchtap='likeBtnClick'></image>
+              <text class='iconfont icon-liuyan2' data-item="{{ item }}" catchtap='btn_erjipinglun'></text>
+            </view>
+            <view class='leave_word'>
+              <view class='lw_top'>
+                <image class='lwt_icon' src='/images/like.png'></image>
+                <text class='lwt_text'>{{ item.likes }}人觉得很赞</text>
+              </view>
+              <view class='lw_item' wx:key wx:for="{{ item.discuss }}" wx:for-item="item2">
+                <text><text style='color: #666;'>{{ item2.username }}：</text>{{ item2.content }}</text>
+                <!-- <image wx:if="{{ item2.image }}" src='{{ item2.image }}'></image> -->
+                <!-- <text class='user_reply' wx:if="{{ item2.user_reply }}">
+                <text style='color: #666;'>{{ item.user_name }}</text>
+                <text> 回复 </text>
+                <text style='color: #666;'>{{ item2.name + '：' }}</text>
+                <text>{{ item2.user_reply }}</text>
+              </text> -->
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- 底部交互栏 -->
+<view class="interactive_box">
+  <view class="homeIcon_box" catchtap="toHomePage">
+    <text class="iconfont icon-homePage homeIcon"></text>
+    <text style="font-size:22rpx;">首页</text>
+  </view>
+  <view class="commentIcon_box" catchtap="toCommentPage" data-item="{{ activityDetail }}">
+    <text class="iconfont icon-comment commentIcon"></text>
+    <text style="font-size:22rpx;">评价</text>
+  </view>
+  <button class="shareBtn_box" open-type='share'>
+    <text class="iconfont icon-share shareIcon"></text>
+    <text style="font-size:22rpx;">分享</text>
+  </button>
+  <view class="story_mom" catchtap="applyStoryMomClick">
+    <text class="apply">申请成为故事妈妈</text>
+  </view>
+</view>

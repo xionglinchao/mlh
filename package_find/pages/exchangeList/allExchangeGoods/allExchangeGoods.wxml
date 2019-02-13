@@ -1,0 +1,20 @@
+<view class="page_box">
+  <view class="exchange_goods_box" wx:for="{{ contentlist }}" wx:key>
+    <image class="goods_pic" src="{{ item.litpic }}"></image>
+    <view class="goods_info_box">
+      <text class="goods_name">{{ item.name }}</text>
+      <text class="goods_sec_title">热门抢购款</text>
+      <text class="exchange_record">{{ item.people_num }}人已兑换 | 剩余{{ item.number }}本</text>
+      <view class="goods_value">
+        <text class="exchange_bean">{{ item.price }}智慧豆</text>
+        <text class="goods_money">￥{{ item.rmb_price }}</text>
+      </view>
+    </view>
+    <block wx:if="{{ item.number == 0 }}">
+      <view class="exchange_btn_end">兑完</view>
+    </block>
+    <block wx:else>
+      <view class="exchange_btn" catchtap="exchangeBtnClick" data-id="{{ item.id }}">兑换</view>
+    </block>
+  </view>
+</view>

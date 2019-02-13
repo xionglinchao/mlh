@@ -1,0 +1,30 @@
+<!--pages/badgeShow/badgeShow.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class='page_view'>
+  <image src="{{globalVariable.ossImage}}meilihua/upload/lang.png" class='background_white_image' style='height: {{sw/750*845}}px;'></image>
+  <view class="content_name">恭喜你获得一枚徽章</view>
+  <view class="content_grades">
+    <block wx:if="{{typeNum == 1}}">创作达人</block>
+    <block wx:elif="{{typeNum == 2}}">故事大王</block>
+    <block wx:elif="{{typeNum == 3}}">小小画家</block>
+  </view>
+  <block wx:if="{{typeNum1 == 0}}">
+    <button class='button_confirm' open-type="share">炫耀一下</button>
+  </block>
+  <block wx:else>
+    <button class='button_confirm' catchtap='btn_go_home'>我知道了</button>
+  </block>
+  <image src='{{globalVariable.ossImage}}meilihua/upload/czdr.png' class='content_image' style='top: {{0.2*sw}}px;height: {{0.74*sw}}px;'></image>
+  <view class='title_content' style='top: {{0.2*sw + 378/527*0.74*sw - 5}}px;'>
+    <text class='title_name'><block wx:if = "{{typeNum == 1}}">创作达人</block>
+      <block wx:elif = "{{typeNum == 2}}">故事大王</block>
+      <block wx:elif = "{{typeNum == 3}}">小小画家</block></text>
+    <image src='{{globalVariable.ossImage}}meilihua/upload/lv.png' class='title_lv_image'></image>
+    <block wx:if="{{num2 != 0}}">
+      <image src="{{badgeNum10}}" class='title_number_image' style="{{num1 == 1 ? 'width: 9px;height: 16px;' : 'width: 11px;height: 16px;'}}"></image>
+    </block>
+    <block wx:if="{{num1 != 0}}">
+      <image src='{{badgeNum1}}' class='title_number_image' style="{{num2 == 1 ? 'width: 9px;height: 16px;' : 'width: 11px;height: 16px;'}}"></image>
+    </block>
+  </view>
+</view>

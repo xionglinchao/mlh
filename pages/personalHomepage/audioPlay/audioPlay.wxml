@@ -1,0 +1,148 @@
+<view class='page_box'>
+  <view class='top_fix_part'>
+    <!-- 顶部用户信息 -->
+    <view class='top_user_info'>
+      <image class='user_photo' src="{{ audioCourse.cover }}"></image>
+      <view class='name_collect_share'>
+        <view class='name_sign'>
+          <text class='user_name beyondEllipsis'>{{ audioCourse.course_title }}</text>
+          <text class='user_sign beyondEllipsis'>{{ audioCourse.course_subtitle }}</text>
+        </view>
+        <view class='collect_box' catchtap='collectionBtnClick'>
+          <block wx:if='{{ isCollection }}'>
+            <text class='iconfont icon-star-selected starIcon' style='color:#FF6600;'></text>
+          </block>
+          <block wx:else>
+            <text class='iconfont icon-star-empty starIcon'></text>
+          </block>
+          <text class='collect_words'>收藏</text>
+        </view>
+        <button class='share_box' open-type='share'>
+          <text class='iconfont icon-share2 share2Icon'></text>
+          <text class='share_words'>分享</text>
+        </button>
+      </view>
+    </view>
+
+    <view class='play_list_title'>
+      <text class='iconfont icon-play_list playListIcon'></text>
+      <text class='playList_words'>播放列表</text>
+    </view>
+  </view>
+  <!-- 播放滚动列表 -->
+  <scroll-view class='scroll_list' scroll-y>
+    <view class='audio_list' wx:for="{{ audioList }}" wx:key>
+      <view class='dot_title'>
+        <view class='green_dot_box' wx:if="{{0}}">
+          <view class='green_dot'></view>
+        </view>
+        <view class='audio_title_box'>
+          <view class='course_name beyondEllipsis'>{{ item.course_name }}</view>
+          <view class='period'>({{ item.period }}期)</view>
+        </view>
+      </view>
+      <block wx:if="{{ item.isLocked == 1 }}">
+        <view class='audio_duration'>{{ item.audio_duration }}</view>
+      </block>
+      <block wx:else>
+        <text class='iconfont icon-lock lockIcon' catchtap='unlockBtnClick'></text>
+      </block>
+    </view>
+  </scroll-view>
+  <view class='bottom_fixed_box'>
+    <!-- 滑动条 -->
+    <view class='slider_bar_box'>
+      <text class='star_time'>00:00</text>
+      <slider class='audio_slider_bar' backgroundColor='#E2E2E2' block-size='20'></slider>
+      <text class='end_time'>03:14</text>
+    </view>
+    <!-- 播放 -->
+    <view class='play_icon_box'>
+      <text class='iconfont icon-previous previousIcon'></text>
+      <text class="iconfont {{ isPlaying ? 'icon-playing':'icon-play2' }} play2Icon" catchtap="audioPlayClick"></text>
+      <text class='iconfont icon-next nextIcon'></text>
+    </view>
+    <!-- 底部交互栏 -->
+    <view class='interaction_box'>
+      <text class='iconfont icon-homePage homePageIcon'></text>
+      <view class='input_box' catchtap='showModal'></view>
+      <view class='sendIcon_box'>
+        <text class='iconfont icon-yuyin sendMessageIcon'></text>
+        <text class='send_words'>语音</text>
+      </view>
+      <view class='sendIcon_box'>
+        <text class='iconfont icon-send_message sendMessageIcon'></text>
+        <text class='send_words'>发送</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--屏幕背景变暗的背景 -->
+<view class="commodity_screen" catchtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框 -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class='cancel_box'>
+    <text class='iconfont icon-cancel cancelIcon' catchtap="hideModal"></text>
+  </view>
+  <view class='commentList'>
+    <view class='user_info_box' wx:for='{{ commentList }}' wx:key>
+      <image class='commentUser_photo' src='{{ item.photo }}'></image>
+      <view class='comment_info_box'>
+        <view class='name_dianzan'>
+          <text class='commentUser_name'>{{ item.username }}</text>
+          <view class='dianzan_box' catchtap="likeBtnClick" data-item="{{ item }}">
+            <!-- <text class='iconfont icon-dianzan dianzanIcon'></text> -->
+            <image class='heart' src="{{ item.is_like ? '/images/like.png':'/images/like_empty.png' }}"></image>
+            <text class='dianzan_num'>{{ item.likes }}</text>
+          </view>
+        </view>
+        <view class='comment_cont'>{{ item.content }}</view>
+        <view class='time_cancel'>
+          <text class='comment_time'>{{ item.time }}</text>
+          <text class='cancel_btn' catchtap="delBtnClick" data-item="{{ item }}" wx:if="{{ item.is_me }}">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 弹窗底部交互栏 -->
+  <view class='interaction_box second'>
+    <text class='iconfont icon-homePage homePageIcon'></text>
+    <input class='input_box' bindconfirm="bindValueInput"></input>
+    <view class='sendIcon_box'>
+      <text class='iconfont icon-yuyin sendMessageIcon'></text>
+      <text class='send_words'>语音</text>
+    </view>
+    <view class='sendIcon_box' catchtap="sendMessage">
+      <text class='iconfont icon-send_message sendMessageIcon'></text>
+      <text class='send_words'>发送</text>
+    </view>
+  </view>
+</view>
+
+<!-- 解锁弹窗 -->
+<view class="rule_popup" hidden="{{ isLockBoxHide }}" catchtouchmove="preventDeafult">
+  <view class="popup_bg" catchtap="unlockHidePopup" catchtouchmove="preventDeafult"></view>
+  <view class="popup_box">
+    <view class='lockCancel_box'>
+      <text class='iconfont icon-cancel lockCancel' catchtap="unlockHidePopup"></text>
+    </view>
+    <view class='lock_box'>
+      <image class='lock_pic' src='../../../images/discover/unlock.png'></image>
+    </view>
+    <image class='qipao_bg' src='../../../images/personalHomepage/qipao_bg.png'>
+      <view class='unlock_btn_box'>
+        <text class='unlock_course_name beyondEllipsis'>当前需要解锁课程名称</text>
+        <view class='unlock_btn'>
+          <text class='vertical_line1'></text>
+          <text class='vertical_line2'></text>
+          <text class='vertical_line3'></text>
+          <view class='unlock_words'>解锁当前课程</view>
+          <text class='vertical_line3'></text>
+          <text class='vertical_line2' style='margin:0 2rpx 0 4rpx;'></text>
+          <text class='vertical_line1'></text>
+        </view>
+      </view>
+    </image>
+  </view>
+</view>

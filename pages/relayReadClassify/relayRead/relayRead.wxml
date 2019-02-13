@@ -1,0 +1,29 @@
+<!--pages/relayRead/relayRead.wxml-->
+<wxs src="../../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="relayReadViewClass">
+
+  <image class="headViewClass" style="width:100%;height:{{sw/15*8}}px;" src='{{globalVariable.ossImage + imageHead}}' mode="aspectFill"></image>
+  <text class="headTextClass">免费，读好书的梦想因你而成 ！</text>
+  <view class="bookViewClass">
+    <scroll-view class="scrollViewClass" scroll-y="true">
+      <view wx:for="{{dataRead}}" wx:key style='width:100%;' hover-class='bottom_v'>
+        <view class="dataViewClass" bindtap='btn_infomartion' data-info="{{item}}">
+          <image class='bookImageClass' src='{{globalVariable.ossImage + item.litpic}}' mode="aspectFill"></image>
+          <view class="nameViewClass">
+            <text class="text1">{{item.name}}</text>
+            <text class="text2">共<text style='font-size: 18px;color: red;'>{{item.people}}</text>人参与阅读</text>
+            <text class="text3">有<text style='font-size: 18px;color: red;'>{{item.line}}</text>条发起线</text>
+          </view>
+        </view>
+        <view style="clear:both;"></view>
+      </view>
+    </scroll-view>
+  </view>
+
+</view>
+
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+  <image src="../../../images/kt.gif"></image>
+</view>
+
+<view class="commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0'></view>

@@ -1,0 +1,4 @@
+<!--pages/giveBook/giveBook.wxml-->
+<map class = "mapClass" longitude='{{lon}}' latitude='{{lat}}' markers='{{markers}}' show-location='true' bindmarkertap='btn_marker' scale= "10"></map>
+
+

@@ -1,0 +1,42 @@
+<scroll-view scroll-y class='page_box'>
+  <!-- 顶部图片 -->
+  <image class='slide_pic' mode="aspectFill" src="{{ banner.litpic }}">
+    <view class='content_box'>
+      <text class='content_title beyondEllipsis'>{{ banner.name }}</text>
+      <text class='cont'>{{ banner.desc }}</text>
+    </view>
+  </image>
+
+  <view class='book_box' wx:for='{{ bookList }}' wx:key catchtap="toBookDetail" data-item="{{ item }}">
+    <view class='left_info_box'>
+      <image class='book_photo' mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}"></image>
+      <view class='book_cont'>
+        <text class='book_title beyondEllipsis'>{{ item.name }}</text>
+        <text class='brief_intro beyondEllipsis'>摘要：{{ item.abstract ? item.abstract:'暂无' }}</text>
+        <block wx:if='{{ item.shop_label == 1 }}'>
+          <view class='price_num'>
+            <text class='price'>价值￥{{ item.money }}</text>
+            <text class='group_num'>已团{{ item.quantity }}件</text>
+          </view>
+          <view class='group_price'>团购价：
+            <text style='color:#FF5050;'>￥{{ item.moneys }}</text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='price_num'>
+            <text class='group_num'>已购{{ item.quantity }}件</text>
+          </view>
+          <view class='group_price'>价格：
+            <text style='color:#FF5050;'>￥{{ item.moneys }}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+    <block wx:if='{{ item.shop_label == 1 }}'>
+      <view class='buy_btn'>赶紧开团</view>
+    </block>
+    <block wx:else>
+      <view class='buy_btn' style='background:#F57A3D;'>立即购买</view>
+    </block>
+  </view>
+</scroll-view>

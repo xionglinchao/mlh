@@ -1,0 +1,378 @@
+/* pages/send/send.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.sendViewClass {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+}
+
+.addressViewClass {
+  width: 100%;
+  background: white;
+}
+
+.addressViewClass .addressImageClass {
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  margin-top: 22px;
+  float: left;
+}
+
+.addressViewClass .NameViewClass {
+  width: calc(100% - 70px);
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.addressViewClass .NameViewClass .text1 {
+  display: block;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  color: #565656;
+}
+
+.addressViewClass .NameViewClass .text2 {
+  display: block;
+  float: right;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  color: #565656;
+}
+
+.addressViewClass .NameViewClass .text3 {
+  display: block;
+  float: left;
+  line-height: 25px;
+  font-size: 13px;
+  color: #565656;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.addressViewClass .noAdress {
+  line-height: 85px;
+  display: block;
+  float: left;
+  font-size: 17px;
+  color: #565656;
+  width: calc(100% - 70px);
+}
+
+.addressViewClass .rightViewClass {
+  float: right;
+  width: 20px;
+  height: 20px;
+  margin-left: 3px;
+  margin-top: 32px;
+}
+
+.goodsClass {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.dataViewClass {
+  width: 100%;
+  height: 113px;
+  background: white;
+  margin-top: 5px;
+}
+
+.dataViewClass .bookImageClass {
+  width: 80px;
+  height: 88px;
+  margin-top: 5px;
+  float: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.dataViewClass .nameViewClass {
+  width: calc(100% - 130px);
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.dataViewClass .nameViewClass .text1 {
+  display: block;
+  float: left;
+  line-height: 20px;
+  margin-top: 15px;
+  color: #565656;
+  font-size: 14px;
+  height: 40px;
+  width: 100%;
+}
+
+.dataViewClass .nameViewClass .text2 {
+  display: block;
+  float: left;
+  color: #666;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: line-through;
+}
+
+.dataViewClass .nameViewClass .priceViewClass {
+  width: 100%;
+  height: 30px;
+  float: left;
+  margin-top: 18px;
+}
+
+.dataViewClass .nameViewClass .priceViewClass text {
+  display: block;
+  float: left;
+  color: red;
+  font-size: 17px;
+  line-height: 40px;
+}
+
+/* .dataViewClass .nameViewClass .priceViewClass button {font-size:13px;padding:0px;width:50px;background:#ff6600;float:right;height:30px;line-height:30px;color:white;margin-top:5px;border-radius:4px;margin-right:20px;}
+.dataViewClass .nameViewClass .priceViewClass button::after {content:none;}
+*/
+
+.TypeViewClass {
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #f0f0f0;
+  background: white;
+}
+
+.TypeViewClass text {
+  display: block;
+  float: left;
+  line-height: 40px;
+  margin-left: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+.TypeViewClass switch {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.TypeViewClass .rightClass {
+  width: 20px;
+  height: 20px;
+  float: right;
+  margin-top: 10px;
+}
+
+.TypeViewClass switch .wx-switch-input {
+  width: 42px;
+  height: 22px;
+}
+
+.TypeViewClass switch .wx-switch-input::before {
+  width: 40px;
+  height: 20px;
+}
+
+.TypeViewClass switch .wx-switch-input::after {
+  width: 20px;
+  height: 20px;
+}
+
+.orderRemark {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: white;
+  position: relative;
+  float: left;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 40px;
+}
+
+.orderRemark text.title {
+  float: left;
+  width: 65px;
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin-left: 10px;
+}
+
+.orderRemark text.remark {
+  float: right;
+  color: #ff8d8d;
+  width: calc(80% - 65px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  font-size: 12px;
+  margin-right: 25px;
+}
+
+.orderRemark image.inEdit {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  right: 0px;
+}
+
+.remarkInputClass {
+  height: 60px;
+  width: 100%;
+}
+
+.shoppingButtonClass {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 0px;
+  position: fixed;
+  bottom: 0px;
+  background: #f60;
+  color: white;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.shoppingButtonClass::after {
+  content: none;
+}
+
+/*底部提交订单按钮*/
+
+.orderSendClass {
+  width: 100%;
+  height: 45px;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orderSendClass .send {
+  float: right;
+  background-color: #e95304;
+  height: 45px;
+  width: 120px;
+  border-radius: unset;
+  color: white;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  font-size: 14px;
+}
+
+.gobuy_n {
+  background: #bc670b;
+}
+
+.discount_box {
+  width: 490rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+/* 底部弹出框 */
+
+/*使屏幕变暗  */
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/*对话框 */
+
+.commodity_attr_box {
+  height: 830rpx;
+  width: 100%;
+  overflow: scroll;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+
+.coupons_num {
+  font-size: 26rpx;
+  color: #666;
+  padding: 30rpx;
+}
+
+.coupon_pic {
+  width: 675rpx;
+  height: 230rpx;
+  padding-left: 40rpx;
+  position: relative;
+}
+
+.coupon_value {
+  position: absolute;
+  top: 64rpx;
+  right: 26rpx;
+  font-size: 50rpx;
+  color: #fff;
+}
+
+.use_time {
+  font-size: 24rpx;
+  color: #c3c3c3;
+  position: absolute;
+  bottom: 24rpx;
+  left: 60rpx;
+}
+
+.cancel_btn {
+  width: 280rpx;
+  height: 80rpx;
+  border-radius: 38rpx;
+  border: 2rpx solid #b1b1b1;
+  font-size: 30rpx;
+  color: #666;
+  text-align: center;
+  line-height: 80rpx;
+  margin: 30rpx 235rpx;
+}
+
+.course_name {
+  width: 310rpx;
+  color: #fff;
+  font-size: 24rpx;
+  position: absolute;
+  top: 74rpx;
+  left: 196rpx;
+}
+
+.use_standard_book {
+  font-size: 22rpx;
+  color: #fff;
+  position: absolute;
+  left: 310rpx;
+  top: 36rpx;
+}

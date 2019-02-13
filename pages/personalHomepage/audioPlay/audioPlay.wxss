@@ -1,0 +1,502 @@
+.page_box {
+  width: 100%;
+  height: 100vh;
+}
+
+/* 顶部用户信息 */
+
+.top_fix_part {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top_user_info {
+  display: flex;
+  padding: 30rpx 25rpx;
+}
+
+.user_photo {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 10rpx;
+}
+
+.name_collect_share {
+  display: flex;
+  justify-content: space-between;
+  width: 530rpx;
+  padding-left: 30rpx;
+}
+
+.name_sign {
+  display: flex;
+  flex-direction: column;
+  width: 400rpx;
+}
+
+.user_name {
+  font-size: 36rpx;
+  color: #333;
+  padding-bottom: 16rpx;
+  max-width: 260rpx;
+}
+
+.user_sign {
+  font-size: 28rpx;
+  color: #999;
+  max-width: 260rpx;
+}
+
+.collect_box, .share_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 88rpx;
+  height: 80rpx;
+}
+
+.share2Icon {
+  font-size: 36rpx;
+  color: #666;
+  padding-bottom: 10rpx;
+}
+
+.starIcon {
+  font-size: 40rpx;
+  color: #666;
+}
+
+.share_box {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  line-height: normal;
+}
+
+.share_box::after {
+  border:none;
+}
+
+.collect_words, .share_words {
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* 播放列表 */
+
+.play_list_title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 74rpx;
+  background: #f5f5f5;
+}
+
+.playListIcon {
+  font-size: 40rpx;
+  color: #333;
+  margin-left: 30rpx;
+}
+
+.playList_words {
+  font-size: 32rpx;
+  color: #333;
+  margin-left: 15rpx;
+}
+
+.scroll_list {
+  height: 49.5vh;
+}
+
+.audio_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30rpx;
+  padding: 32rpx 0;
+  border-bottom: 2rpx solid #e9eaec;
+}
+
+.dot_title {
+  display: flex;
+  align-items: center;
+}
+
+.green_dot_box {
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 50%;
+  background: #d9eede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 26rpx;
+}
+
+.green_dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #1eac58;
+}
+
+.audio_title_box {
+  display: flex;
+}
+
+.course_name, .period {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.course_name {
+  max-width: 420rpx;
+}
+
+.audio_duration {
+  font-size: 24rpx;
+  color: #999;
+  padding-right: 30rpx;
+}
+
+.lockIcon {
+  font-size: 34rpx;
+  color: #666;
+  margin-right: 45rpx;
+}
+
+/* 底部固定栏 */
+
+.bottom_fixed_box {
+  position: fixed;
+  bottom: 0;
+}
+
+/* 滑动条 */
+
+.slider_bar_box {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+  padding-top: 26rpx;
+}
+
+.audio_slider_bar {
+  width: 534rpx;
+  margin-right: 16rpx;
+}
+
+.star_time, .end_time {
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* 播放 */
+
+.play_icon_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 16rpx;
+}
+
+.previousIcon, .nextIcon {
+  font-size: 62rpx;
+  color: #333;
+}
+
+.play2Icon {
+  font-size: 110rpx;
+  color: #333;
+  padding: 0 70rpx;
+}
+
+/* 底部交互栏 */
+
+.interaction_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14rpx 0;
+  border-top: 2rpx solid #b1b1b1;
+  width: 750rpx;
+}
+
+.homePageIcon {
+  font-size: 48rpx;
+  color: #333;
+  margin-left: 30rpx;
+}
+
+.input_box {
+  width: 480rpx;
+  height: 70rpx;
+  background: #f1f2f6;
+  border-radius: 10rpx;
+}
+
+.sendIcon_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+.sendMessageIcon {
+  font-size: 40rpx;
+  color: #333;
+}
+
+.send_words {
+  font-size: 22rpx;
+  color: #333;
+}
+
+/* 使屏幕变暗 */
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/* 评论弹窗 */
+
+.commodity_attr_box {
+  height: 916rpx;
+  width: 100%;
+  /* overflow: scroll; */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+
+.cancel_box {
+  width: 100%;
+  margin-left: 22rpx;
+  border-bottom: 2rpx solid #e9eaec;
+  padding: 20rpx 0;
+}
+
+.cancelIcon {
+  font-size: 32rpx;
+  color: #333;
+}
+
+/* 评论循环 */
+
+.commentList {
+  width: 100%;
+  height: 716rpx;
+  overflow: scroll;
+}
+
+.user_info_box {
+  display: flex;
+  width: 100%;
+  margin: 30rpx 0 12rpx 0;
+}
+
+.commentUser_photo {
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 50%;
+  margin: 0 18rpx 0 30rpx;
+}
+
+.comment_info_box {
+  display: flex;
+  flex-direction: column;
+  width: 600rpx;
+}
+
+.name_dianzan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commentUser_name {
+  font-size: 26rpx;
+  color: #1eac58;
+}
+
+.dianzan_box {
+  display: flex;
+  align-items: center;
+}
+
+.dianzanIcon {
+  font-size: 30rpx;
+  color: #98a0ad;
+  /* width: 26rpx;
+  height: 20rpx; */
+  padding-right: 20rpx;
+}
+
+.heart {
+  width: 40rpx;
+  height: 34rpx;
+  margin-right: 20rpx;
+}
+
+.dianzan_num {
+  font-size: 24rpx;
+  color: #98a0ad;
+}
+
+.comment_cont {
+  font-size: 30rpx;
+  color: #333;
+  padding: 24rpx 0;
+}
+
+.time_cancel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment_time {
+  font-size: 22rpx;
+  color: #333;
+}
+
+.cancel_btn {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.second {
+  position: fixed;
+  bottom: 0;
+}
+
+/* 解锁弹窗 */
+
+.rule_popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  animation: fadeIn 1s forwards;
+  -webkit-animation: fadeIn 1s forwards;
+}
+
+.popup_bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.popup_box {
+  width: 508rpx;
+  height: 42vh;
+  position: fixed;
+  z-index: 11;
+  top: 22.5vh;
+  left: 120rpx;
+  background: #1EAC58;
+}
+
+.lockCancel_box {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lockCancel {
+  font-size: 30rpx;
+  color: #fff;
+  padding: 15rpx 15rpx 0 0;
+}
+
+.lock_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 24rpx 0 30rpx 0;
+}
+
+.lock_pic {
+  width: 200rpx;
+  height: 140rpx;
+}
+
+.qipao_bg {
+  width: 508rpx;
+  height: 274rpx;
+  position: relative;
+}
+
+.unlock_btn_box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* left: 114rpx; */
+  top: 96rpx;
+  left: 50%;
+  width: 508rpx;
+  margin-left: -254rpx;
+}
+
+.unlock_course_name {
+  font-size: 28rpx;
+  color: #1EAC58;
+  margin-bottom: 26rpx;
+  width: 480rpx;
+  text-align: center;
+}
+
+.unlock_btn {
+  display: flex;
+}
+
+.vertical_line1 {
+  width: 2rpx;
+  height: 84rpx;
+  background: #1EAC58;
+}
+
+.vertical_line2 {
+  width: 4rpx;
+  height: 84rpx;
+  background: #1EAC58;
+  margin: 0 4rpx 0 2rpx;
+}
+
+.vertical_line3 {
+  width: 6rpx;
+  height: 84rpx;
+  background: #1EAC58;
+}
+
+.unlock_words {
+  width: 260rpx;
+  height: 84rpx;
+  background: #1EAC58;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 84rpx;
+  margin: 0 6rpx;
+}

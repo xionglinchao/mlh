@@ -1,0 +1,295 @@
+.page_box {
+  width: 100%;
+}
+
+.top_bean_box {
+  width: 100%;
+  display: flex;
+}
+
+.bean_box, .exchange_record_box {
+  width: 375rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bean_pic {
+  width: 42rpx;
+  height: 32rpx;
+}
+
+.bean_words, .exchange_record {
+  font-size: 28rpx;
+  padding-left: 12rpx;
+}
+
+.exchange_pic {
+  width: 32rpx;
+  height: 34rpx;
+}
+
+/* 轮播图 */
+.swiper_pic_box {
+  width: 100%;
+  height: 200rpx;
+}
+
+.swiper_pic {
+  width: 100%;
+  height: 200rpx;
+  background: lightblue;
+}
+
+.icon_box {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 45rpx;
+}
+
+.single_icon_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 26rpx 0 16rpx 0;
+}
+
+.icon_pic {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.icon_words {
+  font-size: 24rpx;
+  color: #545454;
+  padding-top: 16rpx;
+}
+
+/* 限时兑换 */
+.time_exchange_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.left_ball, .right_ball {
+  width: 86rpx;
+  height: 18rpx;
+}
+
+.time_exchange {
+  font-size: 30rpx;
+  padding: 0 14rpx;
+}
+
+.activ_list {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30rpx;
+}
+
+.each_activ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.activ_cover {
+  width: 216rpx;
+  height: 145rpx;
+  background: lightblue;
+  border-radius: 12rpx;
+  position: relative;
+}
+
+.activ_cont_box {
+  width: 216rpx;
+  height: 145rpx;
+  position: absolute;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.activ_on {
+  width: 74rpx;
+  height: 35rpx;
+  margin-top: 4rpx;
+}
+
+.name_box {
+  width: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8rpx 4rpx 8rpx;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.activ_user_name {
+  max-width: 90rpx;
+  font-size: 22rpx;
+  color: #FFFFFF;
+}
+
+.join_box {
+  display: flex;
+  align-items: center;
+}
+
+.people_icon {
+  width: 26rpx;
+  height: 23rpx;
+}
+
+.join_num {
+  font-size: 20rpx;
+  color: #FFFFFF;
+  padding-left: 6rpx;
+}
+
+.activ_name {
+  font-size: 24rpx;
+  width: 216rpx;
+  height: 42rpx;
+  background: #F5F5F5;
+  border-radius: 4rpx;
+  margin-top: 12rpx;
+  text-align: center;
+  line-height: 42rpx;
+}
+
+.activ_name_sec {
+  font-size: 24rpx;
+  width: 216rpx;
+  height: 42rpx;
+  background: #FFCC66;
+  border-radius: 4rpx;
+  margin-top: 12rpx;
+  text-align: center;
+  line-height: 42rpx;
+  color: #FFFFFF;
+}
+
+.exchange_bean_box {
+  width: 216rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+}
+
+.bean_num_box {
+  display: flex;
+  align-items: center;
+}
+
+.exchange_bean_pic {
+  width: 35rpx;
+  height: 28rpx;
+}
+
+.exchange_num {
+  font-size: 28rpx;
+  color: #1EAC58;
+  padding-left: 16rpx;
+}
+
+.exchange_btn {
+  width: 90rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  background: #1EAC58;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 40rpx;
+}
+
+/* 普通兑换 */
+.normal_exchange_box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #F7F9FA;
+}
+
+.title_pic {
+  width: 100%;
+  height: 50rpx;
+  margin: 28rpx 0;
+}
+
+.normal_exchange_list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 30rpx;
+}
+
+.exchange_goods_box {
+  width: 336rpx;
+  background: #FFFFFF;
+  border-radius: 4rpx;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+}
+
+.exchange_goods_cover {
+  width: 334rpx;
+  height: 220rpx;
+  border-radius: 4rpx;
+  vertical-align: top;
+  background: lightblue;
+  position: relative;
+}
+
+.left_num {
+  position: absolute;
+  bottom: 6rpx;
+  right: 10rpx;
+  z-index: 10;
+  color: #FFFFFF;
+  font-size: 22rpx;
+}
+
+.goods_name {
+  font-size: 28rpx;
+  padding: 0 15rpx;
+  max-width: 300rpx;
+}
+
+.goods_bottom_box {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-bottom: 10rpx;
+}
+
+.normal_bean_box {
+  display: flex;
+  align-items: center;
+}
+
+.exchange_money {
+  font-size: 22rpx;
+  color: #BDBDBD;
+  text-decoration: line-through;
+}
+
+.exchange_btn_end {
+  width: 90rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  background: #999999;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 40rpx;
+}

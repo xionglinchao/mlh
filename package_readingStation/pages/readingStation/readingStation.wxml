@@ -1,0 +1,94 @@
+<view class='rs_container'>
+  <!-- 选择地址 -->
+  <view class='top_select_address_box'>
+    <view class='choose_main'>
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker beyondEllipsis">
+          <image class='main_icon_img' src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/location-icon.png"></image>
+          {{region[0]}} {{region[1]}}
+          <text class='iconfont icon-arrow-down down_icon'></text>
+        </view>
+      </picker>
+    </view>
+    <!-- <view class='choose_sub'>
+      <text class='sub_text'>请选择区域</text>
+      <text class='iconfont icon-arrow-down down_icon'></text>
+    </view> -->
+  </view>
+  <!-- 主图 -->
+
+  <image class='main_img' src='{{ mainImgUrl }}' hidden="{{ mainImgUrl == '' }}">
+    <view class='mian_text'>已收到
+      <text style='font-size: 30rpx; color: #ff5050;'>{{ receive_coin_num }}</text>公益币，欢迎参与</view>
+  </image>
+  <!-- 排行 -->
+  <view class='rank_box' wx:if="{{ rankList.length > 0 }}">
+    <scroll-view class='rank_scroll' scroll-x>
+      <view class='rank_item' wx:for="{{ rankList }}" wx:key>
+        <view class='item_img_box' wx:if="{{ item.litpic && item.welfare }}">
+          <!-- 第一名 -->
+          <image class='rank_1_circle' wx:if="{{ index == 0 }}" src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rank-1-circle.png'>
+            <image class='user_1_avatar' src="{{ item.litpic }}"></image>
+            <view class='coin_1_num'>{{ item.welfare }}币</view>
+          </image>
+          <!-- 第二 -->
+          <image class='rank_2_circle' wx:if="{{ index == 1 }}" src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rank-2-circle.png'>
+            <image class='user_2_avatar' src="{{ item.litpic }}"></image>
+            <view class='coin_2_num'>{{ item.welfare }}币</view>
+          </image>
+          <!-- 第三及以后 -->
+          <image class='rank_3_circle' wx:if="{{ index >= 2 }}" src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rank-3-circle.png'>
+            <image class='user_3_avatar' src="{{ item.litpic }}"></image>
+            <view class='coin_3_num'>{{ item.welfare }}币</view>
+          </image>
+          <image class='rank_1_sub' wx:if="{{ index == 0 }}" src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rank-1-sub.png'></image>
+          <image class='rank_2_sub' wx:if="{{ index == 1 }}" src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rank-2-sub.png'></image>
+          <image class='rank_3_sub' wx:if="{{ index >= 2 }}" src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rank-3-sub.png'></image>
+        </view>
+        <text></text>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 最新读书会 -->
+  <view class='rs_content_container' hidden='{{ hideDushuhui }}'>
+    <block wx:if="{{ dushuhuiList.length == 0 }}">
+      <image class='title_line' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/title-line.png'></image>
+      <view class='content_none'>当前区域没有任何读书会哦</view>
+    </block>
+    <block wx:if="{{ dushuhuiList.length > 0 }}">
+      <image class='title_line' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/title-line.png'></image>
+      <view class='content_box' wx:key wx:for="{{ dushuhuiList }}" data-activity-id="{{ item.detail.id }}" data-user-id="{{ item.userinfo.id }}" catchtap='toRaDetail'>
+        <view class='content_title'>
+          <view class='title_left' catchtap='btn_person_information' data-item="{{ item }}">
+            <image class='head_img' src='{{ item.userinfo.litpic }}'></image>
+            <view class='user_name beyondEllipsis'>{{ item.userinfo.username }}</view>
+            <view class="level-box">
+              <image class="green-medal" wx:key wx:for="{{ item.userinfo.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <image class="red-medal" wx:key wx:for="{{ item.userinfo.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <image class="yellow-medal" wx:key wx:for="{{ item.userinfo.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+            </view>
+          </view>
+          <text class='time'>{{ item.detail.time }}</text>
+        </view>
+        <view class='content_info'>
+          <image mode='aspectFill' class='con_img' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.detail.litpic }}"></image>
+          <view class='con_text_box'>
+            <view class='text_top'>
+              <text class='con_name beyondEllipsis'>{{ item.detail.name }}</text>
+              <text class='distance'>距我{{ item.distance }}</text>
+            </view>
+            <view class='text_mid'>
+              <view class='con_intro beyondEllipsis'>{{ item.comment ? item.comment : '暂无简介' }}</view>
+            </view>
+            <view class='text_bot'>
+              <view class='join_family'>{{ item.join_people }}个家庭参与</view>
+              <text class='from_place beyondEllipsis' data-book-id="{{ item.id }}" catchtap='toDushuhui'>来自{{ item.name }}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+
+  </view>
+</view>

@@ -1,0 +1,229 @@
+.page_box {
+  width: 100%;
+  height: 100vh;
+}
+
+/* 轮播图 */
+.swiper_pic_box {
+  width: 690rpx;
+  height: 200rpx;
+  padding: 30rpx 30rpx 0 30rpx;
+}
+
+.swiper_pic {
+  width: 690rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  background: lightblue;
+}
+
+/* 附近活动 */
+.community_container {
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #F2F2F2;
+}
+
+.community_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 30rpx 10rpx 30rpx;
+}
+
+.sec_icon_box, .check_all_box {
+  display: flex;
+  align-items: center;
+}
+
+.community_icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.community_words {
+  font-size: 28rpx;
+  padding-left: 18rpx;
+}
+
+.check_all {
+  font-size: 28rpx;
+  color: #AEAEAE;
+}
+
+.rightArrow {
+  font-size: 26rpx;
+  color: #AEAEAE;
+  padding-left: 10rpx;
+}
+
+.activ_list {
+  display: flex;
+  margin: 0 30rpx;
+}
+
+.each_activ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.each_activ:nth-child(2) {
+  margin: 0 10rpx;
+}
+
+.activ_cover {
+  width: 216rpx;
+  height: 145rpx;
+  background: lightblue;
+  border-radius: 12rpx;
+  position: relative;
+}
+
+.activ_cont_box {
+  width: 216rpx;
+  height: 145rpx;
+  position: absolute;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.activ_on {
+  width: 74rpx;
+  height: 35rpx;
+  margin-top: 4rpx;
+}
+
+.name_box {
+  width: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8rpx 4rpx 8rpx;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.activ_user_name {
+  max-width: 90rpx;
+  font-size: 22rpx;
+  color: #FFFFFF;
+}
+
+.join_box {
+  display: flex;
+  align-items: center;
+}
+
+.people_icon {
+  width: 26rpx;
+  height: 23rpx;
+}
+
+.join_num {
+  font-size: 20rpx;
+  color: #FFFFFF;
+  padding-left: 6rpx;
+}
+
+.activ_name {
+  font-size: 30rpx;
+  padding-top: 20rpx;
+  max-width: 216rpx;
+}
+
+/* 精选活动 */
+.activity_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.activity_box {
+  width: 690rpx;
+  height: 330rpx;
+  border: 4rpx solid #f0f0f0;
+  border-radius: 36rpx;
+  margin-top: 20rpx;
+}
+
+.activity_content {
+  width: 665rpx;
+  height: 270rpx;
+  margin: 30rpx 0 0 15rpx;
+  display: flex;
+}
+
+.activity_pic {
+  width: 270rpx;
+  height: 270rpx;
+  border-radius: 36rpx;
+}
+
+.intro_box {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15rpx;
+}
+
+.name_pic_box {
+  width: 392rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity_name {
+  font-size: 34rpx;
+  color: #333;
+  max-width: 270rpx;
+}
+
+.activity_on {
+  width: 84rpx;
+  height: 40rpx;
+}
+
+.brief_intro {
+  font-size: 24rpx;
+  color: #999;
+  padding: 10rpx 0 20rpx 0;
+  max-width: 360rpx;
+}
+
+.join_number {
+  font-size: 24rpx;
+  color: #999;
+  padding-bottom: 24rpx;
+}
+
+.ending {
+  font-size: 34rpx;
+  color: #ff4e5c;
+  padding-bottom: 14rpx;
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+}
+
+.countdown_number {
+  font-size: 28rpx;
+  color: #fff;
+  width: 30rpx;
+  height: 46rpx;
+  border-radius: 4rpx;
+  background: #ff4454;
+  text-align: center;
+  line-height: 46rpx;
+  margin-right: 6rpx;
+}
+
+.countdown_string {
+  font-size: 28rpx;
+  color: #ff4454;
+  margin-right: 6rpx;
+}

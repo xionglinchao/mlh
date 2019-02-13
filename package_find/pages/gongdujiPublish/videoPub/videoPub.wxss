@@ -1,0 +1,142 @@
+.t-box {
+  width: 100%;
+  height: 100vh;
+}
+
+.top_info_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 15rpx 30rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+.user_info {
+  display: flex;
+  align-items: center;
+}
+
+.user_photo {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.name_sign_box {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15rpx;
+}
+
+.user_name {
+  font-size: 28rpx;
+  color: #1EAC58;
+}
+
+.personal_sign {
+  font-size: 20rpx;
+  color: #ABABAB;
+  max-width: 280rpx;
+}
+
+.btn_box {
+  display: flex;
+}
+
+.del_btn, .pub_btn {
+  font-size: 24rpx;
+  width: 128rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.del_btn {
+  background: #EEEEEE;
+  color: #333333;
+  margin-right: 25rpx;
+}
+
+.pub_btn {
+  background: #1EAC58;
+  color: #FFFFFF;
+}
+
+/* 添加视频 */
+.yuyin_cont {
+  margin-left: 30rpx;
+  padding-top: 30rpx;
+  width: 690rpx;
+  height: 250rpx;
+  font-size: 32rpx;
+}
+
+.yuyin-box {
+  display: flex;
+  width: 720rpx;
+  margin-left: 15rpx;
+}
+
+.add-yuyin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 235rpx;
+  height: 235rpx;
+  background-color: #fafafa;
+  border: 2rpx dashed #999;
+  margin-right: 8rpx;
+}
+
+.camera {
+  font-size: 80rpx;
+  color: #aeaeae;
+}
+
+.yuyin_words {
+  font-size: 22rpx;
+  color: #ccc;
+}
+
+.yuyin_note {
+  font-size: 22rpx;
+  color: #999;
+  padding: 19rpx 0 0 50rpx;
+}
+
+.tempVideo {
+  width: 238rpx;
+  height: 238rpx;
+}
+
+.del_img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: white;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* 私密按钮 */
+.lock_box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 30rpx;
+}
+
+.lock_pic {
+  width: 28rpx;
+  height: 30rpx;
+}
+
+.lock_words {
+  font-size: 24rpx;
+  color: #666666;
+  padding-left: 12rpx;
+}

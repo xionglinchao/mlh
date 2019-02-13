@@ -1,0 +1,16 @@
+/* pages/login/login.wxss */
+page {width:100%;height:100%;}
+.pViewClass {width:100%;height:100%;}
+.headViewClass {width:190px;height:190px;margin-left:calc(50% - 95px);margin-top:40px;padding-bottom:20px;}
+.loinViewClass {width:100%;height:auto;}
+.loinViewClass .type1 {width:calc(100% - 30px);margin-left:15px;height:40px;border-bottom:1px solid #f0f0f0;}
+.loinViewClass .type1 text {display:block;float:left;font-size:13px;line-height:40px;width:60px;color:#424242;}
+.loinViewClass .type1 input {width:calc(100% - 60px);line-height:40px;height:40px;font-size:13px;float:left;}
+.pwdinputViewClass {width:calc(100% - 30px);margin-left:15px;border-bottom:1px solid #e1e1e1;height:40px;margin-top:10px;position:relative;margin-right:15px;}
+.pwdinputViewClass text {display:block;float:left;line-height:40px;width:60px;font-size:13px;color:#424242;}
+.pwdinputViewClass input {height:40px;line-height:40px;font-size:13px;float:left;/* width:calc(100% - 170px);*/}
+/* 正式 170 测试 110**/
+.pwdinputViewClass input .phClass {color:#999;}
+.pwdinputViewClass .yzmClass {display:block;float:left;position:absolute;right:10px;height:30px;font-size:13px;border:1px solid #aaa;line-height:30px;width:100px;text-align:center;color:#f60;border-radius:2px;margin-top:5px;}
+.pwdinputViewClass .yzmClass::after {content:none;}
+.LoginClass {margin-top:40px;width:90%;margin-left:5%;background:#3c9d70;color:white;font-size:14px;border-radius:2px;height:45px;line-height:45px;}

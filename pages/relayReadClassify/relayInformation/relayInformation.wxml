@@ -1,0 +1,162 @@
+<import src="../../../wxParse/wxParse.wxml" />
+
+<view class="bookDetails">
+  <view class="tBox">
+    <view style='display:flex;'>
+      <image class="left-pic" mode='aspectFill' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + baseInfo.litpic }}"></image>
+      <view class="center-cont">
+        <view class='tt-box'>
+          <view class="tWord-1 beyondEllipsis_two">{{ baseInfo.name }}</view>
+          <view class="tWord-2">全国已有{{ line }}条线进行中</view>
+        </view>
+        <view class="tWord-3">
+          <text class="tWord-3-1">保证金:<text class="tWord-3-1-sub">￥{{ baseInfo.contact }}</text></text>
+          <text class="tWord-3-2" catchtap='initiateBtnClick'>我要发起</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bBox">
+    <view class="fTitle">
+      <view class="fTitle-text {{ swiperIdx == index ? 'active' : '' }}" wx:for="{{ fTitle }}" wx:key data-idx="{{ index }}" catchtap="changeSwiper">{{ item }}</view>
+    </view>
+    <swiper class="swiper-item-container" current="{{ swiperIdx }}" bindchange="changeSwiper">
+      <!-- 规则介绍 -->
+      <swiper-item>
+        <scroll-view scroll-y class="book-container">
+          <!-- 暂无数据 -->
+          <view class='none-box' wx:if="{{ ruleList.length == 0 && bookIntroList.length == 0 }}">
+            <image class="none-img" src="/images/gap/gap1.png"></image>
+            <view class='none-text'>暂无相关数据</view>
+          </view>
+          <!-- 接力规则 -->
+          <view class="rule-box" wx:if="{{ ruleList.length > 0 }}">
+            <image class="ruleIntroduce" src="/images/relayRead/ruleIntroduce.png"></image>
+            <view class="ruleDetail" wx:for="{{ ruleList }}" wx:key>
+              <text class="numberList-1">{{ index+1 }}</text>
+              <view class="rulewordIntroduce">{{ item }}</view>
+            </view>
+          </view>
+          <!-- 书籍介绍 -->
+          <view class="bookIntro-box" wx:if="{{ bookIntroList.length > 0 }}">
+            <image class="bookIntroduce" src="/images/relayRead/bookIntroduce.png"></image>
+            <!-- <view class="bookDetail" wx:for="{{ bookIntroList }}" wx:key>
+              <text class="numberList-2">{{ index+1 }}</text>
+              <view class="bookwordIntroduce">{{ item }}</view>
+            </view> -->
+            <view class='html_view'>
+              <template is="wxParse" data="{{ wxParseData:article.nodes }}" />
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <!-- 最新心得 -->
+      <swiper-item>
+        <scroll-view scroll-y class="book-container wh-bg">
+          <!-- 暂无数据 -->
+          <view class='none-box' wx:if="{{ feelingList.length == 0}}">
+            <image class="none-img" src="/images/gap/gap1.png"></image>
+            <view class='none-text'>暂无相关数据</view>
+          </view>
+          <!-- 有数据 -->
+          <view class="feeling-box" wx:if="{{ feelingList.length > 0}}" wx:for="{{ feelingList }}" wx:key>
+            <view class="feeling" catchtap='btn_person_information' data-item="{{item}}">
+              <view class="feeling-detail">
+                <image class="user-photo" src="{{ item.photo }}"></image>
+                <view class="user-time">
+                  <text class="user-name1">{{ item.username }}</text>
+                  <text class="launch-time1">{{ item.time }}</text>
+                </view>
+                <view class="medal-LV">
+                  <image class="green-LV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+                  <image class="red-LV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+                  <image class="yellow-LV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+                </view>
+              </view>
+              <!-- <text class="guanzhu" > <text class="iconfont icon-plus plus"></text> 关注</text> -->
+              <text class="guanzhu" data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap='subscribeBtnClick'>{{ item.is_focus ? '已关注' : '+ 关注' }}</text>
+            </view>
+            <!-- 评论框 -->
+            <view class='comment_box'>
+              <view class="dialog">
+                <text>{{ item.content }}</text>
+                <image class="dialog_image" wx:if="{{ item.litpics }}" src='{{ item.litpics }}'></image>
+                <video class="dialog_video" wx:if="{{ item.video }}" src='{{ item.video }}'></video>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <!--  火热接力  -->
+      <swiper-item>
+        <scroll-view scroll-y class="book-container">
+          <!-- 暂无数据 -->
+          <view class='none-box' wx:if="{{ relayList.length == 0 }}">
+            <image class="none-img" src="/images/gap/gap1.png"></image>
+            <view class='none-text'>暂无相关数据</view>
+          </view>
+          <!-- 客户信息 -->
+          <view class="relay-box" data-item='{{ item }}' catchtap="toRelayDetail" wx:if="{{ relayList.length > 0 }}" wx:for="{{ relayList }}" wx:key>
+            <image class="NO1-picture" wx:if="{{ index == 0 }}" src="/images/relayRead/NO.1.jpg"></image>
+            <image class="NO2-picture" wx:if="{{ index == 1 }}" src="/images/relayRead/NO.2.jpg"></image>
+            <!-- 头像及用户名 -->
+            <view catchtap='btn_person_information2' data-item="{{ item.userinfo }}">
+              <image class="user" src="{{ item.userinfo.litpic }}"></image>
+              <view class="user-name">{{ item.userinfo.username }}</view>
+            </view>
+            <!-- 等级 -->
+            <view class="medal-list">
+              <image class="green-medal" wx:key wx:for="{{ item.userinfo.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <image class="red-medal" wx:key wx:for="{{ item.userinfo.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <image class="yellow-medal" wx:key wx:for="{{ item.userinfo.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <!-- 测试 -->
+              <!-- <image class="green-medal" src="{{ '/images/emblem/green-1.png'  }}"></image>
+              <image class="red-medal" src="{{ '/images/emblem/red-1.png'  }}"></image>
+              <image class="yellow-medal" src="{{ '/images/emblem/yellow-1.png'  }}"></image> -->
+            </view>
+            <!-- 发起时间及人数 -->
+            <view>
+              <view class="launch-time">发起时间：{{ item.add_time }}</view>
+              <image class="arrow-right" src="/images/relayRead/arrow-right.png"></image>
+              <view class="people-number">参与人数：{{ item.nums }}</view>
+            </view>
+            <!-- 接力状态 -->
+            <view>
+              <image class="red-torch" src="{{ item.status == 1 ? '/images/relayRead/red-torch.png' : '/images/relayRead/grey-torch.png' }}"></image>
+              <text class="{{ item.status == 1 ? 'tStation-1' : 'tStation-2' }}">{{ item.status == 1 ? '接力中' : '已结束' }}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <!-- 相关书籍 -->
+      <swiper-item>
+        <scroll-view scroll-y class="book-container">
+          <!-- 暂无数据 -->
+          <view class='none-box' wx:if="{{ relationBooksList.length == 0 }}">
+            <image class="none-img" src="/images/gap/gap1.png"></image>
+            <view class='none-text'>暂无相关数据</view>
+          </view>
+          <view class="bookUl" wx:if="{{ relationBooksList.length > 0 }}">
+            <view class="book-box" wx:for="{{ relationBooksList }}" wx:key>
+              <image mode='aspectFill' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}" class="book-img">
+                <view class="bookName">
+                  <text class='beyondEllipsis'>{{ item.name }}</text>
+                </view>
+              </image>
+              <view class="book-btn-box">
+                <text class="bWord-1" catchtap='look_detail' data-item='{{ item }}'>查看详情</text>
+                <text class="bWord-2" data-item='{{ item }}' catchtap='btn_go_buy' style="{{ relationBooksList.quantity == 0 ? 'background: #999;': '' }}">{{ relationBooksList.quantity == 0 ? '库存不足' : '立即购买' }}</text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+    </swiper>
+  </view>
+
+</view>

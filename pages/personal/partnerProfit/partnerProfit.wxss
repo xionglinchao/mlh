@@ -1,0 +1,265 @@
+.fixed_box {
+  position: fixed;
+  top: 0;
+  z-index: 20;
+}
+
+.my_profit_box {
+  width: 100%;
+  height: 440rpx;
+  background: #1EAC58;
+}
+
+.base_info_box {
+  display: flex;
+  justify-content: space-between;
+  padding: 60rpx 30rpx 0 30rpx;
+}
+
+.user_info_box {
+  display: flex;
+  align-items: center;
+}
+
+.photo_box {
+  width: 135rpx;
+  height: 135rpx;
+  border-radius: 50%;
+  background: #75cc99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.user_photo {
+  width: 118rpx;
+  height: 118rpx;
+  border-radius: 50%;
+  background: lightblue;
+}
+
+.name_box {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rpx;
+}
+
+.user_name {
+  font-size: 30rpx;
+  color: #FFFFFF;
+  max-width: 200rpx;
+}
+
+.partner_box {
+  display: flex;
+  align-items: center;
+}
+
+.first {
+  padding: 6rpx 0;
+}
+
+.crownIcon {
+  width: 35rpx;
+  height: 30rpx;
+  padding-right: 15rpx;
+}
+
+.icon_words {
+  font-size: 24rpx;
+  color: #FFFFFF;
+}
+
+.peopleIcon {
+  width: 40rpx;
+  height: 24rpx;
+  padding-right: 10rpx;
+}
+
+.total_money_box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.withdraw_words {
+  font-size: 24rpx;
+  color: #FFFFFF;
+}
+
+.withdraw_money {
+  font-size: 30rpx;
+  color: #FFFFFF;
+}
+
+.withdraw_btn {
+  width: 180rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid #FFFFFF;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 60rpx;
+  margin-top: 38rpx;
+}
+
+/* 收益数据统计 */
+.calculate_data {
+  font-size: 30rpx;
+  color: #FFFFFF;
+  margin: 30rpx 30rpx 40rpx 30rpx;
+}
+
+.profit_data_box {
+  width: 100%;
+  height: 115rpx;
+  background: #20BB5F;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.one_data_box {
+  width: 247rpx;
+  height: 115rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.data_money {
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.data_words {
+  font-size: 30rpx;
+  color: #FFFFFF;
+}
+
+.green_line {
+  width: 2rpx;
+  height: 90rpx;
+  background: #FFFFFF;
+}
+
+.grey_line {
+  width: 750rpx;
+  height: 14rpx;
+  background: #EAEAEA;
+}
+
+.record_container {
+  width: 100%;
+  height: 92rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #D2D2D2;
+  background: #FFFFFF;
+}
+
+.team_profit, .person_profit {
+  font-size: 30rpx;
+  padding: 20rpx 0;
+  margin: 0 30rpx;
+}
+
+.active {
+  border-bottom: 4rpx solid #20BB5F;
+}
+
+.dateIcon {
+  font-size: 38rpx;
+  padding-right: 30rpx;
+}
+
+/* 收益记录列表 */
+.record_list {
+  width: 100%;
+  position: relative;
+  float: left;
+  top: 0;
+  overflow: scroll;
+  padding-top: 548rpx;
+}
+
+.single_record_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #D2D2D2;
+}
+
+.partner {
+  display: flex;
+  align-items: center;
+}
+
+.record_photo {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  background: lightblue;
+  margin-right: 12rpx;
+}
+
+.record_detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.partner_name {
+  font-size: 30rpx;
+  max-width: 200rpx;
+}
+
+.partner_act {
+  font-size: 24rpx;
+  color: #666666;
+  padding-top: 25rpx;
+}
+
+.partner_act_sec {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.act_time {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.money_record {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-right: 30rpx;
+  height: 110rpx;
+}
+
+.money {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.single_detail_box {
+  display: flex;
+}
+
+.check_detail {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.doubleArrow {
+  width: 20rpx;
+  height: 20rpx;
+  padding: 8rpx 0 0 10rpx;
+}

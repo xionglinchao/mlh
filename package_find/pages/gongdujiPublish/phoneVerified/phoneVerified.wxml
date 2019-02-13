@@ -1,0 +1,20 @@
+<view class='page_box'>
+  <view class='top_box'>
+    <text class='vertical_line'></text>
+    <text class='sms_verify'>手机短信认证</text>
+  </view>
+  <view class='verify_box'>
+    <view class='phoneNum_box'>
+      <text class='phone_num'>手机号码</text>
+      <input type='number' class='input_phoneNum' maxlength='11' placeholder='请输入手机号码' placeholder-style='font-size:28rpx;color:#d7d7d7;' bindinput='myPhone' value='{{phone}}'></input>
+      <!-- <text style='width:2rpx;height:90rpx;background:#e5e5e5;'></text> -->
+      <!-- <button plain='true' disabled='{{disabled}}' class='verification_code' catchtap='getVerificationCode'>{{ time }}</button> -->
+    </view>
+    <!-- <view class='phoneNum_box'>
+      <text class='phone_num'>验证码</text>
+      <input type='number' class='input_phoneNum code' maxlength='6' placeholder='请输入验证码' placeholder-style='font-size:28rpx;color:#d7d7d7;'></input>
+    </view> -->
+  </view>
+  <text class='' style='padding-left:30rpx;color:#999;font-size:24rpx;'>请填写手机号，以便工作人员联系！</text>
+  <view class="next_step {{phone.length == 11 ?'active':''}}" bindtap='bindPhone'>下一步</view>
+</view>

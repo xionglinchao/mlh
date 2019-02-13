@@ -1,0 +1,41 @@
+<!--pages/myFollowPersonal/myFollowPersonal.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<import src="../../templates/loadView/loadView.wxml" />
+
+<view class='page_view'>
+  <view class="transverse_scroll">
+    <block wx:for="{{globalVariable.myFollowPro}}" wx:key>
+      <view class="book_class_view {{ followIndex == index ?'text_block':''}}" bindtap='btn_follow_class' data-index="{{index}}">
+        <text class='book_class_text'>{{item}}</text>
+      </view>
+    </block>
+    <!--下划线 -->
+    <!-- <view class="book_class_text_line" style="transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view> -->
+
+  </view>
+
+  <view class="book_tab">
+    <view class="tab_view">
+      <block wx:if="{{followPersonalPro}}">
+        <scroll-view class='page_scroll' scroll-y="true">
+          <block wx:for="{{followPersonalPro}}" wx:key>
+            <view class='attention_view' catchtap='btn_person_information' data-item="{{item}}">
+              <image src='{{item.litpic}}'></image>
+              <view class='attention_content_view'>
+                <text class='attention_content_name'>{{item.username}}</text>
+                <text class='attention_content_create'>{{item.creation_count}}创作</text>
+                <text class='attention_content_gz'>{{item.collection_count}}关注</text>
+              </view>
+              <text class='recommend_item_follow' catchtap='btn_attention' data-item="{{item}}" data-suc-idx="{{ index }}" style="{{item.attention == 0 ? '' : 'border: 1px solid #999;color: #999;'}}">{{item.attention == 0 ? '＋关注' : '已关注'}}</text>
+            </view>
+          </block>
+          <view style="clear:both;"></view>
+        </scroll-view>
+      </block>
+      <block wx:else>
+        <template is="notContent1"></template>
+      </block>
+    </view>
+  </view>
+
+</view>

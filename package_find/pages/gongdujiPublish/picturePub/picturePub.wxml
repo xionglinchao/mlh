@@ -1,0 +1,33 @@
+<form bindsubmit='btn_submit'>
+  <view class="t-box">
+    <view class='top_info_box'>
+      <view class='user_info'>
+        <image class='user_photo' src="{{ userInfo.litpic }}"></image>
+        <view class='name_sign_box'>
+          <text class='user_name'>{{ userInfo.username }}</text>
+          <text class='personal_sign beyondEllipsis'>个签：{{ userInfo.signature }}</text>
+        </view>
+      </view>
+      <view class='btn_box'>
+        <view class='del_btn' catchtap="cancelBtnClick">取消</view>
+        <button class='pub_btn' form-type='submit' disabled='{{isDisabled}}'>发布</button>
+      </view>
+    </view>
+
+    <textarea class="yuyin_cont" name="information" maxlength="200" placeholder="输入您想发布的内容吧...200字以内" placeholder-style="font-size: 30rpx; color: #999;"></textarea>
+    <view class="lock_box" catchtap="lockBtnClick">
+      <image class="lock_pic" src="{{ isLock == 0 ? 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/lock_open.png':'https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/lock_close.png' }}"></image>
+      <text class="lock_words">{{ isLock == 0 ? '设为私密':'已上锁' }}</text>
+    </view>
+    <view class="photo-box">
+      <view class="add-photo" bindtap='btn_image' wx:if="{{ pics.length < 9 }}">
+        <text class="iconfont icon-camera camera"></text>
+        <text class="camera_words">添加图片</text>
+        <text class="camera_note">（最多添加9张）</text>
+      </view>
+      <image wx:for="{{pics}}" wx:key src="{{item}}" bindtap='btn_image' class="tempPhoto">
+        <image class="del_img" src='/images/d.png' catchtap='btn_delete' data-index='{{ index }}'></image>
+      </image>
+    </view>
+  </view>
+</form>

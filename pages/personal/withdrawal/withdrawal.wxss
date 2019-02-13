@@ -1,0 +1,97 @@
+.page_box {
+  width: 100%;
+  height: 100vh;
+  background: #EAEAEA;
+}
+
+.weixin_box {
+  display: flex;
+  align-items: center;
+  background: #FFF;
+}
+
+.weixin {
+  width: 80rpx;
+  height: 80rpx;
+  background: #A0E75A;
+  margin: 20rpx 20rpx 20rpx 30rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weixinIcon {
+  font-size: 40rpx;
+  color: #FFF;
+}
+
+.weixin_words {
+  font-size: 36rpx;
+  color: #333333
+}
+
+.tixian_box {
+  display: flex;
+  flex-direction: column;
+  background: #FFF;
+  margin-top: 15rpx;
+}
+
+.tixian {
+  font-size: 28rpx;
+  color: #333333;
+  margin: 20rpx 0 105rpx 30rpx;
+}
+
+.input_box {
+  margin-left: 30rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 20rpx;
+}
+
+.renminbi {
+  font-size: 100rpx;
+  color: #333333;
+}
+
+.money_input {
+  font-size: 80rpx;
+  color: #333333;
+  width: 570rpx;
+  height: 80rpx;
+  padding-bottom: 4rpx;
+}
+
+.left_money_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.money_num {
+  font-size: 28rpx;
+  color: #999999;
+  padding-left: 30rpx;
+}
+
+.all_in {
+  font-size: 28rpx;
+  color: #333333;
+  padding-right: 30rpx;
+}
+
+.tixian_btn {
+  width: 570rpx;
+  height: 90rpx;
+  border-radius: 10rpx;
+  background: #1EAC58;
+  font-size: 34rpx;
+  color: #FFF;
+  text-align: center;
+  line-height: 90rpx;
+  margin: 30rpx 90rpx;
+}

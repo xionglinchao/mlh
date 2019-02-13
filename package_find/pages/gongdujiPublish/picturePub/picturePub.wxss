@@ -1,0 +1,159 @@
+.t-box {
+  width: 100%;
+  height: 100vh;
+}
+
+.top_info_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.user_info {
+  display: flex;
+  align-items: center;
+}
+
+.user_photo {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.name_sign_box {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15rpx;
+}
+
+.user_name {
+  font-size: 28rpx;
+  color: #1eac58;
+}
+
+.personal_sign {
+  font-size: 20rpx;
+  color: #ababab;
+  max-width: 280rpx;
+}
+
+.btn_box {
+  display: flex;
+}
+
+.del_btn, .pub_btn {
+  font-size: 24rpx;
+  width: 128rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.del_btn {
+  background: #eee;
+  color: #333;
+  margin-right: 25rpx;
+}
+
+.pub_btn {
+  background: #1eac58;
+  color: #fff;
+}
+
+.yuyin_cont {
+  margin-left: 30rpx;
+  padding-top: 30rpx;
+  width: 690rpx;
+  height: 250rpx;
+  font-size: 32rpx;
+}
+
+/* 添加图片 */
+.photo-box {
+  width: 735rpx;
+  margin: 16rpx 5rpx 0 10rpx;
+  padding-bottom: 16rpx;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.add-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 235rpx;
+  height: 235rpx;
+  background-color: #fafafa;
+  border: 1rpx dashed #999;
+  margin-right: 5rpx;
+}
+
+.camera {
+  font-size: 90rpx;
+  color: #aeaeae;
+  padding-top: 40rpx;
+}
+
+.camera_words {
+  font-size: 22rpx;
+  color: #ccc;
+}
+
+.camera_note {
+  font-size: 22rpx;
+  color: #999;
+  padding-top: 10rpx;
+}
+
+.submit-box {
+  position: relative;
+}
+
+.submit {
+  position: absolute;
+  font-size: 36rpx;
+  color: #fefefe;
+  background-color: #eb810e;
+  padding: 30rpx 302rpx;
+}
+
+.tempPhoto {
+  width: 240rpx;
+  height: 240rpx;
+  margin: 0 5rpx 5rpx 0;
+  position: relative;
+}
+
+.del_img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: white;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* 私密按钮 */
+.lock_box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 30rpx;
+}
+
+.lock_pic {
+  width: 28rpx;
+  height: 30rpx;
+}
+
+.lock_words {
+  font-size: 24rpx;
+  color: #666666;
+  padding-left: 12rpx;
+}

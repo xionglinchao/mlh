@@ -1,0 +1,25 @@
+page {width:100%;height:100%;}
+.item1_scroll_item {width:calc(100% - 15px);margin-left:15px;float:left;border-bottom:1px solid #f0f0f0;padding-bottom:3px;background:white;}
+.comment_user_view {width:calc(100% - 15px);height:40px;float:left;padding-top:5px;border-bottom:1px solid #f0f0f0;margin-right:15px;}
+.user_image {width:30px;height:30px;float:left;border-radius:50%;margin-top:5px;}
+.user_name_text {display:block;float:left;width:calc(100% - 100px);line-height:40px;font-size:14px;color:#333;margin-left:10px;}
+.go_bottom_image {width:18px;height:18px;margin-right:10px;padding-top:11px;float:right;padding-bottom:11px;padding-left:5px;padding-right:5px;}
+.item_list_1 {width:100%;font-size:13px;line-height:22px;color:#666;float:left;display:block;}
+.comment_bottom_view {width:100%;height:40px;float:left}
+.comment_bottom_time_text {display:block;float:left;line-height:40px;font-size:13px;color:#999;}
+.comment_bottom_fx_image {width:24px;height:24px;float:right;margin-top:8px;margin-right:2px;}
+.comment_bottom_fx_text {display:block;float:right;font-size:13px;color:#666;line-height:40px;margin-right:15px;}
+.comment_bottom_pl_text {display:block;float:right;font-size:13px;color:#666;line-height:40px;margin-right:10px;}
+.comment_bottom_pl_image {width:20px;height:20px;float:right;margin-top:10px;margin-right:4px;}
+.comment_bottom_zf_image {width:24px;height:24px;float:right;margin-top:8px;margin-right:10px}
+.imagesDetails3 {width:calc(33% - 10px);margin-top:5px;margin-right:8px;}
+.commentView1Class {width:100%;float:left;margin-bottom:65px;}
+.commentView1Class .comViewClass {width:100%;padding-bottom:8px;border-top:1px solid #f0f0f0;}
+.commentView1Class .comViewClass .text1 {display:block;float:left;margin-left:15px;color:#999;font-size:13px;line-height:20px;}
+.commentView1Class .comViewClass .text2 {display:block;float:left;margin-left:10px;color:#999;font-size:13px;margin-right:10px;line-height:20px;}
+.two_comment_image {width:30px;height:30px;padding-left:15px;padding-top:10px;float:left;}
+.two_comment_text1 {width:calc(100% - 60px);margin-left:15px;margin-top:10px;line-height:30px;font-size:13px;color:#666;display:block;float:left;}
+.two_comment_text2 {width:calc(100% - 65px);margin-left:55px;line-height:20px;font-size:13px;color:#333;display:block;float:left;margin-right:10px;}
+.bottom_view {width:100%;height:60px;background:white;position:fixed;bottom:0px;}
+.bottom_submit {width:90%;margin-left:5%;background:#1eac58;padding-left:0px;padding-right:0px;height:40px;margin-top:10px;font-size:14px;color:white;line-height:40px;}
+.bottom_submit::before {content:none;}

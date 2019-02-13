@@ -1,0 +1,106 @@
+<view class="fixed_box">
+  <!-- 顶部用户信息 -->
+  <view class="top_user_box">
+    <image class="user_photo" src="{{ userInfo.litpic }}"></image>
+    <view class="base_info_box">
+      <view class="name_profit_box">
+        <text class="user_name">{{ userInfo.username }}</text>
+        <view>
+          <text class="total_margin">总利润：￥</text>
+          <text class="margin_money">{{ personProfit.total_profit }}</text>
+        </view>
+      </view>
+      <view class="ambassador_box">
+        <image class="crownIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/crown1.png"></image>
+        <text class="ambassador">推广大使</text>
+      </view>
+    </view>
+  </view>
+  <view class="grey_line"></view>
+  <!-- 本月业绩统计 -->
+  <view>
+    <view class="performance_box">
+      <text class="green_line"></text>
+      <text class="title">本月业绩统计</text>
+    </view>
+    <!-- 总业绩 -->
+    <view class="total_performance">
+      <view class="total_money">
+        <text class="money_num">￥{{ personProfit.month_profit }}</text>
+        <text class="money_num">总业绩</text>
+      </view>
+      <view class="percent_box">
+        <view class="progress_bar">
+          <text style="width:200rpx;height:34rpx;background:#F5CE4F;border-radius:16rpx;"></text>
+        </view>
+        <!-- <text class="percentage">5%</text>
+        <text class="iconfont icon-arrow-up upArrow"></text> -->
+      </view>
+    </view>
+    <!-- 总销售量 -->
+    <view class="total_sale_num">
+      <view class="total_money">
+        <text class="money_num">{{ personProfit.num }}</text>
+        <text class="money_num">总销售数量</text>
+      </view>
+      <view class="percent_box">
+        <view class="progress_bar">
+          <text style="width:280rpx;height:34rpx;background:#93B861;border-radius:16rpx;"></text>
+        </view>
+        <!-- <text class="percentage">5%</text>
+        <text class="iconfont icon-arrow-down downArrow"></text> -->
+      </view>
+    </view>
+    <view class="grey_line"></view>
+  </view>
+  <view class="profit_record">
+    <text class="record_words">业绩利润记录</text>
+    <picker mode='date' fields='month' bindchange="chooseDate">
+      <text class='iconfont icon-date dateIcon'></text>
+    </picker>
+  </view>
+</view>
+
+<!-- 业绩利润记录列表 -->
+<view class="record_list">
+  <view class="single_record_box" wx:for="{{ personalRecord }}" wx:key>
+    <view class="partner">
+      <image class="record_photo" src="{{ item.litpic }}"></image>
+      <view class="record_detail">
+        <text class="partner_name beyondEllipsis">{{ item.username }}</text>
+        <block wx:if="{{ item.withdraw == 1 }}">
+          <text class="partner_act">提现</text>
+        </block>
+        <block wx:else>
+          <block wx:if="{{ item.type == 1 || item.type == 2 || item.type == 5 }}">
+            <text class="partner_act">售出一个课程</text>
+          </block>
+          <block wx:elif="{{ item.type == 3 || item.type == 4 || item.type == 6 }}">
+            <text class="partner_act">售出一个绘本</text>
+          </block>
+          <block wx:elif="{{ item.type == 8 }}">
+            <text class="partner_act">个人返利购买</text>
+          </block>
+        </block>
+        <!-- <text class="partner_act">{{ item.withdraw == 0 ? '卖出一个课程':'提现' }}</text> -->
+        <text class="act_time">{{ item.time }}</text>
+      </view>
+    </view>
+    <block wx:if="{{ item.withdraw == 0 }}">
+      <view class="money_record">
+        <text class="money">+{{ item.profit }}</text>
+        <view class="single_detail_box">
+          <view class="check_detail">获得利润</view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="money_record">
+        <text class="money">-{{ item.money }}</text>
+        <view class="single_detail_box">
+          <view class="check_detail">提现</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

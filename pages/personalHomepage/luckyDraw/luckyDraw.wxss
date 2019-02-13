@@ -1,0 +1,240 @@
+page {
+  background: rgba(231, 65, 67, 1);
+}
+.page_box {
+  width: 100%;
+  position: relative;
+}
+
+.draw_bg {
+  width: 100%;
+  height: 100vh;
+  vertical-align: top;
+  position: absolute;
+}
+.luckBox {
+  width: 611rpx;
+  height: 611rpx;
+  position: absolute;
+  top: 220rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.panBottom {
+  position: absolute;
+  width: 415rpx;
+  height: 60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -15rpx;
+}
+.panImg {
+  width: 611rpx;
+  height: 611rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* animation: rotateAll 0.3s infinite linear 0s; */
+}
+.luckCenter {
+  width: 279rpx;
+  height: 313rpx;
+  position: absolute;
+  top: 130rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@keyframes rotateAll{
+  0%{
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  100%{
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+.page-contant {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 850rpx;
+}
+.douNumBox {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 70rpx;
+}
+.douNumBox .text {
+  font-size: 32rpx;
+  color: #fff;
+  letter-spacing: 2rpx;
+}
+.douNumBox .textNum {
+  color: #fde853;
+  font-size: 32rpx;
+}
+.btnBox {
+  width: 100%;
+  height: 140rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.luckBtn {
+  width: 210rpx;
+  height: 93rpx; 
+}
+.btnWrap {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.btnWrap text {
+  color: #fff;
+  font-size: 22rpx;
+  line-height: 47rpx;
+  height: 47rpx;
+}
+.ruleBox {
+  width: 690rpx;
+  padding: 0 30rpx 20rpx 30rpx;
+  color: #fff;
+  font-size: 24rpx;  
+  background: rgba(231, 65, 67, 1);
+}
+.ruleTitle {
+  line-height: 48rpx;
+}
+.ruleText {
+  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+}
+.dotCircle {
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-block;
+  margin-right: 20rpx;
+}
+.messageBox {
+  width: 690rpx;
+  padding: 0 30rpx;
+  color: #fff;
+  font-size: 24rpx;
+  margin: 10rpx 0;
+  height: 120rpx;
+  overflow-y: scroll;
+}
+.messageText {
+  line-height: 40rpx;
+  display: flex;
+  align-items: center;
+  color: #f7b748;
+}
+.luckMessage {
+  width: 23rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+
+.serviceBtn {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 65vh;
+  right: 20rpx;
+  background: transparent;
+  line-height: normal;
+}
+
+.serviceBtn:after {
+  border: none;
+}
+
+.serviceIcon {
+  font-size: 70rpx;
+  color: #fff;
+}
+
+/* 神秘大礼弹窗 */
+.mysteriousGift_popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s forwards;
+  -webkit-animation: fadeIn 1s forwards;
+}
+
+.mystGift_bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.mystGift_box {
+  width: 100%;
+  position: fixed;
+  border-radius: 36rpx;
+  
+}
+
+.mystGift {
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+}
+
+.rewarder_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom:0;
+  right:0;
+  margin: auto;
+}
+
+.rewarder_pic {
+  width: 136rpx;
+  height: 140rpx;
+  margin-top: 120rpx;
+}
+
+.rewarder_name {
+  margin: 10rpx 0;
+  max-width: 200rpx;
+  font-size: 32rpx;
+  color: #1EAC58;
+  font-weight: bold;
+}
+
+.confirm_btn {
+  font-size: 34rpx;
+  color: #fff;
+  background: #1EAC58;
+  border-radius: 30rpx;
+  width: 160rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+}

@@ -1,0 +1,322 @@
+<import src="../../templates/loadView/loadView.wxml" />
+<view class="page_view">
+  <!-- 选项卡标题 -->
+  <view class="t_title_box">
+    <view class="t_title {{ swiperIdx == index ? 'active' : '' }}" wx:for="{{ tTitle }}" wx:key data-idx="{{ index }}" catchtap="changeSwiper">{{ item }}</view>
+  </view>
+
+  <!-- 关注 -->
+  <view wx:if="{{ swiperIdx == 0 }}">
+    <view class="scroll_list_focus">
+      <view class="pinglun_box" wx:for="{{ contentlist }}" wx:key>
+        <!-- 用户基本信息 -->
+        <view class="base_info">
+          <view class="user_info">
+            <image class="user_photo" src="{{ item.photo }}" catchtap="toPersonalPage" data-item="{{ item.u_id }}"></image>
+            <view class="person_sign">
+              <text class="sign_name beyondEllipsis">{{ item.username }}</text>
+              <text class="sign_content beyondEllipsis">个签：{{ item.signature }}</text>
+            </view>
+          </view>
+          <!-- 关注 -->
+          <view class="focus" data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap="subscribeBtnClickFocus">{{ item.is_focus ? '已关注' : '+ 关注' }}</view>
+        </view>
+        <view catchtap="singleArticleDetailClick" data-item="{{ item }}">
+          <!-- 评论内容 -->
+          <block wx:if="{{ item.type == 0 }}">
+            <!-- 轮播图 -->
+            <swiper class="swiper_box">
+              <block wx:for="{{ item.litpics }}" wx:key wx:for-item="item3">
+                <swiper-item>
+                  <view>
+                    <image class="swiper_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item3 }}">
+                      <view class="pic_length" wx:if="{{ item.litpics.length > 1 }}">{{ index + 1 }}/{{ item.litpics.length }}</view>
+                    </image>
+                  </view>
+                </swiper-item>
+              </block>
+            </swiper>
+          </block>
+          <block wx:else>
+            <view catchtap="toVideoPlayPage" data-item="{{ item }}">
+              <image class="video_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpics }}">
+                <view class="playIcon_box">
+                  <text class="iconfont icon-play playIcon"></text>
+                </view>
+              </image>
+            </view>
+          </block>
+          <view class="comment_cont">
+            <text>{{ item.content }}</text>
+          </view>
+        </view>
+        <!-- 留言、点赞、分享 -->
+        <view class="interaction_box">
+          <view class="interaction_container">
+            <view class="liuyan_box" catchtap="singleArticleDetailClick" data-item="{{ item }}">
+              <text class="iconfont icon-liuyan2 liuyan2"></text>
+              <text class="liuyan2_num">{{ item.comment_num }}</text>
+            </view>
+            <view class="dianzan_box">
+              <image class="like_empty" src="{{ item.whether_like == 1 ? '/images/like.png':'/images/like_empty.png' }}" catchtap="likeBtnClickFocus" data-item="{{ item }}" data-liked-idx="{{ index }}"></image>
+              <text class="like_num">{{ item.like_num }}</text>
+            </view>
+            <button class="iconfont icon-share share" open-type="share" data-id="{{item}}"></button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 社区 -->
+  <view wx:elif="{{ swiperIdx == 1 }}">
+    <view class="scroll_list_focus">
+      <view class="top_pic">
+        <image class="top_pic_img" src="/images/discover/gongdu_bg.jpg" catchtap="toSelectedArticleList"></image>
+        <!-- 精选活动 -->
+        <view class="community_container">
+          <view class="community_box">
+            <view class="sec_icon_box">
+              <image class="community_icon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/balloon.png"></image>
+              <text class="community_words">精选活动</text>
+            </view>
+            <view class="check_all_box" bindtap="toAllActivity">
+              <text class="check_all">查看全部</text>
+              <text class="iconfont icon-arrow-right rightArrow"></text>
+            </view>
+          </view>
+          <view class="activ_list">
+            <view class="each_activ" wx:for="{{ active }}" wx:key catchtap="toActivDetail" data-id="{{ item.id }}">
+              <image class="activ_cover" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}">
+                <view class="activ_cont_box">
+                  <image class='activ_on' src="{{ item.is_end ? '/images/discover/activity_end.png':'/images/discover/g_active_on.png' }}"></image>
+                  <view class="name_box">
+                    <text class="activ_user_name beyondEllipsis">{{ item.username }}</text>
+                    <view class="join_box">
+                      <image class="people_icon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/group.png"></image>
+                      <text class="join_num">{{ item.num }}</text>
+                    </view>
+                  </view>
+                </view>
+              </image>
+              <text class="activ_name beyondEllipsis">{{ item.name }}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="selected_article" catchtap="randomArticleDetailClick" data-item="{{ randomArticle }}" wx:if="{{ randomArticle.length > 0 }}">
+        <view class="selected_box">
+          <view class="words_intro_box">
+            <view class="icon_title">
+              <text class="iconfont icon-dengpao dengpao"></text>
+              <view>精选文章</view>
+            </view>
+            <view class="article_title">{{ randomArticle.title }}</view>
+            <view class="brief_content beyondEllipsis_two">{{ randomArticle.text }}</view>
+            <view class="author_info">
+              <view class="name_photo">
+                <image class="author_photo" src="{{ randomArticle.litpic }}"></image>
+                <view class="author_name beyondEllipsis">{{ randomArticle.username }}</view>
+              </view>
+              <view class="check_message">
+                <text class="iconfont icon-check checkIcon"></text>
+                <text class="check_num">{{ randomArticle.view_num }}</text>
+                <text class="iconfont icon-liuyan1 liuyan1"></text>
+                <text class="liuyan_num">{{ randomArticle.comment_num }}</text>
+              </view>
+            </view>
+          </view>
+          <image class="article_pic" mode="aspectFill" src="{{ randomArticle.cover }}"></image>
+        </view>
+      </view>
+      <block>
+        <view class="pinglun_box" wx:for="{{ articleList }}" wx:key>
+          <!-- 用户基本信息 -->
+          <view class="base_info">
+            <view class="user_info">
+              <image class="user_photo" src="{{ item.photo }}" catchtap="toPersonalPage" data-item="{{ item.u_id }}"></image>
+              <view class="person_sign">
+                <text class="sign_name beyondEllipsis">{{ item.username }}</text>
+                <text class="sign_content beyondEllipsis">个签：{{ item.signature }}</text>
+              </view>
+            </view>
+            <!-- 关注 -->
+            <view class="focus" data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap="subscribeBtnClick">{{ item.is_focus ? '已关注' : '+ 关注' }}</view>
+          </view>
+          <view catchtap="singleArticleDetailClick" data-item="{{ item }}">
+            <!-- 评论内容 -->
+            <block wx:if="{{ item.type == 0 }}">
+              <!-- 轮播图 -->
+              <swiper class="swiper_box">
+                <block wx:for="{{ item.litpics }}" wx:key wx:for-item="item3">
+                  <swiper-item>
+                    <view>
+                      <image class="swiper_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item3 }}">
+                        <view class="pic_length" wx:if="{{ item.litpics.length > 1 }}">{{ index + 1 }}/{{ item.litpics.length }}</view>
+                      </image>
+                    </view>
+                  </swiper-item>
+                </block>
+              </swiper>
+            </block>
+            <block wx:else>
+              <view catchtap="toVideoPlayPage" data-item="{{ item }}">
+                <image class="video_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpics }}">
+                  <view class="playIcon_box">
+                    <text class="iconfont icon-play playIcon"></text>
+                  </view>
+                </image>
+              </view>
+            </block>
+            <view class="comment_cont">
+              <text>{{ item.content }}</text>
+            </view>
+            <!-- <video class='dialog_video' objectFit='cover' wx:if="{{ item.video }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.video }}"></video> -->
+          </view>
+          <!-- 留言、点赞、分享 -->
+          <view class="interaction_box">
+            <view class="interaction_container">
+              <view class="liuyan_box" catchtap="singleArticleDetailClick" data-item="{{ item }}">
+                <text class="iconfont icon-liuyan2 liuyan2"></text>
+                <text class="liuyan2_num">{{ item.comment_num }}</text>
+              </view>
+              <view class="dianzan_box">
+                <image class="like_empty" src="{{ item.whether_like == 1 ? '/images/like.png':'/images/like_empty.png' }}" catchtap="likeBtnClick" data-item="{{ item }}" data-liked-idx="{{ index }}"></image>
+                <text class="like_num">{{ item.like_num }}</text>
+              </view>
+              <button class="iconfont icon-share share" open-type="share" data-id="{{item}}"></button>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!-- 加号按钮 -->
+      <view class="plus_butt" catchtap="creationBtnClick">
+        <text class="iconfont icon-plus plus"></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 课程 -->
+  <view wx:else>
+    <!-- 搜索 -->
+    <scroll-view scroll-y class="scroll_list">
+      <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="搜索" placeholder-style='font-size: 13px;' value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+            <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+              <icon type="clear" size="14"></icon>
+            </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">查找更多</view>
+          </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+      </view>
+      <!-- 轮播图 -->
+      <swiper class="course_swiper_box" indicator-dots indicator-active-color="rgba(30,172,88,1)" autoplay interval="3000">
+        <block wx:for="{{ broadcast }}" wx:key>
+          <swiper-item>
+            <image class="swiper_img" catchtap="toCourseDetail" data-item="{{ item }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.img }}" mode="aspectFill"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 课程类别图标 -->
+      <view class="course_type_box">
+        <block wx:for="{{ courseType }}" wx:key>
+          <view class="each_type_box" catchtap="toCourseType" data-idx="{{ index }}" data-id="{{ item.id }}">
+            <image class="course_type_img" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.img }}"></image>
+            <text class="course_type_name">{{ item.name }}</text>
+          </view>
+        </block>
+      </view>
+      <!-- 精选课程 -->
+      <view class="select_course_box">
+        <view class="courseIcon_box">
+          <text class="iconfont icon-course courseIcon"></text>
+          <text class="icon_word">精选</text>
+        </view>
+        <view class="courseIcon_box" catchtap="next_page">
+          <text class="icon_word">换一批</text>
+          <image class="huanyipi" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/huanyipi.png"></image>
+        </view>
+      </view>
+      <view class="select_course_list">
+        <block wx:for="{{ recommendCourse }}" wx:key>
+          <view class="course_show_box" catchtap="courseDetaliClick" data-item="{{ item }}">
+            <image class="course_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.cover_img }}">
+              <view class="play_look_box">
+                <view class="play_box">
+                  <image class="shipinIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shipin.png"></image>
+                  <text class="play_num">{{ item.people }}</text>
+                </view>
+                <view class="play_box">
+                  <text class="iconfont icon-list liuyan1Icon"></text>
+                  <text class="play_num">{{ item.update_num }}</text>
+                </view>
+              </view>
+            </image>
+            <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+          </view>
+        </block>
+      </view>
+      <!-- 免费课程 -->
+      <view class="select_course_box">
+        <view class="courseIcon_box">
+          <image class='courseIcon' src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/free.png"></image>
+          <text class="icon_word">免费</text>
+        </view>
+        <view class="courseIcon_box" catchtap="next_page_free">
+          <text class="icon_word">换一批</text>
+          <image class="huanyipi" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/huanyipi.png"></image>
+        </view>
+      </view>
+      <view class="select_course_list">
+        <block wx:for="{{ freeCourse }}" wx:key>
+          <view class="course_show_box" catchtap="courseDetaliClick" data-item="{{ item }}">
+            <image class="course_pic" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.cover_img }}">
+              <view class="play_look_box">
+                <view class="play_box">
+                  <!-- <text class="iconfont icon-shipin shipinIcon"></text> -->
+                  <image class="shipinIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shipin.png"></image>
+                  <text class="play_num">{{ item.people }}</text>
+                </view>
+                <view class="play_box">
+                  <text class="iconfont icon-list liuyan1Icon"></text>
+                  <text class="play_num">{{ item.update_num }}</text>
+                </view>
+              </view>
+            </image>
+            <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+    <!-- 智慧券弹窗 -->
+    <view class="mysteriousGift_popup" wx:if="{{ isNewUser }}">
+      <view class="mystGift_bg" catchtap="hideMystGift"></view>
+      <view class="mystGift_box">
+        <image class="mystGift" mode="widthFix" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rewarder_popup2.png">
+          <view class="rewarder_info">
+            <view class="tip_words">将存入我的优惠券中</view>
+            <image class="rewarder_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_voucher.png"></image>
+            <view class="rewarder_name">智慧券</view>
+            <view class="confirm_btn" catchtap="confirmBtnClick">确定</view>
+          </view>
+        </image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="searchViewClass" hidden='{{!inputShowed}}'>
+  <view class="viewScroll">
+    <block wx:for="{{serachPro}}" wx:key>
+      <text bindtap='btn_search_text' data-item="{{item}}">{{item.title}}</text>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,70 @@
+<wxs src="../../../../appWxs/globalVariable.wxs" module="globalVariable" />
+<!-- 分类组件 -->
+<filter bind:toPage="_confirmBtnTap" bind:reset="filterCallback" id="filter" bind:confirm="filterCallback" ani-show="{{ filterData.filterShow }}" dom-show="{{ filterData.filterShow }}" theme="{{ filterData.theme }}" value="{{ panelList }}"></filter>
+<view class='search_container'>
+  <view class='search_box'>
+    <text class='iconfont icon-search search'></text>
+    <input class='search_bar' type='search' placeholder='搜索' placeholder-style='font-size:28rpx;' bindconfirm='getList2'></input>
+  </view>
+</view>
+<!-- 侧边弹窗 -->
+<view class='side_window' catchtap='slideFilterClick'>
+  <text class='iconfont icon-list listIcon'></text>
+</view>
+
+<scroll-view scroll-y class="scroll_list">
+  <view class="videoCourse_box" wx:for="{{ list }}" wx:key='{{index}}' bindtap='clickItem' id='{{item.id}}' data-index='{{index}}'>
+    <view class='dot_box' hidden='{{ isHideChooseDot }}' data-sucIdx='{{ index }}'>
+      <text class="{{ item.selected ? 'green_dot' :'' }}"></text>
+    </view>
+    
+    <image class="videoCourse_pic" src="{{ globalVariable.ossImage + item.cover_img }}" mode='aspectFill'>
+      <view class="mask_layer"></view>
+      <block wx:if="{{ item.course_type == 1 }}">
+        <image class="videoIcon" src="/images/discover/videoIcon.png"></image>
+      </block>
+      <block wx:else>
+        <image class="yuyinIcon" src="/images/discover/yuyinIcon.png"></image>
+      </block>
+    </image>
+    
+    <view class="course_intro" style="flex:1">
+      <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+      <view class="sale_status">
+        <view>
+          <text class="update_num">已更新{{ item.update_num }}期</text>
+          <text class="study_num">{{ item.people }}人在学</text>
+        </view>
+        <view class="course_price">{{ item.money == 0 ? '免费':'￥' + item.money }}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<block wx:if='{{ isHideChooseDot }}'>
+  <view class='choose_course' catchtap='chooseCourseClick'>选择分销课程</view>
+</block>
+<block wx:else>
+  <view class='choose_course2'>
+    <text catchtap='cancelBtnClick'>取消</text>
+    <text catchtap='allChooseClick'>全选</text>
+    <text catchtap='submitSelect'>选择</text>
+  </view>
+</block>
+
+<!-- 规则介绍弹窗 -->
+<view class="rule_popup" hidden="{{ isRuleIntroHide }}" catchtouchmove="preventDeafult">
+  <view class="popup_bg" catchtap="showRulePopup" catchtouchmove="preventDeafult"></view>
+  <view class="popup_box">
+    <view class="rule_title">
+      <text class="left_line"></text>
+      <text class="title_words">规则介绍</text>
+      <text class="right_line"></text>
+    </view>
+    <scroll-view scroll-y class="scroll_wiseStarRule">
+      <view class="rule_content" wx:for="{{ rule }}" wx:key>
+        <text wx:if="{{ item }}">{{ index + 1 }}. {{ item }}</text>
+      </view>
+    </scroll-view>
+    <text class="iconfont icon-close close" catchtap="showRulePopup"></text>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+<!--pages/donation/donation.wxml-->
+
+<view class = "PayViewClass">
+
+        <view class = "payClass"  style='height: 225px;'>
+          <text class ="smClass">{{name}}公益币数(个)</text>
+          <view class = "moneyClass">
+              <image src='../../../images/pay/o.png'></image>
+              <input bindinput='input_getOut' type='number' value = "{{money == 0 ? '' : money}}"></input>
+          </view>
+          <view class = "smName">
+              <view class = "kqClass">
+                  <text class = "textQC">当前可{{name}}公益币为<text style='color: #ff6600;'>{{withdraw == 'undefined' ? '0' : withdraw}}</text>个,</text>
+                  <text class = "bClass" bindtap='btn_all'>全部{{name}}</text>
+              </view>
+                          <text class = "NClass"></text>
+          </view>
+          <text class = "sendClass" style='margin-top: 10px;' bindtap='btn_get_out'>{{name}}</text>
+      </view>
+</view>
+
+<view class = "ShowToastClass" hidden='{{isShowToast}}'>
+    <image src='../../../images/gou.png'></image>
+    <text>{{toastData}}</text>
+    <view style="clear:both;"></view>
+</view>
+
+<view class = "commodityScreenClass" hidden='{{isShadow}}' bindtap='btn_shadow'></view>
+<view class = "modelView" hidden='{{hidden}}'>
+    <text class = "modelTitle">提示</text>
+    <view class = "modelContent">
+        <text>您确定要{{name}}{{money}}个公益币?</text>
+    </view>
+    <view class = "buttonView">
+        <button class = "cancelClass" bindtap='cancel'>取消</button>
+        <button class = "phoneClass" bindtap='confirm' disabled='{{isDisabled}}'>确认</button>
+    </view>
+    <view style="clear:both;"></view>
+</view>

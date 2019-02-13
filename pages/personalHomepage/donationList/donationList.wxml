@@ -1,0 +1,45 @@
+<view class='page_box'>
+  <view class='top_title_box'>
+    <image class='left_line' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/left_line.png'></image>
+    <text class='title_words'>捐赠榜</text>
+    <image class='right_line' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/right_line.png'></image>
+  </view>
+  <scroll-view scroll-y class='scroll_list'>
+    <view class='rank_info_box' wx:for='{{ donateList }}' wx:key>
+      <view class='user_info_box' catchtap="toPersonalHomepage" data-id="{{ item.u_id }}">
+        <block wx:if='{{ index == 0 }}'>
+          <view class='image_box'>
+            <image class='num1' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/num-1.png'></image>
+          </view>
+          <view class="num_circle" style="box-shadow: 0rpx 0rpx 10rpx 5rpx #FFDE7A;">
+            <image class="user_photo" src='{{ item.photo }}'></image>
+          </view>
+        </block>
+        <block wx:elif='{{ index == 1 }}'>
+          <view class='image_box'>
+            <image class='num1' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/num-2.png'></image>
+          </view>
+          <view class="num_circle" style="box-shadow: 0rpx 0rpx 10rpx 5rpx #33ccff;">
+            <image class="user_photo" src='{{ item.photo }}'></image>
+          </view>
+        </block>
+        <block wx:elif='{{ index == 2 }}'>
+          <view class='image_box'>
+            <image class='num1' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/num-3.png'></image>
+          </view>
+          <view class="num_circle" style="box-shadow: 0rpx 0rpx 10rpx 5rpx #FB9F74;">
+            <image class="user_photo" src='{{ item.photo }}'></image>
+          </view>
+        </block>
+        <block wx:else>
+          <text class='num_4'>{{ index + 1 }}</text>
+          <view class="num_circle" style="box-shadow: 0rpx 0rpx 10rpx 5rpx #fff;">
+            <image class="user_photo" src='{{ item.photo }}'></image>
+          </view>
+        </block>
+        <text class='user_name beyondEllipsis'>{{ item.username }}</text>
+      </view>
+      <text class='donation_bean_num'>{{ item.integral }}智慧豆</text>
+    </view>
+  </scroll-view>
+</view>

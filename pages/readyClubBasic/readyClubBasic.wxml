@@ -1,0 +1,62 @@
+<!--pages/readyClubBasic/readyClubBasic.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pClass">
+  <form bindsubmit='btn_submit'>
+  <view class="view1">
+    <text class="inforClass">基本信息</text>
+    <view class="type1" style='border-top: 1px solid #f0f0f0;'>
+      <text>读书会名称</text>
+      <input placeholder='请输入读书会名称' value="{{dataProBasic.name == '' ? '' : dataProBasic.name}}" name="clubName" maxlength='10' placeholder-style='color: #999;'></input>
+    </view>
+    <view class="type1">
+      <text>联系人名称</text>
+      <input placeholder='请输入您的名称' value="{{dataProBasic.username == '' ? '' : dataProBasic.username}}" name="name" maxlength='10' placeholder-style='color: #999;'></input>
+    </view>
+    <view class="type1">
+      <text>联系人电话</text>
+      <input placeholder='请输入您的电话' value="{{dataProBasic.phone == '' ? '' : dataProBasic.phone}}" name="phone" maxlength='11' placeholder-style='color: #999;' type='number'></input>
+    </view>
+    <text class="text1" style='font-size : 13px;color: #999;'>读书会地址</text>
+    <textarea class="areaClass" placeholder='请输入读书会地址' placeholder-style='color: #ccc;' name="remarks" bindfocus='btn_ready_club_address' value="{{addressObj.capital ? addressObj.capital + addressObj.city + addressObj.district + addressObj.address : ''}}"></textarea>
+  </view>
+
+  <view class="view2">
+    <view class="type2" bindtap='btn_image'>
+      <text class="text1">读书会LOGO</text>
+      <image class="rightClass" src='../../images/send/right.png'></image>
+      <image class="headImageClass" src="{{logoImage == '' ? '../../images/order/goods.png' : logoImage}}"></image>
+    </view>
+  </view>
+  <view class="view3">
+    <text class="text1" >宣传图片</text>
+    <view class="ImageViewClass">
+    <block wx:for = "{{pics1}}">
+      <view class="addImageView1Class" bindtap='btn_Upload'>
+        <image class="image1" src='{{globalVariable.ossImage + item}}' style=' width: 80px;height:80px;' mode="aspectFill"></image>
+        <!-- <image class="image2" src='../../images/d.png' catchtap='btn_delete' data-index='{{index}}'></image> -->
+      </view>
+    </block>
+    <block wx:for="{{pics}}">
+      <view class="addImageView1Class" bindtap='btn_Upload'>
+        <image class="image1" src='{{item}}' style=' width: 80px;height:80px;' mode="aspectFill"></image>
+        <image class="image2" src='../../images/d.png' catchtap='btn_delete' data-index='{{index}}'></image>
+      </view>
+    </block>
+    <view class="addImageViewClass" bindtap='btn_images'>
+      <image src='../../images/homepage/j.png'></image>
+      <text>添加图片</text>
+    </view>
+
+    <view style="clear:both;"></view>
+  </view>
+  </view>
+
+   <button class = "bottomViewClass" form-type='submit'>确认</button>
+  </form>
+</view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>

@@ -1,0 +1,26 @@
+<!--pages/login/login.wxml-->
+<view class="pViewClass">
+  <image class="headViewClass" src='../../images/homepage/home.png'></image>
+  <view class="loinViewClass">
+    <form bindsubmit='btn_submit'>
+      <view class="type1">
+        <text>手机号</text>
+        <input placeholder='请输入手机号' placeholder-style='color: #999;' bindinput='btn_phone' type='number' name="phone"></input>
+      </view>
+      <view class="pwdinputViewClass">
+        <text>验证码</text>
+        <input placeholder='请输入验证码' placeholder-class='phClass' name="yzm" type='number'></input>
+        <button class="yzmClass" disabled='{{isDisabled}}' catchtap='btn_code'>{{timeData}}</button>
+      </view>
+      <button form-type='submit' class="LoginClass" disabled='{{isSend}}'>登录/注册</button>
+      <view style="clear:both;"></view>
+    </form>
+  </view>
+
+</view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>

@@ -1,0 +1,230 @@
+<scroll-view scroll-y class="homepage_container">
+  <form report-submit='{{true}}' bindsubmit='submit'>
+    <!-- <button class="maskBtn" form-type='submit'> -->
+    <view class="hp_box">
+      <!-- 顶部轮播图 -->
+      <view>
+        <swiper class="swiper_box" indicator-dots="true" autoplay="true" interval="3000" indicator-active-color="#1EAC58">
+          <block wx:for="{{ broadcast }}" wx:key>
+            <swiper-item>
+              <image class="swiper_img" mode="aspectFill" src="{{ item.img }}" bindtap="jumpToPage" data-item="{{ item }}"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <!-- 图标盒子 -->
+      <view class="icon_box">
+        <block wx:for="{{ iconTextList }}" wx:key>
+          <button form-type='submit' class="icon_item" bindtap="toPage" data-idx="{{ index }}">
+            <image class="icon_img" src="{{ item.iconImg }}"></image>
+            <text class="icon_words">{{ item.iconText }}</text>
+          </button>
+        </block>
+      </view>
+      <!-- 社区动态 -->
+      <view class="community_container">
+        <view class="community_box">
+          <view class="sec_icon_box">
+            <image class="community_icon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shequdongtai.png"></image>
+            <text class="community_words">社区动态</text>
+          </view>
+          <view class="check_all_box" bindtap="toCommunity">
+            <text class="check_all">查看全部</text>
+            <text class="iconfont icon-arrow-right rightArrow"></text>
+          </view>
+        </view>
+        <view>
+          <image class="community_cont_box" mode="aspectFill" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/community_cont.png">
+            <view class="cont_container">
+              <view class="user_info_box" bindtap="toPubDetail" data-id="{{ community.id }}">
+                <image class="user_photo" src="{{ community_user.litpic }}"></image>
+                <text class="user_name beyondEllipsis">{{ community_user.username }}</text>
+              </view>
+              <view class="words_pic" bindtap="toPubDetail" data-id="{{ community.id }}">
+                <view class="cont_words beyondEllipsis">{{ community.content }}</view>
+                <view class="cont_pic_box">
+                  <block wx:for="{{ community.litpics }}" wx:key>
+                    <image class="cont_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item }}"></image>
+                  </block>
+                </view>
+              </view>
+              <view class="inter_box">
+                <view class="focus_btn" bindtap="subscribeBtnClick" data-item="{{ community }}">{{ community.is_focus ? '已关注':'+ 关注' }}</view>
+                <view class="like_message">
+                  <image class="like_empty" src="/images/like_empty.png"></image>
+                  <text class="number">{{ community.like_num }}</text>
+                  <text class="iconfont icon-liuyan2 msgIcon"></text>
+                  <text class="number">{{ community.comment_num }}</text>
+                </view>
+              </view>
+            </view>
+          </image>
+        </view>
+      </view>
+      <!-- 推荐活动 -->
+      <view class="community_container">
+        <view class="community_box">
+          <view class="sec_icon_box">
+            <image class="community_icon activ" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/tuijianhuodong.png"></image>
+            <text class="community_words">推荐活动</text>
+          </view>
+          <view class="check_all_box" bindtap="toAllActivity">
+            <text class="check_all">查看全部</text>
+            <text class="iconfont icon-arrow-right rightArrow"></text>
+          </view>
+        </view>
+        <view class="activ_list">
+          <view class="each_activ" wx:for="{{ active }}" wx:key bindtap="toActivDetail" data-id="{{ item.id }}">
+            <image class="activ_cover" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}">
+              <view class="activ_cont_box">
+                <image class='activ_on' src="{{ item.is_end ? '/images/discover/activity_end.png':'/images/discover/g_active_on.png' }}"></image>
+                <view class="name_box">
+                  <text class="activ_user_name beyondEllipsis">{{ item.username }}</text>
+                  <view class="join_box">
+                    <image class="people_icon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/group.png"></image>
+                    <text class="join_num">{{ item.num }}</text>
+                  </view>
+                </view>
+              </view>
+            </image>
+            <text class="activ_name beyondEllipsis">{{ item.name }}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 推荐课程 -->
+      <view>
+        <view class="select_course_box">
+          <view class="courseIcon_box">
+            <text class="iconfont icon-course courseIcon"></text>
+            <text class="icon_word">推荐</text>
+          </view>
+          <view class="courseIcon_box" bindtap="toCourse">
+            <text class="check_all">查看全部</text>
+            <!-- <image class="huanyipi" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/huanyipi.png"></image> -->
+            <text class="iconfont icon-arrow-right rightArrow"></text>
+          </view>
+        </view>
+        <view class="select_course_list">
+          <block wx:for="{{ course }}" wx:key>
+            <view class="course_show_box" bindtap="toCourseDetail" data-item="{{ item }}">
+              <image class="course_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.cover_img }}">
+                <view class="play_look_box">
+                  <view class="play_box">
+                    <image class="shipinIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/shipin.png"></image>
+                    <text class="play_num">{{ item.count }}</text>
+                  </view>
+                  <view class="play_box">
+                    <text class="iconfont icon-list liuyan1Icon"></text>
+                    <text class="play_num">{{ item.update_num }}</text>
+                  </view>
+                </view>
+              </image>
+              <view class="course_title beyondEllipsis_two">{{ item.title }}</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <!-- </button> -->
+  </form>
+</scroll-view>
+
+<!-- 签到弹窗 -->
+<view class="qiandao_popup" hidden="{{ isSignInHide }}">
+  <view class="popup_bg" catchtap="showQianDaoPopup"></view>
+  <view class="popup_box">
+    <view class="qiandao_word">
+      <block>
+        <image class="sign_gift" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/success-sign.png" wx:if="{{ is_qd }}"></image>
+        <image class="sign_gift" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/sign-gift.png" wx:else></image>
+      </block>
+      <text class="iconfont icon-close close" catchtap="showQianDaoPopup"></text>
+    </view>
+    <image class="rectangular_1" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/Mys_rectangular.png"></image>
+    <image class="rectangular_2" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/Mys_rectangular.png"></image>
+    <view class="words_box">
+      <block wx:if="{{ is_qd }}">
+        <view class="continuous_days">签到成功，今日已领
+          <text style="color: #27BA63; font-weight: bold;">{{ wiseBean }}</text>智慧豆</view>
+        <view class="sign_begin" style="font-size: 22rpx; color: #1EAC58; margin: 8rpx 0;">已签到{{ wiseDay ? wiseDay : 0 }}天，共读打卡可以获得更多智慧豆哦！</view>
+      </block>
+      <block wx:else>
+        <view class="continuous_days">{{ consecutiveDays > 0 ? '已连续签到' + consecutiveDays + '天，继续努力有机会获得神秘大奖哦' : '您还没有开始签到哦！' }}</view>
+        <view class="question_box">
+          <view class="sign_begin">快开始签到吧</view>
+          <text class="iconfont icon-question question" catchtap="showSignRulePopup"></text>
+        </view>
+      </block>
+    </view>
+    <!-- 日历 -->
+    <view class="calendar">
+      <view class="week_name">
+        <view class="sunday">日</view>
+        <view class="monday">一</view>
+        <view class="tuesday">二</view>
+        <view class="wednesday">三</view>
+        <view class="thursday">四</view>
+        <view class="friday">五</view>
+        <view class="saturday">六</view>
+      </view>
+
+      <view class="week">
+        <!-- 填补空格 -->
+        <view class='week_nbsp' wx:for="{{ nbsp }}" wx:key></view>
+        <!-- 循环日期 -->
+        <!-- 当天以前 -->
+        <view wx:for="{{ date - 1 }}" wx:key style="color:#1EAC58;">
+          <text wx:if="{{ item + 1 == calendarSignData[item+1] }}" style="color: #fff; background: #27BA63; border-radius: 50%;">{{ item + 1 }}</text>
+          <text wx:else>{{ item + 1 }}</text>
+        </view>
+        <!-- 当天 -->
+        <!-- <view wx:if="{{ consecutiveDays > 1 }}">
+          <text style="color: #fff; background: #27BA63; border-top-right-radius: 40rpx; border-bottom-right-radius: 40rpx;">{{date}}</text>
+        </view>  -->
+        <view>
+          <text wx:if="{{is_qd}}" style="color: #fff; background: #27BA63; border-radius: 40rpx;">{{date}}</text>
+          <text wx:else style="color:#1EAC58;">{{ date }}</text>
+        </view>
+        <!-- 以后 -->
+        <view wx:for="{{ monthDaySize-date }}" wx:key style="color:#1EAC58;">{{ item+date+1 }}</view>
+      </view>
+    </view>
+    <view class="submit" hover-class='bottom_v_1' catchtap="calendarSign">{{ is_qd ? '共读打卡' : '签到' }}</view>
+    <image class="juanjiao" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/juanjiao.png"></image>
+  </view>
+</view>
+
+<!-- 签到规则介绍弹窗 -->
+<view class="signRule_popup" hidden="{{ isSignRuleHide }}">
+  <view class="signRulePopup_bg" catchtap="showSignRulePopup"></view>
+  <view class="signRulePopup_box">
+    <view class="rule_title">
+      <text class="left_line"></text>
+      <text class="title_words">规则介绍</text>
+      <text class="right_line"></text>
+    </view>
+    <scroll-view scroll-y class="scroll_list">
+      <view class="rule_content" wx:for="{{ signRuleList }}" wx:key>
+        <text>{{ index + 1 }}. {{ item }}</text>
+      </view>
+    </scroll-view>
+    <text class="iconfont icon-close close_2" catchtap="showSignRulePopup"></text>
+  </view>
+</view>
+
+<!-- 神秘大礼弹窗 -->
+<view class="mysteriousGift_popup" hidden="{{ isMysteriousGiftHide }}">
+  <view class="mystGift_bg" catchtap="hideMystGift"></view>
+  <view class="mystGift_box">
+    <image class="mystGift" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/mysterious-gift.png"></image>
+    <button class="mystGiftWords_box" open-type='contact'>
+      <text class="mystGift_words">恭喜您获得神秘大奖，请截图并<text style='color: #428ff7;text-decoration:underline;'>联系客服</text>领取奖励</text>
+    </button>
+  </view>
+</view>
+
+<!-- 启动页 -->
+<!-- <view class="start_page" style="{{ 'background: url(' + startPageImg + '); background-size: 100% 100%;'  }}"></view> -->
+<!-- <view class="start_page" style="background: url('https://meilihua.oss-cn-hangzhou.aliyuncs.com/meilihua/Configuration_file/20180529171331259.png')"></view> -->
+<image mode='aspectFill' class="start_page" hidden='{{ !hideStartPage }}' src='{{ startPageImg }}' catchtap='closeStartPage'></image>

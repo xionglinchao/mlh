@@ -1,0 +1,17 @@
+<scroll-view scroll-y class='page_box'>
+  <image class='top_pic' mode="aspectFill" src="{{ bookList.logo }}">
+    <view class='content_box'>
+      <text class='content_title beyondEllipsis'>{{ bookList.name }}</text>
+      <text class='cont'>{{ bookList.remark }}</text>
+    </view>
+  </image>
+
+  <view class='book_box' wx:for='{{ seriesList }}' wx:key catchtap="toBookDetail" data-item="{{ item }}">
+    <image class='book_photo' src='{{ item.logo }}'></image>
+    <view class='book_cont'>
+      <text class='book_title beyondEllipsis'>{{ item.name }}</text>
+      <text class='book_author'>作者：{{ item.writer }}</text>
+      <text class='brief_intro beyondEllipsis_two' wx:if="{{ item.abstract }}">{{ item.abstract }}</text>
+    </view>
+  </view>
+</scroll-view>

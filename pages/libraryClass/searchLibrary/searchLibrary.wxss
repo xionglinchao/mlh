@@ -1,0 +1,12 @@
+/* pages/searchLibrary/searchLibrary.wxss */
+page {width:100%;height:100%;}
+.search_view {background:white;width:calc(100% - 32px);margin-left:15px;border:1px solid #eaeaea;position:relative;height:30px;border-radius:5px;}
+.srarch_icon {margin-top:7px;margin-left:8px;float:left;}
+.search_view input {width:calc(100% - 32px);float:left;font-size:12px;line-height:30px;height:30px;margin-left:8px;}
+.input_holder_class {color:#999;}
+.choose_book_title {line-height:40px;font-size:15px;color:#333;margin-left:16px;}
+.book_search_scroll {width:100%;height:calc(100% - 80px);background:white;float:left;}
+.book_view_class {width:100%;height:46px;float:left;position:relative;}
+.book_view_class::after {content:" ";position:absolute;bottom:0;right:0;height:1px;border-bottom:1px solid #f0f0f0;color:#f0f0f0;left:15px;top:45px;}
+.book_name_text {line-height:45px;color:#333;font-size:14px;margin-left:16px;width:calc(100% - 176px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.book_author_text {line-height:45px;color:#999;font-size:12px;margin-right:10px;width:150px;text-align:right;}

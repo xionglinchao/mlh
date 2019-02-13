@@ -1,0 +1,183 @@
+<!--pages/send/send.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="sendViewClass">
+  <view class="addressViewClass" bindtap='btn_address'>
+    <image class="addressImageClass" src="../../images/send/address.png"></image>
+    <block wx:if="{{isAddress == 1}}">
+      <view class="NameViewClass">
+        <text class="text1">收货人 : {{defaultAddressPro.name}}</text>
+        <text class="text2">{{defaultAddressPro.phone}}</text>
+        <text class="text3">收货地址 : {{defaultAddressPro.province + defaultAddressPro.city + defaultAddressPro.area + defaultAddressPro.address}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <text class="noAdress">请输入收货地址</text>
+    </block>
+    <image class="rightViewClass" src='../../images/send/right.png'></image>
+    <view style="clear:both;"></view>
+  </view>
+  <scroll-view class="goodsClass" scroll-y="true">
+    <block wx:for="{{dataPro}}" wx:key>
+      <view class="dataViewClass" bindtap='btn_infomartion' data-info="{{item}}">
+        <image class='bookImageClass' src='{{globalVariable.ossImage + item.litpic}}' mode="aspectFill"></image>
+        <view class="nameViewClass">
+          <text class="text1">{{item.name}}</text>
+          <block wx:if="{{typeNum == 1}}">
+            <view class="priceViewClass">
+              <text>
+            <text style='font-size: 13px;color: #565656;margin-right:5px;display:block;float:left;'>押金:</text>
+              <text style='display:block;float:left;margin-right:2px;'>¥</text>{{item.contact}}</text>
+            </view>
+          </block>
+          <block wx:elif="{{typeNum == 2 || typeNum == 3 || typeNum == 6}}">
+            <block wx:if="{{integralCheck}}">
+              <text class="text2">¥ {{ item.money }}</text>
+              <view class="priceViewClass" style='margin-top: 0px;'>
+                <text>
+          <text style='display:block;float:left;margin-right:2px;'>¥ {{item.moneys}}</text>
+                <text style='font-size: 12px;color: #3c9d70;margin-right:5px;display:block;float:left;'> ＋{{item.integral}}积分</text></text>
+                <text style='display: block;float:right;font-size: 12px;color: #999;margin-right:10px;'>x {{item.num}}</text>
+              </view>
+            </block>
+            <block wx:else>
+              <text class="text2">¥ {{ item.moneys }}<text style='font-size: 11px;color: #3c9d70;margin-right:5px;'>+{{item.integral}}积分</text></text>
+              <view class="priceViewClass" style='margin-top: 0px;'>
+                <text>
+          <text style='display:block;float:left;margin-right:2px;'>¥ {{ item.money }}</text>
+                </text>
+                <text style='display: block;float:right;font-size: 12px;color: #999;margin-right:10px;'>x {{item.num}}</text>
+              </view>
+            </block>
+          </block>
+          <block wx:elif="{{typeNum == 4 || typeNum == 5}}">
+            <text class="text2"></text>
+            <view class="priceViewClass">
+              <text>
+              <text style='display:block;float:left;margin-right:2px;'>¥ {{ item.moneys }}</text>
+              <text style='font-size: 12px;color: #999;margin-right:5px;display:block;float:left;text-decoration:line-through'>¥ {{ item.money }}</text></text>
+              <text style='display: block;float:right;font-size: 12px;color: #999;margin-right:10px;'>{{item.people}}人团</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="TypeViewClass">
+    <text>运费</text>
+    <image class="rightClass" src='../../images/send/right.png'></image>
+    <text style='float:right;margin-right: 5px;color:red;'>{{!isSend ? '¥' + sendPrice/100 : '包邮'}}</text>
+  </view>
+  <block wx:if="{{typeNum == 1}}">
+    <view class="orderRemark" catchtap="editRemark">
+      <text class="title">订单备注</text>
+      <text class="remark">{{orderRemark}}</text>
+      <image class="inEdit" src="../../images/send/right.png"></image>
+    </view>
+    <button class="shoppingButtonClass" bindtap='btn_send1'>立即付款</button>
+  </block>
+  <block wx:elif="{{typeNum == 2 || typeNum == 3 || typeNum == 6}}">
+    <block wx:if="{{integralNum > Integral }}">
+      <view class="TypeViewClass">
+        <text>积分不足</text>
+        <switch checked='{{integralCheck}}' bindchange="btn_Integral1"></switch>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="TypeViewClass">
+        <text>可使用{{dataPro[0].integral}}积分抵扣</text>
+        <switch checked='{{integralCheck}}' bindchange="btn_Integral1"></switch>
+      </view>
+    </block>
+    <!-- <block wx:if="{{couponObj.c_id}}">
+      <view class="TypeViewClass" bindtap='btn_coupon'>
+        <text>{{couponObj.name}}</text>
+        <image class="rightClass" src='../../images/send/right.png'></image>
+        <text style='float:right;margin-right: 5px;color:red;'>¥-{{couponObj.value}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="TypeViewClass" bindtap='btn_coupon'>
+        <text>优惠券</text>
+        <image class="rightClass" src='../../images/send/right.png'></image>
+        <text style='float:right;margin-right: 5px;color:#999;'>{{couponPro2.length > 0 ? '有可用优惠券' : '无可用优惠券'}}</text>
+      </view>
+    </block> -->
+    <!-- 新优惠券选择 -->
+    <view class="TypeViewClass" catchtap="showModal">
+      <text>优惠券</text>
+      <image class="rightClass" src='../../images/send/right.png'></image>
+      <text style='float:right;margin-right: 5px;color:#999;'>{{couponPro2.length > 0 ? '有可用优惠券' : '无可用优惠券'}}</text>
+    </view>
+    <view class="orderRemark" catchtap="editRemark">
+      <text class="title">订单备注</text>
+      <text class="remark">{{orderRemark}}</text>
+      <image class="inEdit" src="../../images/send/right.png"></image>
+    </view>
+
+    <view class="orderSendClass">
+      <view class="discount_box">
+        <!-- <text class="orderMoney" style='color: #666;font-size: 13px;'>合计: <text style='color: red; font-size: 15px;'>￥{{money/100 > 0 ? money/100:0}}</text></text> -->
+        <text class="orderMoney" style='color: #666;font-size: 13px;'>合计: <text style='color: red; font-size: 15px;'>￥{{couponId ? (money/100 - couponValue > 0 ? money/100 - couponValue : 0): money/100 }}</text></text>
+        <text style='color: #666;font-size: 13px;'>{{ couponId ? '已优惠：￥' + couponValue:'暂无优惠'}}</text>
+      </view>
+      <button class="send" bindtap="sendOrder" hover-class='gobuy_n'>提交订单</button>
+    </view>
+  </block>
+  <block wx:elif="{{typeNum == 4}}">
+    <view class="orderRemark" catchtap="editRemark">
+      <text class="title">订单备注</text>
+      <text class="remark">{{orderRemark}}</text>
+      <image class="inEdit" src="../../images/send/right.png"></image>
+    </view>
+    <view class="orderSendClass">
+      <view class="discount_box">
+        <!-- <text class="orderMoney" style='color: #666;font-size: 13px;'>合计: <text style='color: red; font-size: 15px;'>￥{{dataPro[0].moneys > 0 ? dataPro[0].moneys:0}}</text></text> -->
+        <text class="orderMoney" style='color: #666;font-size: 13px;'>合计: <text style='color: red; font-size: 15px;'>￥{{couponId ? (dataPro[0].moneys - couponValue > 0 ? dataPro[0].moneys - couponValue : 0) : dataPro[0].moneys}}</text></text>
+        <text style='color: #666;font-size: 13px;'>{{ couponId ? '已优惠：￥' + couponValue:'暂无优惠'}}</text>
+      </view>
+      <button class="send" bindtap="sendOrder1" hover-class='gobuy_n'>提交订单</button>
+    </view>
+  </block>
+  <block wx:elif="{{typeNum == 5}}">
+    <view class="orderRemark" catchtap="editRemark">
+      <text class="title">订单备注</text>
+      <text class="remark">{{orderRemark}}</text>
+      <image class="inEdit" src="../../images/send/right.png"></image>
+    </view>
+    <view class="orderSendClass">
+      <view class="discount_box">
+        <!-- <text class="orderMoney" style='color: #666;font-size: 13px;'>合计: <text style='color: red; font-size: 15px;'>￥{{dataPro[0].moneys > 0 ? dataPro[0].moneys:0}}</text></text> -->
+        <text class="orderMoney" style='color: #666;font-size: 13px;'>合计: <text style='color: red; font-size: 15px;'>￥{{couponId ? (dataPro[0].moneys - couponValue > 0 ? dataPro[0].moneys - couponValue : 0) : dataPro[0].moneys}}</text></text>
+        <text style='color: #666;font-size: 13px;'>{{ couponId ? '已优惠：￥' + couponValue:'暂无优惠'}}</text>
+      </view>
+      <button class="send" bindtap="sendOrder2" hover-class='gobuy_n'>提交订单</button>
+    </view>
+  </block>
+</view>
+<modal hidden="{{hiddenModal}}" title="填写备注" confirm-text="确定" cancel-text="取消" bindcancel="editRemarkCancel" bindconfirm="editRemarkConfirm">
+  <textarea placeholder="请填写备注信息" bindinput="remarkInputChange" value="{{orderRemark == '填写订单备注' ? '' : orderRemark}}" class="remarkInputClass" />
+</modal>
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>
+<view class="LoadingViewClass" hidden="{{isLoading1&isLoading2&isLoading3}}">
+  <image src="../../images/kt.gif"></image>
+</view>
+
+<!-- 屏幕背景变暗的背景 -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!-- 弹出框 -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="coupons_num">可用优惠券（{{ couponPro2.length }}）</view>
+  <view wx:for="{{ couponPro2 }}" wx:key>
+    <image class="coupon_pic" catchtap="useCoupon" data-item="{{ item }}" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book_coupon.png">
+      <text class="use_standard_book" wx:if="{{ item.terms > 0 }}">【满{{ item.terms }}使用】</text>
+      <text class="course_name beyondEllipsis_two">{{ item.name }}</text>
+      <text class="coupon_value">￥{{ item.value }}</text>
+      <text class="use_time">有效期：{{ item.start_time }}至{{ item.end_time }}</text>
+    </image>
+  </view>
+  <view class="cancel_btn" catchtap="cancelBtnClick">不使用优惠</view>
+</view>

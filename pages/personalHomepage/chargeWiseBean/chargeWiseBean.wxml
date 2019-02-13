@@ -1,0 +1,30 @@
+<wxs src="../../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class='page_box'>
+  <!-- 顶部用户信息 -->
+  <view class='top_box'>
+    <view class='user_info_box'>
+      <image class='user_photo' src='{{ info.litpic }}'></image>
+      <view class='name_sign_box'>
+        <text class='user_name beyondEllipsis'>{{ info.username }}</text>
+        <text class='user_sign beyondEllipsis'>个签：{{ info.signature }}</text>
+      </view>
+    </view>
+    <view class='user_bean_box'>
+      <image class='bean_pic' src='{{globalVariable.ossImage + "program/images/bean.png"}}'></image>
+      <text class='user_bean_num'>{{info.integral}}智慧豆</text>
+    </view>
+  </view>
+  <!-- 充值 -->
+  <view class='charge_box_list'>
+    <view class='charge_bean_box' wx:for='{{ chargeBeanList }}' wx:key>
+      <image class='charge_bean_pic' mode='aspectFit' src='{{ globalVariable.ossImage + item.litpic }}'></image>
+      <view class='charge_bean_num'><text class='num'>{{ item.integral }}</text>智慧豆</view>
+      <view class='charge_price' bindtap='chongzhi' id='{{item.id}}'>￥{{ item.money }}</view>
+    </view>
+  </view>
+  <!-- 充值说明 -->
+  <view class='charge_tips'>
+    <text class='tips_title'>充值说明：</text>
+    <view class='tips_list' wx:for='{{ chargeInstruction }}' wx:key>{{ index + 1}}.{{ item }}</view>
+  </view>  
+</view>

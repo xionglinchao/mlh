@@ -1,0 +1,61 @@
+<!--pages/myMessage/myMessage.wxml-->
+<import src="../../templates/loadView/loadView.wxml" />
+<view class='page_view'>
+
+  <view class='head_view'>
+    <view class='message_view' hover-class='bottom_v' catchtap='btn_tab_message' data-info="{{1}}">
+      <image src='../../images/q.png'></image>
+      <text class="head_name">义工审核</text>
+      <block wx:if="{{followPersonalData.volunteers}}">
+        <block wx:if="{{followPersonalData.volunteers != 0}}">
+          <text class="order_num">{{followPersonalData.volunteers}}</text>
+        </block>
+      </block>
+    </view>
+    <view class='message_view' hover-class='bottom_v' catchtap='btn_tab_message' data-info="{{2}}">
+      <image src='../../images/e.png'></image>
+      <text class="head_name">系统通知</text>
+
+      <block wx:if="{{followPersonalData.notice}}">
+        <block wx:if="{{followPersonalData.notice != 0}}">
+          <view class='message_dotted'></view>
+        </block>
+      </block>
+    </view>
+    <view class='message_view' hover-class='bottom_v' catchtap='btn_tab_message' data-info="{{3}}">
+      <image src='../../images/w.png'></image>
+      <text class="head_name">互动</text>
+      <block wx:if="{{followPersonalData.interactive}}">
+        <block wx:if="{{followPersonalData.interactive != 0}}">
+          <view class='message_dotted'></view>
+        </block>
+      </block>
+    </view>
+  </view>
+
+
+  <block wx:if="{{followPersonalPro}}">
+    <scroll-view class='message_scroll'>
+      <block wx:for="{{followPersonalPro}}">
+        <view class='message_item_view' catchtap='btn_leave_comment' data-item="{{item}}">
+          <image src='{{item.litpic}}' class='message_item_image'></image>
+          <view class='message_item_content'>
+            <view class='message_item_content_name_view'>
+              <text class='message_item_content_name_text'>{{item.username}}</text>
+              <text class='message_item_content_time_text'>{{item.time}}</text>
+            </view>
+            <text class='message_item_content_desc_text beyondEllipsis'>{{item.content}}</text>
+            <block wx:if="{{item.status == 1}}">
+              <view class="order_num_"></view>
+            </block>
+          </view>
+        </view>
+
+      </block>
+    </scroll-view>
+  </block>
+  <block wx:else>
+    <template is="notContent1"></template>
+  </block>
+
+</view>

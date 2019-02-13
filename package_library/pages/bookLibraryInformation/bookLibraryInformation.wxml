@@ -1,0 +1,165 @@
+<import src="../../../wxParse/wxParse.wxml" />
+
+<scroll-view scroll-y class="scroll_list">
+  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+    <block wx:for="{{ swiperPic }}" wx:key>
+      <swiper-item>
+        <image class="top_pic" src="{{ item }}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 选项卡 -->
+  <view class="tab_box">
+    <view class="{{ tabIndex == 0 ? 'select_tab_control':'tab_control' }}" catchtap="tabControlClick_1">
+      <text class="iconfont icon-luyin luyinIcon"></text>
+      <text class="icon_words">录音</text>
+    </view>
+    <view class="green_dot"></view>
+    <view class="{{ tabIndex == 1 ? 'select_tab_control':'tab_control' }}" catchtap="tabControlClick_2">
+      <text class="iconfont icon-yueduliang yueduIcon"></text>
+      <text class="icon_words">引导阅读</text>
+    </view>
+    <view class="green_dot"></view>
+    <view class="{{ tabIndex == 2 ? 'select_tab_control':'tab_control' }}" catchtap="tabControlClick_3">
+      <text class="iconfont icon-gushibaoku gushiIcon"></text>
+      <text class="icon_words">故事赏析</text>
+    </view>
+    <view class="green_dot"></view>
+    <view class="{{ tabIndex == 3 ? 'select_tab_control':'tab_control' }}" catchtap="tabControlClick_4">
+      <text class="iconfont icon-shuji shujiIcon"></text>
+      <text class="icon_words">相关书籍</text>
+    </view>
+  </view>
+  <!-- 录音 -->
+  <view class="recording_container" wx:if="{{ tabIndex == 0 }}">
+    <block wx:for="{{ work_creation[0].content }}" wx:key>
+      <view class="user_box" catchtap="toPersonalHomepage" data-item="{{ item }}">
+        <image class="user_photo" src="{{ item.user.litpic }}"></image>
+        <text class="user_name">{{ item.user.username }}</text>
+      </view>
+      <audio class="sound_audio" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.audio }}" catchtap="btn_play_sound" data-index="{{index}}" data-info="{{item.audio}}" id='testAudio'>
+        <view class="{{ item.isPlay == 0 ? 'sprite1' : 'sprite'}}"></view>
+        <text class="play_duration">{{ item.min > 9 ? item.min:'0' + item.min }}'{{ item.sec > 9 ? item.sec:'0' + item.sec }}"</text>
+      </audio>
+      <view class="audio_cont">{{ item.content }}</view>
+      <view class="book_cont">
+        <view class="book_name">{{ item.library_name }}</view>
+        <view class="brief_intro">{{ item.author }}</view>
+      </view>
+      <view class="audio_bottom_box">
+        <view class="comment_time">{{ item.time }}</view>
+        <view class="message_like">
+          <view class="icon_box">
+            <text class="iconfont icon-liuyan2 liuyanIcon"></text>
+            <text class="message_num">{{ item.c_others }}</text>
+          </view>
+          <view class="icon_box">
+            <image class="like_pic" src="{{ item.whether_like ? '/images/like.png':'/images/like_empty.png' }}" catchtap="likeBtnClick" data-idx="{{ index }}" data-item="{{ item }}"></image>
+            <text class="like_num">{{ item.likes }}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 加号按钮 -->
+    <image class="plus_pic" catchtap="btn_create_writing" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/plus_btn.png"></image>
+  </view>
+  <!-- 引导阅读 -->
+  <view class="read_container" wx:if="{{ tabIndex == 1 }}">
+    <block wx:if="{{ work_creation[1].content }}">
+      <block wx:for="{{ work_creation[1].content }}" wx:key>
+          <view class="user_box" catchtap="toPersonalHomepage" data-item="{{ item }}">
+            <image class="user_photo" src="{{ item.user.litpic }}"></image>
+            <text class="user_name">{{ item.user.username }}</text>
+          </view>
+          <view class="content_box">
+            <text class="reading_content">{{ item.content }}</text>
+            <view class="pic_box">
+              <block wx:for="{{ item.photo }}" wx:key wx:for-item="item2">
+                <image class="reading_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' +  item2 }}"></image>
+              </block>
+            </view>
+          </view>
+          <view class="audio_bottom_box">
+            <view class="comment_time">{{ item.time }}</view>
+            <view class="message_like">
+              <view class="icon_box">
+                <text class="iconfont icon-liuyan2 liuyanIcon"></text>
+                <text class="message_num">{{ item.c_others }}</text>
+              </view>
+              <view class="icon_box">
+                <image class="like_pic" src="/images/like_empty.png"></image>
+                <text class="like_num">{{ item.likes }}</text>
+              </view>
+            </view>
+          </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class='none-box'>
+        <image class="none-img" src="/images/n.png"></image>
+        <view class='none-text'>暂无相关数据</view>
+      </view>
+    </block>
+  </view>
+  <!-- 故事赏析 -->
+  <view class="story_container" wx:if="{{ tabIndex == 2 }}">
+    <!-- 富文本 -->
+    <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
+    <block wx:if="{{ work_creation[2].content }}">
+      <block wx:for="{{ work_creation[2].content }}" wx:key>
+        <view class="user_box" catchtap="toPersonalHomepage" data-item="{{ item }}">
+          <image class="user_photo" src="{{ item.user.litpic }}"></image>
+          <text class="user_name">{{ item.user.username }}</text>
+        </view>
+        <view class="content_box">
+          <text class="reading_content">{{ item.content }}</text>
+          <image class="video_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' +  item.cover }}" catchtap="toVideoPlay" data-item="{{ item }}">
+            <view class="play_box">
+              <text class="iconfont icon-play playIcon"></text>
+            </view>
+          </image>
+        </view>
+        <view class="audio_bottom_box">
+          <view class="comment_time">{{ item.time }}</view>
+          <view class="message_like">
+            <view class="icon_box">
+              <text class="iconfont icon-liuyan2 liuyanIcon"></text>
+              <text class="message_num">{{ item.c_others }}</text>
+            </view>
+            <view class="icon_box">
+              <image class="like_pic" src="/images/like_empty.png"></image>
+              <text class="like_num">{{ item.likes }}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class='none-box'>
+        <image class="none-img" src="/images/n.png"></image>
+        <view class='none-text'>暂无相关数据</view>
+      </view>
+    </block>
+  </view>
+  <!-- 相关书籍 -->
+  <view class="relative_book" wx:if="{{ tabIndex == 3 }}">
+    <!-- 暂无数据 -->
+    <!-- <view class='none-box' wx:if="{{ relativeBook.length == 0 }}">
+      <image class="none-img" src="/images/gap/gap1.png"></image>
+      <view class='none-text'>暂无相关数据</view>
+    </view> -->
+    <view class="bookUl" wx:if="{{ relativeBook.length > 0 }}">
+      <view class="book-box" wx:for="{{ relativeBook }}" wx:key>
+        <image mode='aspectFill' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}" class="book-img">
+          <view class="bookName">
+            <text class='beyondEllipsis'>{{ item.name }}</text>
+          </view>
+        </image>
+        <view class="book-btn-box" catchtap="toBookDetail" data-id="{{ item.id }}">
+          <text class="bWord-1">查看详情</text>
+          <text class="bWord-2">立即购买</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

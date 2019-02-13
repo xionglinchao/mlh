@@ -1,0 +1,132 @@
+page {
+  width: 100%;
+  /* height: 100vh; */
+}
+
+.fixed_box {
+  width: 100%;
+  height: 214rpx;
+  background: #FFFFFF;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+}
+
+.tab_box {
+  width: 690rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.active {
+  color: #1EAC58;
+  border-bottom: 4rpx solid #1EAC58;
+}
+
+.tab_name {
+  font-size: 32rpx;
+  padding: 28rpx 0;
+}
+
+.label_search {
+  display: flex;
+  justify-content: space-between;
+  padding: 14rpx 0 30rpx 0;
+  align-items: center;
+}
+
+.label_s {
+  font-size: 24rpx;
+  padding: 20rpx 30rpx;
+}
+
+.s_active {
+  color: #1EAC58;
+}
+
+.search_bar {
+  width: 262rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  box-shadow:0px 0px 9rpx 0px rgba(0,0,0,0.11);
+  margin-right: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  color: #A4A4A4;
+  padding-left: 20rpx;
+}
+
+.search_input {
+  width: 180rpx;
+  margin-left: 15rpx;
+  font-size: 28rpx;
+}
+
+.select_course_list {
+  width: 700rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 25rpx;
+  padding-top: 214rpx;
+}
+
+.course_show_box {
+  width: 340rpx;
+  height: 292rpx;
+  border-radius: 12rpx;
+  box-shadow:0rpx 5rpx 8rpx 0rpx rgba(0,0,0,0.19);
+  margin-bottom: 22rpx;
+}
+
+.course_pic {
+  width: 340rpx;
+  height: 214rpx;
+  border-radius:12rpx 12rpx 0px 0px;
+  background: lightblue;
+  vertical-align: top;
+  position: relative;
+}
+
+.course_title {
+  font-size: 24rpx;
+  padding: 6rpx 6rpx 0 6rpx;
+}
+
+.play_look_box {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3)
+}
+
+.play_box {
+  display: flex;
+  align-items: center;
+  padding: 6rpx 0;
+}
+
+.shipinIcon, .liuyan1Icon {
+  width: 28rpx;
+  height: 24rpx;
+  padding-left: 12rpx;
+}
+
+.liuyan1Icon {
+  padding-left: 26rpx;
+  color: #FFFFFF;
+  font-size: 28rpx;
+}
+
+.play_num {
+  font-size: 20rpx;
+  color: #FFFFFF;
+  padding-left: 10rpx;
+}

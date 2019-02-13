@@ -1,0 +1,86 @@
+<scroll-view scroll-y class='page_box'>
+  <image class='course_image' mode="aspectFill" src="{{ videoCourse.cover_img }}">
+    <view class='top_mask'>
+      <view class='user_info'>
+        <image class='user_pic' src="{{ writer.litpic }}" catchtap="toPersonalHomepage" data-id="{{ writer.id }}"></image>
+        <view class='user_name'>{{ writer.username }}</view>
+      </view>
+      <view class='focus' catchtap="subscribeBtnClick" data-item="{{ writer }}">{{ writer.is_focus ? '已关注':'+ 关注' }}</view>
+    </view>
+  </image>
+  <view class='title_box'>{{ videoCourse.title }}</view>
+  <view style='margin-bottom: 25rpx;'>
+    <view class='video_info_sec'>
+      <view class='price_box'>
+        <block wx:if="{{ system == 'iOS' }}">
+          <text></text>
+        </block>
+        <block wx:else>
+          <text class='discount_price'>￥{{ videoCourse.money }}</text>
+          <text class='old_price'>￥{{ videoCourse.original_money }}</text>
+        </block>
+      </view>
+      <view class='collect_share'>
+        <view class='share_box' catchtap='collectionBtnClick' data-item="{{ videoCourse }}">
+          <text class="iconfont {{ (isStared == 1 || videoCourse.is_collection == 1) ? 'icon-star-selected' : 'icon-star-empty' }} starIcon"></text>
+          <text class='share_friends'>收藏</text>
+        </view>
+        <button class='share_box' open-type='share'>
+          <text class='iconfont icon-share2 shareIcon2'></text>
+          <text class='share_friends'>分享好友</text>
+        </button>
+      </view>
+    </view>
+    <view class='update_study'>
+      <text class='update_num'>已更新{{ videoCourse.update_num }}期</text>
+      <text class='study_num'>{{ videoCourse.people }}人在学</text>
+    </view>
+  </view>
+  <view class='icon_box'>
+    <view class='f_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>永久回听</text>
+    </view>
+    <view class='s_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>手机电脑同步听课</text>
+    </view>
+  </view>
+  <view class='tab_control_box'>
+    <text class='tab3'>目录</text>
+  </view>
+
+  <!-- 视频课程 -->
+  <view wx:for="{{ course }}" wx:key>
+    <!-- <block wx:if="{{ item.free == 0 || item.passFree == 0 }}"> -->
+      <view class="videoCourse_box" catchtap="singleVideoCourseClick" data-item="{{ item.id }}">
+        <image class="videoCourse_pic" mode="aspectFill" src="{{ item.cover }}">
+          <view class="mask_layer"></view>
+          <image class="videoIcon" src="/images/discover/videoIcon.png"></image>
+        </image>
+        <view class="course_intro">
+          <view class="course_title beyondEllipsis_two">{{ item.course_title }}</view>
+          <view class="sale_status">
+            <view>
+              <text class="update_num2">第{{ item.sort }}期</text>
+              <text class="study_num2">{{ item.people_num }}人在学</text>
+            </view>
+            <block wx:if="{{ system == 'iOS' }}">
+              <view></view>
+            </block>
+            <block wx:else>
+              <view class="course_price">{{ item.free == 0 ? '免费':'￥' + item.free }}</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    <!-- </block> -->
+  </view>
+</scroll-view>
+<!-- 编辑按钮 -->
+<!-- <block wx:if="{{ isMine == 1 }}">
+  <view class='edit_btn' catchtap="editCourse">编辑</view>
+</block>
+<block wx:else>
+  <view class='edit_btn' catchtap="buyCourseList">立即购买</view>
+</block> -->

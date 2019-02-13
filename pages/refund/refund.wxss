@@ -1,0 +1,24 @@
+/* pages/refund/refund.wxss */
+page {width:100%;height:100%;}
+.scrollClass {width:100%;}
+.scrollClass .dataViewClass {width:100%;height:auto;margin-top:8px;float:left;}
+.scrollClass .dataViewClass .titleViewClass {width:100%;height:40px;background:white;}
+.scrollClass .dataViewClass .titleViewClass .text1 {display:block;float:left;color:#666;margin-left:15px;line-height:40px;font-size:15px;}
+.scrollClass .dataViewClass .titleViewClass .text2 {display:block;float:right;color:red;margin-left:15px;line-height:40px;font-size:14px;margin-right:15px;}
+.scrollClass .dataViewClass .goodsViewClass {width:100%;height:100px;}
+.scrollClass .dataViewClass .goodsViewClass image {width:80px;height:80px;float:left;margin-left:15px;margin-top:10px;}
+.scrollClass .dataViewClass .goodsViewClass .nameViewClass {width:calc(100% - 110px);height:100%;margin-left:10px;float:left;}
+.scrollClass .dataViewClass .goodsViewClass .nameViewClass .name {display:block;float:left;font-size:13px;color:#333;margin-top:15px;width:calc(100% - 70px);}
+.scrollClass .dataViewClass .goodsViewClass .priceViewClass {height:100%;width:60px;float:right;position:relative;}
+.scrollClass .dataViewClass .goodsViewClass .priceViewClass .text1 {display:block;float:left;font-size:13px;font-weight:bold;height:20px;width:calc(100% - 10px);margin-top:15px;text-align:right;margin-right:10px;color:#333;}
+.scrollClass .dataViewClass .goodsViewClass .priceViewClass .text2 {display:block;float:left;font-size:13px;height:20px;width:calc(100% - 10px);text-align:right;margin-right:10px;color:#666;text-decoration:line-through;}
+.scrollClass .dataViewClass .goodsViewClass .priceViewClass .text3 {display:block;float:left;font-size:13px;height:20px;width:calc(100% - 10px);text-align:right;margin-right:10px;color:#999;position:absolute;bottom:10px;}
+.scrollClass .dataViewClass .orderNumberClass {width:100%;height:40px;background:white;border-bottom:1px solid #eaeaea;}
+.scrollClass .dataViewClass .orderNumberClass .text1 {display:block;float:left;font-size:13px;color:#666;line-height:40px;margin-left:15px;}
+.scrollClass .dataViewClass .orderNumberClass .text2 {display:block;float:right;font-size:13px;color:#666;line-height:40px;margin-right:15px;}
+.scrollClass .dataViewClass .allPriceClass {display:block;float:right;background:white;font-size:13px;color:#666;height:40px;line-height:40px;width:100%;text-align:right;margin-right:10px;}
+.scrollClass .dataViewClass .buttonViewClass {width:100%;height:50px;background:white;float:left;}
+.scrollClass .dataViewClass .buttonViewClass .btn1 {float:right;width:90px;height:30px;font-size:13px;line-height:30px;margin-top:9px;padding:0px;border-radius:20px;margin-right:20px;border:1px solid #666;color:666;}
+.scrollClass .dataViewClass .buttonViewClass .btn1::after {content:none;}
+.scrollClass .dataViewClass .buttonViewClass .btn2::after {content:none;}
+.scrollClass .dataViewClass .buttonViewClass .btn2 {float:right;width:65px;height:30px;font-size:13px;line-height:30px;margin-top:9px;padding:0px;border-radius:20px;margin-right:10px;border:1px solid #ff6600;color:#ff6600;}

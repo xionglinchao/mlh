@@ -1,0 +1,233 @@
+<scroll-view scroll-y='true' class='page_box' catchtap='longPressBoxHide' bindscrolltolower="loadMore" scroll-top="{{ toTop }}">
+  <video class='course_video' objectFit="cover" src="{{ singleCourse.source }}">
+    <!-- <cover-view class='top_mask'>
+      <cover-view class='user_info'>
+        <cover-image class='user_pic' src='{{ writer.litpic }}'></cover-image>
+        <cover-view class='user_name'>{{ writer.username }}</cover-view>
+      </cover-view>
+      <cover-view class='focus'>+ 关注</cover-view>
+    </cover-view> -->
+  </video>
+  <view class='title_container'>
+    <view class='video_info'>
+      <view class='video_title'>
+        <text class='course_label'>课程</text>
+        <text class='video_name'>{{ singleCourse.course_title }}</text>
+      </view>
+      <text class='buy_course' catchtap='aa'>购买</text>
+    </view>
+    <view class='warm_tip'>{{ singleCourse.course_subtitle }}</view>
+  </view>
+  <view class='price_container'>
+    <view class='price_box'>
+      <text class='discount_price'>￥{{ singleCourse.free }}</text>
+      <text class='old_price'>￥{{ singleCourse.original_free }}</text>
+    </view>
+    <view class='video_info_sec'>
+      <view class='update_study'>
+        <text class='update_num'>已更新{{ singleCourse.update_num }}期</text>
+        <text class='study_num'>1000人在学</text>
+      </view>
+      <button class='share_box' open-type='share'>
+        <text class='iconfont icon-share2 shareIcon2'></text>
+        <text class='share_friends'>分享好友</text>
+      </button>
+    </view>
+  </view>
+  <view class='icon_box'>
+    <view class='f_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>永久回听</text>
+    </view>
+    <view class='s_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>手机电脑同步听课</text>
+    </view>
+  </view>
+  <view class='tab_control_box'>
+    <text class='{{ tabControlIndex == 0 ? "tabActive":"tab" }}' catchtap='tabControlClick1'>详情</text>
+    <text class='green_dot'></text>
+    <text class='{{ tabControlIndex == 1 ? "tabActive":"tab" }}' catchtap='tabControlClick2'>评论</text>
+    <text class='green_dot'></text>
+    <text class='{{ tabControlIndex == 2 ? "tabActive":"tab" }}' catchtap='tabControlClick3'>相关书籍</text>
+  </view>
+
+  <!-- 详情 -->
+  <view class='goods_detail' wx:if="{{ tabControlIndex == 0 }}">
+    <view class='dot_box'>
+      <text class='dot_1'></text>
+      <text class='dot_2'></text>
+      <text class='dot_3'></text>
+      <text class='second_title'>详情</text>
+      <text class='dot_3'></text>
+      <text class='dot_2'></text>
+      <text class='dot_1'></text>
+    </view>
+    <view class='detail_content'>
+      <view class='tips_box'>
+        <text class='grey_dot'></text>
+        <rich-text nodes="{{ singleCourse.detail }}" class='tips'></rich-text>
+      </view>
+      <!-- <image class='detail_pic' src='{{ item.detailPic }}'></image> -->
+    </view>
+  </view>
+
+  <!-- 评论 -->
+  <view wx:for="{{ commentList }}" wx:key wx:if="{{ tabControlIndex == 1 }}">
+    <block wx:if="{{ item.is_me != 1 }}">
+      <view class='comment_cont_box'>
+        <image class='comment_user_photo' src='{{ item.photo }}'></image>
+        <view class='name_dialog'>
+          <text class='comment_name'>{{ item.username }}</text>
+          <view class='dialog_box' bindlongpress='deleteBtnLongPress' data-id='{{ item.id }}'>
+            <text>{{ item.content }}{{item.id}}</text>
+            <view class='del_dialog_box' hidden='{{ discussIndex == item.id }}'>
+              <text class='del_dialog_words'>删除</text>
+              <text style='width:2rpx;height:50rpx;background:#9D9D9D;'></text>
+              <text class='del_dialog_words'>举报</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='comment_cont_box secondDialog'>
+        <view class='name_dialog secondNameDialog'>
+          <text class='comment_name'>{{ item.username }}</text>
+          <view class='dialog_box2' bindlongpress='deleteBtnLongPress' data-id='{{ item.id }}'>
+            <text>{{ item.content }}</text>
+            <view class='del_dialog_box' hidden='{{ !(discussIndex == item.id) }}'>
+              <text class='del_dialog_words' catchtap="delCommentBtn">删除</text>
+              <text style='width:2rpx;height:50rpx;background:#9D9D9D;'></text>
+              <text class='del_dialog_words'>举报</text>
+            </view>
+          </view>
+        </view>
+        <image class='comment_user_photo secondPhoto' src='{{ item.photo }}'></image>
+      </view>
+    </block>
+  </view>
+
+  <!-- 相关书籍 -->
+  <view wx:if="{{ tabControlIndex == 2 }}">
+    <!-- 暂无数据 -->
+    <!-- <view class='none-box' wx:if="{{ relationBooksList.length == 0 }}">
+        <image class="none-img" src="/images/gap/gap1.png"></image>
+        <view class='none-text'>暂无相关数据</view>
+      </view> -->
+    <view class="bookUl" wx:if="{{ relativeBook.length > 0 }}">
+      <view class="book-box" wx:for="{{ relativeBook }}" wx:key>
+        <image mode='aspectFill' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}" class="book-img">
+          <image class="delete_btn" src="/images/d-2.png" wx:if="{{ isDelete }}" catchtap="delRelativeBook" data-item="{{ item }}"></image>
+          <view class="bookName">
+            <text class='beyondEllipsis'>{{ item.name }}</text>
+          </view>
+        </image>
+        <view class="book-btn-box">
+          <text class="bWord-1" catchtap='look_detail' data-item='{{ item }}'>查看详情</text>
+          <text class="bWord-2" data-item='{{ item }}' catchtap='btn_go_buy'>立即购买</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- 底部交互栏 -->
+<!-- 详情 -->
+<view class="bottomFixed">
+  <block wx:if="{{ tabControlIndex == 0 }}">
+    <view class="interactive_box">
+      <view class="homeIcon_box">
+        <text class="iconfont icon-liuyan2 homeIcon"></text>
+        <text class="homeIcon_words">留言</text>
+      </view>
+      <view class="commentIcon_box" catchtap="singleCourseCollection" data-item="{{ singleCourse }}">
+        <text class="iconfont {{ singleCourse.is_collect == 1 ? 'icon-star-selected':'icon-star-empty' }}"></text>
+        <text class="homeIcon_words">收藏</text>
+      </view>
+      <view class="commentIcon_box" catchtap='showModal'>
+        <text class="iconfont icon-list shareIcon"></text>
+        <text class="homeIcon_words">目录</text>
+      </view>
+      <view class="story_mom">
+        <text class="apply">购买课程</text>
+      </view>
+    </view>
+  </block>
+  <!-- 评论 -->
+  <block wx:elif="{{ tabControlIndex == 1 }}">
+    <view class="interactive_box">
+      <view class='comment_inter_box'>
+        <view class='open_course_box'>
+          <view class='open_words'>开课</view>
+        </view>
+        <input catchtap='unlockBtnClick' bindconfirm="bindValueInput" class='chat_bar' placeholder='发表评论' placeholder-style='font-size:24rpx;color:#999;'></input>
+        <view class='yuyinIcon_box'>
+          <text class='iconfont icon-yuyin yuyinIcon'></text>
+          <text class='yuyin_words'>录音</text>
+        </view>
+        <view class='listIcon_box'>
+          <text class='iconfont icon-list listIcon'></text>
+          <text class='list_words'>目录</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 相关书籍 -->
+  <block wx:else>
+    <!-- <block wx:if="{{ isDelete }}"> -->
+      <!-- <view class='shopping_mall' catchtap="editBtn">
+        <text class="cancelBtn" catchtap="cancelBtnClick">取消</text>
+        <text class="confirmBtn" catchtap="confirmBtnClick">确认</text>
+      </view> -->
+    <!-- </block> -->
+    <!-- <block wx:else> -->
+    <view class='shopping_mall' catchtap="editBtn">{{ isDelete ? '取消编辑':'编辑' }}</view>
+    <!-- </block> -->
+  </block>
+</view>
+
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <block>
+    <view class='icon_title_box'>
+      <text class='iconfont icon-course2 course2Icon'></text>
+      <text class='course_total_num'>课程（{{ course.length }}）</text>
+    </view>
+    <view class='videoCourse_list' wx:for="{{ course }}" wx:key>
+      <view class='videoCourse_title_box'>
+        <text class='iconfont icon-play playIcon'></text>
+        <text class='viderCourse_title beyondEllipsis'>{{ item.course_title }}</text>
+      </view>
+      <text class='videoCourse_price'>￥{{ item.free }}</text>
+    </view>
+  </block>
+</view>
+
+<!-- 解锁弹窗 -->
+<view class="rule_popup" wx:if="{{ isLockBoxHide }}" catchtouchmove="preventDeafult">
+  <view class="popup_bg" catchtap="unlockHidePopup" catchtouchmove="preventDeafult"></view>
+  <view class="popup_box">
+    <view class='lockCancel_box'>
+      <text class='iconfont icon-cancel lockCancel' catchtap="unlockHidePopup"></text>
+    </view>
+    <view class='lock_box'>
+      <image class='lock_pic' src='../../../images/discover/unlock.png'></image>
+    </view>
+    <image class='qipao_bg' src='../../../images/personalHomepage/qipao_bg.png'>
+      <view class='unlock_btn_box'>
+        <text class='unlock_course_name beyondEllipsis'>当前需要解锁课程名称</text>
+        <view class='unlock_btn'>
+          <text class='vertical_line1'></text>
+          <text class='vertical_line2'></text>
+          <text class='vertical_line3'></text>
+          <view class='unlock_words'>解锁当前课程</view>
+          <text class='vertical_line3'></text>
+          <text class='vertical_line2' style='margin:0 2rpx 0 4rpx;'></text>
+          <text class='vertical_line1'></text>
+        </view>
+      </view>
+    </image>
+  </view>
+</view>

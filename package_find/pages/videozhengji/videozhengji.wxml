@@ -1,0 +1,25 @@
+<view class="t-box">
+
+  <scroll-view scroll-y class="scroll-box">
+    <view>
+      <input class="yuyin_title" type="text" placeholder="加入标题输入哦" placeholder-style="font-size: 34rpx; color: #999;" id='1' bindinput="getInputMsg"></input>
+      <textarea class="yuyin_cont" maxlength="1000" placeholder="输入您想发布的内容吧" placeholder-style="font-size: 32rpx; color: #999;" id='2' bindinput="getInputMsg"></textarea>
+    </view>
+
+    <view class="yuyin-box">
+      <view class="add-yuyin" catchtap="selectVideo">
+        <text class="iconfont icon-camera camera"></text>
+        <text class="yuyin_words">添加视频</text>
+      </view>
+      <video wx:if="{{ videoTempath != '' }}" class="tempVideo" objectFit="cover" controls="false" src="{{ videoTempath }}">
+        <cover-image class="del_img" src='/images/d.png' catchtap='btn_delete'></cover-image>
+      </video>
+    </view>
+    <text class="yuyin_note">（只能上传1条）</text>
+  </scroll-view>
+
+  <view class="submit-box" catchtap='submitVideo'>
+    <text class="submit" style="{{ isSub ? ' background: #999;' : '' }}">提交</text>
+  </view>
+
+</view>

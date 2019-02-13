@@ -1,0 +1,14 @@
+<!--pages/openMore/openMore.wxml-->
+<view class = "scrollViewClass" >
+              <block wx:for = "{{openPro}}" wx:if = "{{!item.remainingTime == 0}}">
+                  <view class = "dataViewClass">
+                      <image src='{{item.people_litpic}}'></image>
+                      <view class = "type3">
+                          <text class = "text1">{{item.username}}</text>
+                          <text class = "text2">还剩{{item.sum}}人,剩余{{item.remainingTime}}</text>
+                      </view>
+                      <text class = "text3">去参团</text>
+                  </view>
+              </block>
+        
+        </view>

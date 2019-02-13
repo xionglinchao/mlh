@@ -1,0 +1,14 @@
+<!--pages/posting/createComment/createComment.wxml-->
+<view class='page_view' style='background: #f0f0f0;'>
+  <form bindsubmit='btn_submit'>
+    <view class="type2">
+      <textarea placeholder="{{typeNum == 1 ? '请输入留言文字' : '请输入评论文字'}}" placeholder-style='color: #999;font-size: 14px;' name="information" hidden='{{isUpload}}'></textarea>
+      <view style="clear:both;"></view>
+    </view>
+
+
+    <view class="plViewClass">
+      <button form-type='submit' disabled='{{isDisabled}}'>{{typeNum == 1 ? '留言' : '发布评论'}}</button>
+    </view>
+  </form>
+</view>

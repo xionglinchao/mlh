@@ -1,0 +1,141 @@
+<scroll-view scroll-y class="{{ audioCourse.money == 0 ? 'page_box_sec':'page_box' }}">
+  <image class='course_image' mode="aspectFill" src='{{ audioCourse.cover_img }}'>
+    <view class='top_mask'>
+      <view class='user_info'>
+        <image class='user_pic' src="{{ writer.litpic }}" catchtap="toPersonalHomepage" data-id="{{ writer.id }}"></image>
+        <view class='user_name'>{{ writer.username }}</view>
+      </view>
+      <view class='focus' catchtap="subscribeBtnClick" data-item="{{ writer }}">{{ writer.is_focus ? '已关注':'+ 关注' }}</view>
+    </view>
+  </image>
+  <view class='title_box'>{{ audioCourse.title }}</view>
+  <view style='padding-bottom: 25rpx;background:#FFFFFF;'>
+    <view class='video_info_sec'>
+      <view class='price_box'>
+        <block wx:if="{{ system == 'iOS' }}">
+          <text></text>
+        </block>
+        <block wx:else>
+          <text class='discount_price'>{{ audioCourse.money == 0 ? '免费':'￥' + audioCourse.money }}</text>
+          <text class='old_price' wx:if="{{ audioCourse.money != 0 }}">￥{{ audioCourse.original_money }}</text>
+        </block>
+      </view>
+      <view class='collect_share'>
+        <view class='share_box' catchtap='collectionBtnClick' data-item="{{ audioCourse }}">
+          <text class="iconfont {{ (isStared == 1 || audioCourse.is_collection == 1) ? 'icon-star-selected' : 'icon-star-empty' }} starIcon"></text>
+          <text class='share_friends'>收藏</text>
+        </view>
+        <button class='share_box' catchtap='showModal'>
+          <text class='iconfont icon-share2 shareIcon2'></text>
+          <text class='share_friends'>分享好友</text>
+        </button>
+      </view>
+    </view>
+    <view class='update_study'>
+      <text class='update_num'>已更新{{ audioCourse.update_num }}期</text>
+      <text class='study_num'>{{ audioCourse.people }}人在学</text>
+    </view>
+  </view>
+  <view class='icon_box'>
+    <view class='f_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>{{ audioCourse.func[0] }}</text>
+    </view>
+    <view class='s_icon_box'>
+      <text class='iconfont icon-circle_hook circle_hook'></text>
+      <text class='icon_words'>{{ audioCourse.func[1] }}</text>
+    </view>
+  </view>
+  <view class='tab_control_box'>
+    <text class="tab3 {{ tabIndex == 0 ? 'choosed':'' }}" catchtap="tabClick1">目录</text>
+    <text class="tab3 {{ tabIndex == 1 ? 'choosed':'' }}" catchtap="tabClick2">提问</text>
+  </view>
+
+  <!-- 音频课程 -->
+  <block wx:if="{{ tabIndex == 0 }}">
+    <view class="videoCourse_box" wx:for="{{ course }}" wx:key catchtap="singleAudioCourseClick" data-id="{{ item.id }}">
+      <image class="videoCourse_pic" mode="aspectFill" src="{{ item.cover }}">
+        <view class="mask_layer"></view>
+        <image class="yuyinIcon" src="/images/discover/yuyinIcon.png"></image>
+      </image>
+      <view class="course_intro">
+        <view class="course_title beyondEllipsis_two">{{ item.course_title }}</view>
+        <view class="sale_status">
+          <view>
+            <text class="update_num2">已更新{{ item.sort }}期</text>
+            <text class="study_num2">{{ item.people_num }}人在学</text>
+          </view>
+          <block wx:if="{{ system == 'iOS' }}">
+            <text></text>
+          </block>
+          <block wx:else>
+            <view class="course_price">{{ item.free == 0 ? '免费':'￥'+item.free }}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 提问 -->
+  <block wx:else>
+    <view class="question_box" wx:for="{{ questionList }}" wx:key>
+      <view catchtap="toPersonalHomepage" data-id="{{ item.u_id }}">
+        <image class="user_photo" src="{{ item.user.litpic }}"></image>
+      </view>
+      <view class="cont_box">
+        <view class="name_time">
+          <text class="comment_name beyondEllipsis">{{ item.user.username }}</text>
+          <text class="ques_time">{{ item.create_at }}</text>
+        </view>
+        <view class="ques_answer_box" catchtap="toQuestionDetail" data-id="{{ item.id }}">
+          <view class="ques_cont">
+            <text class="ques_words">{{ item.content }}</text>
+            <view class="pic_box">
+              <block wx:for="{{ item.litpic }}" wx:key wx:for-item = "item2">
+                <image class="ques_pic" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2 }}"></image>
+              </block>
+            </view>
+          </view>
+          <view class="answer_btn" catchtap="replyBtnClick" data-item="{{ item }}">回答</view>
+        </view>
+        <view class="answer_box">
+          <view class="answer_num_box">
+            <text class="answer_num">{{ item.number }}</text>
+          </view>
+          <text class="answer_words">人回答</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+<!-- 编辑按钮 -->
+<block wx:if="{{ tabIndex == 0 }}">
+  <view class='edit_btn' catchtap='toBuyCourse' wx:if="{{ audioCourse.money != 0 }}">购买套餐课程</view>
+</block>
+<!-- 评论 -->
+<block wx:else>
+  <form report-submit='{{true}}' bindsubmit='submit'>
+    <view class="interactive_box" catchtap="toAskQuestion">
+      <button class="send_ques" form-type='submit'>发布提问</button>
+    </view>
+  </form>
+</block>
+
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="share_words words_1">分享</view>
+  <view class="share_container">
+    <button class="shareBtn" open-type="share" data-item="{{ articleDetail }}">
+      <view class="share_box2">
+        <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/weChat.png"></image>
+        <text class="share_words">分享朋友</text>
+      </view>
+    </button>
+    <view class="share_box2" catchtap="shareFriendCircle">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/circle_friend.png?1"></image>
+      <text class="share_words">保存图片</text>
+    </view>
+  </view>
+</view>

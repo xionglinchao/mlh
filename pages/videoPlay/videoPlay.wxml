@@ -1,0 +1,6 @@
+<!--pages/videoPlay/videoPlay.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="p_class">
+  <video class='videoClass' objectFit='contain' bindended="playEnd" src='{{globalVariable.ossImage + videoUrl}}' autoplay="true"></video>
+</view>
+<view class="commodityScreenClass" hidden='{{isShadow1}}' bindtap='btn_shadow' style='z-index: 15;opacity: 0'></view>

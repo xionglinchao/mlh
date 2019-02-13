@@ -1,0 +1,42 @@
+<view class="page_box">
+  <view class="join_ambassador">恭喜你加入推广大使</view>
+  <view class="gift">即可获取神秘大礼包</view>
+  <view class="contact_service">立即联系客服</view>
+  <button class="service_btn" open-type="contact">
+    <image class="service_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/service_pic.png"></image>
+  </button>
+  <view class="icon_box">
+    <view>
+      <view class="each_icon_box">
+        <image class="icon_pic1" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/icon_course.png"></image>
+        <text class="icon_words">课程</text>
+      </view>
+      <view class="each_icon_box">
+        <image class="icon_pic4" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/icon_profit.png"></image>
+        <text class="icon_words">利润倍增</text>
+      </view>
+    </view>
+    <view>
+      <view class="each_icon_box">
+        <image class="icon_pic2" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/icon_promote.png"></image>
+        <text class="icon_words">推广</text>
+      </view>
+      <view class="each_icon_box">
+        <image class="icon_pic5" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/icon_user.png"></image>
+        <text class="icon_words">粉丝终身绑定</text>
+      </view>
+    </view>
+    <view>
+      <view class="each_icon_box">
+        <image class="icon_pic3" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/icon_community.png"></image>
+        <text class="icon_words">社区达人</text>
+      </view>
+      <view class="each_icon_box">
+        <image class="icon_pic6" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/icon_shop.png"></image>
+        <text class="icon_words">无需开店</text>
+      </view>
+    </view>
+  </view>
+  <image class="bottom_pic" mode="widthFix" catchtap="preview_img" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/ambassador.jpg?1"></image>
+</view>
+<view class="confirm" catchtap="toJoinPartner">合作伙伴招募令</view>

@@ -1,0 +1,137 @@
+<!--pages/collection/collection.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<import src="../../templates/loadView/loadView.wxml" />
+<view class='page_view' style='background: #f0f0f0;'>
+  <view class="transverse_scroll">
+    <block wx:for="{{globalVariable.titleCollection}}">
+      <view class="book_class_view" bindtap='btn_collection_title' data-index="{{index}}">
+        <text class='book_class_text text_block'>{{item}}</text>
+      </view>
+    </block>
+    <!--下划线 -->
+    <view class="book_class_text_line" style="transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+  <!-- book详情切换 -->
+  <view class="book_tab">
+    <view class="tab_view" hidden='{{bookIndex != 0}}'>
+      <scroll-view class='activity_scroll' scroll-y="true">
+        <view wx:for="{{collectionPro}}" catchtap='btn_infomartion' data-info="{{item}}" class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+          <view class="content dataViewClass" bindtap='btn_activityInformation' data-id="{{item.id}}" data-name="{{item.name}}">
+            <image class="imageClass" src='{{globalVariable.ossImage + item.litpic}}' mode="aspectFill"></image>
+            <view class="type3">
+              <text class="text1">{{item.name}}</text>
+              <text class="text2">{{item.comment}}</text>
+              <view class="type3ViewClass">
+                <text class="text3">{{item.count}}{{item.judgment == 1 ? '个家庭参与' : '人阅读'}}</text>
+                <text class="text4">{{item.time}}</text>
+              </view>
+            </view>
+            <view style="clear:both;"></view>
+          </view>
+          <view class="del" catchtap="btn_long_delete" data-index="{{index}}" data-info="{{item}}">删除</view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="tab_view" hidden='{{bookIndex != 1}}'>
+      <scroll-view class="scrollViewClass" scroll-y="true" style=''>
+        <view wx:for="{{collectionPro}}" data-info="{{item}}" class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+          <view class="dataViewClass1 content" bindtap='btn_goods' data-item="{{item}}">
+            <image class="image1" src='{{globalVariable.ossImage + item.litpic}}' mode="aspectFill"></image>
+            <view class="nameViewClass1">
+              <text class="text2">{{item.name}}</text>
+              <text class="text3">¥ {{item.money}}</text>
+              <view class="priceViewClass">
+                <text> + {{item.integral}}积分<text style='color: red;font-size: 14px;'>¥ {{item.moneys}}</text></text>
+                <image src='../../images/mall/shop.png' catchtap='btn_add_shop' data-item='{{item}}'></image>
+              </view>
+            </view>
+            <view style="clear:both;"></view>
+          </view>
+          <view class="del" catchtap="btn_long_delete" data-index="{{index}}" data-info="{{item}}">删除</view>
+          <view style="clear:both;"></view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="tab_view" hidden='{{bookIndex != 2}}'>
+
+      <scroll-view scroll-y="true" class='sound_scroll_view'>
+        <block wx:for="{{collectionPro}}">
+          <view class='comment_view' bindtap='btn_go_comment_information' data-item="{{item}}">
+            <view class='comment_user_view' catchtap='btn_person_information' data-item="{{item}}">
+              <image src='{{item.user.litpic}}' class='user_image'></image>
+              <text class='user_name_text'>{{item.user.username}}</text>
+              <block wx:if="{{item.stick_top == 1}}">
+                <text class='user_title_top'>置顶</text>
+              </block>
+              <image src='../../images/clear.png' class='go_bottom_image' catchtap='btn_long_delete' data-info="{{item}}"></image>
+            </view>
+            <block wx:if="{{item.works_creation_id == '1'}}">
+              <view class='sound_view'>
+                <audio class='sound_audio' src='{{globalVariable.ossImage +item.audio}}' id='testAudio' catchtap='btn_play_sound' data-info="{{item.audio}}" data-index="{{index}}">
+                  <view class="{{item.isPlay == 0 ? 'sprite1' : 'sprite'}}"></view>
+                  <text class='text_block' style='float:right'>{{item.min < 10 ? '0' + item.min : item.min}}'{{item.sec < 10 ? '0' + item.sec : item.sec}}"</text>
+                </audio>
+              </view>
+            </block>
+            <block wx:if="{{item.works_creation_id == '1'|| item.works_creation_id == '2' && item.content != ''}}">
+              <view class='comment_text_view'>
+                <text class='comment_text_name'>{{item.a_content}}</text>
+              </view>
+            </block>
+            <block wx:if="{{item.works_creation_id == '2'}}">
+              <image src='{{globalVariable.ossImage + item.picture}}' class='comment_image1_view' mode='widthFix'></image>
+            </block>
+            <block wx:if="{{item.works_creation_id != '1' && item.works_creation_id != '2'}}">
+              <view class="nameViewClass">
+                <text class="content">{{item.a_content}}</text>
+                <block wx:for="{{item.photo}}" wx:for-item="item_image" wx:for-index="index_image">
+                  <block wx:if="{{index_image == 0}}">
+                    <block wx:if="{{item_image != ''}}">
+                      <block wx:if="{{item.video != ''}}">
+                        <view class="comment_video_button_view" style='height:{{(sw - 24)/3 - 6}}px;float:left;' catchtap='btn_video' data-video="{{item.video}}">
+                          <image src='../../images/bofang.png' style='position: absolute;left:calc(50% - 15px);top: calc(50% - 15px);width: 30px;height: 30px;'></image>
+                          <image src='{{globalVariable.ossImage + item_image}}' mode="aspectFill" style='width:100%;height:100%;vertical-align: middle;'></image>
+                        </view>
+                      </block>
+                      <block wx:else>
+                        <image class="imagesDetails3" src='{{globalVariable.ossImage + item_image}}' mode="aspectFill" style='height:{{(sw - 24)/3 - 6}}px;' catchtap='btn_preview' data-item="{{item.photo}}" data-image="{{globalVariable.ossImage + item_image}}"></image>
+                      </block>
+                    </block>
+                  </block>
+                  <block wx:else>
+                    <block wx:if="{{item_image != ''}}">
+                      <image class="imagesDetails3" src='{{globalVariable.ossImage + item_image}}' mode="aspectFill" style='height:{{(sw - 24)/3 - 6}}px;' catchtap='btn_preview' data-item="{{item.photo}}" data-image="{{globalVariable.ossImage + item_image}}"></image>
+                    </block>
+                  </block>
+                </block>
+              </view>
+            </block>
+
+            <block wx:if="{{item.works_creation_id != '2'}}">
+              <view class='comment_content_book_view' catchtap='btn_library' data-item="{{item}}">
+                <text class='comment_content_text_view' style='color: #333;font-weight: bold;'>{{item.library_name}}</text>
+                <view class='comment_content_text_view'>{{item.author}}</view>
+              </view>
+            </block>
+            <view class='comment_bottom_view'>
+              <text class='comment_bottom_time_text'>{{item.times}}</text>
+              <text class='comment_bottom_fx_text' catchtap='btn_go_likes' data-item="{{item}}">{{item.likes}}</text>
+              <image class="comment_bottom_fx_image" src="../../images/z.png" catchtap='btn_go_likes' data-item="{{item}}"></image>
+              <text class='comment_bottom_pl_text' catchtap='btn_go_comment' data-item="{{item}}">{{item.count}}</text>
+              <image class="comment_bottom_pl_image" src='../../images/message.png' catchtap='btn_go_comment' data-item="{{item}}"></image>
+              <!-- <image class="comment_bottom_zf_image" src='../../images/fx.png'></image> -->
+            </view>
+            <view style="clear:both;"></view>
+          </view>
+        </block>
+        <view style="clear:both;"></view>
+      </scroll-view>
+    </view>
+  </view>
+
+</view>
+
+
+<block wx:if='{{collectionPro == null}}'>
+  <template is="notJbContent_1"></template>
+</block>

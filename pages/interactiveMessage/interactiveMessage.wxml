@@ -1,0 +1,29 @@
+<!--pages/interactiveMessage/interactiveMessage.wxml-->
+<import src="../../templates/loadView/loadView.wxml" />
+<view class='page_view'>
+    <block wx:if = "{{volunteerPro}}">
+    <scroll-view class='volunteer_message_scroll' scroll-y = "true">
+        <block wx:for = "{{volunteerPro}}">
+            <view class='volunteer_item_view'>
+                <image src='{{item.litpic}}' class='item_image'></image>
+                <text class='item_name beyondEllipsis'>{{item.username}}</text>
+                <block wx:if  ="{{item.type == 2}}">
+                    <text class='item_desc'>发布了新的创作</text>
+                </block>
+                <block wx:if  ="{{item.type == 3}}">
+                    <text class='item_desc'>评论了你</text>
+                </block>
+                <block wx:if  ="{{item.type == 6}}">
+                    <text class='item_desc'>关注了你</text>
+                </block>
+                
+                <text class='item_time'>{{item.time}}</text>
+                
+            </view>
+        </block>
+    </scroll-view>
+    </block>
+    <block wx:else>
+          <template is="notContent1"></template>
+      </block>
+</view>

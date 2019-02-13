@@ -1,0 +1,23 @@
+/* pages/donation/donation.wxss */
+page {width:100%;height:95%;background:#eaeaea;}
+.PayViewClass {width:100%;height:95%;margin-top:5%;}
+.payClass {width:90%;height:200px;margin-left:5%;background:white;border-radius:4px;}
+.payClass .smClass {margin-top:30px;display:block;float:left;font-size:15px;margin-left:20px;width:100%;}
+.payClass .moneyClass {width:calc(100% - 40px);height:50px;margin-top:10px;float:left;margin-left:20px;border-bottom:1px solid #e1e1e1;margin-right:20px;}
+.payClass .moneyClass image {width:30px;height:30px;float:left;margin-top:10px;}
+.payClass .moneyClass input {width:calc(100% - 40px);height:50px;font-size:30px;line-height:50px;margin-left:10px;float:left;}
+.smName {width:100%;height:40px;float:left;margin-top:10px;}
+.smName .kqClass {width:100%;height:20px;}
+.smName .kqClass .textQC {display:block;float:left;color:#666;font-size:12px;margin-left:25px;line-height:20px;}
+.smName .kqClass .bClass {display:block;float:left;color:#ff6600;font-size:12px;line-height:20px;}
+.smName .NClass {display:block;float:left;color:#999;font-size:12px;margin-left:25px;}
+.payClass .sendClass {width:90%;height:40px;margin-left:5%;display:block;float:left;text-align:center;line-height:40px;background:#3bbd3c;color:white;margin-top:30px;}
+.modelView {width:80%;background:white;position:absolute;top:30%;margin-left:10%;z-index:20;}
+.modelView .modelTitle {width:100%;height:40px;display:block;float:left;margin-top:10px;text-align:center;line-height:40px;font-size:16px;color:#333;}
+.modelView .modelContent {width:100%;float:left;height:40px;line-height:40px;}
+.modelView .modelContent text {display:block;float:left;width:100%;text-align:center;color:#999;font-size:12px;}
+.modelView .buttonView {width:100%;height:40px;float:left;margin-top:10px;}
+.modelView .buttonView .cancelClass {display:block;float:left;width:calc(50% - 1px);height:100%;color:#939393;text-align:center;line-height:40px;font-size:15px;}
+.modelView .buttonView .cancelClass::after {content:none;}
+.modelView .buttonView .phoneClass {display:block;float:left;width:calc(50% - 1px);height:100%;color:#19ae19;text-align:center;line-height:40px;font-size:15px;}
+.modelView .buttonView .phoneClass::after {content:none;}

@@ -1,0 +1,39 @@
+<view class='scroll_list'>
+  <view class='title_box'>
+    <input class='title_input' placeholder='点击输入标题' placeholder-style='font-size:36rpx;color:#333333;' bindinput="bindTitleValue"></input>
+    <image class='user_img' src="{{ user.litpic }}"></image>
+  </view>
+  <view class='cont_box' wx:for="{{ articleContent }}" wx:key>
+    <text class='iconfont icon-cancel cancelIcon' catchtap="deleteBtn" data-idx="{{ index }}"></text>
+    <block wx:if="{{ item.type == 1 }}">
+      <textarea class='cont_input' placeholder='请输入你想要表达的心情或者选择需要的图片进行发布' bindinput="bindValueInput" data-index="{{index}}"></textarea>
+    </block>
+    <block wx:elif="{{ item.type == 0 }}">
+      <image class='pub_picture' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.con }}">
+        <view class='mask'></view>
+        <!-- <view class="add_pic">点击添加图片</view> -->
+      </image>
+    </block>
+    <view class='icon_box'>
+      <view class='icon_f' catchtap="addParagraph">
+        <text class='iconfont icon-text textIcon'></text>
+        <text class='icon_words'>新建段落</text>
+      </view>
+      <view class='icon_f' catchtap="btn_image" data-idx="{{ index }}">
+        <text class='iconfont icon-photo photoIcon'></text>
+        <text class='icon_words'>添加图片</text>
+      </view>
+      <view class='icon_f'>
+        <text class='iconfont icon-arrow-up upArrowIcon' catchtap="moveUp" data-idx="{{ index }}"></text>
+        <text class='iconfont icon-arrow-down downArrowIcon' catchtap="moveDown" data-idx="{{ index }}"></text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="lock_box" catchtap="lockBtnClick">
+  <image class="lock_pic" src="{{ isLock == 0 ? 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/lock_open.png':'https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/lock_close.png' }}"></image>
+  <text class="lock_words">{{ isLock == 0 ? '设为私密':'已上锁' }}</text>
+</view>
+<view class="pubBntBox">
+  <view class='article_pub_btn' catchtap="pubArticle">发布文章</view>
+</view>

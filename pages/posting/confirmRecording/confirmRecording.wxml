@@ -1,0 +1,20 @@
+<!--pages/posting/confirmRecording/confirmRecording.wxml-->
+<view class='page_view'>
+
+  <view class='sound_view'>
+    <audio class='sound_audio' src='{{soundUrl}}' bindtap='btn_play_sound'>
+      <image src='/images/audio.png'></image>
+      <text class='text_block' style='float:right'>{{soundMinute}}' {{soundSecond >= 10 ? soundSecond : '0' + soundSecond}}"</text>
+    </audio>
+  </view>
+  <form bindsubmit='btn_submit'>
+    <view class='comment_content_view'>
+      <textarea placeholder='说点什么 (可选)' placeholder-class='comment_content_placeholder' name="information" maxlength='500'></textarea>
+    </view>
+    <view class='bottom_view'>
+      <button class='bottom_submit' form-type='submit' disabled='{{isDisabled}}'>完成</button>
+    </view>
+
+  </form>
+
+</view>

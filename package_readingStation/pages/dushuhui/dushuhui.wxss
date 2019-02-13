@@ -1,0 +1,76 @@
+.homePage {width:100%;height:100vh;}
+.top-box {position:relative;width:100%;height:37vh;}
+.bg_pic {position:absolute;width:100%;height:37vh;z-index:1;}
+.top-box-1 {position:absolute;z-index:2;width:100%;margin-top:6vh;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.user_pic {width:175rpx;height:175rpx;border-radius:50%;}
+.act_name {font-size:36rpx;color:#fff;width:100%;margin-top:10rpx;display:flex;justify-content:center;}
+.top-box-2 {z-index:2;position:absolute;top:28vh;left:140rpx;}
+.guanzhu_email {display:flex;align-items:center;}
+.guanzhu-box {display:flex;justify-content:center;align-items:center;width:138rpx;height:66rpx;border:2rpx solid #fff;border-radius:8rpx;}
+.plus,.sixin {color:#fff;font-size:34rpx;padding-right:10rpx;}
+.gz-words {font-size:30rpx;color:#fff;}
+.main_string {width:2rpx;height:50rpx;background-color:#fff;margin:0 96rpx;}
+.tTitle {width:100%;display:flex;justify-content:space-between;}
+.tTitle-text {font-size:32rpx;padding:25rpx 0;margin:0 32rpx;color:#666;}
+.active {border-bottom:4rpx solid #1eac58;color:#1eac58;}
+.tTitle-text:nth-child(3) {padding:25rpx 28rpx;}
+.swiper-item-container {background-color:#f8f8f8;width:750rpx;height:57vh;}
+.scroll-view-box {width:100%;height:47vh;}
+.renyuan-sign-box {display:flex;flex-direction:column;width:700rpx;height:224rpx;border:2rpx solid #e7e7e7;border-radius:6rpx;margin:20rpx 25rpx 0 25rpx;}
+.renyuan-sign-box:last-child {margin-bottom:20rpx;} 
+.renyuan-box {display:flex;justify-content:space-between;align-items:center;background-color:#fff;padding:20rpx 10rpx;}
+.user-detail-box {display:flex;justify-content:space-between;align-items:center;}
+.ud-left-box {display:flex;}
+.user_photo {width:90rpx;height:90rpx;border-radius:50%;}
+.name-time-box {display:flex;flex-direction:column;margin-left:20rpx;}
+.user_name {font-size:34rpx;color:#1eac58;width:204rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.pub_time {font-size:24rpx;color:#999;padding-top:4rpx;}
+.medal-list {display:flex;padding-top:38rpx;}
+.greenLV,.redLV,.yellowLV {width:56rpx;height:56rpx;padding-right:8rpx;}
+.gz_word_2 {width:105rpx;height:55rpx;font-size:26rpx;color:#1eac58;border:2rpx solid #1eac58;border-radius:4rpx;display:flex;justify-content:center;align-items:center;margin-right:10rpx;}
+.plus_2 {font-size:28rpx;color:#1eac58;padding-right:10rpx;}
+.signature {font-size:28rpx;color:#666;background-color:#f0f0f0;padding:28rpx 0 28rpx 8rpx;max-width:700rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.first-activi {background-color:#fff;width:700rpx;height:278rpx;margin:25rpx 25rpx 0 25rpx;border:2rpx solid #e7e7e7;}
+.first-activi:last-child {margin-bottom:20rpx;}
+.user-detail-2 {display:flex;justify-content:space-between;border-bottom:2rpx dashed #f0f0f0;}
+.user-medal {display:flex;justify-content:space-between;}
+.user_photo_2 {width:65rpx;height:65rpx;border-radius:50%;margin:10rpx 7rpx 10rpx 10rpx;}
+.user_name2 {font-size:30rpx;color:#1eac58;padding-top:20rpx;max-width:180rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.greenLV_2,.redLV_2,.yellowLV_2 {width:50rpx;height:50rpx;padding-left:10rpx;padding-top:14rpx;}
+.acti_time {font-size:28rpx;color:#1eac58;padding:24rpx 14rpx 0 0;}
+.dushuhui-box {display:flex;}
+.book_pic {width:150rpx;height:150rpx;margin:13rpx 16rpx 0 10rpx;}
+.cm_video {width:660rpx;height:300rpx;background:#000;display:flex;justify-content:center;align-items:center;}
+.content {width:100%;display:flex;font-size:28rpx;color:#666;}
+.dushuhui-detail {width:500rpx;display:flex;flex-direction:column;}
+.dushuhui_title {font-size:32rpx;color:#333;max-width:450rpx;padding:4rpx 0;}
+.abstract {display:block;float:left;font-size:12px;color:#999;margin-right:10px;line-height:20px;height:40px;width:100%;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;}
+.join-box {display:flex;justify-content:space-between;align-items:center;}
+.join_family {font-size:24rpx;color:#ff5050;}
+.distance {font-size:24rpx;color:#999;}
+.head_img {width:90rpx;height:90rpx;border-radius:50%;}
+.publish_time {font-size:24rpx;color:#999;}
+.name_time {margin:0 20rpx;display:flex;flex-direction:column;}
+.emblem {width:76rpx;height:76rpx;}
+.user_comments {width:100%;border-top:2rpx solid #f0f0f0;}
+.icon-edit2 {margin-right:12rpx;font-size:40rpx;}
+.uc_content {margin-bottom:20rpx;background:#fff;}
+.uc_top_box {padding:10rpx 30rpx;display:flex;justify-content:space-between;}
+.uct_left {display:flex;align-items:flex-end;}
+.uct_right {display:flex;justify-content:center;align-items:center;}
+.rigth_btn1 {font-size:30rpx;width:105rpx;height:55rpx;color:#1eac58;border:2rpx solid #1eac58;border-radius:6rpx;display:flex;justify-content:center;align-items:center;}
+.plus_icon {margin-right:10rpx;font-size:26rpx;color:#1eac58;}
+.uc_mid_box {display:flex;flex-direction:column;align-items:center;}
+.like_reply {width:690rpx;padding:0rpx 30rpx 20rpx 0;margin-left:30rpx;display:flex;justify-content:flex-end;align-items:center;border-bottom:2rpx solid #f2f2f2;}
+.like_icon {width:50rpx;height:45rpx;}
+.icon-liuyan2 {font-size:55rpx;color:#666;margin:0 30rpx 0 55rpx;}
+.leave_word {width:690rpx;padding:20rpx 30rpx;display:flex;flex-direction:column;}
+.lw_top {display:flex;justify-content:flex-start;align-items:center;}
+.lwt_icon {width:28rpx;height:28rpx;}
+.lwt_text {margin-left:10rpx;font-size:24rpx;}
+.lw_item {margin-top:16rpx;font-size:28rpx;display:flex;flex-direction:column;}
+.lw_item image {margin-top:10rpx;width:190rpx;height:190rpx;}
+.user_reply {margin-top:10rpx;}
+.join_volunteer {position:fixed;bottom:0;width:100%;height:8vh;background:#1eac58;color:#fff;font-size:36rpx;display:flex;justify-content:center;align-items:center;}
+.comment_pic_box {width:650rpx;display:flex;justify-content:flex-start;flex-wrap:wrap;}
+.comment_pic {width:210rpx;height:210rpx;padding:5rpx 0 0 5rpx;}

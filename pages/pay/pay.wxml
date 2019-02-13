@@ -1,0 +1,30 @@
+<!--pages/pay/pay.wxml-->
+<view class = "PayViewClass">
+    
+        <view class = "payClass"  style='height: 225px;'>
+          <text class ="smClass">兑换公益币数(个)</text>
+          <view class = "moneyClass">
+              <image src='../../images/pay/o.png'></image>
+              <input bindinput='input_getOut' type='number' value = "{{money == 0 ? '' : money}}"></input>
+          </view>
+          <view class = "smName">
+              <view class = "kqClass">
+                  <text class = "textQC">当前可兑换公益币为<text style='color: #ff6600;'>{{withdraw == 'undefined' ? '0' : withdraw}}</text>个,</text>
+                  <text class = "bClass" bindtap='btn_all'>全部提现</text>
+              </view>
+                          <text class = "NClass">(每次最少兑换100个)</text>            
+          </view>
+          <view class = "sendClass" style='margin-top: 10px;' bindtap='btn_get_out' hover-class='bottom_v1'>提现</view>
+      </view>
+
+    
+
+</view>
+
+<view class = "commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0' ></view>
+
+<!-- <view class = "ShowToastClass" hidden='{{isShowToast}}'>
+    <image src='../../images/addphone/gou.png'></image>
+    <text>{{toastData}}</text>
+    <view style="clear:both;"></view>
+</view> -->

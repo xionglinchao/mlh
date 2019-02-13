@@ -1,0 +1,154 @@
+page {
+  background: #EAEAEA;
+}
+
+.scroll_list {
+  width: 100%;
+  background: #EAEAEA;
+  overflow: scroll;
+  padding-bottom: 30rpx;
+}
+
+.title_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFF;
+  width: 690rpx;
+  padding: 0 30rpx;
+}
+
+.title_input {
+  width: 570rpx;
+  margin-left: 10rpx;
+}
+
+.user_img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: 20rpx 0;
+}
+
+.cont_box {
+  width: 710rpx;
+  background: #FFF;
+  margin: 20rpx;
+  box-shadow: 0 0 6rpx rgba(32,32,32,0.12);
+  border-radius: 6rpx;
+}
+
+.cancelIcon {
+  font-size: 26rpx;
+  display: flex;
+  justify-content: flex-end;
+  color: #999;
+  padding: 15rpx 15rpx 0 0;
+}
+
+.cont_input {
+  width: 600rpx;
+  height: 300rpx;
+  padding-left: 40rpx;
+  font-size: 32rpx;
+  padding-bottom: 40rpx;
+}
+
+.icon_box {
+  display: flex;
+  border-top: 2rpx solid #DDDDDD;
+}
+
+.icon_f {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 236rpx;
+  padding: 16rpx 0rpx;
+  border-right: 2rpx solid #DDDDDD;
+  margin: 16rpx 0;
+}
+
+.textIcon, .photoIcon {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.icon_words {
+  font-size: 24rpx;
+  color: #333;
+  padding-left: 10rpx;
+}
+
+.upArrowIcon, .downArrowIcon {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.upArrowIcon {
+  padding-right: 104rpx;
+}
+
+.pub_picture {
+  width: 630rpx;
+  height: 274rpx;
+  vertical-align: top;
+  margin: 0 40rpx 16rpx 40rpx;
+  position: relative;
+}
+
+.mask {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: #FFF;
+  top: -16rpx;
+  right: -16rpx;
+}
+
+/* .add_pic {
+  position: absolute;
+  font-size: 60rpx;
+  color: #333;
+  top: 50%;
+  left: 50%;
+} */
+
+/* 文章发布按钮 */
+.pubBntBox  {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.article_pub_btn {
+  width: 200rpx;
+  height: 80rpx;
+  border-radius: 55rpx;
+  background: #1EAC58;
+  font-size: 36rpx;
+  color: #FFF;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+/* 私密按钮 */
+.lock_box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 30rpx;
+}
+
+.lock_pic {
+  width: 28rpx;
+  height: 30rpx;
+}
+
+.lock_words {
+  font-size: 24rpx;
+  color: #666666;
+  padding-left: 12rpx;
+}

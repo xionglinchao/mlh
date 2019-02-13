@@ -1,0 +1,38 @@
+/* pages/myRelayRead/myRelayRead.wxss */
+page,.page,.page__bd {height:100%;width:100%;background:#f0f0f0;}
+.page__bd {padding-bottom:0;}
+.weui-tab__content {float:left;height:calc(100% - 47px);width:100%;}
+.weui-navbar {display:-webkit-box;display:-webkit-flex;display:flex;position:fixed;z-index:500;top:0;width:100%;float:left;}
+.weui-tab {position:relative;height:100%;}
+.weui-navbar__title {display:inline-block;font-size:14px;max-width:8em;width:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;color:#333;}
+.weui-navbar__item {position:relative;display:block;-webkit-box-flex:1;-webkit-flex:1;flex:1;padding:13px 0;text-align:center;font-size:0;background:white;float:left;}
+.weui-navbar__item.weui-bar__item_on {color:#1aad19;}
+.weui-navbar__slider {position:absolute;content:" ";left:0;bottom:0;width:50%;height:3px;background-color:#1aad19;-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s;}
+.scrollClass {width:100%;height:calc(100% - 106px);margin-top:52px;margin-bottom:45px;}
+.dataViewClass {width:100%;height:auto;margin-top:5px;background:white;}
+.selectViewClass {width:calc(100% - 25px);height:36px;border-bottom:1px solid #f0f0f0;margin-left:15px;}
+.selectViewClass .selectImage {width:20px;height:20px;margin-top:8px;float:left;}
+.selectViewClass .text1 {display:block;float:left;margin-left:5px;line-height:36px;font-size:14px;color:#333;}
+.selectViewClass .text2 {display:block;float:right;margin-left:5px;line-height:36px;font-size:13px;color:#666;}
+.dataViewClass .imageClass {width:80px;height:80px;float:left;margin:15px;}
+.dataViewClass .view1 {width:calc(100% - 110px);float:left;}
+.dataViewClass .view1 .text1 {display:block;float:left;font-size:13px;color:#333;width:100%;margin-top:15px;line-height:20px;}
+.dataViewClass .view1 .text2 {display:block;float:left;font-size:13px;color:#333;width:100%;line-height:20px;}
+.dataViewClass .view1 .text3 {display:block;float:left;font-size:12px;color:#666;width:calc(100% - 10px);margin-right:10px;line-height:20px;}
+.dataViewClass .view2 {width:60px;float:left;margin-left:10px;}
+.dataViewClass .view2 .text2 {display:block;float:left;font-size:11px;color:white;width:100%;line-height:25px;text-align:center;border:1px solid #eaeaea;margin-top:5px;background:#aaa;}
+.bottomViewClass {width:100%;position:fixed;bottom:0px;height:40px;background:white;}
+.bottomViewClass .checkClass {width:30%;height:100%;float:left;}
+.bottomViewClass .checkClass image {width:20px;height:20px;margin-top:10px;float:left;margin-left:15px;}
+.bottomViewClass .checkClass text {display:block;float:left;font-size:13px;color:#666;line-height:40px;margin-left:5px;}
+.bottomViewClass .text1 {width:calc(35% - 1px);height:100%;border-left:1px solid #f0f0f0;display:block;float:left;text-align:center;line-height:40px;font-size:14px;color:#666;}
+.bottomViewClass .text3 {width:calc(35% - 1px);height:100%;border-left:1px solid #f0f0f0;display:block;float:left;text-align:center;line-height:40px;font-size:14px;background:#1aad19;color:white;}
+.bottomViewClass .text4 {width:calc(35% - 1px);height:100%;border-left:1px solid #f0f0f0;display:block;float:left;text-align:center;line-height:40px;font-size:14px;background:#1aad19;color:white;}
+.scroll1Class {width:100%;height:auto;margin-top:52px;background:white;}
+.dataView1Class {width:calc(100% - 15px);height:auto;margin-left:15px;border-bottom:1px solid #f0f0f0;}
+.dataView1Class .image1Class {width:70px;height:70px;margin:10px 10px 10px 0px;float:left;}
+.dataView1Class .view3 {width:calc(100% - 80px);float:left;position:relative;height:90px;}
+.dataView1Class .view3 .text1 {display:block;float:left;height:30px;font-size:14px;line-height:30px;margin-top:10px;color:#333;width:100%;}
+.dataView1Class .view3 .text2 {display:block;float:left;height:20px;font-size:13px;line-height:20px;color:#666;width:100%;}
+.dataView1Class .view3 .text3 {display:block;float:left;height:20px;font-size:13px;line-height:20px;color:#666;width:100%;}
+.dataView1Class .view3 .clear {position:absolute;top:10px;right:10px;display:block;float:left;background:red;border-radius:3px;width:40px;line-height:26px;text-align:center;font-size:13px;color:white;}

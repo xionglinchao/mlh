@@ -1,0 +1,34 @@
+<!--pages/donateBook/donateBook.wxml-->
+<view class="pClass">
+  <block wx:if="{{dataPro}}">
+    <scroll-view class="scroll" scroll-y="true">
+      <block wx:for="{{dataPro}}">
+        <view class = "scroll_data" hover-class='bottom_v1'>
+        <view class="dataViewClass" bindtap='btn_z_k' data-item="{{item}}" data-index="{{index}}">
+          <text class="text1">{{item.username}}</text>
+          <image src='../../images/address/bottom.png'></image>
+          <text class="text2">{{item.time}}</text>
+          <view class="dClass" hidden='{{item.view == 0 ? false : true}}'></view>
+        </view>
+        </view>
+        <view class="lxClass" hidden='{{item.isFalse}}'>
+          <view class="view1" style='border-bottom: 1px solid #f2f2f2;'>
+            <text class="text1">微信号</text>
+            <text class="text2">{{item.wechat}}</text>
+          </view>
+          <view class="view1">
+            <text class="text1">手机号</text>
+            <text class="text2">{{item.phone}}</text>
+          </view>
+        </view>
+      </block>
+
+    </scroll-view>
+  </block>
+  <block wx:else>
+    <view class="gapViewClass">
+      <image src='../../images/gap/gap1.png'></image>
+      <text>暂无数据</text>
+    </view>
+  </block>
+</view>

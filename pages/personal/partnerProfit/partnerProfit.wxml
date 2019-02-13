@@ -1,0 +1,117 @@
+<view class="fixed_box">
+  <view class="my_profit_box">
+    <view class="base_info_box">
+      <view class="user_info_box">
+        <view class="photo_box">
+          <image class="user_photo" src="{{ userInfo.litpic }}"></image>
+        </view>
+        <view class="name_box">
+          <view class="user_name beyondEllipsis">{{ userInfo.username }}</view>
+          <view class="partner_box first">
+            <image class="crownIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/crown.png"></image>
+            <text class="icon_words">合作伙伴</text>
+          </view>
+          <view class="partner_box">
+            <image class="peopleIcon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/people.png"></image>
+            <text class="icon_words">{{ baseInfo.num }}人</text>
+          </view>
+        </view>
+      </view>
+      <view class="total_money_box">
+        <view>
+          <text class="withdraw_words">可提现余额：￥</text>
+          <text class="withdraw_money">{{ baseInfo.portable_money }}</text>
+        </view>
+        <view class="withdraw_btn" catchtap="withdrawBtnClick" data-item="{{ baseInfo }}">立即提现</view>
+      </view>
+    </view>
+
+    <view class="calculate_data">数据统计：</view>
+    <view class="profit_data_box">
+      <view class="one_data_box">
+        <text class="data_money">￥{{ baseInfo.personal_profit }}</text>
+        <text class="data_words">个人收益</text>
+      </view>
+      <view class="green_line"></view>
+      <view class="one_data_box">
+        <text class="data_money">￥{{ baseInfo.team_profit }}</text>
+        <text class="data_words">团队业绩</text>
+      </view>
+      <view class="green_line"></view>
+      <view class="one_data_box">
+        <text class="data_money">￥{{ baseInfo.wait_profit }}</text>
+        <text class="data_words">等待提现</text>
+      </view>
+    </view>
+  </view>
+  <view class="grey_line"></view>
+  <view class="record_container">
+    <view class="record_words">
+      <text class="team_profit {{ tab == 0 ? 'active':'' }}" catchtap="tabBtnClick">团队业绩记录</text>
+      <text class="person_profit {{ tab == 1 ? 'active':'' }}" catchtap="tabSecBtnClick">个人资金记录</text>
+    </view>
+    <picker mode='date' fields='month' bindchange="chooseDate">
+      <text class='iconfont icon-date dateIcon'></text>
+    </picker>
+  </view>
+</view>
+
+<!-- 收益记录列表 -->
+<view class="record_list">
+  <!-- 团队业绩记录 -->
+  <block wx:if="{{ tab == 0 }}">
+    <view class="single_record_box" wx:for="{{ recorderList }}" wx:key catchtap="toSubordinateDetail" data-item="{{ item }}">
+      <view class="partner">
+        <image class="record_photo" src="{{ item.litpic }}"></image>
+        <view class="record_detail">
+          <text class="partner_name beyondEllipsis">{{ item.username }}</text>
+          <text class="partner_act">业绩</text>
+        </view>
+      </view>
+      <view class="money_record">
+        <text class="money">+{{ item.team }}</text>
+        <view class="single_detail_box">
+          <view class="check_detail">查看详情</view>
+          <image class="doubleArrow" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/doubleArrow.png"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 个人资金记录 -->
+  <block wx:else>
+    <view class="single_record_box" wx:for="{{ personalRecord }}" wx:key>
+      <view class="partner">
+        <image class="record_photo" src="{{ item.litpic }}"></image>
+        <view class="record_detail">
+          <text class="partner_name beyondEllipsis">{{ item.username }}</text>
+          <block wx:if="{{ item.withdraw == 1 }}">
+            <block wx:if="{{ item.status == 0 }}">
+              <text class="partner_act_sec">提现审核中</text>
+            </block>
+            <block wx:elif="{{ item.status == 1 }}">
+              <text class="partner_act_sec">提现成功</text>
+            </block>
+            <block wx:else>
+              <text class="partner_act_sec">提现失败</text>
+            </block>
+          </block>
+          <block wx:else>
+            <block wx:if="{{ item.type == 1 || item.type == 2 || item.type == 5 }}">
+              <text class="partner_act_sec">售出一个课程</text>
+            </block>
+            <block wx:elif="{{ item.type == 3 || item.type == 4 || item.type == 6 }}">
+              <text class="partner_act_sec">售出一个绘本</text>
+            </block>
+            <block wx:elif="{{ item.type == 8 }}">
+              <text class="partner_act_sec">个人返利购买</text>
+            </block>
+          </block>
+          <text class="act_time">{{ item.time }}</text>
+        </view>
+      </view>
+      <view class="money_record">
+        <text class="money">{{ item.withdraw == 0 ? ('+' + item.profit):('-' + item.money) }}</text>
+      </view>
+    </view>
+  </block>
+</view>

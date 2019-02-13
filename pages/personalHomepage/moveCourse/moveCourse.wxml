@@ -1,0 +1,34 @@
+<view class="scroll_list">
+  <view class='catalog'>目录</view>
+  <view class="videoCourse_box" wx:for="{{ course }}" wx:key>
+    <view class='dot_box' data-idx='{{ index }}' catchtap='singleClick'>
+      <text class="{{ item.is_selected ? 'green_dot' :'' }}"></text>
+    </view>
+
+    <image class="videoCourse_pic" src="{{ item.cover }}">
+      <view class="mask_layer"></view>
+      <block wx:if="{{ courseType == 1 }}">
+        <image class="videoIcon" src="/images/discover/videoIcon.png"></image>
+      </block>
+      <block wx:else>
+        <image class="yuyinIcon" src="/images/discover/yuyinIcon.png"></image>
+      </block>
+    </image>
+
+    <view class="course_intro" style="flex:1">
+      <view class="course_title beyondEllipsis_two">{{ item.course_title }}</view>
+      <view class="sale_status">
+        <view>
+          <text class="update_num">已更新{{ item.sort }}期</text>
+          <text class="study_num">{{ item.people_num }}人在学</text>
+        </view>
+        <view class="course_price">￥{{ item.free }}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 底部按钮栏 -->
+<view class='move_btn'>
+  <text class='cancel' catchtap="cancelBtnClick">取消</text>
+  <text class='move_to' catchtap="moveBtnClick">移动到</text>
+</view>

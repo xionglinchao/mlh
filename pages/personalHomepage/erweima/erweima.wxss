@@ -1,0 +1,77 @@
+.page_box {
+  width: 100%;
+  height: 100vh;
+  background: #1eac58;
+}
+
+.bg_pic {
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  position: fixed;
+}
+
+.bg_pic2 {
+  width: 660rpx;
+  height: 880rpx;
+  z-index: 2;
+  position: fixed;
+  top: 14.5vh;
+  left: 45rpx;
+}
+
+.erweima_info_box {
+  width: 660rpx;
+  position: absolute;
+  z-index: 3;
+  top: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_pic_box {
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  position: absolute;
+  top: 8vh;
+  left: 290rpx;
+}
+
+.user_pic {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+
+.user_name {
+  font-size: 40rpx;
+  color: #333;
+  max-width: 500rpx;
+}
+
+.personal_sign {
+  font-size: 28rpx;
+  color: #BEBEBE;
+  padding: 10rpx 0 26rpx 0;
+  max-width: 500rpx;
+}
+
+.erweima {
+  width: 510rpx;
+  height: 510rpx;
+  background: #ccffcc;
+}
+
+.press_save {
+  font-size: 28rpx;
+  color: #999;
+  padding-top: 30rpx;
+}

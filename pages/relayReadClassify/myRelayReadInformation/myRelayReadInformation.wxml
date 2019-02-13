@@ -1,0 +1,84 @@
+<!--pages/myRelayReadInformation/myRelayReadInformation.wxml-->
+<wxs src="../../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pClass">
+  <image src='{{globalVariable.ossImage + imageHead}}' style='width: 100%;height: {{sw*8/15}}px;' mode="aspectFill"></image>
+  <view class="view1">
+    <text>{{dataPro.name}}</text>
+  </view>
+  <view class="commentViewClass" id='comment'>
+    <view class="pinlunClass">
+      <text class="text1">最新留言</text>
+    </view>
+    <scroll-view class="scroolViewClass" scroll-y="true">
+      <block wx:for="{{dataPro.comment}}" wx:key>
+        <view class="dataComViewClass">
+          <image class="nameImageClass" src='{{item.litpic}}'></image>
+          <view class="nameViewClass">
+            <text class="name">{{item.username}}</text>
+            <text class="content">{{item.content}}</text>
+            <view class="viewClass">
+              <text class="text2">{{item.time}}</text>
+            </view>
+          </view>
+
+          <view style="clear:both;"></view>
+        </view>
+        <view style="clear:both;"></view>
+      </block>
+    </scroll-view>
+    <view style="clear:both;"></view>
+  </view>
+  <view class="bottomViewClass">
+    <block wx:if="{{typeNum == 1}}">
+      <block wx:if="{{dataPro.first_bar == end_bar}}">
+        <block wx:if="{{dataPro.book_donation == 1}}">
+          <text style='border: 1px solid #999;color: #999;'>已捐赠</text>
+        </block>
+        <block wx:else>
+          <text bindtap='btn_j_z'>我要捐赠</text>
+        </block>
+      </block>
+      <block wx:else>
+        <block wx:if="{{dataPro.inquire == dataPro.first_bar&&dataPro.stop_drifting == 0}}">
+          <text bindtap='btn_f_x'>分享好友</text>
+        </block>
+        <block wx:else>
+          <text style="border: 1px solid #999;color: #999;">分享好友</text>
+        </block>
+      </block>
+      <text bindtap='btn_p_l' style="color: {{isComment == 1 ? '#999' : ''}};border: {{isComment == 1 ? '1px solid #999' : ''}};">我要评论</text>
+      <block wx:if="{{dataPro.stop_drifting == 0}}">
+        <block wx:if="{{dataPro.inquire == dataPro.first_bar&&dataPro.book_donation != 1}}">
+          <view class='bottom_relay_end' bindtap='btn_relay_end'>结束</view>
+        </block>
+        <block wx:else>
+          <view class='bottom_relay_end' style='border: 1px solid #999;color: #999;'>结束</view>
+        </block>
+
+      </block>
+      <block wx:else>
+        <view class='bottom_relay_end' style='border: 1px solid #999;color: #999;'>结束</view>
+      </block>
+    </block>
+
+    <block wx:else>
+      <button class="btn1" catchtap='btn_pay'>去支付¥{{dataPro.cash}}</button>
+    </block>
+  </view>
+</view>
+
+<view class="ShowToastClass " hidden='{{isShowToast}}'>
+  <!-- <image src='../../images/gou.png'></image> -->
+  <text>{{toastData}}</text>
+  <view style="clear:both; "></view>
+</view>
+
+<view class="commodityScreenClass" hidden='{{isShadow}}' bindtap='btn_shadow'></view>
+<view class="imageFX" hidden='{{isImageFx}}'>
+  <image src='{{globalVariable.ossImage + imageFX}}' style='width:200px;' mode='widthFix'></image>
+</view>
+
+
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+  <image src="../../../images/kt.gif"></image>
+</view>

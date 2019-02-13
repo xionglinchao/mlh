@@ -1,0 +1,35 @@
+<!--pages/choiceRecruitComment/choiceRecruitComment.wxml-->
+<!--pages/publish/publish.wxml-->
+<form bindsubmit='btn_submit'>
+  <view class="publishViewClass">
+    <block wx:if="{{ typeNum != 2 && typeNum != 5 && typeNum != 6 }}">
+      <view class="type1">
+        <view class="typeClass">
+          <!-- <image src='/images/homepage/type5.png'></image> -->
+          <input placeholder="请输入标题" placeholder-style='color: #999;font-size: 34rpx;' name="name" maxlength='20' value='{{name}}'></input>
+        </view>
+        <view style="clear:both;"></view>
+      </view>
+    </block>
+    <view class="type2">
+      <textarea placeholder="请输入内容" placeholder-style='color: #999;font-size: 32rpx;' name="information" maxlength='1000'></textarea>
+      <block wx:if="{{ typeNum != 2 && typeNum != 5 }}">
+        <view class="ImageViewClass" style='padding-top:20px;'>
+          <block wx:for="{{ pics }}" wx:key>
+            <view class="addImageView1Class" bindtap='btn_Upload'>
+              <image class="image1" src='{{ item }}' mode="aspectFill" data-item-arr="{{ pics }}" data-item-url='{{ item }}' catchtap='btn_preview'></image>
+              <image class="image2" src='/images/d.png' catchtap='btn_delete' data-index='{{index}}'></image>
+            </view>
+          </block>
+          <view class="addImageViewClass" bindtap='btn_image' wx:if="{{ pics.length < 9 }}">
+            <image src='/images/homepage/j.png'></image>
+            <text>添加图片</text>
+          </view>
+          <view style="clear:both;"></view>
+        </view>
+      </block>
+      <view style="clear:both;"></view>
+    </view>
+    <button class="sendViewClass" form-type='submit' disabled='{{isDisabled}}'>提交</button>
+  </view>
+</form>

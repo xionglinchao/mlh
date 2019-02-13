@@ -1,0 +1,53 @@
+/* pages/goods/goods.wxss */
+@import "../../wxParse/wxParse.wxss";
+page {width:100%;height:100%;}
+.pClass {width:100%;height:100%;background:#f0f0f0;}
+.view1 {width:100%;background:white;}
+.view1 .text1 {display:block;font-size:14px;color:#333;line-height:25px;width:calc(100% - 25px);margin-left:15px;margin-top:10px;max-height:50px;}
+.view1 .text2 {display:block;font-size:13px;color:#666;line-height:20px;width:calc(100% - 25px);margin-left:15px;}
+.view1 .text3 {display:block;font-size:13px;color:#666;line-height:20px;width:calc(100% - 25px);margin-left:15px;}
+.informationViewClass {width:100%;height:40px;margin-top:5px;border-bottom:1px solid #eaeaea;}
+.informationViewClass .text1 {display:block;float:left;width:50%;height:100%;text-align:center;line-height:40px;background:#3c9d70;color:white;font-size:14px;}
+.informationViewClass .text2 {display:block;float:left;width:50%;height:100%;text-align:center;line-height:40px;background:white;color:#3c9d70;font-size:14px;}
+.htmlViewClasss {width:100%;background:white;}
+.htmlViewClasss .Viewtext1 {display:block;float:left;margin-left:10px;font-size:17px;color:#565656;line-height:40px;border-bottom:1px solid #f0f0f0;width:calc(100% - 10px);}
+.view2 {width:100%;background:#f0f0f0;padding-bottom:50px;}
+.view2 .tjClass {width:100%;height:30px;line-height:30px;font-size:14px;color:#333;text-align:center;background:white;display:block;float:left;}
+.view2 .type1 {width:calc(100% - 25px);margin-left:10px;margin-right:15px;float:left;}
+.view2  .TJViewClass {width:calc(50% - 5px);margin-left:5px;float:left;background:white;margin-top:5px;}
+.view2  .TJViewClass .image1 {width:100%;}
+.view2  .TJViewClass .text1 {width:calc(100% - 5px);line-height:20px;font-size:13px;color:#666;display:block;float:left;margin-left:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.view2  .TJViewClass .text2 {width:calc(100% - 5px);line-height:20px;font-size:14px;color:red;display:block;float:left;margin-left:5px;}
+.commentViewClass {width:100%;background:white;}
+.commentViewClass .text1 {display:block;float:left;margin-left:10px;font-size:17px;color:#565656;line-height:40px;border-bottom:1px solid #eaeaea;width:calc(100% - 10px);}
+.commentViewClass .scroolViewClass {width:100%;height:calc(100% - 41px);float:left;}
+.commentViewClass .scroolViewClass .dataComViewClass {width:100%;float:left;}
+.commentViewClass .scroolViewClass .dataComViewClass .userViewClass {width:100%;height:50px;float:left;}
+.commentViewClass .scroolViewClass .dataComViewClass .userViewClass .image1 {width:30px;height:30px;margin-top:10px;margin-left:10px;float:left;color:#666;border-radius:50%;}
+.commentViewClass .scroolViewClass .dataComViewClass .userViewClass .text2 {display:block;float:left;font-size:14px;line-height:50px;margin-left:8px;}
+.commentViewClass .scroolViewClass .dataComViewClass .userViewClass .image2 {width:20px;height:20px;float:right;margin-top:15px;margin-right:8px;}
+.commentViewClass .scroolViewClass .dataComViewClass .contentViewClass {width:calc(100% - 20px);margin-left:10px;}
+.commentViewClass .scroolViewClass .dataComViewClass .contentViewClass .text3 {width:100%;display:block;float:left;line-height:20px;font-size:13px;color:#666;}
+.commentViewClass .imagesDetails1 {width:100%;margin-top:5px;}
+.commentViewClass.imagesDetails2 {width:calc(50% - 9px);margin-left:6px;margin-top:5px;}
+.commentViewClass .imagesDetails3 {width:calc(33% - 8px);margin-left:6px;margin-top:5px;}
+.commentViewClass .scroolViewClass .dataComViewClass .othersViewClass {display:block;float:left;height:25px;width:calc(100% - 20px);margin-left:10px;margin-top:8px;margin-bottom:8px;}
+.commentViewClass .scroolViewClass .dataComViewClass .othersViewClass .text2 {display:block;float:left;line-height:25px;font-size:12px;color:#999;}
+.commentViewClass .scroolViewClass .dataComViewClass .othersViewClass .text3 {display:block;float:right;line-height:25px;font-size:12px;color:#999;margin-right:10px;}
+.commentViewClass .scroolViewClass .dataComViewClass .othersViewClass .image1 {width:15px;height:15px;float:right;margin-top:5px;margin-right:5px;}
+.commentViewClass .scroolViewClass .dataComViewClass .othersViewClass .image2 {width:15px;height:15px;float:right;margin-top:5px;margin-right:5px;}
+.commentViewClass .scroolViewClass .commentView1Class {width:100%;border-bottom:1px solid #eaeaea;}
+.commentViewClass .scroolViewClass .commentView1Class .comViewClass {width:100%;padding-bottom:8px;}
+.commentViewClass .scroolViewClass .commentView1Class .comViewClass .text3 {display:block;float:left;margin-left:15px;color:red;font-size:13px;}
+.commentViewClass .scroolViewClass .commentView1Class .comViewClass .text4 {display:block;float:left;margin-left:10px;color:red;font-size:13px;margin-right:10px;}
+.bottomViewClass {position:fixed;bottom:0px;height:46px;background:white;width:100%;}
+.bottomViewClass .bottom1 {width:40%;height:100%;float:left;}
+.bottomViewClass .bottom1 .imageView1 {width:33%;height:100%;float:left;position:relative;}
+.bottomViewClass .bottom1 .imageView1 image {width:20px;height:20px;margin-left:calc(50% - 10px);margin-top:4px;vertical-align:middle;}
+.bottomViewClass .bottom1 .imageView1 text {width:100%;height:18px;text-align:center;line-height:18px;font-size:10px;color:#999;display:block;float:left;}
+.bottomViewClass .bottom1 .imageView1 .shopNumClass {width:15px;height:15px;line-height:15px;border-radius:50%;font-size:10px;color:white;background-color:#ff6600;position:absolute;top:1px;right:3px;text-align:center;}
+.bottomViewClass .text1 {display:block;float:left;width:30%;height:100%;background:#f39f45;color:white;text-align:center;line-height:46px;font-size:13px;}
+.kf_button::after {content:none;}
+.kf_button {top:0rpx;left:0;padding-left:0px;padding-right:0px;width:33%;height:100%;float:left;position:relative;text-align:left;line-height:normal;}
+.kf_button text {width:100%;height:18px;text-align:center;line-height:18px;font-size:10px;color:#999;display:block;float:left;}
+.kf_button image {width:20px;height:20px;margin-left:calc(50% - 10px);margin-top:4px;vertical-align:middle;}

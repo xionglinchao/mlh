@@ -1,0 +1,27 @@
+page {width:100%;height:100%;}
+.pClass {width:100%;height:100%;background:#f0f0f0;}
+.view1 {width:100%;height:40px;background:white;}
+.view1 text {display:block;float:left;line-height:40px;font-size:15px;color:#666;margin-left:15px;width:calc(100% - 30px);}
+.commentViewClass {width:100%;background:white;margin-top:8px;margin-bottom:44px;}
+.commentViewClass .pinlunClass {display:block;float:left;margin-left:10px;font-size:17px;color:#565656;line-height:40px;border-bottom:1px solid #eaeaea;width:calc(100% - 10px);}
+.commentViewClass .pinlunClass .text1 {display:block;float:left;margin-left:10px;font-size:14px;color:#565656;line-height:40px;border-bottom:1px solid #eaeaea;}
+.commentViewClass .pinlunClass .type1ViewClass {float:right;height:24px;border:1px solid #ff6600;margin-right:20px;border-radius:4px;margin-top:6px;}
+.commentViewClass .pinlunClass .type1ViewClass text {display:block;float:left;font-size:13px;color:#ff6600;line-height:24px;margin-left:5px;}
+.commentViewClass .pinlunClass .type1ViewClass image {height:18px;float:left;margin-top:3px;width:18px;}
+.commentViewClass .scroolViewClass {width:100%;height:calc(100% - 41px);float:left;}
+.commentViewClass .scroolViewClass .dataComViewClass {width:100%;float:left;border-bottom:1px solid #eaeaea;position:relative;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameImageClass {width:40px;height:40px;border-radius:50%;float:left;margin:15px;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameViewClass {width:calc(100% - 80px);float:left;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameViewClass .name {display:block;float:left;width:100%;height:30px;line-height:30px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-top:15px;color:#333;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameViewClass .content {display:block;float:left;line-height:20px;font-size:13px;width:calc(100% - 10px);color:#9c9c9c;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameViewClass .viewClass {display:block;float:left;height:25px;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameViewClass .viewClass .text2 {display:block;float:left;line-height:25px;font-size:12px;color:#999;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameViewClass .viewClass .text3 {display:block;float:right;line-height:25px;font-size:12px;color:#999;margin-right:10px;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameViewClass .viewClass .image1 {width:15px;height:15px;float:right;margin-top:5px;margin-right:5px;}
+.commentViewClass .scroolViewClass .dataComViewClass .nameViewClass .viewClass .image2 {width:15px;height:15px;float:right;margin-top:5px;margin-right:5px;}
+.bottomViewClass {width:100%;height:50px;line-height:50px;background:white;position:fixed;bottom:0px;}
+.bottomViewClass text {display:block;float:left;width:30%;margin-left:6%;height:30px;text-align:center;line-height:30px;font-size:13px;border-radius:8px;border:1px solid #ff6600;color:#ff6600;margin-top:9px;}
+.btn1 {width:100%;height:50px;background:#ff6600;color:white;text-align:center;line-height:50px;}
+.btn1::after {content:none;}
+.bottom_relay_end {width:34px;height:34px;border-radius:50%;border:1px solid #ff6600;float:right;line-height:34px;text-align:center;font-size:13px;margin-top:7px;margin-right:15px;color:#ff6600;}
+.imageFX {width:200px;height:200px;margin-left:calc(50% - 100px);margin-top:30%;position:fixed;top:0px;left:0px;background:white;z-index:25;}

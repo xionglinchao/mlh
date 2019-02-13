@@ -1,0 +1,137 @@
+<view>
+  <scroll-view scroll-y='true' class='fg_scroll_box' bindscrolltolower="loadMore" lower-threshold="5" enable-back-to-top='true'>
+    <view class='fg_top_box'>
+      <image class='fg_bg' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/readingTree_bg.jpg'>
+        <!-- 引导录音 -->
+        <view class='guide_audio' catchtap='playGuideAudio'>
+          <image class='yuyintou' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/yuyintou.png'>
+            <view class="yuyinline {{ guideAudio.isPlaying ? 'sprite' : 'sprite1' }}"></view>
+          </image>
+          <view class='audio_content' style='{{ "width: " + (guideAudio.duration * 9) + "rpx;" }}'></view>
+          <image class='yuyinwei' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/yuyinwei.png'>
+            <text class='voice_time_length'>{{ guideAudio.duration }}''</text>
+          </image>
+        </view>
+        <!-- 游戏窗体 -->
+        <view class='game_box'>
+          <view class='game_card {{ item.flip ? "card_ani" : "card_ani2" }}' wx:key wx:for="{{ gameCardList }}">
+            <image class='card_mask' hidden='{{ item.flip }}' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/card_mask.png' data-mask-idx="{{ index }}" catchtap='showGameContent'></image>
+            <view class='card_content' data-card-idx="{{ index }}" catchtap='backToCardMask'>
+              <image class='card_img ' src='{{ item.data.pic }}'></image>
+              <view class='card_text beyondEllipsis'>{{ item.data.card_name }}</view>
+            </view>
+          </view>
+        </view>
+        <!-- 相关书籍 -->
+        <view class='book_box'>
+          <view class='book_item {{ item.data.litpic ? "book_ani" : "" }}' wx:key wx:for="{{ gameCardList }}">
+            <!-- <view class='book_none' wx:if="{{ !item.data.litpic }}"></view> -->
+            <view class='book_content' wx:if="{{ item.data.litpic }}" data-item='{{ item.data }}' catchtap='toBookDeatail'>
+              <image class='book_img' src="{{ item.data.litpic }}">
+                <view>相关书籍</view>
+              </image>
+            </view>
+          </view>
+        </view>
+      </image>
+      <!-- 用户评论 -->
+      <view class='comment_box' wx:key wx:for="{{ commentList }}">
+        <view class='cb_title'>
+          <!-- 用户信息 -->
+          <view class='title_left' catchtap='btn_person_information' data-item="{{item}}">
+            <image class='head_img' src='{{ item.photo }}'></image>
+            <view class='name_sub'>
+              <text class='user_name beyondEllipsis'>{{ item.username }}</text>
+              <text class='text_sub'>{{ item.time }}</text>
+            </view>
+            <view class='emblem_box'>
+              <image class="emblem_icon" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <image class="emblem_icon" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+              <image class="emblem_icon" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+            </view>
+          </view>
+          <!-- 关注，私信 -->
+          <view class='title_right'>
+            <view class='rigth_btn1' data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap='subscribeBtnClick'>
+              <text class='iconfont icon-plus plus_icon' wx:if="{{ !item.is_focus }}"></text>
+              <text>{{ item.is_focus ? '已关注' : '关注' }}</text>
+            </view>
+            <view class='right_btn2' data-item="{{ item }}" catchtap='btn_leave_comments'>
+              <text class='iconfont icon-sixin sixin_icon'></text>
+              <text>私信</text>
+            </view>
+          </view>
+        </view>
+        <!-- 删除按钮 -->
+        <view class="del_btn" wx:if="{{ userId == item.u_id }}" data-item="{{ item }}" catchtap="delClick">
+          <text class="iconfont icon-delete delete_icon"></text>
+          <text>删除</text>
+        </view>
+        <!-- 回复语音 -->
+        <view class='cb_voice' wx:if="{{ item.audio_duration > 0 }}" data-audio-idx="{{ index }}" data-audio="{{ item.video }}" catchtap='playCommentAudio'>
+          <image class='yuyintou' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/yuyintou.png'>
+            <view class="yuyinline {{ item.isPlaying ? 'sprite' : 'sprite1' }}"></view>
+          </image>
+          <view class='cb_voice_content' style='{{ "width: " + (item.audio_duration * 9) + "rpx;" }}'></view>
+          <image class='yuyinwei' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/yuyinwei.png'>
+            <text class='cb_voice_length'>{{ item.audio_duration }}''</text>
+          </image>
+        </view>
+        <!-- 游戏结果 -->
+        <view class='game_result'>
+          <view class='card_item' wx:key wx:for="{{ item.cardList }}">
+            <image class='cd_image' lazy-load='true' src='{{ item.pic }}' wx:if="{{ item.pic }}"></image>
+            <text class='cd_text' wx:if="{{ item.name }}">{{ item.name }}</text>
+          </view>
+        </view>
+        <view class='like_share'>
+          <!-- <image class='like_icon' src='/images/like.png'></image> -->
+          <image class='like_icon' data-liked-idx="{{ index }}" data-item="{{ item }}" src='{{ item.whether_like == 1 ? "/images/like.png" : "/images/like_empty.png" }}' catchtap='likeBtnClick'></image>
+          <!-- <button class="shareBtn"> -->
+          <text class='iconfont icon-share share_icon' catchtap='showModal'></text>
+          <!-- </button> -->
+          <!-- <button class='share_icon' open-type='share'>
+            <text class='iconfont icon-share'></text>
+          </button> -->
+        </view>
+        <view class='like_people'>
+          <image class='like_people_icon' src='/images/like.png'></image>
+          <text class='like_people_sub'>{{ item.likes }}人觉得很赞</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class='fg_bot_text' hidden='{{ isSubTextHide }}'>请长按哦～</view>
+  <view class='fg_bot_sub' hidden='{{ voiceSub.isHide }}'>
+    <view class='voice_sub_duration'>{{ voiceSub.duration }}"</view>
+    <image class='voice_sub_img {{ micopAni ? "micophoneAni" : "" }}' src='{{ "https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/voice_" + voiceSub.idx + ".png" }}'></image>
+  </view>
+  <view class='fg_bot_box' >
+    <view wx:if="{{ !isRecording }}" catchtap='restartRecord'>重录</view>
+    <view class='bot_box_record'>
+      <image class='record_btn' wx:if="{{ isRecording }}" src='{{ "https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/record_start.png" }}' catchtap='recordAuth' catchlongtap='startRecord' catchtouchcancel='stopRecord' catchtouchend='stopRecord'></image>
+      <image class='record_btn' wx:if="{{ !isRecording }}" src='{{ "https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/record_"+ ( isRecPlaying ? "pause" : "play" ) +".png" }}' catchtap='playRecord'></image>
+    </view>
+    <view wx:if="{{ !isRecording }}" catchtap='publishRecord'>发布</view>
+  </view>
+</view>
+
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="share_words words_1">分享</view>
+  <view class="share_container">
+    <button class="shareBtn" open-type="share">
+      <view class="share_box">
+        <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/weChat.png"></image>
+        <text class="share_words">分享朋友</text>
+      </view>
+    </button>
+    <view class="share_box" catchtap="shareFriendCircle">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/circle_friend.png?1"></image>
+      <text class="share_words">保存图片</text>
+    </view>
+  </view>
+</view>

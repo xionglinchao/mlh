@@ -1,0 +1,108 @@
+<import src="../../wxParse/wxParse.wxml" />
+
+<view class='jx_container'>
+  <!-- <scroll-view scroll-y class="scroll-box"> -->
+  <!-- 测试活动 -->
+  <view class="test-activity">
+    <view class="collect-box">
+      <text class="collect">{{ jxType }}</text>
+      <view class="test">{{ detailName }}</view>
+    </view>
+    <view class="content-box">
+      <!-- <image mode='aspectFill' class="test-pic" src="{{ activtiy_img }}" data-item-arr="{{ activtiy_img }}" data-item-url='{{ activtiy_img }}' catchtap='btn_preview'></image> -->
+      <!-- <rich-text class="rich_text" nodes="{{ detailContent }}"></rich-text> -->
+      <view class='html_view'>
+        <template is="wxParse" data="{{ wxParseData:article.nodes }}" />
+      </view>
+    </view>
+    <view class="comment-box">
+      <text class="comment-time">{{ publishTime }}</text>
+      <view class="comment-quantity">
+        <text class="iconfont icon-liuyan1 liuyan1"></text>
+        <text class="quantity">{{ publishList.length }}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 评论 -->
+  <view class="user-comments" wx:for="{{ publishList }}" wx:key>
+    <view class="top-box">
+      <view class="user-detail-box" catchtap='btn_person_information' data-item="{{ item }}">
+        <image class="user-headImage" src="{{ item.photo }}"></image>
+        <view class="user-name">
+          <text class="name">{{ item.username }}</text>
+          <text class="time">{{ item.time }}</text>
+        </view>
+        <view class="medal-list">
+          <image class="green-LV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+          <image class="red-LV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+          <image class="yellow-LV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+        </view>
+      </view>
+      <!-- 关注状态 -->
+      <view class="focus" id="{{index}}">
+        <text class="subscribe" data-suc-idx="{{ index }}" data-item='{{ item }}' catchtap='subscribeBtnClick'>{{ item.is_focus ? '已关注' : '+ 关注' }}</text>
+      </view>
+    </view>
+    <!-- 评论内容 -->
+    <view class="comment-content">
+      <!-- 语音栏 -->
+      <view class='guide_audio' wx:if="{{ item.audio_duration > 0 }}" data-audio-idx="{{ index }}" data-audio="{{ item.audio_path }}" catchtap='playCommentAudio'>
+        <image class='yuyintou' src='/images/readTrees/funGame/yuyintou.png'>
+          <view class="yuyinline {{ item.isPlaying ? 'sprite' : 'sprite1' }}"></view>
+        </image>
+        <view class='audio_content' style='{{ "width: " + (item.audio_duration * 9) + "rpx;" }}'></view>
+        <view class="yuyinwei-box">
+          <image class='yuyinwei' src='/images/readTrees/funGame/yuyinwei.png'></image>
+          <text class='voice_time_length'>{{ item.audio_duration }}''</text>
+        </view>
+      </view>
+      <!-- 内容栏 -->
+      <text class="comment-title">{{ item.title }}</text>
+      <text class="comment-words">{{ item.content }}</text>
+      <!-- 九宫格图片 -->
+      <view class='publish_img_box' wx:if="{{ item.litpic != '' }}">
+        <image mode='aspectFill' class='publish_img' wx:key wx:for="{{ item.litpic }}" wx:for-item="item3" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item3 }}" data-item-arr="{{ item.litpic }}" data-item-url='{{ item3 }}' catchtap='btn_preview2'></image>
+      </view>
+      <!-- <image mode='aspectFill' wx:if="{{ item.video_path }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.video_pic }}" class='dialog_video' data-video="{{ item.video_path }}" catchtap='videoPlay'>
+        <image class='dialog_video_play' src='/images/bofang.png'></image>
+      </image> -->
+      <video class='dialog_video' objectFit='cover' wx:if="{{ item.video_path }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.video_path }}"></video>
+      <!-- <view wx:if="{{ item.video_path }}" class='cm_video' data-video="{{ item.video_path }}" catchtap='videoPlay'>
+        <image class='dialog_video_play' src='/images/bofang.png'></image>
+      </view> -->
+    </view>
+    <!-- 评论楼层及时间 -->
+    <view class="bottbom-box">
+      <text class="floor">第{{ publishList.length - index }}楼 | {{ item.time }}</text>
+      <view class="share">
+        <!-- 留言 -->
+        <view class='share-left-btn' data-item="{{ item }}" catchtap='btn_erjipinglun'>
+          <text class="iconfont icon-liuyan2 liuyan2"></text>
+          <text class='liuyan-text'>{{ item.discuss.length }}</text>
+        </view>
+        <!-- 点赞 -->
+        <view class='like-box'>
+          <image class='like_icon' src='{{ item.whether_like == 1 ? "/images/like.png" : "/images/like_empty.png" }}' data-liked-idx="{{ index }}" data-item="{{ item }}" catchtap='likeBtnClick'></image>
+          <text class='like-text'>{{ item.likes }}</text>
+        </view>
+
+      </view>
+    </view>
+    <!-- 他人评论 -->
+    <view class="leave-message">
+      <view wx:key wx:for="{{ item.discuss }}" wx:for-item="item2" wx:if="{{ item.discuss != '' }}">
+        <text>{{ item2.username + '：' + item2.content }}</text>
+        <!-- <view>
+        <image class="leave-pic" src="{{item.leavePic}}" wx:if="{{item.leavePic != ''}}"></image>
+        </view> -->
+      </view>
+    </view>
+
+  </view>
+  <!-- </scroll-view> -->
+</view>
+
+
+<view class='write_pinglun_btn' data-type="{{ pinglunType }}" catchtap='btn_zhengji'>
+  写评论
+</view>

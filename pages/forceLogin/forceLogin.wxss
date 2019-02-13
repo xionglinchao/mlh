@@ -1,0 +1,31 @@
+
+.page_box{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(240,235,234);
+}
+
+.login_pic {
+  width: 585rpx;
+  height: 926rpx;
+  margin-top: 60rpx;
+}
+
+.avatar{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  margin: 200rpx auto 260rpx auto;
+  overflow: hidden;
+}
+
+.login_btn {
+  width: 255rpx;
+  height: 74rpx;
+  margin-top: 60rpx;
+  background-image: url('https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/authorization.png?1');
+  background-size: 255rpx 74rpx;
+}

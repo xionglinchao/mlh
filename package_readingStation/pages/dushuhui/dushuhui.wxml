@@ -1,0 +1,168 @@
+<view class="homePage">
+
+  <!-- 顶部背景栏 -->
+  <view class="top-box">
+    <image class="bg_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/bgPic.jpg"></image>
+    <view class="top-box-1">
+      <image class="user_pic" src="{{ baseInfo.logs }}"></image>
+      <text class="act_name">{{ baseInfo.name }}</text>
+    </view>
+    <view class="top-box-2">
+      <view class="guanzhu_email">
+        <view class="guanzhu-box" data-item="{{ baseInfo }}" catchtap='baseSucBtnClick'>
+          <text class="iconfont icon-plus plus" wx:if="{{ baseInfo.type == 0 }}"></text>
+          <text class="gz-words">{{ baseInfo.type == 0 ? '关注' : '已关注' }}</text>
+        </view>
+        <text class="main_string"></text>
+        <view class="guanzhu-box">
+          <text class="iconfont icon-sixin sixin"></text>
+          <text class="gz-words" catchtap='btn_leave_comments' data-id="{{ baseInfo.clt_id }}">私信</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 3个滑动栏 -->
+  <view style='height: 67vh;'>
+    <view class="tTitle">
+      <view class="tTitle-text {{ swiperIdx == index ? 'active' : '' }}" wx:for="{{ tTitle }}" wx:key data-idx="{{ index }}" catchtap="changeSwiper">{{ item }}</view>
+    </view>
+    <swiper class="swiper-item-container" current="{{ swiperIdx }}" bindchange="changeSwiper">
+
+      <!-- 读书活动 -->
+      <swiper-item>
+        <scroll-view scroll-y class="scroll-view-box">
+          <view class="first-activi" wx:for="{{ activityList }}" wx:key data-item="{{ item }}" catchtap='toRaDetail'>
+            <view class="user-detail-2">
+              <view class="user-medal">
+                <image class="user_photo_2" src="{{ item.pic }}" data-item="{{ item }}" catchtap='btn_person_information2'></image>
+                <text class="user_name2" data-item="{{ item }}" catchtap='btn_person_information2'>{{ item.username }}</text>
+                <view class="medal-list-2">
+                  <image class="greenLV_2" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                  <image class="redLV_2" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{  '/images/emblem/' + item2.mType + '-' + item2.lv + '.png' }}"></image>
+                  <image class="yellowLV_2" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                </view>
+              </view>
+              <text class="acti_time">{{ item.time }}</text>
+            </view>
+            <view class="dushuhui-box">
+              <image mode='aspectFill' class="book_pic" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}"></image>
+              <view class="dushuhui-detail">
+                <text class="dushuhui_title beyondEllipsis">{{ item.name }}</text>
+                <text class="abstract">{{ item.comment ? item.comment : '暂无简介' }}</text>
+                <view class="join-box">
+                  <text class="join_family">{{ item.people_num }}个家庭参与</text>
+                  <text class="distance" wx:if="{{ item.distance }}">距我{{ item.distance }}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <!-- 人员介绍 -->
+      <swiper-item>
+        <scroll-view scroll-y class="scroll-view-box">
+          <view class="renyuan-sign-box" wx:for="{{ renyuanList }}" wx:key>
+            <!-- 个人信息 -->
+            <view class="renyuan-box">
+              <view class="user-detail-box" catchtap='btn_person_information' data-item="{{item}}">
+                <view class='ud-left-box'>
+                  <image class="user_photo" src="{{ item.litpic }}"></image>
+                  <view class="name-time-box">
+                    <text class="user_name">{{ item.yigong_name || item.username }}</text>
+                    <text class="pub_time">{{ item.time }}</text>
+                  </view>
+                </view>
+                <!-- 勋章 -->
+                <view class="medal-list">
+                  <image class="greenLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                  <image class="redLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                  <image class="yellowLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                </view>
+              </view>
+              <text class="gz_word_2" data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap='subscribeBtnClick'>{{ item.type == 1 ? '已关注' : '+ 关注' }}</text>
+            </view>
+            <text class="signature">个性签名：{{ item.signature ? item.signature : '无' }}</text>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <!-- 评论 -->
+      <swiper-item>
+        <scroll-view scroll-y class="scroll-view-box">
+          <view class='user_comments'>
+            <!-- 用户评论内容 -->
+            <view class='uc_content' wx:key wx:for="{{ userCommentsList }}">
+              <view class='uc_top_box'>
+                <view class='uct_left' catchtap='btn_person_information3' data-item="{{item}}">
+                  <image class='head_img' src='{{ item.wx_pic }}'></image>
+                  <!-- 评论用户头像 -->
+                  <view class='name_time'>
+                    <text class='user_name beyondEllipsis'>{{ item.username }}</text>
+                    <!-- 用户评论名称 -->
+                    <text class='publish_time'>{{ item.time }}</text>
+                    <!-- 评论时间 -->
+                  </view>
+                  <view class="medal-list">
+                    <image class="greenLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                    <image class="redLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                    <image class="yellowLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '/images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+                  </view>
+                  <!-- 评论用户徽章 -->
+                </view>
+                <view class='uct_right'>
+                  <view class='rigth_btn1' data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap="subscribeBtnClick2">{{ item.focus_type == 1 ? '已关注' : '+ 关注' }}</view>
+                </view>
+              </view>
+              <view class='uc_mid_box'>
+                <view class='comment_box'>
+                  <view class="dialog">
+                    <view class='content'>{{ item.content }}</view>
+                    <!-- <image class="dialog_image" wx:if="{{ item.litpic }}" mode='widthFix' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}"></image> -->
+                    <!-- 九宫格评论图片展示 -->
+                    <view class='comment_pic_box' wx:if="{{ item.litpic.length > 0 }}">
+                      <image mode='aspectFill' class='comment_pic' wx:key wx:for="{{ item.litpic }}" src="{{ 'http://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item }}"></image>
+                    </view>
+                    <!-- <video class="dialog_video" objectFit="cover" wx:if="{{ item.video }}" src='{{ item.comment_video }}' data-video="{{}}"></video> -->
+                    <image mode='aspectFill' wx:if="{{ item.video }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.video_pic }}" class='dialog_video' data-video="{{ item.video }}" catchtap='videoPlay'>
+                      <image class='dialog_video_play' src='/images/bofang.png'></image>
+                    </image>
+                    <!-- <view wx:if="{{ item.video }}" class='cm_video' data-video="{{ item.video }}" catchtap='videoPlay'>
+                      <image class='dialog_video_play' src='/images/bofang.png'></image>
+                    </view> -->
+                  </view>
+                </view>
+                <view class='like_reply'>
+                  <!-- <image class='like_icon' src='/images/like_empty.png'></image> -->
+                  <image class='like_icon' data-liked-idx="{{ index }}" data-item="{{ item }}" src='{{ item.like_type == 1 ? "/images/like.png" : "/images/like_empty.png" }}' catchtap='likeBtnClick'></image>
+                  <text class='iconfont icon-liuyan2' data-item="{{ item }}" catchtap='btn_erjipinglun'></text>
+                </view>
+                <view class='leave_word'>
+                  <view class='lw_top'>
+                    <image class='lwt_icon' src='/images/like.png'></image>
+                    <text class='lwt_text'>{{ item.people }}人觉得很赞</text>
+                  </view>
+                  <view class='lw_item' wx:key wx:for="{{ item.two_comment }}" wx:for-item="item2">
+                    <text><text style='color: #666;'>{{ item2.username }}：</text>{{ item2.content }}</text>
+                    <!-- <image wx:if="{{ item2.image }}" src='{{ item2.image }}'></image> -->
+                    <!-- <text class='user_reply' wx:if="{{ item2.user_reply }}">
+                      <text style='color: #666;'>{{ item.user_name }}</text>
+                      <text> 回复 </text>
+                      <text style='color: #666;'>{{ item2.name + '：' }}</text>
+                      <text>{{ item2.user_reply }}</text>
+                    </text> -->
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      
+    </swiper>
+    <view class='join_volunteer' catchtap='btn_join'>
+      加入义工
+    </view>
+  </view>
+
+</view>

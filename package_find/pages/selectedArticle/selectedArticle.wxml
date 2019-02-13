@@ -1,0 +1,102 @@
+<import src="../../../wxParse/wxParse.wxml" />
+
+<scroll-view class='scroll_list' scroll-y bindscrolltolower="loadMore" scroll-top="{{ toTop }}">
+  <view class='article_title'>{{ articleDetail.title }}</view>
+  <view class='user_info'>
+    <view class='photo_name_time'>
+      <image class='user_photo' src="{{ writer.litpic }}" catchtap="toPersonalPage" data-id="{{ writer.id }}"></image>
+      <view class='name_time_box'>
+        <view class='name beyondEllipsis'>
+          <text style='color:#1EAC58;'>{{ writer.username }}</text>的精选文章
+        </view>
+        <view class='time'>{{ articleDetail.time }}</view>
+      </view>
+    </view>
+    <view class='focus_btn' catchtap='focusedClick' data-item="{{ writer }}">{{ writer.is_focus ? '已关注':'+ 关注' }}</view>
+  </view>
+  <!-- 文章内容 -->
+  <view wx:if="{{ articleDetail.u_id == 0 }}" class="platform">
+    <template is="wxParse" data="{{ wxParseData:article.nodes }}" />
+  </view>
+  <view class='content_box' wx:else>
+    <block wx:for="{{ content }}" wx:key>
+      <block wx:if="{{ item.type == 1 }}">
+        <text class='article_content'>{{ item.con }}</text>
+      </block>
+      <block wx:else>
+        <image class='article_pic' mode="aspectFill" catchtap="img_preview2" data-src="{{ item.con }}" wx:if="{{ item.con }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.con }}"></image>
+      </block>
+    </block>
+  </view>
+  <view class="lock_box" catchtap="lockBtnClick" wx:if="{{ isMine }}">
+    <image class="lock_pic" src="{{ isLock == 0 ? 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/lock_open.png':'https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/lock_close.png' }}"></image>
+    <text class="lock_words">{{ isLock == 0 ? '设为私密':'已上锁' }}</text>
+  </view>
+  <view style='width:100%;height:15rpx;background:#EAEAEA;'></view>
+  <!-- 评论栏 -->
+  <view class='comment_container' wx:for="{{ commentList }}" wx:key>
+    <image class='user_pic' src='{{ item.litpic }}'></image>
+    <view class='user_info_box'>
+      <view class='comment_name_time'>
+        <text class='comment_name'>{{ item.username }}</text>
+        <text class='comment_time'>{{ item.time }}</text>
+      </view>
+      <view class='personal_sign' wx:if="{{ item.signature }}">个签：{{ item.signature }}</view>
+      <view class='comment_content' data-id="{{ item.id }}" catchtap="firstComment">{{ item.content }}</view>
+      <!-- 二级评论 -->
+      <view class="sec_container">
+        <view class='second_comment' wx:if="{{ item.discuss != '' }}" wx:for="{{ item.discuss }}" wx:for-item="item2" wx:key>
+          <view>
+            <view class='reply_message' data-id="{{ item2.id }}" catchtap="secondComment" wx:if="{{ item2.level == 2 }}">
+              <text style='color:#1EAC58;'>{{ item2.username }}：</text>{{ item2.content }}
+            </view>
+            <view class='reply_message_se' wx:else data-id="{{ item2.id }}" catchtap="thirdComment">{{ item2.others.username }} 回复
+              <text style='color:#1EAC58;'>{{ item2.username }}：</text>{{ item2.content }}
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 删除按钮 -->
+      <view class='delete_btn' catchtap="deleteBtnClick" data-idx="{{ index }}" data-item="{{ item }}" wx:if="{{ item.is_mine }}">删除</view>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 底部交互栏 -->
+<view class="interactive_box">
+  <text class="iconfont icon-homePage homePage" catchtap="toHomepage"></text>
+  <input class="input_content" focus="{{focus}}" bindconfirm="bindValueInput"></input>
+  <view class="bottomIocn_box">
+    <view class="icon_container">
+      <text class="iconfont icon-liuyan2 liuyanIcon"></text>
+      <text class="icon_words">{{ articleDetail.comment_num }}</text>
+    </view>
+    <view class="icon_container">
+      <image class="likeIcon" src="{{ articleDetail.whether_like ? '/images/like.png':'/images/like_empty.png' }}" catchtap='likeClick' data-item="{{ articleDetail }}"></image>
+      <text class="icon_words">{{ articleDetail.like_num }}</text>
+    </view>
+    <view class="icon_container shareBtn" catchtap="showModal">
+      <text class="iconfont icon-share2 shareIcon"></text>
+      <text class="icon_words">转发</text>
+    </view>
+  </view>
+</view>
+
+<!-- 屏幕背景变暗的背景 -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="share_words words_1">分享</view>
+  <view class="share_container">
+    <button class="shareBtn" open-type="share" data-item="{{ articleDetail }}">
+      <view class="share_box">
+        <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/weChat.png"></image>
+        <text class="share_words">分享朋友</text>
+      </view>
+    </button>
+    <view class="share_box" catchtap="shareFriendCircle">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/circle_friend.png?1"></image>
+      <text class="share_words">保存图片</text>
+    </view>
+  </view>
+</view>

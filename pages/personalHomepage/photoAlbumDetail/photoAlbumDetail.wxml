@@ -1,0 +1,115 @@
+<scroll-view scroll-y class='page_box' bindscrolltolower="loadMore" scroll-top="{{ toTop }}">
+  <!-- 顶部用户信息 -->
+  <view class='top_box'>
+    <view class='user_info_box'>
+      <image class='user_photo' src="{{ writer.litpic }}"></image>
+      <view class='name_sign_box'>
+        <text class='user_name beyondEllipsis'>{{ writer.username }}</text>
+        <text class='user_sign beyondEllipsis' wx:if="{{ writer.signature }}">个签：{{ writer.signature }}</text>
+      </view>
+    </view>
+    <view class='dot_box' catchtap='deleteBtnClick'>
+      <text class='grey_dot'></text>
+      <text class='grey_dot'></text>
+      <text class='grey_dot'></text>
+    </view>
+  </view>
+  <!-- 详情内容 -->
+  <view class='content_box'>
+    <!-- type1为视频 -->
+    <block wx:if="{{ albumDetail.type == 1 }}">
+      <text class='content_words'>{{ albumDetail.content }}</text>
+      <!-- <video class="course_video" objectFit="cover" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + albumDetail.video }}"></video> -->
+      <image class="course_video" data-item="{{ albumDetail }}" catchtap="toVideoPlay" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + albumDetail.cover }}">
+        <view class="playIcon_box">
+          <text class="iconfont icon-play playIcon"></text>
+        </view>
+      </image>
+    </block>
+    <!-- type2为文章 -->
+    <block wx:elif="{{ albumDetail.type == 2 }}">
+      <view wx:for="{{ albumDetail.content }}" wx:key wx:for-item="item2">
+        <block wx:if="{{ item2.type == 0 }}">
+          <image class="richTextPic" mode="aspectFill" catchtap="img_preview2" data-src="{{ item2.con }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2.con }}"></image>
+        </block>
+        <block wx:else>
+          <view class="content_words">{{ item2.con }}</view>
+        </block>
+      </view>
+    </block>
+    <!-- type0为相册 -->
+    <block wx:else>
+      <text class='content_words'>{{ albumDetail.content }}</text>
+      <block wx:if='{{ litpics.length == 1 }}'>
+        <view class='cont_photo_box'>
+          <image class='content_photo' mode="aspectFill" catchtap="img_preview" data-src="{{ item }}" data-item-arr="{{ litpics }}" wx:for="{{ litpics }}" wx:key src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item }}"></image>
+        </view>
+      </block>
+      <block wx:elif='{{ litpics.length == 2 }}'>
+        <view>
+          <image class='content_photo2' mode="aspectFill" catchtap="img_preview" data-src="{{ item }}" data-item-arr="{{ litpics }}" wx:for='{{ litpics }}' wx:key src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item }}"></image>
+        </view>
+      </block>
+      <block wx:else>
+        <view>
+          <image class='content_photo3' mode="aspectFill" catchtap="img_preview" data-src="{{ item }}" data-item-arr="{{ litpics }}" wx:for='{{ litpics }}' wx:key src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item }}"></image>
+        </view>
+      </block>
+    </block>
+    <view class="lock_box" catchtap="lockBtnClick" wx:if="{{ isMine }}">
+      <image class="lock_pic" src="{{ isLock == 0 ? 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/lock_open.png':'https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/lock_close.png' }}"></image>
+      <text class="lock_words">{{ isLock == 0 ? '设为私密':'已上锁' }}</text>
+    </view>
+    <view style="width:100%;height:15rpx;background:#F0F0F0;margin-top:10rpx;"></view>
+  </view>
+  <!-- 评论内容 -->
+  <view class='comment_container' wx:for="{{ commentList }}" wx:key>
+    <image class='user_pic' src='{{ item.litpic }}'></image>
+    <view class='user_info_box2'>
+      <view class='comment_name_time'>
+        <text class='comment_name'>{{ item.username }}</text>
+        <text class='comment_time'>{{ item.time }}</text>
+      </view>
+      <view class='personal_sign' wx:if="{{ item.signature }}">个签：{{ item.signature }}</view>
+      <view class='comment_content' catchtap="firstComment" data-id="{{ item.id }}">{{ item.content }}</view>
+      <!-- 二级评论 -->
+      <view class="sec_container">
+        <view class='second_comment' wx:if="{{ item.discuss != '' }}" wx:for="{{ item.discuss }}" wx:for-item="item2" wx:key>
+          <view>
+            <view class='reply_message' data-id="{{ item2.id }}" catchtap="secondComment" wx:if="{{ item2.level == 2 }}">
+              <text style='color:#1EAC58;'>{{ item2.username }}：</text>{{ item2.content }}
+            </view>
+            <view class='reply_message_se' wx:else data-id="{{ item2.id }}" catchtap="thirdComment">{{ item2.others.username }} 回复
+              <text style='color:#1EAC58;'>{{ item2.username }}：</text>{{ item2.content }}
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 删除按钮 -->
+      <view class='delete_btn' catchtap="deleteCommentBtnClick" data-idx="{{ index }}" data-item="{{ item }}" wx:if="{{ item.is_mine }}">删除</view>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 底部交互栏 -->
+<view class="interactive_box">
+  <!-- <text class="iconfont icon-homePage homePage"></text> -->
+  <view class='gongdu_circle'>
+    <view class='gongdu'>共读</view>
+  </view>
+  <input class="input_content" focus="{{focus}}" bindinput="getInputValue"></input>
+  <view class="bottomIocn_box">
+    <view class="icon_container" catchtap="bindValueInput">
+      <text class="iconfont icon-send_message liuyanIcon"></text>
+      <text class="icon_words">发布</text>
+    </view>
+    <view class="icon_container">
+      <image class="likeIcon" src="{{ albumDetail.whether_like ? '/images/like.png':'/images/like_empty.png' }}" catchtap='likeClick' data-item="{{ albumDetail }}"></image>
+      <text class="icon_words">{{ albumDetail.like_num }}</text>
+    </view>
+    <button class="icon_container shareBtn" open-type='share'>
+      <text class="iconfont icon-share2 shareIcon"></text>
+      <text class="icon_words">转发</text>
+    </button>
+  </view>
+</view>

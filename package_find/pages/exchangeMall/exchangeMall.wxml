@@ -1,0 +1,113 @@
+<view class="page_box">
+  <view class="top_bean_box">
+    <view class="bean_box">
+      <image class="bean_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/exchange_bean.png"></image>
+      <text class="bean_words">智慧豆 {{ wiseBean }}</text>
+    </view>
+    <view class="exchange_record_box" catchtap="toExchangeRecordList">
+      <image class="exchange_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/exchange_record.png"></image>
+      <text class="exchange_record">兑换记录</text>
+    </view>
+  </view>
+  <!-- 轮播图 -->
+  <swiper class="swiper_pic_box" autoplay="true" indicator-dots="true" indicator-active-color="#1EAC58" interval="3000">
+    <block wx:for="{{ swiperPic }}" wx:key>
+      <swiper-item>
+        <image class="swiper_pic" mode="aspectFill" src="{{ item.img }}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="icon_box">
+    <view class="single_icon_box" catchtap="toAllExchangeGoods">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/suoyoushangpin.png"></image>
+      <text class="icon_words">所有商品</text>
+    </view>
+    <view class="single_icon_box" catchtap="toTimeExchangeGoods">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/xianshiduihuan.png"></image>
+      <text class="icon_words">限时兑换</text>
+    </view>
+    <view class="single_icon_box" catchtap="toLuckyDraw">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/choujiang.png"></image>
+      <text class="icon_words">抽奖活动</text>
+    </view>
+  </view>
+  <view style="width:100%;height:15rpx;background:#F7F9FA;"></view>
+  <!-- 限时兑换 -->
+  <view>
+    <view class="time_exchange_box">
+      <image class="left_ball" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/left_line_dot.png"></image>
+      <text class="time_exchange">限时兑换</text>
+      <image class="right_ball" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/right_line_dot.png"></image>
+    </view>
+    <view class="activ_list">
+      <view class="each_activ" wx:for="{{ timeGoods }}" wx:key>
+        <image class="activ_cover" mode="aspectFill" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.litpic }}">
+          <view class="activ_cont_box">
+            <block wx:if="{{ item.is_begin == 1 }}">
+              <image class='activ_on' src="/images/discover/activity_end.png"></image>
+            </block>
+            <block wx:elif="{{ item.is_begin == 2 }}">
+              <image class='activ_on' src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/waiting.png"></image>
+            </block>
+            <block wx:else>
+              <image class='activ_on' src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/start.png"></image>
+            </block>
+            <view class="name_box">
+              <text class="activ_user_name beyondEllipsis">{{ item.name }}</text>
+              <view class="join_box">
+                <image class="people_icon" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/group.png"></image>
+                <text class="join_num">{{ item.number }}</text>
+              </view>
+            </view>
+          </view>
+        </image>
+        <block wx:if="{{ item.is_begin == 1 }}">
+          <text class="activ_name beyondEllipsis">已结束</text>
+        </block>
+        <block wx:elif="{{ item.is_begin == 2 }}">
+          <text class="activ_name beyondEllipsis">还未开始</text>
+        </block>
+        <block wx:else>
+          <text class="activ_name_sec beyondEllipsis">已抢购{{ item.number }}件 {{ item.percentage * 100 }}%</text>
+        </block>
+        <view class="exchange_bean_box">
+          <view class="bean_num_box">
+            <image class="exchange_bean_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/exchange_bean.png"></image>
+            <text class="exchange_num">{{ item.price }}</text>
+          </view>
+          <block wx:if="{{ item.is_begin == 3 }}">
+            <view class="exchange_btn" catchtap="exchangeBtnClick" data-id="{{ item.id }}">兑换</view>
+          </block>
+          <block wx:else>
+            <view class="exchange_btn_end">兑换</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 普通兑换 -->
+  <view class="normal_exchange_box">
+    <image class="title_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/normal_exchange.png"></image>
+    <view class="normal_exchange_list">
+      <view class="exchange_goods_box" wx:for="{{ normalGoods }}" wx:key>
+        <image class="exchange_goods_cover" src="{{ item.litpic }}">
+          <block wx:if="{{ item.number == 0 }}">
+            <text class="left_num">暂无</text>
+          </block>
+          <block wx:else>
+            <text class="left_num">剩余{{ item.number }}本</text>
+          </block>
+        </image>
+        <view class="goods_name beyondEllipsis">{{ item.name }}</view>
+        <view class="goods_bottom_box">
+          <view class="normal_bean_box">
+            <image class="exchange_bean_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/exchange_bean.png"></image>
+            <text class="exchange_num">{{ item.price }}</text>
+          </view>
+          <text class="exchange_money">￥{{ item.rmb_price }}</text>
+          <view class="{{ item.number == 0 ? 'exchange_btn_end':'exchange_btn' }}" catchtap="exchangeBtnClick" data-id="{{ item.id }}">兑换</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

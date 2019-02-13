@@ -1,0 +1,19 @@
+<!--pages/readyClubAttorn/readyClubAttorn.wxml-->
+<view class = "pClass">
+  <view class = "titleViewClass">
+      <text class = "text1">转让读书会</text>
+  </view>
+    
+    <picker class="type2" range="{{personPro}}" value='{{0}}' mode='selector' bindchange='btn_city' range-key="username">
+        <text class="text2" bindtap='btn_city' >{{name ? name : '选择需要转让的义工'}}</text>
+      <image src='../../images/address/bottom.png' ></image>
+      </picker>
+
+  <button class = "bottomViewClass" bindtap='btn_q'>确认</button>
+</view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>

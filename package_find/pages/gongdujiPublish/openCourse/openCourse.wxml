@@ -1,0 +1,41 @@
+<view class='open_course'>
+  <image class="title_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rectangular2.png">
+    <view class="call-up">推广大使召集令</view>
+  </image>
+  <image class='top_bg_pic' src="{{ info.open_course_cover }}" mode='aspectFit'></image>
+  <text class='course_intro'>{{info.open_course_info}}</text>
+  <!-- 课程特色服务 -->
+  <image class='sub_title_box' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rectangular.png'>
+    <view class='sub_title'>推广大使介绍</view>
+  </image>
+  <view class='list_container'>
+    <view class='list_box'>
+      <view class='each_list_2' wx:for='{{ info.course_service }}' wx:key>
+        <text class='green_dot'></text>
+        <text class='list_words_2 beyondEllipsis'>{{ item }}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 如何开课 -->
+  <image class='sub_title_box2' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rectangular1.png'>
+    <view class='sub_title'>美丽花平台介绍</view>
+  </image>
+  <view class='list_box_2'>
+    <view class='each_list_2' wx:for='{{ info.how_to_open_course }}' wx:key>
+      <text class='green_dot'></text>
+      <text class='list_words_2 beyondEllipsis'>{{ item }}</text>
+    </view>
+  </view>
+  <!-- <view class='agree_box'>
+    <view class='hook_box' catchtap='checkClick'>
+      <text class='iconfont icon-hook hook' hidden='{{ isCheckedHide }}'></text>
+    </view>
+    <view class='agreement'>我同意遵循
+      <text style='color: #576b95;' catchtap='course_protocol'>《美丽花用户课程协议》</text>
+    </view>
+  </view> -->
+  <view class="pay_info">
+    <text class="tip_words">支付99元后，可获得价值200元以上的大礼包</text>
+  </view>
+</view>
+<view class='open_btn' catchtap='openCourseClick'>即刻加入</view>

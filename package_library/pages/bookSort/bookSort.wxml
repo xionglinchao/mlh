@@ -1,0 +1,24 @@
+<scroll-view scroll-y class='page_box'>
+  <!-- 顶部侧滑栏 -->
+  <view class='content_box'>
+    <swiper class='swiper_box' autoplay current='1' indicator-dots indicator-color='rgba(0,0,0,0.6)' indicator-active-color='#FFFFFF'>
+      <block wx:for='{{ swiperPic }}' wx:key>
+        <swiper-item>
+          <image class='slide_pic' src='{{ item }}'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <text class='content_title beyondEllipsis'>{{ bookType.name }}</text>
+    <text class='cont'>{{ bookType.remark }}</text>
+  </view>
+
+  <view class='book_box' wx:for='{{ booklist }}' wx:key catchtap="toBookListPage" data-item="{{ item }}">
+    <image class='book_photo' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.logo }}">
+      <!-- <image class='xilie_label' src="{{ item.isCatalog == 1 ? '../../../images/newLibrary/xilie_label.png':'' }}"></image> -->
+    </image>
+    <view class='book_cont'>
+      <text class='book_title beyondEllipsis'>{{ item.name }}</text>
+      <text class='brief_intro beyondEllipsis_two'>{{ item.remark }}</text>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,51 @@
+<!--pages/commentRelay/commentRelay.wxml-->
+
+<view class="p_view">
+  <form bindsubmit='btn_submit'>
+    <view class="type2">
+      <textarea placeholder="输入您想发布的内容吧" placeholder-style='color: #999;font-size: 34rpx;' name="information"></textarea>
+      <view class="ImageViewClass">
+        <block wx:for="{{ pics }}" wx:key>
+
+          <view class="addImageView1Class">
+            <block wx:if="{{ item.type == 2 }}">
+              <video style='width: 170rpx;height: 170rpx;' src='{{ item.path }}' controls="false" autoplay="true"></video>
+            </block>
+            <block wx:else>
+              <image class="image1" src='{{ item.path }}' mode="aspectFill" data-item-arr="{{ pics }}" data-item-url='{{ item.path }}' catchtap='btn_preview'></image>
+              <image class="image2" src='../../../images/d.png' catchtap='btn_delete' data-index='{{index}}'></image>
+            </block>
+          </view>
+
+        </block>
+        <view class="addImageViewClass" bindtap='btn_image' wx:if="{{ 1 }}">
+          <image src='../../../images/homepage/j.png'></image>
+          <text>照片/视频</text>
+        </view>
+
+        <view style="clear:both;"></view>
+      </view>
+      <view style="clear:both;"></view>
+    </view>
+    <view class="plViewClass">
+      <button form-type='submit' disabled='{{isDisabled}}'>发布评论</button>
+    </view>
+  </form>
+</view>
+
+
+<view class="commodityScreenClass" hidden='{{isShadow}}' bindtap='btn_shadow' style="{{!isVideo ? 'opacity: 0.8': ''}};"></view>
+<view class="bottom_model_view" hidden='{{isBottomModel}}'>
+  <view class="load_image_text" hover-class='backView' bindtap='btn_up_load_image'>上传图片</view>
+  <view class="load_video_text" hover-class='backView' bindtap='btn_up_load_video'>上传视频</view>
+  <view style='width:100%;height: 7px;float:left;'></view>
+  <view class="cancel_load_text" hover-class='backView' bindtap='btn_up_load_cancel'>取消</view>
+</view>
+
+
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>

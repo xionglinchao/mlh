@@ -1,0 +1,29 @@
+/* pages/readingMeeting/readingMeeting.wxss */
+page {width:100%;height:100%;}
+.pClass {width:100%;height:100%;background:#f0f0f0;}
+.gClass {display:block;float:left;height:45px;width:100%;background:white;text-align:center;line-height:45px;font-size:13px;color:#666;}
+.view1 {width:100%;height:auto;margin-top:5px;background:white;float:left;}
+.view1 .type1 {width:calc(100% - 15px);margin-left:15px;height:40px;}
+.view1 .type1 .text1 {display:block;float:left;font-size:15px;color:#666;line-height:40px;}
+.view1 .type1 .text2 {display:block;float:right;font-size:14px;color:#999;line-height:40px;}
+.view1 .type1 image {width:20px;height:20px;float:right;margin-top:10px;margin-right:5px;}
+.view1 .kongDataClass {width:100%;height:66px;line-height:66px;font-size:18px;color:#666;text-align:center;display:block;float:left;border-top:1px solid #f0f0f0;}
+.view1 .type2 {width:100%;height:86px;float:left;position:relative;padding-bottom:10px;}
+.view1 .type2 .image1 {width:56px;height:56px;border-radius:50%;margin-left:calc(50% - 28px);float:left;margin-right:calc(50% - 28px);}
+.view1 .type2 .image2 {width:56px;height:56px;border-radius:50%;left:calc(25% - 28px);float:left;position:absolute;margin-top:20px;}
+.view1 .type2 .image3 {width:56px;height:56px;border-radius:50%;right:calc(25% - 28px);float:right;position:absolute;margin-top:30px;}
+.view2 {width:100%;height:auto;margin-top:5px;background:white;float:left;}
+.view2 .type1 {width:calc(100% - 15px);margin-left:15px;height:40px;border-bottom:1px solid #f0f0f0;}
+.view2 .type1 .text1 {display:block;float:left;font-size:15px;color:#666;line-height:40px;}
+.view2 .type1 .type1ViewClass {float:right;height:24px;border:1px solid #ff6600;margin-right:10px;border-radius:4px;margin-top:6px;}
+.view2 .type1 .type1ViewClass text {display:block;float:left;font-size:13px;color:#ff6600;line-height:24px;margin-left:5px;}
+.view2 .type1 .type1ViewClass image {height:18px;float:left;margin-top:3px;width:18px;}
+.scroll {width:100%;height:auto;}
+.dataViewClass {width:100%;height:auto;border-bottom:1px solid #f0f0f0;}
+.dataViewClass .imageClass {width:80px;height:80px;padding:15px;float:left;}
+.dataViewClass .type3 {width:calc(100% - 110px);height:auto;float:left;}
+.dataViewClass .type3 .text1 {display:block;float:left;margin-top:8px;font-size:14px;color:#666;line-height:30px;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.dataViewClass .type3 .text2 {display:block;float:left;font-size:12px;color:#999;margin-right:10px;line-height:20px;height:40px;width:100%;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;}
+.dataViewClass .type3 .type3ViewClass {float:left;height:20px;width:100%;}
+.dataViewClass .type3 .type3ViewClass .text3 {display:block;float:left;font-size:12px;color:red;margin-right:10px;line-height:20px;}
+.dataViewClass .type3 .type3ViewClass .text4 {display:block;float:right;font-size:12px;color:#999;margin-right:10px;line-height:20px;}

@@ -1,0 +1,8 @@
+<view class="page_box">
+  <!-- <view class="avatar">
+   <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <button class="btn notFull normal" open-type="getUserInfo" bindgetuserinfo="getInfo">授权登录</button> -->
+  <image class="login_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/login.png?1"></image>
+  <button class="login_btn" open-type="getUserInfo" bindgetuserinfo="getInfo"></button>
+</view>

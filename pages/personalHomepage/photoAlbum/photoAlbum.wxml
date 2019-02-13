@@ -1,0 +1,88 @@
+<scroll-view scroll-y class='page_box'>
+  <view class='top_box'>
+    <view class='user_info_box'>
+      <image class='user_photo' src='{{ writer.litpic }}'></image>
+      <view class='name_sign_box'>
+        <text class='user_name beyondEllipsis'>{{ writer.username }}</text>
+        <text class='user_sign beyondEllipsis' wx:if="{{ writer.signature }}">个签：{{ writer.signature }}</text>
+      </view>
+    </view>
+    <view class='top_icon_box'>
+      <text class='iconfont icon-homePage homePage' catchtap="toHomePage"></text>
+      <text class="iconfont {{ isListSwitch ? 'icon-list2':'icon-list' }} album_list" catchtap='listSwitchClick'></text>
+      <button class='share_btn' open-type='share'>
+        <text class='iconfont icon-share2 share2'></text>
+      </button>
+    </view>
+  </view>
+  <!-- 相册列表展示1 -->
+  <view class='photo_list' hidden='{{ isListSwitch }}'>
+    <block wx:for='{{ photoList }}' wx:key>
+      <image class='all_photo' mode="aspectFill" src="{{ item.cover }}" catchtap="toAlbumDetailPage" data-item="{{ item }}">
+        <view class='each_num' wx:if='{{ item.img_num > 1 }}'>{{ item.img_num }}</view>
+        <view class='liuyan_dianzan_box'>
+          <view class='liuyan_box'>
+            <text class='iconfont icon-liuyan2 liuyanIcon'></text>
+            <text class='liuyan_num'>{{ item.comment_num }}</text>
+          </view>
+          <view class='liuyan_box'>
+            <text class='iconfont icon-dianzan dianzanIcon'></text>
+            <text class='liuyan_num'>{{ item.like_num }}</text>
+          </view>
+        </view>
+      </image>
+    </block>
+  </view>
+
+  <!-- 相册列表展示2 -->
+  <view class='photo_list2' wx:for='{{ photoList }}' wx:key hidden='{{ isListSwitch2 }}'>
+    <view class='album_content' catchtap="toAlbumDetailPage" data-item="{{ item }}">
+      <block wx:if="{{ item.type == 0 || item.type == 1 }}">
+        <view class='content_words beyondEllipsis_two'>{{ item.content }}</view>
+      </block>
+      <block wx:else>
+        <view class='content_words beyondEllipsis_two'>{{ item.title }}</view>
+      </block>
+      <view style='margin-bottom:16rpx;'>
+        <!-- type1为视频 -->
+        <block wx:if='{{ item.type == 1 }}'>
+          <!-- <video class='all_photo_2' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.video }}"></video> -->
+          <image class='video_photo' mode="aspectFill" src="{{ item.cover }}">
+            <view class="playIcon_box">
+              <text class="iconfont icon-play playIcon"></text>
+            </view>
+          </image>
+        </block>
+        <!-- type0为相册 -->
+        <block wx:elif="{{ item.type == 0 }}">
+          <image class="{{ item.albumArr.length > 1 ? 'more_photo':'article_photo' }}" mode="aspectFill" wx:for='{{ item.albumArr }}' wx:for-item="item2" wx:key src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2 }}"></image>
+        </block>
+        <!-- type2为文章 -->
+        <block wx:else>
+          <image class='article_photo' mode="aspectFill" src="{{ item.cover }}"></image>
+        </block>
+      </view>
+    </view>
+    <view class='b_icon_box'>
+      <view class='dot_box' catchtap='deleteBtnClick' data-item="{{ item }}">
+        <text class='grey_dot'></text>
+        <text class='grey_dot'></text>
+        <text class='grey_dot'></text>
+      </view>
+      <view class='t_icon_box'>
+        <view class='liuyan2_box'>
+          <text class='iconfont icon-liuyan2 liuyanIcon2'></text>
+          <text class='liuyan2_num'>{{ item.comment_num }}</text>
+        </view>
+        <view class='like_box'>
+          <image class='like_pic' src="{{ item.is_like ? '/images/like.png':'/images/like_empty.png' }}" catchtap="likeBtnClick" data-item="{{ item }}"></image>
+          <text class='liuyan2_num'>{{ item.like_num }}</text>
+        </view>
+        <button class='share_btn' open-type='share'>
+          <text class='iconfont icon-share2 shareIcon2'></text>
+        </button>
+      </view>
+    </view>
+    <view style='width:100%;height:14rpx;background:#EAEAEA;'></view>
+  </view>
+</scroll-view>

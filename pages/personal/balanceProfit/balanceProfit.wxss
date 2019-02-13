@@ -1,0 +1,409 @@
+.scroll_list {
+  width: 100%;
+  height: 100vh;
+}
+
+.top_box {
+  width: 100%;
+  height: 440rpx;
+  background: #1EAC58;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* 用户信息 */
+.base_info_box {
+  display: flex;
+  justify-content: space-between;
+  padding: 60rpx 20rpx 0 30rpx;
+}
+
+.user_info_box {
+  display: flex;
+  align-items: center;
+}
+
+.photo_box {
+  width: 135rpx;
+  height: 135rpx;
+  border-radius: 50%;
+  background: #75cc99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_photo_sec {
+  width: 118rpx;
+  height: 118rpx;
+  border-radius: 50%;
+  background: lightblue;
+}
+
+.name_box {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rpx;
+}
+
+.user_name_sec {
+  font-size: 30rpx;
+  color: #FFFFFF;
+  max-width: 200rpx;
+}
+
+.partner_box {
+  display: flex;
+  align-items: center;
+}
+
+.first {
+  padding: 6rpx 0;
+}
+
+.crownIcon {
+  width: 35rpx;
+  height: 30rpx;
+  padding-right: 15rpx;
+}
+
+.icon_words {
+  font-size: 24rpx;
+  color: #FFFFFF;
+}
+
+.peopleIcon {
+  width: 40rpx;
+  height: 24rpx;
+  padding-right: 10rpx;
+}
+
+.total_money_box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.withdraw_words {
+  font-size: 24rpx;
+  color: #FFFFFF;
+}
+
+.withdraw_money {
+  font-size: 30rpx;
+  color: #FFFFFF;
+}
+
+.withdraw_btn {
+  width: 180rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid #FFFFFF;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 60rpx;
+  margin-top: 18rpx;
+}
+
+.checkPartner {
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.checkPartner view:first-child {
+  width: 340rpx;
+  height: 60rpx;
+  background:rgba(0,0,0,0.1);
+  border-radius:30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 60rpx;
+}
+
+.checkPartner view:nth-child(2) {
+  width: 150rpx;
+  height: 60rpx;
+  background:rgba(0,0,0,0.1);
+  border-radius:30rpx 0 0 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mask_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  background: rgba(32, 187, 95, 1);
+}
+
+.withdrawal_box {
+  width: 248rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.withdrawal_money {
+  font-size: 34rpx;
+  color: #fff;
+}
+
+.withdrawal_words {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.recorder_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+}
+
+.mask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250rpx;
+}
+
+.total_sell_num, .num_words, .total_sell_price {
+  font-size: 24rpx;
+  /* color: #fff; */
+}
+
+.tixianIcon {
+  font-size: 36rpx;
+  /* color: #fff; */
+}
+
+.ambassador {
+  width: 200rpx;
+  height: 75rpx;
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 38rpx;
+  left: 0;
+  display: flex;
+  align-items: center;
+  border-top-right-radius: 38rpx;
+  border-bottom-right-radius: 38rpx;
+}
+.ambassador>text {
+  font-size: 28rpx;
+  color: #fff;
+  padding: 0 10rpx;
+}
+.ambassador>image {
+  width: 65rpx;
+  height: 65rpx;
+  border-radius: 50%;
+  vertical-align: top;
+}
+
+.limitedIcon {
+  font-size: 50rpx;
+  color: #fff;
+  position: absolute;
+  top: 38rpx;
+  right: 38rpx;
+}
+
+/* 收益记录 */
+
+.profit_record_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #d2d2d2;
+}
+
+.month_record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.record_words {
+  font-size: 30rpx;
+  color: #333;
+  padding: 10rpx 0;
+}
+
+.money_situation {
+  font-size: 22rpx;
+  color: #999;
+  padding-bottom: 10rpx;
+}
+
+.before_data {
+  width: 190rpx;
+  height: 62rpx;
+  border-radius: 30rpx;
+  color: #fff;
+  font-size: 28rpx;
+  background: #1EAC58;
+  text-align: center;
+  line-height: 62rpx;
+}
+
+.dateIcon {
+  font-size: 40rpx;
+  color: #333;
+  margin-right: 30rpx;
+}
+
+/* 列表 */
+
+.balance_payment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30rpx;
+  padding: 15rpx 0;
+  border-bottom: 2rpx solid #d2d2d2;
+}
+
+.user_info_box {
+  display: flex;
+  align-items: center;
+}
+
+.user_photo {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-right: 24rpx;
+}
+
+.words_info_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_name {
+  font-size: 30rpx;
+  color: #333;
+  max-width: 250rpx;
+}
+
+.situation {
+  font-size: 24rpx;
+  padding: 6rpx 0;
+  max-width: 430rpx;
+  color: #20BB5F;
+}
+
+.occurrence_time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.money_num {
+  font-family: 34rpx;
+  color: #333;
+  font-weight: bold;
+  margin-right: 30rpx;
+}
+
+/* 规则介绍弹窗 */
+
+.rule_popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  animation: fadeIn 1s forwards;
+  -webkit-animation: fadeIn 1s forwards;
+}
+
+.popup_bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.popup_box {
+  width: 600rpx;
+  height: 62vh;
+  position: fixed;
+  z-index: 11;
+  top: 19vh;
+  left: 75rpx;
+  background: linear-gradient(#b5e094, #57b567);
+}
+
+.rule_title {
+  position: relative;
+}
+
+.left_line, .right_line {
+  position: absolute;
+  top: 60rpx;
+  width: 166rpx;
+  height: 2rpx;
+  background: #fff;
+}
+
+.left_line {
+  left: 34rpx;
+}
+
+.right_line {
+  right: 34rpx;
+}
+
+.title_words {
+  font-size: 38rpx;
+  color: #fff;
+  position: absolute;
+  top: 36rpx;
+  left: 225rpx;
+}
+
+.scroll_wiseStarRule {
+  width: 100%;
+  height: 43vh;
+  position: absolute;
+  top: 127rpx;
+}
+
+.rule_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rule_content text {
+  font-size: 28rpx;
+  color: #fff;
+  padding-bottom: 26rpx;
+  width: 530rpx;
+}
+
+.closeIcon {
+  font-size: 76rpx;
+  color: #fff;
+  margin: 10rpx 0;
+  position: absolute;
+  bottom: 0;
+  left: 270rpx;
+}

@@ -1,0 +1,8 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view class="pClass">
+  <image class="image1" src='../../images/homepage/home.png'></image>
+  <text class="text1">让天下孩子爱上阅读</text>
+  <text class="text2">版本号 1.0.0</text>
+  <text class="text3">杭州卓森科技有限公司</text>
+  <text class="text4">2017-11-30</text>
+</view>

@@ -1,0 +1,62 @@
+@import "../../wxParse/wxParse.wxss";
+/* .scroll-box {width:100%;height:92vh;} */
+.jx_container{padding-bottom:8vh;}
+.test-activity {display:flex;flex-direction:column;}
+.collect-box {display:flex;justify-content:flex-start;}
+.collect {display:inline-block;font-size:26rpx;color:#1eac58;padding:6rpx 30rpx;border:2rpx solid #1eac58;border-radius:26rpx;margin:10rpx 20rpx 20rpx 30rpx;}
+.test {width:500rpx;display:flex;font-size:26rpx;padding-top:20rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.content-box {display:flex;flex-direction:column;}
+.test-pic {width:670rpx;height:520rpx;padding-left:45rpx;}
+.html_view {width:calc(100% - 30px);margin-left:15px;float:left;padding:5px 0px;}
+.comment-box {display:flex;justify-content:space-between;margin-left:34rpx;padding-top:16rpx;padding-bottom:16rpx;border-bottom:2rpx solid #eaeaea;align-items:center;}
+.comment-time {font-size:24rpx;color:#999;}
+.comment-quantity {padding-right:42rpx;display:flex;justify-content:space-between;align-items:center;}
+.liuyan1 {color:#1eac58;font-size:46rpx;margin-right:10rpx;}
+.quantity {font-size:24rpx;color:#999;}
+/* 第一个评论 */
+.top-box {display:flex;justify-content:space-between;align-items:center;margin-left:30rpx;padding-top:30rpx;}
+.user-detail-box {display:flex;justify-content:space-between;align-items:center;}
+.user-headImage {width:90rpx;height:90rpx;border-radius:50%;margin:0 20rpx 0 0;}
+.user-name {display:flex;flex-direction:column;}
+.name {font-size:34rpx;color:#1eac58;max-width:200rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.time {font-size:24rpx;color:#999;}
+.medal-list {padding-left:16rpx;}
+.green-LV,.red-LV,.yellow-LV {width:66rpx;height:66rpx;padding:10rpx 10rpx 0 0;}
+/* 关注 */
+.focus {width:80rpx;height:34rpx;font-size:24rpx;color:#1eac58;border:2rpx solid #1eac58;text-align:center;padding:6rpx 6rpx;margin:0 34rpx 0 0;border-radius:4rpx;}
+.plus {font-size:24rpx;padding-right:8rpx;}
+.comment-content {display:flex;flex-direction:column;margin-left:50rpx;width:660rpx;}
+.comment-title {font-size:34rpx;color:#333;padding-top:34rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.comment-words {font-size:28rpx;color:#666;padding:24rpx 0 16rpx 0;}
+/* 评论-九宫格图片 */
+.publish_img_box {width:660rpx;padding-bottom:6rpx;display:flex;justify-content:flex-start;flex-wrap:wrap;}
+.publish_img {max-width:210rpx;height:210rpx;margin:0 5rpx 5rpx 0;}
+.bottbom-box {display:flex;justify-content:space-between;align-items:center;margin-left:34rpx;border-bottom:2rpx solid #eaeaea;}
+.floor {font-size:24rpx;color:#999;padding:34rpx 0;}
+.share {display:flex;justify-content:space-between;align-items:center;margin-right:40rpx;}
+.share-left-btn {display:flex;align-items:center;margin-right:30rpx;}
+.liuyan2 {color:#1eac58;font-size:50rpx;}
+.liuyan-text,.like-text {margin-left:10rpx;font-size:28rpx;color:#666;}
+.like-box {display:flex;align-items:center;}
+.like_icon {width:44rpx;height:40rpx;}
+/* 他人评论 */
+.leave-message {font-size:28rpx;color:#333;padding:25rpx 30rpx;border-bottom:15rpx solid #f0f0f0;}
+.leave-pic {width:190rpx;height:190rpx;}
+/* 语音框 */
+.guide_audio {display:flex;align-items:flex-end;margin-left:-10rpx;}
+.yuyintou {width:88rpx;height:90rpx;}
+.yuyinline {position:relative;left:-25rpx;width:40px;height:40px;top:-80rpx;}
+.sprite1 {background:url("http://meilihua.06baobao.com/images/small/readTrees/funGame/audioani.png") 0 0 no-repeat;-webkit-transform:translateX(-50%);transform:translateX(-50%);}
+.sprite {background:url("http://meilihua.06baobao.com/images/small/readTrees/funGame/audioani.png") 0 0 no-repeat;-webkit-transform:translateX(-50%);transform:translateX(-50%);-webkit-animation:run 1s steps(3) infinite;animation:run 1s steps(3) infinite;}
+.audio_content {max-width:450rpx;background:#fff;position:relative;height:68rpx;border-top:4rpx solid #bbb;border-bottom:4rpx solid #bbb;}
+.yuyinwei-box {position:relative;top:12rpx;}
+.yuyinwei {width:71rpx;height:90rpx;}
+.voice_time_length {position:absolute;font-size:24rpx;top:36rpx;left:14rpx;}
+/* 回复框 */
+.release_container {width:100%;height:100vh;position:fixed;top:0;z-index:20;}
+.release_bg {width:100%;height:100vh;position:fixed;top:0;background:transparent;}
+.input_null {color:#c9c9c9;}
+.release {display:flex;align-items:flex-end;/*底部对齐*/  justify-content:space-between;/*两端对齐*/  box-sizing:border-box;position:fixed;left:0;bottom:0;width:100%;padding:18rpx 0 18rpx 30rpx;background-color:#f7f8f7;font-size:28rpx;z-index:999;}
+.release .text {width:604rpx;min-height:34rpx;max-height:102rpx;/*最多显示三行*/  border-width:15rpx 20rpx;/*使用padding与预期留白不一致，故使用border*/  border-style:solid;border-color:#fff;line-height:34rpx;font-size:28rpx;background-color:#fff;border-radius:4rpx;}
+.release .submit {width:116rpx;height:64rpx;line-height:64rpx;text-align:center;color:#6c0;}
+.write_pinglun_btn {position:fixed;bottom:0;left:0;height:8vh;width:100%;display:flex;justify-content:center;align-items:center;background:#1eac58;color:#fff;font-size:32rpx;}

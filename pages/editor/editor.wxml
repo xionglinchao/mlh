@@ -1,0 +1,38 @@
+<view class="reviseViewClass">
+  <form bindsubmit='formSubmit'>
+    <view class="view1">
+
+      <block wx:if="{{typeAdress == 2}}">
+        <view class="type1">
+          <text>收货人</text>
+          <input placeholder='请输入收货人姓名' value="{{name == '' ? '' : name}}" name="name" maxlength='10'></input>
+        </view>
+        <view class="type1">
+          <text>联系电话</text>
+          <input placeholder='请输入收货人电话' type='number' value="{{phone == '' ? '' : phone}}" name="phone" maxlength='11'></input>
+        </view>
+      </block>
+      <picker class="type2" value='{{region}}' mode='region' bindchange='btn_city'>
+        <text class="text1">省/市/区</text>
+        <text class="text2">{{region[0] + region[1] + region[2] == '' ? '请选择省/市/区' : region[0] + region[1] + region[2]}} </text>
+        <image src='../../images/address/bottom.png'></image>
+      </picker>
+      
+      <view class="type3">
+        <text>详细地址</text>
+        <textarea name="address" auto-height="true" show-confirm-bar="false" value="{{address == '' ? '' : address}}" style='height: 30px;' placeholder-style='line-height: 30px' maxlength="50"></textarea>
+        <view style="clear:both;"></view>
+      </view>
+      <view style="clear:both;"></view>
+
+    </view>
+    <button class="button1" bindtap='btn_add' data-info="{{1}}" form-type='submit'>确认</button>
+
+  </form>
+</view>
+
+<view class="ShowToastClass" hidden='{{isShowToast}}'>
+  <image src='../../images/gou.png'></image>
+  <text>{{toastData}}</text>
+  <view style="clear:both;"></view>
+</view>

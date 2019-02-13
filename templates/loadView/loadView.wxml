@@ -1,0 +1,34 @@
+<!-- 没有数据的时候全部显示 -->
+<template name="notContent">
+  <view class="not_network_view" style='height: {{windowHeight}}'>
+    <image src='../../images/gap/gap1.png'></image>
+    <text>暂无相关数据</text>
+  </view>
+</template>
+<template name="notContent1">
+  <view class="not_network_view1">
+    <image src='../../images/gap/gap1.png'></image>
+    <text>暂无相关数据</text>
+  </view>
+</template>
+<!-- 局部没有数据的显示 -->
+<template name="notJbContent">
+  <view class="not_content_view" style='height: {{windowHeight1}}'>
+    <image src='../../images/n.png'></image>
+    <text>暂无相关数据</text>
+  </view>
+</template>
+<!-- 页面内容 -->
+<template name="notJbContent_">
+  <view class="not_content_view_" style='height: {{windowHeight2}}'>
+    <image src='{{image2}}'></image>
+    <text>暂无相关数据</text>
+  </view>
+</template>
+<!-- 页面内容 -->
+<template name="notJbContent_1">
+  <view class="not_content_view" style='height: calc(100% - 40px);'>
+    <image src='../../images/gap/gap1.png'></image>
+    <text>暂无相关数据</text>
+  </view>
+</template>

@@ -1,0 +1,68 @@
+<view class="filter_container" wx:if="{{ domShow }}">
+  <view class="backdrop" hidden="{{ !aniShow }}" catchtap="_closeFilter" catchtouchmove="_prevent"></view>
+  <view class="filter_box {{ aniShow ? 'filter_show' : 'filter_hide' }}">
+    <scroll-view scroll-y class="fliter_content">
+      <view class='screen_box'>
+        <text class='screening'>筛选</text>
+      </view>
+      <view class="content_panel" wx:for="{{ value }}" wx:key>
+        <view class="panel_hd">
+          <view class="panel_title">{{ item.label }}</view>
+          <view class="panel_selected" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' }}" style="{{ 'color:' + theme.mainColor }}">{{ item.selected }}</view>
+          <view class="panel_more" wx:if="{{ item.ShowPanelMoreTag }}" data-index="{{ index }}" catchtap="_panelMore">
+            <text>{{ item.tagText ? '收起' : '更多' }}</text>
+            <image class="panel_more_img" src="{{ item.tagText ? './images/arrow-up.png' : './images/arrow-down.png' }}"></image>
+          </view>
+        </view>
+        <view class="panel_bd">
+          <!-- 单选 -->
+          <radio-group wx:if="{{ item.type === 'radio' }}" data-index="{{ index }}" data-item="{{ item }}" bindchange="_onRadioChange">
+            <view class="panel_groups">
+              <block wx:for="{{ item.children }}" wx:key wx:for-item="item2" wx:for-index="index2">
+                <view class="panel_group">
+                  <radio class="panel_radio" value="{{ item2.value || item2.label }}" checked="{{ item2.checked }}" data-item="{{ item }}" data-index="{{ index }}" data-itemw="{{ item2 }}" data-indexw="{{ index2 }}" bindtap="_onRadioTap"></radio>
+                  <view class="panel_btn" style="{{ item2.checked ? 'color:' + theme.mainColor + ';background:#fff;border-color:' + theme.mainColor : 'color:#000;background:' + theme.subColor }}">{{ item2.label }}</view>
+                </view>
+              </block>
+            </view>
+          </radio-group>
+          <!-- 复选 -->
+          <checkbox-group wx:if="{{ item.type === 'checkbox' }}" data-index="{{ index }}" data-item="{{ item }}" bindchange="_onCheckboxChange">
+            <view class="panel_groups">
+              <block wx:for="{{ item.children }}" wx:key wx:for-item="item2">
+                <view class="panel_group">
+                  <checkbox class="panel_checkbox" value="{{ item2.value || item2.label }}" checked="{{ item2.checked }}"></checkbox>
+                  <view class="panel_btn" style="{{ item2.checked ? 'color:' + theme.mainColor + ';background:#fff;border-color:' + theme.mainColor : 'color:#000;background:' + theme.subColor }}">{{ item2.label }}</view>
+                </view>
+              </block>
+            </view>
+          </checkbox-group>
+          <!-- 价格 -->
+          <view wx:if="{{ item.type === 'price' }}" data-index="{{ index }}">
+            <view class="price_input_box">
+              <input class="price_ipnut" type="digit" maxlength="8" placeholder="最低价" placeholder-class="price_input_plh" wx:if="{{ priceMin <= 0 }}" id="1" name="priceMin" data-index="{{ index }}" bindblur="priceBlur" bindinput="priceInput"></input>
+              <input class="price_ipnut" type="digit" maxlength="8" wx:else value="{{ priceMin }}" id="1" name="priceMin" data-index="{{ index }}" bindblur="priceBlur" bindinput="priceInput"></input>
+              <view class="price_ipnut_line">—</view>
+              <input class="price_ipnut" type="digit" maxlength="8" placeholder="最高价" placeholder-class="price_input_plh" wx:if="{{ priceMax <= 0 }}" id="2" name="priceMax" data-index="{{ index }}" bindblur="priceBlur" bindinput="priceInput"></input>
+              <input class="price_ipnut" type="digit" maxlength="8" wx:else value="{{ priceMax }}" id="2" name="priceMax" data-index="{{ index }}" bindblur="priceBlur" bindinput="priceInput"></input>
+            </view>
+            <radio-group wx:if="{{ item.type === 'price' }}" data-index="{{ index }}" data-item="{{ item }}" bindchange="_onRadioChange">
+              <view class="panel_groups">
+                <block wx:for="{{ item.children }}" wx:key wx:for-item="item2" wx:for-index="index2">
+                  <view class="panel_group">
+                    <radio class="panel_radio" value="{{ item2.value || item2.label }}" checked="{{ item2.checked }}" data-item="{{ item }}" data-index="{{ index }}" data-itemw="{{ item2 }}" data-indexw="{{ index2 }}" bindtap="_onRadioTap"></radio>
+                    <view class="panel_btn" style="{{ item2.checked ? 'color:' + theme.mainColor + ';background:#fff;border-color:' + theme.mainColor : 'color:#000;background:' + theme.subColor }}">{{ item2.label }}</view>
+                  </view>
+                </block>
+              </view>
+            </radio-group>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="filter_btns">
+      <view catchtap="_resetBtnTap" class="filter_reset_btn filter__btn">重置</view>
+      <view catchtap="_confirmBtnTap" class="filter_confirm_btn filter__btn" style="{{ 'background:#1eac58;' }}">确定</view>
+    </view>
+  </view>
+</view>

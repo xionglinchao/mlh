@@ -1,0 +1,47 @@
+.user_box {
+  margin-left: 30rpx;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user_box>view:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.user_box>view:nth-child(2) {
+  display: flex;
+  align-items: center;
+}
+
+.user_pic {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  background: lightblue;
+}
+
+.user_name {
+  font-size: 30rpx;
+  color: #333;
+  padding-left: 20rpx;
+  width: 300rpx;
+}
+
+.focus, .message {
+  width: 116rpx;
+  height: 58rpx;
+  border-radius: 30rpx;
+  background: #f6f6f6;
+  font-size: 28rpx;
+  color: #1eac58;
+  text-align: center;
+  line-height: 58rpx;
+}
+
+.message {
+  margin-left: 20rpx;
+}

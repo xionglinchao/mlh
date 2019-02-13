@@ -1,0 +1,172 @@
+<!-- 分类组件 -->
+<filter bind:toPage="_confirmBtnTap" bind:reset="filterCallback" id="filter" bind:confirm="filterCallback" ani-show="{{ filterData.filterShow }}" dom-show="{{ filterData.filterShow }}" theme="{{ filterData.theme }}" value="{{ panelList }}"></filter>
+<scroll-view scroll-y class="scroll_box">
+  <!-- 侧边弹窗 -->
+  <view class='side_window' catchtap='slideFilterClick'>
+    <text class='iconfont icon-list listIcon'></text>
+  </view>
+  <!-- 顶部图片 -->
+  <swiper autoplay interval="3000">
+    <block wx:for="{{ banner }}" wx:key>
+      <swiper-item>
+        <image class='top_pic' mode="aspectFill" src="{{ item.value }}">
+          <view class='content_box'>
+            <text class='content_title beyondEllipsis'>{{ item.name }}</text>
+            <text class='cont'>{{ item.desc }}</text>
+          </view>
+        </image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 搜索 -->
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" placeholder-style='font-size: 13px;' value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <!-- <icon class="weui-icon-search" type="search" size="14"></icon> -->
+        <text class="iconfont icon-search searchIcon" style="font-size:26rpx;"></text>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    <!-- 搜索栏 -->
+    <view class="searchViewClass" hidden='{{!inputShowed}}'>
+      <view class="viewScroll">
+        <block wx:for="{{serachPro}}" wx:key>
+          <text bindtap='btn_search_text' data-item="{{item}}">{{item.name}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 团购、爆款、新款 -->
+  <view class='group_buying_box' wx:for="{{ shop }}" wx:key>
+    <block wx:if="{{ index == 0 }}">
+      <view class='group_buying'>
+        <image class='yellow_box' src='../../images/readingMall/yellow_box.png'>
+          <text class='title_words'>{{ item.name }}</text>
+        </image>
+        <view class='yellow_dot_box' catchtap="toGroupBuyingList" data-item="{{ item }}">
+          <text class='yellow_dot' style='background: #F1BF38;'></text>
+          <text class='yellow_dot' style='background: #F1BF38;opacity:0.6;'></text>
+          <text class='yellow_dot' style='background: #F1BF38;opacity:0.2;'></text>
+        </view>
+      </view>
+      <scroll-view scroll-x class='book_container'>
+        <block wx:for='{{ item.lists }}' wx:key wx:for-item='item2'>
+          <view class="swiper_box">
+            <view class='book_box' catchtap="toGroupBookDetail" data-item="{{ item2 }}">
+              <image class='book_photo' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2.litpic }}">
+              </image>
+              <view class='book_name beyondEllipsis'>{{ item2.name }}</view>
+              <view class='new_group'>最新团购</view>
+              <view class="price_box">
+                <view class='book_price'>￥{{ item2.price }}</view>
+                <view class='book_price sec'>￥{{ item2.money }}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </block>
+    <block wx:elif="{{ index == 1 }}">
+      <view class='group_buying'>
+        <image class='yellow_box' src='../../images/readingMall/red_box.png'>
+          <text class='title_words'>{{ item.name }}</text>
+        </image>
+        <view class='yellow_dot_box' catchtap="toHotBookList" data-item="{{ item }}">
+          <text class='yellow_dot' style='background: #F45834;'></text>
+          <text class='yellow_dot' style='background: #F45834;opacity:0.6;'></text>
+          <text class='yellow_dot' style='background: #F45834;opacity:0.2;'></text>
+        </view>
+      </view>
+      <scroll-view scroll-x class='book_container'>
+        <block wx:for='{{ item.lists }}' wx:key wx:for-item='item2'>
+          <view class="swiper_box">
+            <view class='book_box' catchtap="toBookDetail" data-item="{{ item2 }}">
+              <image class='book_photo' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2.litpic }}">
+              </image>
+              <view class='book_name beyondEllipsis'>{{ item2.name }}</view>
+              <view class='new_group' style='background: #F45834;'>热销商品</view>
+              <view class="price_box">
+                <view class='book_price'>￥{{ item2.moneys }}</view>
+                <view class='book_price sec'>￥{{ item2.money }}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </block>
+    <block wx:else>
+      <view class='group_buying'>
+        <image class='yellow_box' src='../../images/readingMall/orange_box.png'>
+          <text class='title_words'>{{ item.name }}</text>
+        </image>
+        <view class='yellow_dot_box' catchtap="toNewBookList" data-item="{{ item }}">
+          <text class='yellow_dot' style='background: #FA9431;'></text>
+          <text class='yellow_dot' style='background: #FA9431;opacity:0.6;'></text>
+          <text class='yellow_dot' style='background: #FA9431;opacity:0.2;'></text>
+        </view>
+      </view>
+      <scroll-view scroll-x class='book_container'>
+        <block wx:for='{{ item.lists }}' wx:key wx:for-item='item2'>
+          <view class="swiper_box">
+            <view class='book_box' catchtap="toNewBookDetail" data-item="{{ item2 }}">
+              <image class='book_photo' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2.litpic }}">
+              </image>
+              <view class='book_name beyondEllipsis'>{{ item2.name }}</view>
+              <view class='new_group' style='background: #FA9431;'>最新商品</view>
+              <view class="price_box">
+                <view class='book_price'>￥{{ item2.moneys }}</view>
+                <view class='book_price sec'>￥{{ item2.money }}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </block>
+  </view>
+  <!-- 精选书单 -->
+  <view style='width:100%;height:15rpx;background:#EAEAEA;'></view>
+  <view class='selected_box' wx:for='{{ selected }}' wx:key catchtap="toSelectedBookPage" data-item="{{ item }}">
+    <view class='book_list_box'>
+      <text class='select_book_list'>精选书单</text>
+      <button class='shareIcon_box' open-type='share'>
+        <text class='share_words'>分享</text>
+        <text class='iconfont icon-share2 shareIcon'></text>
+      </button>
+    </view>
+    <view class='content_container'>
+      <text class='selected_title beyondEllipsis'>{{ item.name }}</text>
+      <text class='selected_cont beyondEllipsis'>{{ item.desc }}</text>
+      <view class='selected_book_box'>
+        <block wx:for="{{ item.shop }}" wx:key wx:for-item='item2'>
+          <image class='selected_book' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2.litpic }}"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 宝宝书券弹窗 -->
+<view class="mysteriousGift_popup" wx:if="{{ isNewUser }}">
+  <view class="mystGift_bg" catchtap="hideMystGift"></view>
+  <view class="mystGift_box">
+    <image class="mystGift" mode="widthFix" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/rewarder_popup2.png">
+      <view class="rewarder_info">
+        <view class="tip_words">将存入我的优惠券中</view>
+        <image class="rewarder_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/baobaoshuquan.png">
+          <text class="voucher_money">5</text>
+        </image>
+        <view class="rewarder_name">宝宝书券</view>
+        <view class="confirm_btn" catchtap="confirmBtnClick">确定</view>
+      </view>
+    </image>
+  </view>
+</view>

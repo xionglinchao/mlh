@@ -1,0 +1,72 @@
+<!--pages/readingMeeting/readingMeeting.wxml-->
+<wxs src="../../appWxs/globalVariable.wxs" module="globalVariable" />
+<view class="pClass">
+
+  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000" style='width: 100%;height: {{sw*8/15}}px;'>
+    <block wx:for="{{meetingPro.photo}}" wx:for-index="index">
+      <swiper-item>
+        <image src="{{globalVariable.ossImage + item}}" style='width: 100%;height: {{sw*8/15}}px;vertical-align: middle;' mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <text class="gClass">已收到<text style='color: red;font-size: 18px;'> {{meetingPro.weidare}} </text>公益币,欢迎参与</text>
+  <view class="view1">
+    <view class="type1" bindtap='btn_rank'>
+      <text class='text1'>公益排行榜</text>
+      <image src='../../images/send/right.png'></image>
+      <text class='text2'>查看全部</text>
+    </view>
+    <block wx:if="{{meetingPro.welfare_donation.length > 0}}">
+      <view class="type2">
+        <image class="image1" src='{{meetingPro.welfare_donation[0].litpic}}'></image>
+        <block wx:if="{{meetingPro.welfare_donation.length > 1}}">
+          <image class="image2" src='{{meetingPro.welfare_donation[1].litpic}}'></image>
+        </block>
+        <block wx:if="{{meetingPro.welfare_donation.length > 2}}">
+          <image class="image3" src='{{meetingPro.welfare_donation[2].litpic}}'></image>
+        </block>
+        <view style="clear:both;"></view>
+      </view>
+    </block>
+    <block wx:else>
+      <text style='' class="kongDataClass">虚位以待</text>
+    </block>
+    <view style="clear:both;"></view>
+  </view>
+
+  <view class="view2">
+    <view class="type1">
+      <text class='text1'>最新资讯</text>
+      <view class="type1ViewClass" bindtap='btn_join' hidden='{{isUser == 0 ? false : true}}' >
+        <text>义工加入</text>
+        <image src='../../images/readingstation/right.png'></image>
+      </view>
+    </view>
+
+    <scroll-view class="scroll" scroll-y="true">
+      <block wx:for="{{meetingPro.active}}">
+        <view class="dataViewClass" bindtap='btn_activityInformation' data-id = "{{item.id}}" data-name = "{{item.name}}">
+          <image class="imageClass" src='{{globalVariable.ossImage + item.litpic}}' mode="aspectFill"></image>
+          <view class="type3">
+            <text class="text1">{{item.name}}</text>
+            <text class="text2">{{item.comment}}</text>
+            <view class="type3ViewClass">
+              <text class="text3">{{item.people}}{{item.judgment == 1 ? '个家庭参与' : '人阅读'}}</text>
+              <text class="text4">{{item.time}}</text>
+            </view>
+          </view>
+          <view style="clear:both;"></view>
+        </view>
+        <view style="clear:both;"></view>
+      </block>
+      <view style="clear:both;"></view>
+    </scroll-view>
+  </view>
+</view>
+
+
+<view class="LoadingViewClass" hidden="{{isLoading}}">
+    <image src="../../images/kt.gif"></image>
+</view> 
+
+<view class = "commodityScreenClass" hidden='{{isViewDisabled}}' style='opacity: 0' ></view>

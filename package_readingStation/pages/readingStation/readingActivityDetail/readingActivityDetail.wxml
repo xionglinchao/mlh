@@ -1,0 +1,207 @@
+<view class='rad_container'>
+  <scroll-view class='scroll_box' scroll-y>
+    <!-- 日常活动 -->
+    <view class='daily_activity' wx:if="{{ activityDetail }}">
+      <view class='da_title'>{{ activityDetail.name }}</view>
+      <view class='da_content'>
+        <!-- 用户头像, .... ,分享 -->
+        <view class='dac_top_box'>
+          <view class='dact_left' catchtap='btn_person_information' data-item="{{ activityDetail }}">
+            <image class='head_img' src='{{ activityDetail.litpic }}'></image>
+            <view class='name_time'>
+              <text class='user_name beyondEllipsis'>{{ activityDetail.yigong_name || activityDetail.username }}</text>
+              <text class='publish_time'>{{ activityDetail.time }}</text>
+            </view>
+          </view>
+          <view class='dact_right'>
+            <image class='star' src="{{ isStared ? '../../../../images/star.png' : '../../../../images/star_empty.png' }}" data-id='{{ activityDetail.id }}' catchtap='starBtnClick'></image>
+            <!-- <button class='share_icon'> -->
+              <text class='iconfont icon-share' catchtap="showModal"></text>
+            <!-- </button> -->
+          </view>
+        </view>
+        <!-- 发表内容，图片，活动时间地址，参与人数 -->
+        <view class='dac_mid_box'>
+          <view class='publish_word'>
+            <text>{{ activityDetail.comment }}</text>
+          </view>
+          <view class='publish_word_sub' wx:if="{{ activityDetail.publish_word_sub }}">--{{ activityDetail.publish_word_sub }}</view>
+          <view class='publish_img_box'>
+            <image mode='aspectFill' class='publish_img' wx:key wx:for="{{ activityDetail.carousel }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item }}" data-item-arr="{{ activityDetail.carousel }}" data-item-url='{{ item }}' catchtap='btn_preview'></image>
+          </view>
+          <view class='acvitity_time beyondEllipsis'>{{ '活动时间：' + activityDetail.time + (activityDetail.date != "0000-00-00" ? '至' + activityDetail.date : '') }}</view>
+          <view class='activity_place beyondEllipsis' wx:if="{{ activityDetail.address }}">{{ '活动地址：' + activityDetail.address }}</view>
+          <view class='join_num_box' wx:if="{{ activityDetail.wx_pic.length > 0 }}" catchtap="toJoinPeople" data-id="{{ activityDetail.id }}">
+            <view class='join_img_box'>
+              <image class='join_member_avatar' wx:key wx:for="{{ activityDetail.wx_pic }}" src='{{ item.litpic }}'></image>
+            </view>
+            <view class='join_text_box'>
+              <view class='text_elli' wx:if="{{ activityDetail.wx_pic.length > 4 }}">····</view>
+              <view class='join_num_text'>已参与{{ activityDetail.wx_pic.length }}家庭</view>
+            </view>
+          </view>
+          <!-- <view class='donation_detail_btn' catchtap='showDonationPopup'>捐赠详情</view> -->
+        </view>
+        <!-- end -->
+      </view>
+    </view>
+
+    <!-- 用户评论 -->
+    <view class='user_comments' wx:if="{{ userCommentsList.length > 0 }}">
+      <view class='uc_title'>
+        <text class='iconfont icon-edit2'></text> 用户评论
+      </view>
+      <!-- 用户评论内容 -->
+      <view class='uc_content' wx:key wx:for="{{ userCommentsList }}">
+        <view class='uc_top_box'>
+          <view class='uct_left' catchtap='btn_person_information2' data-item="{{ item }}">
+            <image class='head_img' src='{{ item.wx_pic }}'></image>
+            <!-- 评论用户头像 -->
+            <view class='name_time'>
+              <text class='user_name beyondEllipsis'>{{ item.yigong_name || item.username }}</text>
+              <!-- 用户评论名称 -->
+              <text class='publish_time'>{{ item.time }}</text>
+              <!-- 评论时间 -->
+            </view>
+            <!-- <view class="medal-list">
+              <image class="greenLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'green' && item2.lv > 0 }}" src="{{ '../../../../images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+              <image class="redLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'red' && item2.lv > 0 }}" src="{{ '../../../../images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+              <image class="yellowLV" wx:key wx:for="{{ item.medalArr }}" wx:for-item="item2" wx:if="{{ item2.mType == 'yellow' && item2.lv > 0 }}" src="{{ '../../../../images/emblem/' + item2.mType + '-' + item2.lv + '.png'  }}"></image>
+             
+            </view> -->
+            <!-- 评论用户徽章 -->
+          </view>
+          <view class='uct_right'>
+            <view class='rigth_btn1' data-suc-idx="{{ index }}" data-item="{{ item }}" catchtap='subscribeBtnClick'>
+              <text class='iconfont icon-plus plus_icon' wx:if="{{ item.focus_type != 1 }}"></text>
+              <text class="guanzhu">{{ item.focus_type == 1 ? '已关注' : '关注' }}</text>
+            </view>
+          </view>
+        </view>
+        <view class='uc_mid_box'>
+          <view class='comment_box'>
+            <view class="dialog">
+              <text>{{ item.content }}</text>
+              <!-- 九宫格评论图片展示 -->
+              <view class='comment_pic_box' wx:if="{{ item.litpic.length > 0 }}">
+                <image mode='aspectFill' class='comment_pic' wx:key wx:for="{{ item.litpic }}" src="{{ 'http://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item2 }}" wx:for-item="item2" data-item-arr="{{ item.litpic }}" data-item-url='{{ item2 }}' catchtap='btn_preview'></image>
+              </view>
+              <image mode='aspectFill' wx:if="{{ item.video }}" src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + item.video_pic }}" class='dialog_video' data-video="{{ item.video }}" catchtap='videoPlay'>
+                <!-- <image class='dialog_video_play' src='/images/bofang.png'></image> -->
+              </image>
+              <!-- <view wx:if="{{ item.video }}" class='dialog_video' data-video="{{ item.video }}" catchtap='videoPlay'>
+                <image class='dialog_video_play' src='/images/bofang.png'></image>
+              </view> -->
+            </view>
+          </view>
+          <view class='like_reply'>
+            <!-- <image class='like_icon' data-liked-idx="{{ index }}" src='{{ item.isLiked ? "/images/like.png" : "/images/like_empty.png" }}' catchtap='likeBtnClick'></image> -->
+            <image class='like_icon' data-liked-idx="{{ index }}" data-item="{{ item }}" src='{{ item.like_type == 1 ? "../../../../images/like.png" : "../../../../images/like_empty.png" }}' catchtap='likeBtnClick'></image>
+            <text class='iconfont icon-liuyan2' data-item="{{ item }}" catchtap='btn_erjipinglun'></text>
+          </view>
+          <view class='leave_word'>
+            <view class='lw_top'>
+              <image class='lwt_icon' src='../../../../images/like.png'></image>
+              <text class='lwt_text'>{{ item.people }}人觉得很赞</text>
+            </view>
+            <view class='lw_item' wx:key wx:for="{{ item.two_comment }}" wx:for-item="item2">
+              <text><text style='color: #666;'>{{ item2.username }}：</text>{{ item2.content }}</text>
+              <!-- <image wx:if="{{ item2.image }}" src='{{ item2.image }}'></image> -->
+              <!-- <text class='user_reply' wx:if="{{ item2.user_reply }}">
+                <text style='color: #666;'>{{ item.user_name }}</text>
+                <text> 回复 </text>
+                <text style='color: #666;'>{{ item2.name + '：' }}</text>
+                <text>{{ item2.user_reply }}</text>
+              </text> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 底部按钮 -->
+  <view class='footer_btn_box'>
+    <view catchtap='btn_join'>加入义工</view>
+    <view>
+      <picker class='text1' mode="multiSelector" range='{{personNamePro}}' bindchange='btn_person_confirm'>
+        我要参与
+      </picker>
+    </view>
+    <view catchtap='showRelatedBookPopup'>相关书籍</view>
+  </view>
+</view>
+<!-- 捐赠详情弹窗 -->
+<view class='donation_detail_popup' hidden="{{ donation.isHide }}">
+  <view class='popup_bg' catchtap='showDonationPopup'></view>
+  <view class='popup_box'>
+    <image class='pp_top_img' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/donation-img.png'></image>
+    <text class='donation_name beyondEllipsis'>捐赠活动</text>
+    <text class='iconfont icon-close' catchtap='showDonationPopup'></text>
+    <image class='dontaion_bg' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/donation-bg.jpg'>
+      <view class='dd_info_box'>
+        <view class='info_col'>
+          <view class='dd_user_info'>
+            <view class='dd_ui_col'>
+              <image class='dd_user_img' src='{{ donation.data.wx_pic }}'></image>
+              <text class='dd_user_name beyondEllipsis'>{{ donation.data.username }}</text>
+            </view>
+            <!-- <view class='donate_progress_box'>
+              <view class='prog_sub' style='{{ donation.donate_progress > 0 ? "background: red;" : "" }}'></view>
+              <view class='prog_main' style='{{ donation.donate_progress > 0 ? "width: " + (donation.donate_progress / 100 * 280) + "rpx; background: red;" : ""}}'></view>
+            </view> -->
+          </view>
+          <view class='donate_state'>{{ donation.data.status == 1 ? '进行中' : '已结束' }}</view>
+        </view>
+        <view class='info_col2'>
+          <view class='receive_coin_box'>
+            <text class='receive_coin_text'>累计接收（公益币）</text>
+            <text class='receive_coin'>{{ donation.data.quantity }}</text>
+          </view>
+          <view class='dontate_num_box'>
+            <text class='dontate_num_text'>捐赠（次）</text>
+            <text class='dontate_num'>{{ donation.data.copies }}</text>
+          </view>
+        </view>
+      </view>
+    </image>
+    <view class='donate_btn' catchtap='btn_donation'>我要捐赠</view>
+  </view>
+</view>
+
+<!-- 相关书籍弹窗 -->
+<view class='related_book_popup' hidden='{{ relatedBook.isHide }}'>
+  <view class='popup_bg' catchtap='showRelatedBookPopup'></view>
+  <view class='popup_box' wx:if="{{ relatedBook.data }}">
+    <image class='pp_top_img' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/relatebook-img.png'></image>
+    <text class='related_book_name beyondEllipsis' wx:if="{{ relatedBook.data.name }}">{{ relatedBook.data.name }}</text>
+    <text class='related_book_sub beyondEllipsis'>{{ relatedBook.data.writer ? relatedBook.data.writer + '（文）' : '' }}{{ relatedBook.data.painting_author ? relatedBook.data.painting_author + '（图）' : '' }}</text>
+    <text class='iconfont icon-close' catchtap='showRelatedBookPopup'></text>
+    <image class='relate_book_bg' src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/book-bg.png' wx:if="{{ relatedBook.data.pic }}">
+      <image class='relate_book' src="{{ 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/' + relatedBook.data.pic }}"></image>
+    </image>
+    <view class='relate_book_none' wx:if="{{ !relatedBook.data.pic }}">暂无书籍详情信息</view>
+    <view class='donate_btn' data-lib-id="{{ relatedBook.data.id }}" catchtap='btn_go_book_information'>查看详情</view>
+  </view>
+</view>
+
+<image class="create_view {{ isPinglunAni ? 'create_trans' : '' }}" src='https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/pinglun.png' catchtap='btn_pinglun'></image>
+<view class="pinglun_mask" bindtap='btn_create_comment_hide' hidden='{{ !isPinglunAni }}'></view>
+
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="share_words words_1">分享</view>
+  <view class="share_container">
+    <button class="shareBtn" open-type="share">
+      <view class="share_box">
+        <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/weChat.png"></image>
+        <text class="share_words">分享朋友</text>
+      </view>
+    </button>
+    <view class="share_box" catchtap="shareFriendCircle">
+      <image class="icon_pic" src="https://meilihua.oss-cn-hangzhou.aliyuncs.com/program/images/circle_friend.png?1"></image>
+      <text class="share_words">保存图片</text>
+    </view>
+  </view>
+</view>

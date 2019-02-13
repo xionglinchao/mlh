@@ -1,0 +1,10 @@
+/* pages/giveBookT/giveBookT.wxss */
+page {width:100%;height:100%;}
+.pClass {width:100%;height:100%;background:#f2f2f2;}
+.contactViewClass {width:100%;background:white;height:240px;border-radius:5px;}
+.contactViewClass .titleClass {width:100%;height:50px;text-align:center;display:block;float:left;font-size:13px;color:#666;line-height:50px;padding-bottom:8px;}
+.contactViewClass .view1 {width:100%;height:40px;float:left;}
+.contactViewClass .view1 text {display:block;float:left;line-height:40px;width:60px;margin-left:15px;color:#666;text-align:center;font-size:13px;}
+.contactViewClass .view1 .inputViewClass {width:calc(100% - 95px);height:30px;line-height:30px;font-size:13px;float:left;border-bottom:1px solid #f0f0f0;margin-top:5px;}
+.contactViewClass .view1 .inputViewClass input {width:calc(100% - 10px);margin-left:5px;height:100%;line-height:30px;font-size:13px;}
+.contactViewClass .btn1 {width:80px;height:30px;text-align:center;padding-left:0px;padding-right:0px;border-radius:2px;background:#ff6600;line-height:30px;font-size:14px;color:white;margin-top:20px;float:left;margin-left:calc(50% - 40px);}

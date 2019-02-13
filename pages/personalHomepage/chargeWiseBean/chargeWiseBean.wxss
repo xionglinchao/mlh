@@ -1,0 +1,134 @@
+.page_box {
+  width: 100%;
+  height: 100vh;
+  background: #F7F9FA;
+  overflow: scroll;
+}
+
+/* 顶部用户信息 */
+.top_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 750rpx;
+  padding: 16rpx 0;
+  background: #fff;
+}
+
+.user_info_box {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.user_photo {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.name_sign_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_name {
+  font-size: 28rpx;
+  color: #1eac58;
+  max-width: 300rpx;
+}
+
+.user_sign {
+  font-size: 20rpx;
+  color: #ababab;
+  max-width: 300rpx;
+}
+
+.user_bean_box {
+  display: flex;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+.bean_pic {
+  width: 34rpx;
+  height: 34rpx;
+  padding-right: 15rpx;
+}
+
+.user_bean_num {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 充值 */
+.charge_box_list {
+  width: 700rpx;
+  margin: 30rpx 25rpx;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+.charge_bean_box {
+  width: 226rpx;
+  height: 328rpx;
+  border-radius: 8rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 8rpx rgba(59,59,59,0.14);
+  margin-bottom: 10rpx;
+}
+
+.charge_bean_box:nth-child(3n + 2) {
+  margin: 0 10rpx;
+}
+
+.charge_bean_pic {
+  /* width: 120rpx; */
+  height: 105rpx;
+}
+
+.charge_bean_num {
+  font-size: 28rpx;
+  color: #442509;
+  padding: 10rpx 0;
+}
+
+.num {
+  font-size: 38rpx;
+  font-weight: bold;
+  padding-right: 6rpx;
+}
+
+.charge_price {
+  width: 180rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  color: #FFF;
+  text-align: center;
+  line-height: 60rpx;
+  background: #FF751A;
+}
+
+/* 充值说明 */
+.charge_tips {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30rpx;
+  width: 690rpx;
+}
+
+.tips_title, .tips_list {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.tips_list {
+  padding: 10rpx 0;
+}

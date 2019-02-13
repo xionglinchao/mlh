@@ -1,0 +1,151 @@
+
+var url = 'https://meilihua.06baobao.com/interface/'//美丽花服务器
+
+var urlObj = {
+  // getOpenId: url + 'UserInfo/openid2', //获取openId
+  getOpenId: url + 'Login/mini_userInfo', //获取openId
+  getReayBook: url + 'Relay_read/commodity_show',
+  getReayBookInformation: url + 'Relay_read/commodity_information',
+  getLogin: url + 'UserInfo/login',
+  getUserEdit: url + 'UserInfo/useredit',
+  getCode: url + 'UserInfo/getCode',
+  getExist: url + 'UserInfo/exist',//判断是否登录
+  getLoinOut: url + 'UserInfo/loginout',
+  getAllAddress: url + 'Address/all_address',
+  getDefaultAddress: url + 'Address/default_address',
+  editDefaultAddress: url + 'Address/edit_default_address',
+  addAddress: url + 'Address/add_address',
+  editAddress: url + 'Address/edit_address',
+  deleteAddress: url + 'Address/del_address',
+  upLoadImage: url + 'UserInfo/testImg',
+  getBuyGoods: url + 'Shop/buy_goods',
+  getShopList: url + 'Shop/shop_lists',
+  getShop: url + 'Shop/shop',
+  getGroupByInformation: url + 'Shop/group_buy_details',
+  getReadStation: url + 'Recitation/all_small_station',
+  getReadMetting: url + 'Recitation/details_of_the_station',
+  getJoinReadMeeting: url + 'Book/app_book',
+  getReadingDonate: url + 'Recitation/reading_will_donate',
+  getActivityInformation: url + 'Recitation/book_club_activities_details',
+  getJoinActivity: url + 'Recitation/join_the_event',
+  getActivityLike: url + 'Comment/likes',
+  getDonateCharity: url + 'Recitation/donate_charity',
+  getWelfareNum: url + 'Integral/all_welfare',
+  getComments: url + 'Comment/view_commments',
+  deleteComments: url + 'Comment/del_commments',
+  addComments: url + 'Comment/add_commments',
+  volunteerJoin: url + 'Book/view_to_join',
+  volunteerReview: url + 'Book/review_to_join',
+  volunteerManagement: url + 'Book/volunteer_management',
+  deleteVolunteer: url + 'Book/del_volunteer',
+  auditingReadClub: url + 'Book/auditing_book_club',
+  readClubManagerLib: url + 'Book/reading_will_be_management',
+  deleteReadClub: url + 'Book/del_book',
+  getMyReady: url + 'Personal_center/read_my_relay',
+  getMyActivity: url + 'Personal_center/my_activities',
+  publichActivity: url + 'Personal_center/initiate_activities',
+  getCheckReadClub: url + 'Book/check_the_review_book',
+  getUserInfomation: url + 'UserInfo/userInformation',
+  getUserInfoIntegral: url + 'Integral/all_points',
+  getUserInfoSignIn: url + 'UserInfo/sign_in',
+  getUserInfoSignShow: url + 'UserInfo/sign_show',
+  getSignIn: url + 'UserInfo/whether_to_sign',
+  getPayRead: url + 'Pay/make_reservation',
+  getMyRelayRead: url + 'Personal_center/my_relay_read_details',
+  getPay: url + 'Pay/Pay',
+  getArticle: url + 'Personal_center/launch_article',
+  getOrder: url + 'Personal_center/checking_order',
+  getOrderInformation: url + 'Personal_center/inquire',
+  getGoods: url + 'Shop/product_details',
+  getQrCode: url + 'Customer/qr_code',
+  addFavorites: url + 'Personal_center/add_favorites',//添加收藏
+  getCoupon: url + 'Personal_center/my_coupon',
+  getPersonCollection: url + 'UserInfo/collection',//判断是否收藏
+  getCollection: url + 'Personal_center/Collection',
+  orderPay: url + 'Pay/secondary_payment',
+  joinDelegation: url + 'Orders/the_delegation',
+  getOpeninformation: url + 'Shop/group_details',
+  cancelOrder: url + 'Personal_center/make_reservation',
+  getActivitySumary: url + 'Recitation/activity_summary',
+  addActivitySuary: url + 'Recitation/add_activity_summary',
+  createBookClub: url + 'Book/create_book_club',
+  confirmReceipt: url + 'Orders/confirm_receipt',
+  getLogistics: url + 'Personal_center/logistics',
+  readyClubInfo: url + 'Personal_center/modify_information',
+  getReadyClubInfo: url + 'Personal_center/reading_book_basic_information',
+  editReadyClubNameAddress: url + 'Personal_center/recipient_information',
+  getClubNamePerson: url + 'Personal_center/personnel_information',
+  getCustomerPhoto: url + 'Customer/customer_service',
+  getDonationBook: url + 'Personal_center/book_donation',
+  deleteCollection: url + 'Personal_center/delete_favorites',
+  isUserInfoComment: url + 'Comment/whether_comment',
+  editBookStatus: url + 'Personal_center/book_donation_view',
+  commonProblem: url + 'UserInfo/common_problem',
+  problemInformation: url + 'UserInfo/problem_description',
+  feedBack: url + 'UserInfo/feedback',
+  readArticlePerson: url + 'Recitation/read_the_article',
+  getBlury: url + 'Shop/blurry',
+  getReadyInformationPay: url + 'Pay/secondary_relay',
+  deleteActivity: url + 'Personal_center/delete_activity',
+  transferBookclub: url + 'Personal_center/transfer_book_club',
+  getDonateBooksT: url + 'Personal_center/donate_books',
+  getClubAddress: url + 'Book/get_address',//判断义工，和输出阅读小站
+  getClubAuthorize: url + 'Book/president',//判断是否要创建读书会
+  ReadyTwoPay: url + 'Pay/relay_read_secondary_payment',//接力读二次支付
+  payWelfare: url + 'Pay/exchange',//公益币兑换
+  getOrderNum: url + 'Orders/quantity',//获取个类订单数量
+  edit_activity: url + 'Personal_center/edit_initiate_activities',//修改活动
+  edit_article: url + 'Personal_center/edit_launch_article',//修改文章
+  edit_video: url + 'UserInfo/testvideo',//上传视频
+  edit_audio: url + 'UserInfo/testaudio',//上传音频
+  getLibrary: url + 'Library/lists',//查看文库分类
+  getShoareFriends: url + 'Personal_center/share_friends_view',//分享好友页面背景图
+  geThreeClass: url + 'Library/book_title',//查看二级分类下的书籍
+  getLibraryInformation: url + 'Library/library',//查看文库书籍详情
+  getLibraryInformationComment: url + 'Library/library_creation',//查看文库书籍的评论
+  search_for: url + 'Library/search_for',//搜索文库书籍
+  addCreateComment: url + 'Works/creation',//添加文库创作评论
+  getLibraryWorksCreation: url + 'Works/library_creation',//查看分类创作
+  getWorksCarousel: url + 'Works/carousel',//创作轮播图
+  getFindChioce: url + 'Find/find',//发现中的精选
+  getFindActive: url + 'Find/active',//最新读书会动态
+  getFindDynamic: url + 'Find/dynamic',//最新的创作动态
+  goCreationLikes: url + 'Works/creation_likes',//创作点赞，取消点赞
+  getLibraryLikes: url + 'Library/library_likes',//书籍点赞，取消点赞
+  addTwoCreateComment: url + 'Works/comment_creation',//评论创作
+  aSingleComment: url + 'Works/single_creation',//查看单个评论
+  getChioceComment: url + 'Find/find_comment',//查看精选评论
+  addChioceComment: url + 'Find/find_add_comments',//添加精选评论
+  setChioceLikes: url + 'Find/find_likes',//精选评论点赞，取消点赞
+  getTwoChoiceComment: url + 'Find/single_find_comment',//获取二级精选评论
+  createCpmplaidts: url + 'Works/works_creation_complaints',//创作投诉
+  getChildrensCreate: url + 'Works/childrens_library',//获取童书馆评论
+  getAttentionPerson: url + 'Find/attention',//获取创作童书馆评论的推荐关注人员
+  childrensLibraryLikes: url + 'Works/childrens_library_likes',//童书馆点赞和取消点赞
+  focusOnInformation: url + 'Find/focus_on_staff_details',//关注人员详情
+  focusOnContent: url + 'Find/focus_on_staff_works_details',//关注人员创作内容
+  sendMessage: url + 'News/send_message',//获取私信内容
+  toChatSend: url + 'News/to_chat_with',//发送私信
+  replyMessage: url + 'News/reply',//私信回复
+  attentionPersonal: url + 'Personal_center/attention',//个人中心我的关注
+  whetherAttention: url + 'Personal_center/whether_attention',//关注和取消关注
+  newsMyMessage: url + 'News/news',//我的消息(留言)
+  volunteerMessage: url + 'News/volunteers_message_list',//义工审核消息推送
+  systemMessage: url + 'News/notice_message_list',//系统消息推送
+  systemNotice: url + 'News/notice',//拉取消息数据
+  frenMessage: url + 'News/fren_message_list',//互动消息推送
+  personalMessage: url + 'News/new_quantity',//个人中心消息条数
+  changeMessageType: url + 'News/cha_notice',//修改消息状态
+  getPageCreation: url + 'Works/new_library_creation',//查看创作(分页加载)
+  deleteCommentCreate: url + 'Works/del_creation',//删除我的创作评论
+  getBadge: url + 'Works/badge',//判断是否获得徽章
+  getSendPrice: url + 'Shop/freight',//获取运费
+  relayRefund: url + 'Relay_read/relay_read_refund',
+  // delBookClub: url + 'Relay_read/del_book_club',//删除读书会 
+  delBookClub: url + 'book/del_book_club', //删除读书会 
+  ossImageUrl: 'https://meilihua.oss-cn-hangzhou.aliyuncs.com/',
+}
+
+module.exports = {
+  urlApi: urlObj
+}

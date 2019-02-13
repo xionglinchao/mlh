@@ -1,0 +1,36 @@
+.fans_list {
+  width: 720rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0 30rpx 0;
+  border-bottom: 1rpx solid #D2D2D2;
+  margin-left: 30rpx;
+}
+.user_info {
+  display: flex;
+  align-items: center;
+}
+.user_photo {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  background: lightblue;
+}
+.user_name {
+  max-width: 280rpx;
+  font-size: 32rpx;
+  padding-left: 24rpx;
+}
+.messageBtn {
+  width: 116rpx;
+  height: 58rpx;
+  border-radius: 30rpx;
+  background: #F6F6F6;
+  font-size: 28rpx;
+  color: #1EAC58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30rpx;
+}

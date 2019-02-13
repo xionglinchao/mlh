@@ -1,0 +1,13 @@
+/* pages/signIn/signIn.wxss */
+page {width:100%;height:100%;background:#f0f0f0;}
+.signInViewClass {width:100%;height:100%;}
+.type2 {width:100%;height:auto;background:white;padding-top:8px;padding-bottom:18px;}
+.type2 textarea {width:calc(100% - 30px);margin-left:15px;margin-top:15px;height:100px;float:left;}
+.type2 .ImageViewClass {width:100%;height:auto;float:left;margin-bottom:30px;}
+.type2 .ImageViewClass .addImageViewClass {width:80px;height:80px;border:2px dashed #999;margin-left:15px;border-radius:4px;float:left;}
+.type2 .ImageViewClass .addImageViewClass image {width:30px;height:30px;margin-left:25px;margin-top:10px;}
+.type2 .ImageViewClass .addImageViewClass text {display:block;float:left;width:100%;height:30px;line-height:30px;text-align:center;font-size:13px;color:#999;}
+.type2 .ImageViewClass .addImageView1Class {width:80px;margin-left:15px;float:left;position:relative;height:80px;}
+.type2 .ImageViewClass .addImageView1Class .image2 {width:20px;height:20px;position:absolute;top:0px;right:0px;background:white;border-radius:50%;}
+.sendViewClass {position:fixed;bottom:0px;height:40px;width:100%;background:#ff6600;display:block;float:left;text-align:center;line-height:40px;color:white;font-size:15px;border-radius:0px;}
+.sendViewClass::after {content:none;}

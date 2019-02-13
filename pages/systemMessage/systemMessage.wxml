@@ -1,0 +1,28 @@
+<!--pages/systemMessage/systemMessage.wxml-->
+<import src="../../templates/loadView/loadView.wxml" />
+<view class='page_view'>
+<block wx:if = "{{systemPro}}">
+  <scroll-view class='system_message_scroll' scroll-y="true">
+    <block wx:for="{{systemPro}}">
+
+      <view class='system_item_view'>
+        <text class='item_times'>{{item.time}}</text>
+        <view class='item_content_view'>
+          <text class='item_name'>{{item.content}}</text>
+          <block wx:if = "{{item.status == 1}}">
+               <view class='item_dotted'></view>
+          </block>
+          <view style="clear:both;"></view>
+        </view>
+        <view style="clear:both;"></view>
+      </view>
+
+    </block>
+
+  </scroll-view>
+
+  </block>
+    <block wx:else>
+          <template is="notContent1"></template>
+      </block>
+</view>
